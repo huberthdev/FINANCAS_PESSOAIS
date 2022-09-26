@@ -29,29 +29,30 @@ namespace Setup.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.painel = new System.Windows.Forms.Panel();
+            this.txtSenha = new Setup.Controles.Txt();
+            this.txtNome = new Setup.Controles.Txt();
+            this.txtUsuario = new Setup.Controles.Txt();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lista = new System.Windows.Forms.DataGridView();
             this.lblID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.cbAcesso = new System.Windows.Forms.ComboBox();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.txtSenha = new System.Windows.Forms.TextBox();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.painel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -65,6 +66,9 @@ namespace Setup.Formularios
             // painel
             // 
             this.painel.BackColor = System.Drawing.Color.White;
+            this.painel.Controls.Add(this.txtSenha);
+            this.painel.Controls.Add(this.txtNome);
+            this.painel.Controls.Add(this.txtUsuario);
             this.painel.Controls.Add(this.label6);
             this.painel.Controls.Add(this.txtBuscar);
             this.painel.Controls.Add(this.lista);
@@ -73,9 +77,6 @@ namespace Setup.Formularios
             this.painel.Controls.Add(this.btnExcluir);
             this.painel.Controls.Add(this.btnSalvar);
             this.painel.Controls.Add(this.cbAcesso);
-            this.painel.Controls.Add(this.txtUsuario);
-            this.painel.Controls.Add(this.txtSenha);
-            this.painel.Controls.Add(this.txtNome);
             this.painel.Controls.Add(this.label4);
             this.painel.Controls.Add(this.label3);
             this.painel.Controls.Add(this.label2);
@@ -83,6 +84,50 @@ namespace Setup.Formularios
             this.painel.Name = "painel";
             this.painel.Size = new System.Drawing.Size(663, 255);
             this.painel.TabIndex = 4;
+            // 
+            // txtSenha
+            // 
+            this.txtSenha.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSenha.Location = new System.Drawing.Point(297, 33);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '•';
+            this.txtSenha.Size = new System.Drawing.Size(121, 23);
+            this.txtSenha.TabIndex = 2;
+            // 
+            // txtNome
+            // 
+            this.txtNome.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNome.Location = new System.Drawing.Point(111, 33);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(180, 23);
+            this.txtNome.TabIndex = 1;
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUsuario.Location = new System.Drawing.Point(10, 33);
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(95, 23);
+            this.txtUsuario.TabIndex = 0;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 64);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Buscar:";
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(61, 61);
+            this.txtBuscar.MaxLength = 19;
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(591, 23);
+            this.txtBuscar.TabIndex = 7;
+            this.txtBuscar.TabStop = false;
+            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
             // 
             // lista
             // 
@@ -103,6 +148,7 @@ namespace Setup.Formularios
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.Size = new System.Drawing.Size(642, 157);
             this.lista.TabIndex = 6;
+            this.lista.TabStop = false;
             this.lista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_SelectionChange);
             // 
             // lblID
@@ -158,31 +204,6 @@ namespace Setup.Formularios
             this.cbAcesso.Size = new System.Drawing.Size(66, 23);
             this.cbAcesso.TabIndex = 3;
             // 
-            // txtUsuario
-            // 
-            this.txtUsuario.Location = new System.Drawing.Point(10, 33);
-            this.txtUsuario.MaxLength = 6;
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(95, 23);
-            this.txtUsuario.TabIndex = 0;
-            // 
-            // txtSenha
-            // 
-            this.txtSenha.Location = new System.Drawing.Point(297, 33);
-            this.txtSenha.MaxLength = 8;
-            this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '•';
-            this.txtSenha.Size = new System.Drawing.Size(121, 23);
-            this.txtSenha.TabIndex = 2;
-            // 
-            // txtNome
-            // 
-            this.txtNome.Location = new System.Drawing.Point(111, 33);
-            this.txtNome.MaxLength = 19;
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(180, 23);
-            this.txtNome.TabIndex = 1;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -210,32 +231,17 @@ namespace Setup.Formularios
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome:";
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(61, 61);
-            this.txtBuscar.MaxLength = 19;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(591, 23);
-            this.txtBuscar.TabIndex = 7;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 64);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Buscar:";
-            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.ClientSize = new System.Drawing.Size(688, 306);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(688, 304);
             this.Controls.Add(this.painel);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmUsuario_Load);
@@ -250,19 +256,19 @@ namespace Setup.Formularios
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel painel;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.ComboBox cbAcesso;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label lblID;
         private System.Windows.Forms.DataGridView lista;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtBuscar;
+        private Controles.Txt txtSenha;
+        private Controles.Txt txtNome;
+        private Controles.Txt txtUsuario;
     }
 }

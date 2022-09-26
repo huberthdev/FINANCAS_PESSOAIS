@@ -66,26 +66,6 @@ namespace Setup.Formularios
 
         }
 
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-
-            int id = 0;
-
-            if (lblID.Text != "")
-                id = int.Parse(lblID.Text);
-
-            if (id == 0)
-                COD.Erro("Nenhum usuário foi selecionado!");
-            else
-                BD.Delete("USUARIO", id, "Deseja realmente excluir o usuário selecionado? ID: " + id);
-                lblID.Text = "";
-
-            COD.LimparCampos(this.painel, null, txtUsuario);
-
-            CarregarLista();
-
-        }
-
         private void CarregarLista(string sql = "")
         {
 
@@ -123,6 +103,26 @@ namespace Setup.Formularios
             sql += "WHERE UPPER(NOME) LIKE '"+ txt +"%' OR UPPER(USUARIO) LIKE '"+ txt +"%'";
 
             CarregarLista(sql);
+
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+            string id = "0";
+
+            if (lblID.Text != "")
+                id = lblID.Text;
+
+            if (id == "0")
+                COD.Erro("Nenhum usuário foi selecionado!");
+            else
+                BD.Delete("USUARIO", id, "Deseja realmente excluir o usuário selecionado? ID: " + id);
+            lblID.Text = "";
+
+            COD.LimparCampos(this.painel, null, txtUsuario);
+
+            CarregarLista();
 
         }
     }

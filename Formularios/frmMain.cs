@@ -32,7 +32,7 @@ namespace Setup.Formularios
 
         private void btnTesteSQL_Click(object sender, EventArgs e)
         {
-            Formularios.frmTesteCrud TesteCrud = new Formularios.frmTesteCrud();
+            Formularios.frmTestes TesteCrud = new Formularios.frmTestes();
             TesteCrud.ShowDialog();
         }
     }

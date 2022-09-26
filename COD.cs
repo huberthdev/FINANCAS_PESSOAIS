@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace Setup
 {
@@ -50,6 +51,10 @@ namespace Setup
                     {
                         ((ComboBox)controle).Text = "";
                     }
+                    else if (controle is RichTextBox)
+                    {
+                        ((RichTextBox)controle).Clear();
+                    }
 
                 }
             }
@@ -57,6 +62,54 @@ namespace Setup
             if (Foco != null)
                 Foco.Focus();
                      
+        }
+
+        //Função para validar todos os campos vazios obrigatórios de um formulário
+        public static bool ValidarCampos(Control Formulario, ErrorProvider erro = null)
+        {
+
+            if(erro != null)
+                erro.Clear();
+
+            foreach (Control controle in Formulario.Controls)
+            {
+
+                if (controle is TextBox || controle is ComboBox)
+                {
+                    if (controle.Tag != null)
+                    {
+                        if (controle.Text == "")
+                        {
+                            controle.Focus();
+
+                            if (erro != null)
+                                erro.SetError(controle, "Este campo é obrigatório!");
+
+                            return false;
+                        }
+                    }
+                }
+           
+            }
+
+            return true;
+
+        }
+
+        public static string HashMd5(string input)
+        {
+            MD5 md5Hash = MD5.Create();
+
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            StringBuilder sBuilder = new StringBuilder();
+
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            return sBuilder.ToString();
         }
 
     }

@@ -1,18 +1,28 @@
 ﻿using FirebirdSql.Data.FirebirdClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Text;
+using System.Configuration;
 
 namespace Setup
 {
     public class BD
     {
+        public static DataTable Resultado;
+
         public static string UsuarioLogado;
 
         private static FbConnection Conectar()
         {
-            return new FbConnection("User=SYSDBA;Password=masterkey;Database=C:\\CursoCSharp\\dados\\bd.fdb;DataSource=localhost;Port=3050");
+
+            ConfigurationManager.RefreshSection("appSettings");
+
+            string caminho = ConfigurationManager.AppSettings["Banco"].ToString();
+            string servidor = ConfigurationManager.AppSettings["Servidor"].ToString();
+            string porta = ConfigurationManager.AppSettings["Porta"].ToString();
+            string usuario = "SYSDBA";
+            string senha = "masterkey";
+
+            return new FbConnection("User="+ usuario +";Password="+ senha +";Database="+ caminho +";DataSource="+ servidor +";Port="+ porta);
         }
 
         public static void TestarConexao()
@@ -21,7 +31,7 @@ namespace Setup
             {
                 try
                 {
-                    ConexaoFB.Open();
+                    ConexaoFB.Open();                    
                 }
                 catch (FbException ex)
                 {
@@ -138,9 +148,14 @@ namespace Setup
 
         }
 
-        public static bool Delete(string Tabela, long ID, string TextoConfirmacao = "")
+        public static bool Delete(string Tabela, string ID, string TextoConfirmacao = "")
         {
-           
+
+            int codigo = 0;
+
+            if (ID != "")
+                codigo = int.Parse(ID);
+
             string sql = "DELETE FROM " + Tabela + " WHERE " + Tabela + "_ID = " + ID;
 
             if (TextoConfirmacao != "")
@@ -237,7 +252,9 @@ namespace Setup
                     FbCommand cmd = new FbCommand(sql, Conexao);
                     FbDataAdapter da = new FbDataAdapter(cmd);
                     da.Fill(dt);
+                    Resultado = dt;
                     return dt;
+                    
                 }
                 catch (FbException ex)
                 {
@@ -250,6 +267,5 @@ namespace Setup
             }
 
         }
-
     }
 }
