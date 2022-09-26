@@ -18,11 +18,16 @@ namespace Setup.Formularios
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
+            if (COD.ValidarCampos(this.painel) == false)
+                return;
+
             int id = 0;
             string usuario = txtUsuario.Text;
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
             string acesso = cbAcesso.Text;
+
+            senha = COD.CriptografiaMd5(senha);
 
             if (lblID.Text != "")
                 id = int.Parse(lblID.Text);
@@ -56,21 +61,14 @@ namespace Setup.Formularios
 
         private void frmUsuario_Load(object sender, EventArgs e)
         {
-
-            for (int i = 1; i <= 7; i++)
-            {
-                cbAcesso.Items.Add(i);
-            }
-
             CarregarLista();
-
         }
 
         private void CarregarLista(string sql = "")
         {
 
             if(sql=="")
-                sql = "SELECT USUARIO_ID AS ID, USUARIO, NOME, ACESSO FROM USUARIO";
+                sql = "SELECT USUARIO_ID, USUARIO, NOME, ACESSO FROM USUARIO";
 
             try
             {
@@ -83,23 +81,13 @@ namespace Setup.Formularios
             
         }
 
-        private void Lista_SelectionChange(object sender, EventArgs e)
-        {
-
-            lblID.Text = lista.CurrentRow.Cells[0].Value.ToString();
-            txtUsuario.Text = lista.CurrentRow.Cells[1].Value.ToString();
-            txtNome.Text = lista.CurrentRow.Cells[2].Value.ToString();
-            cbAcesso.Text = lista.CurrentRow.Cells[3].Value.ToString();
-            
-        }
-
         private void txtBuscar_TextChanged(object sender, EventArgs e)
         {
 
             string txt = txtBuscar.Text;
             txt = txt.Replace("*", "%").ToUpper();
 
-            string sql = "SELECT USUARIO_ID AS ID, USUARIO, NOME, ACESSO FROM USUARIO ";
+            string sql = "SELECT USUARIO_ID, USUARIO, NOME, ACESSO FROM USUARIO ";
             sql += "WHERE UPPER(NOME) LIKE '"+ txt +"%' OR UPPER(USUARIO) LIKE '"+ txt +"%'";
 
             CarregarLista(sql);
@@ -123,6 +111,29 @@ namespace Setup.Formularios
             COD.LimparCampos(this.painel, null, txtUsuario);
 
             CarregarLista();
+
+        }
+
+        private void lista_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            lblID.Text = lista.CurrentRow.Cells[0].Value.ToString();
+            txtUsuario.Text = lista.CurrentRow.Cells[1].Value.ToString();
+            txtNome.Text = lista.CurrentRow.Cells[2].Value.ToString();
+            cbAcesso.Text = lista.CurrentRow.Cells[3].Value.ToString();
+        }
+
+        private void lblID_TextChanged(object sender, EventArgs e)
+        {
+            if (lblID.Text != "")
+            {
+                txtSenha.ReadOnly = true;
+                txtSenha.Tag = "";
+            }
+            else
+            {
+                txtSenha.ReadOnly = false;
+                txtSenha.Tag = "'Senha'";
+            }
 
         }
     }

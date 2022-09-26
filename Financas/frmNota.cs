@@ -57,7 +57,7 @@ namespace Setup.Financas
             v[2] = cor.ToString();
 
             c[3] = "hash";
-            v[3] = COD.HashMd5(titulo.Trim() + txtTexto.Text.Trim());
+            v[3] = COD.CriptografiaMd5(titulo.Trim() + txtTexto.Text.Trim());
                      
             BD.Salvar("NOTA", c, v);
 
@@ -104,7 +104,7 @@ namespace Setup.Financas
             string[] hash = new string[2];
 
             hash[0] = txtTitulo.Text.Trim() + txtTexto.Text.Trim();
-            hash[0] = COD.HashMd5(hash[0]);
+            hash[0] = COD.CriptografiaMd5(hash[0]);
 
             try
             {

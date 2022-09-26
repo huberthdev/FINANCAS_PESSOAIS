@@ -32,17 +32,21 @@ namespace Setup.Formularios
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.painel = new System.Windows.Forms.Panel();
-            this.txtSenha = new Setup.Controles.Txt();
-            this.txtNome = new Setup.Controles.Txt();
             this.txtUsuario = new Setup.Controles.Txt();
+            this.txtNome = new Setup.Controles.Txt();
+            this.txtSenha = new Setup.Controles.Txt();
+            this.cbAcesso = new System.Windows.Forms.ComboBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.lista = new System.Windows.Forms.DataGridView();
+            this.USUARIO_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACESSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnSalvar = new System.Windows.Forms.Button();
-            this.cbAcesso = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -66,17 +70,17 @@ namespace Setup.Formularios
             // painel
             // 
             this.painel.BackColor = System.Drawing.Color.White;
-            this.painel.Controls.Add(this.txtSenha);
-            this.painel.Controls.Add(this.txtNome);
             this.painel.Controls.Add(this.txtUsuario);
+            this.painel.Controls.Add(this.txtNome);
+            this.painel.Controls.Add(this.txtSenha);
+            this.painel.Controls.Add(this.cbAcesso);
+            this.painel.Controls.Add(this.btnSalvar);
+            this.painel.Controls.Add(this.btnExcluir);
             this.painel.Controls.Add(this.label6);
             this.painel.Controls.Add(this.txtBuscar);
             this.painel.Controls.Add(this.lista);
             this.painel.Controls.Add(this.lblID);
             this.painel.Controls.Add(this.label5);
-            this.painel.Controls.Add(this.btnExcluir);
-            this.painel.Controls.Add(this.btnSalvar);
-            this.painel.Controls.Add(this.cbAcesso);
             this.painel.Controls.Add(this.label4);
             this.painel.Controls.Add(this.label3);
             this.painel.Controls.Add(this.label2);
@@ -84,6 +88,26 @@ namespace Setup.Formularios
             this.painel.Name = "painel";
             this.painel.Size = new System.Drawing.Size(663, 255);
             this.painel.TabIndex = 4;
+            // 
+            // txtUsuario
+            // 
+            this.txtUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUsuario.Location = new System.Drawing.Point(10, 33);
+            this.txtUsuario.MaxLength = 6;
+            this.txtUsuario.Name = "txtUsuario";
+            this.txtUsuario.Size = new System.Drawing.Size(95, 23);
+            this.txtUsuario.TabIndex = 0;
+            this.txtUsuario.Tag = "\'Usuário\'";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNome.Location = new System.Drawing.Point(111, 33);
+            this.txtNome.MaxLength = 120;
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(180, 23);
+            this.txtNome.TabIndex = 1;
+            this.txtNome.Tag = "\'Nome\'";
             // 
             // txtSenha
             // 
@@ -93,22 +117,51 @@ namespace Setup.Formularios
             this.txtSenha.PasswordChar = '•';
             this.txtSenha.Size = new System.Drawing.Size(121, 23);
             this.txtSenha.TabIndex = 2;
+            this.txtSenha.Tag = "\'Senha\'";
             // 
-            // txtNome
+            // cbAcesso
             // 
-            this.txtNome.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNome.Location = new System.Drawing.Point(111, 33);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(180, 23);
-            this.txtNome.TabIndex = 1;
+            this.cbAcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAcesso.FormattingEnabled = true;
+            this.cbAcesso.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.cbAcesso.Location = new System.Drawing.Point(424, 33);
+            this.cbAcesso.Name = "cbAcesso";
+            this.cbAcesso.Size = new System.Drawing.Size(66, 23);
+            this.cbAcesso.TabIndex = 3;
+            this.cbAcesso.Tag = "\'Acesso\'";
             // 
-            // txtUsuario
+            // btnSalvar
             // 
-            this.txtUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUsuario.Location = new System.Drawing.Point(10, 33);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(95, 23);
-            this.txtUsuario.TabIndex = 0;
+            this.btnSalvar.BackColor = System.Drawing.Color.Gray;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalvar.ForeColor = System.Drawing.Color.White;
+            this.btnSalvar.Location = new System.Drawing.Point(496, 33);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
+            this.btnSalvar.TabIndex = 4;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.BackColor = System.Drawing.Color.Tomato;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExcluir.ForeColor = System.Drawing.Color.White;
+            this.btnExcluir.Location = new System.Drawing.Point(577, 33);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 5;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // label6
             // 
@@ -137,6 +190,11 @@ namespace Setup.Formularios
             this.lista.BackgroundColor = System.Drawing.Color.White;
             this.lista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.USUARIO_ID,
+            this.USUARIO,
+            this.NOME,
+            this.ACESSO});
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.GridColor = System.Drawing.Color.White;
             this.lista.Location = new System.Drawing.Point(10, 87);
@@ -149,7 +207,36 @@ namespace Setup.Formularios
             this.lista.Size = new System.Drawing.Size(642, 157);
             this.lista.TabIndex = 6;
             this.lista.TabStop = false;
-            this.lista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Lista_SelectionChange);
+            this.lista.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lista_MouseDoubleClick);
+            // 
+            // USUARIO_ID
+            // 
+            this.USUARIO_ID.DataPropertyName = "USUARIO_ID";
+            this.USUARIO_ID.HeaderText = "USUARIO_ID";
+            this.USUARIO_ID.Name = "USUARIO_ID";
+            this.USUARIO_ID.ReadOnly = true;
+            this.USUARIO_ID.Visible = false;
+            // 
+            // USUARIO
+            // 
+            this.USUARIO.DataPropertyName = "USUARIO";
+            this.USUARIO.HeaderText = "USUÁRIO";
+            this.USUARIO.Name = "USUARIO";
+            this.USUARIO.ReadOnly = true;
+            // 
+            // NOME
+            // 
+            this.NOME.DataPropertyName = "NOME";
+            this.NOME.HeaderText = "NOME";
+            this.NOME.Name = "NOME";
+            this.NOME.ReadOnly = true;
+            // 
+            // ACESSO
+            // 
+            this.ACESSO.DataPropertyName = "ACESSO";
+            this.ACESSO.HeaderText = "ACESSO";
+            this.ACESSO.Name = "ACESSO";
+            this.ACESSO.ReadOnly = true;
             // 
             // lblID
             // 
@@ -159,6 +246,7 @@ namespace Setup.Formularios
             this.lblID.Size = new System.Drawing.Size(50, 15);
             this.lblID.TabIndex = 5;
             this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblID.TextChanged += new System.EventHandler(this.lblID_TextChanged);
             // 
             // label5
             // 
@@ -168,41 +256,6 @@ namespace Setup.Formularios
             this.label5.Size = new System.Drawing.Size(50, 15);
             this.label5.TabIndex = 5;
             this.label5.Text = "Usuário:";
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackColor = System.Drawing.Color.Tomato;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExcluir.ForeColor = System.Drawing.Color.White;
-            this.btnExcluir.Location = new System.Drawing.Point(577, 33);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 5;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.BackColor = System.Drawing.Color.Gray;
-            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSalvar.ForeColor = System.Drawing.Color.White;
-            this.btnSalvar.Location = new System.Drawing.Point(496, 33);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 23);
-            this.btnSalvar.TabIndex = 4;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = false;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // cbAcesso
-            // 
-            this.cbAcesso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAcesso.FormattingEnabled = true;
-            this.cbAcesso.Location = new System.Drawing.Point(424, 33);
-            this.cbAcesso.Name = "cbAcesso";
-            this.cbAcesso.Size = new System.Drawing.Size(66, 23);
-            this.cbAcesso.TabIndex = 3;
             // 
             // label4
             // 
@@ -270,5 +323,9 @@ namespace Setup.Formularios
         private Controles.Txt txtSenha;
         private Controles.Txt txtNome;
         private Controles.Txt txtUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NOME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ACESSO;
     }
 }

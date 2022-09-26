@@ -96,11 +96,11 @@ namespace Setup
 
         }
 
-        public static string HashMd5(string input)
+        public static string CriptografiaMd5(string texto)
         {
             MD5 md5Hash = MD5.Create();
 
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(texto));
 
             StringBuilder sBuilder = new StringBuilder();
 

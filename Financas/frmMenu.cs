@@ -299,5 +299,17 @@ namespace Setup.Financas
         {
             CarregarCbClassesContas();
         }
+
+        private void ToolQuery_Click(object sender, EventArgs e)
+        {
+            Formularios.frmQuery query = new Formularios.frmQuery();
+            query.Show();
+        }
+
+        private void queryDesenvolvedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Formularios.frmQuery query = new Formularios.frmQuery();
+            query.Show();
+        }
     }
 }

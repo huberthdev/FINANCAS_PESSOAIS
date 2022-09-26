@@ -72,15 +72,16 @@ namespace Setup.Financas
             this.queryDesenvolvedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anotaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novoLançamentoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatóriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.visãoGeralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolLancamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolRelatorio = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolVisaoGeral = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolConfiguracoes = new System.Windows.Forms.ToolStripMenuItem();
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conexãoBancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.anotaçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.calculadoraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.previsãoDeCustosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolAnotacoes = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolCalculadora = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolPrevisao = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolQuery = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaMenu = new System.Windows.Forms.TabControl();
             this.tabReceita_Despesa = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -147,13 +148,14 @@ namespace Setup.Financas
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuToolStripMenuItem,
-            this.novoLançamentoToolStripMenuItem1,
-            this.relatóriosToolStripMenuItem1,
-            this.visãoGeralToolStripMenuItem,
-            this.configuraçõesToolStripMenuItem,
-            this.anotaçõesToolStripMenuItem1,
-            this.calculadoraToolStripMenuItem,
-            this.previsãoDeCustosToolStripMenuItem1});
+            this.ToolLancamento,
+            this.ToolRelatorio,
+            this.ToolVisaoGeral,
+            this.ToolConfiguracoes,
+            this.ToolAnotacoes,
+            this.ToolCalculadora,
+            this.ToolPrevisao,
+            this.ToolQuery});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(911, 24);
@@ -288,6 +290,7 @@ namespace Setup.Financas
             this.queryDesenvolvedorToolStripMenuItem.Name = "queryDesenvolvedorToolStripMenuItem";
             this.queryDesenvolvedorToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.queryDesenvolvedorToolStripMenuItem.Text = "Query - Desenvolvedor";
+            this.queryDesenvolvedorToolStripMenuItem.Click += new System.EventHandler(this.queryDesenvolvedorToolStripMenuItem_Click);
             // 
             // anotaçõesToolStripMenuItem
             // 
@@ -304,42 +307,42 @@ namespace Setup.Financas
             this.sairToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.sairToolStripMenuItem.Text = "Sair";
             // 
-            // novoLançamentoToolStripMenuItem1
+            // ToolLancamento
             // 
-            this.novoLançamentoToolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
-            this.novoLançamentoToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("novoLançamentoToolStripMenuItem1.Image")));
-            this.novoLançamentoToolStripMenuItem1.Name = "novoLançamentoToolStripMenuItem1";
-            this.novoLançamentoToolStripMenuItem1.Size = new System.Drawing.Size(137, 20);
-            this.novoLançamentoToolStripMenuItem1.Text = "Receitas • Despesas";
-            this.novoLançamentoToolStripMenuItem1.Click += new System.EventHandler(this.novoLançamentoToolStripMenuItem1_Click);
+            this.ToolLancamento.ForeColor = System.Drawing.Color.Black;
+            this.ToolLancamento.Image = ((System.Drawing.Image)(resources.GetObject("ToolLancamento.Image")));
+            this.ToolLancamento.Name = "ToolLancamento";
+            this.ToolLancamento.Size = new System.Drawing.Size(137, 20);
+            this.ToolLancamento.Text = "Receitas • Despesas";
+            this.ToolLancamento.Click += new System.EventHandler(this.novoLançamentoToolStripMenuItem1_Click);
             // 
-            // relatóriosToolStripMenuItem1
+            // ToolRelatorio
             // 
-            this.relatóriosToolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
-            this.relatóriosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("relatóriosToolStripMenuItem1.Image")));
-            this.relatóriosToolStripMenuItem1.Name = "relatóriosToolStripMenuItem1";
-            this.relatóriosToolStripMenuItem1.Size = new System.Drawing.Size(82, 20);
-            this.relatóriosToolStripMenuItem1.Text = "Relatório";
-            this.relatóriosToolStripMenuItem1.Click += new System.EventHandler(this.relatóriosToolStripMenuItem1_Click);
+            this.ToolRelatorio.ForeColor = System.Drawing.Color.Black;
+            this.ToolRelatorio.Image = ((System.Drawing.Image)(resources.GetObject("ToolRelatorio.Image")));
+            this.ToolRelatorio.Name = "ToolRelatorio";
+            this.ToolRelatorio.Size = new System.Drawing.Size(82, 20);
+            this.ToolRelatorio.Text = "Relatório";
+            this.ToolRelatorio.Click += new System.EventHandler(this.relatóriosToolStripMenuItem1_Click);
             // 
-            // visãoGeralToolStripMenuItem
+            // ToolVisaoGeral
             // 
-            this.visãoGeralToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.visãoGeralToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("visãoGeralToolStripMenuItem.Image")));
-            this.visãoGeralToolStripMenuItem.Name = "visãoGeralToolStripMenuItem";
-            this.visãoGeralToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
-            this.visãoGeralToolStripMenuItem.Text = "Visão Geral";
+            this.ToolVisaoGeral.ForeColor = System.Drawing.Color.Black;
+            this.ToolVisaoGeral.Image = ((System.Drawing.Image)(resources.GetObject("ToolVisaoGeral.Image")));
+            this.ToolVisaoGeral.Name = "ToolVisaoGeral";
+            this.ToolVisaoGeral.Size = new System.Drawing.Size(93, 20);
+            this.ToolVisaoGeral.Text = "Visão Geral";
             // 
-            // configuraçõesToolStripMenuItem
+            // ToolConfiguracoes
             // 
-            this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolConfiguracoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuáriosToolStripMenuItem,
             this.conexãoBancoDeDadosToolStripMenuItem});
-            this.configuraçõesToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.configuraçõesToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("configuraçõesToolStripMenuItem.Image")));
-            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
-            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(112, 20);
-            this.configuraçõesToolStripMenuItem.Text = "Configurações";
+            this.ToolConfiguracoes.ForeColor = System.Drawing.Color.Black;
+            this.ToolConfiguracoes.Image = ((System.Drawing.Image)(resources.GetObject("ToolConfiguracoes.Image")));
+            this.ToolConfiguracoes.Name = "ToolConfiguracoes";
+            this.ToolConfiguracoes.Size = new System.Drawing.Size(112, 20);
+            this.ToolConfiguracoes.Text = "Configurações";
             // 
             // usuáriosToolStripMenuItem
             // 
@@ -357,31 +360,40 @@ namespace Setup.Financas
             this.conexãoBancoDeDadosToolStripMenuItem.Text = "Conexão Banco de Dados";
             this.conexãoBancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.conexãoBancoDeDadosToolStripMenuItem_Click);
             // 
-            // anotaçõesToolStripMenuItem1
+            // ToolAnotacoes
             // 
-            this.anotaçõesToolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
-            this.anotaçõesToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("anotaçõesToolStripMenuItem1.Image")));
-            this.anotaçõesToolStripMenuItem1.Name = "anotaçõesToolStripMenuItem1";
-            this.anotaçõesToolStripMenuItem1.Size = new System.Drawing.Size(91, 20);
-            this.anotaçõesToolStripMenuItem1.Text = "Anotações";
-            this.anotaçõesToolStripMenuItem1.Click += new System.EventHandler(this.anotaçõesToolStripMenuItem1_Click);
+            this.ToolAnotacoes.ForeColor = System.Drawing.Color.Black;
+            this.ToolAnotacoes.Image = ((System.Drawing.Image)(resources.GetObject("ToolAnotacoes.Image")));
+            this.ToolAnotacoes.Name = "ToolAnotacoes";
+            this.ToolAnotacoes.Size = new System.Drawing.Size(91, 20);
+            this.ToolAnotacoes.Text = "Anotações";
+            this.ToolAnotacoes.Click += new System.EventHandler(this.anotaçõesToolStripMenuItem1_Click);
             // 
-            // calculadoraToolStripMenuItem
+            // ToolCalculadora
             // 
-            this.calculadoraToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.calculadoraToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("calculadoraToolStripMenuItem.Image")));
-            this.calculadoraToolStripMenuItem.Name = "calculadoraToolStripMenuItem";
-            this.calculadoraToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.calculadoraToolStripMenuItem.Text = "Calculadora";
-            this.calculadoraToolStripMenuItem.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
+            this.ToolCalculadora.ForeColor = System.Drawing.Color.Black;
+            this.ToolCalculadora.Image = ((System.Drawing.Image)(resources.GetObject("ToolCalculadora.Image")));
+            this.ToolCalculadora.Name = "ToolCalculadora";
+            this.ToolCalculadora.Size = new System.Drawing.Size(98, 20);
+            this.ToolCalculadora.Text = "Calculadora";
+            this.ToolCalculadora.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
-            // previsãoDeCustosToolStripMenuItem1
+            // ToolPrevisao
             // 
-            this.previsãoDeCustosToolStripMenuItem1.ForeColor = System.Drawing.Color.Black;
-            this.previsãoDeCustosToolStripMenuItem1.Image = ((System.Drawing.Image)(resources.GetObject("previsãoDeCustosToolStripMenuItem1.Image")));
-            this.previsãoDeCustosToolStripMenuItem1.Name = "previsãoDeCustosToolStripMenuItem1";
-            this.previsãoDeCustosToolStripMenuItem1.Size = new System.Drawing.Size(134, 20);
-            this.previsãoDeCustosToolStripMenuItem1.Text = "Previsão de Custos";
+            this.ToolPrevisao.ForeColor = System.Drawing.Color.Black;
+            this.ToolPrevisao.Image = ((System.Drawing.Image)(resources.GetObject("ToolPrevisao.Image")));
+            this.ToolPrevisao.Name = "ToolPrevisao";
+            this.ToolPrevisao.Size = new System.Drawing.Size(134, 20);
+            this.ToolPrevisao.Text = "Previsão de Custos";
+            // 
+            // ToolQuery
+            // 
+            this.ToolQuery.Image = ((System.Drawing.Image)(resources.GetObject("ToolQuery.Image")));
+            this.ToolQuery.Name = "ToolQuery";
+            this.ToolQuery.Size = new System.Drawing.Size(91, 20);
+            this.ToolQuery.Text = "Query SQL";
+            this.ToolQuery.ToolTipText = "Executar Query SQL";
+            this.ToolQuery.Click += new System.EventHandler(this.ToolQuery_Click);
             // 
             // tabelaMenu
             // 
@@ -614,6 +626,7 @@ namespace Setup.Financas
             this.cbClasse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbClasse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbClasse.DisplayMember = "1";
+            this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbClasse.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbClasse.FormattingEnabled = true;
@@ -627,6 +640,7 @@ namespace Setup.Financas
             // 
             this.cbConta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbConta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbConta.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbConta.FormattingEnabled = true;
             this.cbConta.Location = new System.Drawing.Point(449, 6);
@@ -1146,14 +1160,14 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripMenuItem queryDesenvolvedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem anotaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem visãoGeralToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ToolRelatorio;
+        private System.Windows.Forms.ToolStripMenuItem ToolVisaoGeral;
+        private System.Windows.Forms.ToolStripMenuItem ToolConfiguracoes;
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem anotaçõesToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem novoLançamentoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem calculadoraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem previsãoDeCustosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem ToolAnotacoes;
+        private System.Windows.Forms.ToolStripMenuItem ToolLancamento;
+        private System.Windows.Forms.ToolStripMenuItem ToolCalculadora;
+        private System.Windows.Forms.ToolStripMenuItem ToolPrevisao;
         private System.Windows.Forms.ToolStripMenuItem conexãoBancoDeDadosToolStripMenuItem;
         private System.Windows.Forms.TabControl tabelaMenu;
         private System.Windows.Forms.TabPage tabReceita_Despesa;
@@ -1201,5 +1215,6 @@ namespace Setup.Financas
         private System.Windows.Forms.DataGridViewTextBoxColumn CONTA_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn CONTA;
         private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
+        private System.Windows.Forms.ToolStripMenuItem ToolQuery;
     }
 }

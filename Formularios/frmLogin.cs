@@ -36,6 +36,8 @@ namespace Setup.Formularios
                 string usuario = txtUsuario.Text;
                 string senha = txtSenha.Text;
 
+                senha = COD.CriptografiaMd5(senha);
+
                 if (!ckLembrar.Checked)
                 {
                     usuario = "";
@@ -43,14 +45,14 @@ namespace Setup.Formularios
                 }                  
 
                 string sql = "SELECT USUARIO_ID FROM USUARIO WHERE USUARIO = '" + txtUsuario.Text + "' ";
-                sql += "AND SENHA = '" + txtSenha.Text + "'";
+                sql += "AND SENHA = '" + senha + "'";
                 string id = BD.Buscar(sql).Rows[0][0].ToString();
 
-                BD.UsuarioLogado = txtUsuario.Text;
+                BD.UsuarioLogado = usuario;
 
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 config.AppSettings.Settings["Usuario"].Value = usuario;
-                config.AppSettings.Settings["Senha"].Value = senha;
+                config.AppSettings.Settings["Senha"].Value = txtSenha.Text;
                 config.Save(ConfigurationSaveMode.Modified);
 
                 this.Dispose(); 
