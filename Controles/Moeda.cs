@@ -6,7 +6,6 @@ namespace Setup.Controles
 {
     public class Moeda : TextBox
     {
-
         protected override void OnCreateControl()
         {
             this.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -17,14 +16,16 @@ namespace Setup.Controles
 
         protected override void OnGotFocus(EventArgs e)
         {
-            this.BackColor = Color.LightGray;
+            this.BackColor = Color.Black;
+            this.ForeColor = Color.White;
             this.SelectAll();
             base.OnGotFocus(e);
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
-            this.BackColor = Color.White;
+            this.BackColor = Color.Black;
+            this.ForeColor = Color.White;
 
             if(this.Text != "")
             {
@@ -52,6 +53,5 @@ namespace Setup.Controles
 
             base.OnKeyPress(e);
         }
-
     }
 }

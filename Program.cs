@@ -1,7 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Setup
@@ -35,10 +32,6 @@ namespace Setup
                     Application.Exit();
                 else
                 {
-
-                    //Abre o formulário principal
-                    //Formularios.frmMain main = new Formularios.frmMain();
-                    //main.ShowDialog();
 
                     //Formularios.frmUsuario usuario = new Formularios.frmUsuario();
                     //usuario.ShowDialog();

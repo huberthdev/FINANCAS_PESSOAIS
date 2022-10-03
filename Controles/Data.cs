@@ -10,6 +10,9 @@ namespace Setup.Controles
         {
             this.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             this.TextAlign = HorizontalAlignment.Center;
+            this.BackColor = Color.Black;
+            this.BorderStyle = BorderStyle.FixedSingle;
+            this.ForeColor = Color.White;
             this.Width = 110;
             
             base.OnCreateControl();
@@ -17,15 +20,12 @@ namespace Setup.Controles
 
         protected override void OnGotFocus(EventArgs e)
         {
-            this.BackColor = Color.LightGray;
             this.SelectAll();
             base.OnGotFocus(e);
         }
 
         protected override void OnLostFocus(EventArgs e)
         {
-            this.BackColor = Color.White;
-
             int t = this.Text.Length;
             string data = ""; string dia = ""; string mes = ""; string ano = "";
 
@@ -72,7 +72,6 @@ namespace Setup.Controles
 
         protected override void OnKeyPress(KeyPressEventArgs e)
         {
-
             if (e.KeyChar.ToString() == "\b")
                 return;
 

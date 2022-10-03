@@ -63,6 +63,7 @@ namespace Setup.Formularios
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Location = new System.Drawing.Point(12, 58);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(466, 179);
@@ -204,7 +205,7 @@ namespace Setup.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(490, 247);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);

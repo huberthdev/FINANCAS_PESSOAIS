@@ -7,6 +7,8 @@ namespace Setup
 {
     public class BD
     {
+        public static string SaldoInicial;
+
         public static DataTable Resultado;
 
         public static string UsuarioLogado;
@@ -120,6 +122,38 @@ namespace Setup
             sql = sql.Replace(", )", ")");
                       
             return sql;
+
+        }
+
+        public static string InsertProcedureCredito(string[] Valores)
+        {
+            string chave = "";
+
+            string sql = "SELECT ID FROM KEY_COMPRA_CREDITO_SALVAR(";
+            //"CLASSE, CARTAO, VALOR, DATA_COMPRA, DESCRICAO)";
+
+            foreach (string item in Valores)
+            {
+                if (item == null || item == "")
+                    sql += "null" + ", ";
+                else
+                    sql += "'" + item + "', ";
+            }
+
+            sql += ")";
+            sql = sql.Replace(", )", ")");
+
+            try
+            {
+                BD.Buscar(sql);
+                chave = BD.Resultado.Rows[0][0].ToString();
+            }
+            catch
+            {
+
+            }
+
+            return chave;
 
         }
 

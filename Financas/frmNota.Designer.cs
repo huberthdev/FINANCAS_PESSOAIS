@@ -63,7 +63,7 @@ namespace Setup.Financas
             this.txtTexto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTexto.Location = new System.Drawing.Point(12, 68);
             this.txtTexto.Name = "txtTexto";
-            this.txtTexto.Size = new System.Drawing.Size(291, 298);
+            this.txtTexto.Size = new System.Drawing.Size(291, 297);
             this.txtTexto.TabIndex = 2;
             this.txtTexto.Text = "";
             this.txtTexto.TextChanged += new System.EventHandler(this.txtTexto_TextChanged);
@@ -138,7 +138,7 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(511, 349);
+            this.lista.Size = new System.Drawing.Size(511, 353);
             this.lista.TabIndex = 7;
             this.lista.TabStop = false;
             this.lista.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.lista_UserDeletingRow);
@@ -171,15 +171,15 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.lista);
             this.panel1.Location = new System.Drawing.Point(309, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(519, 357);
+            this.panel1.Size = new System.Drawing.Size(519, 365);
             this.panel1.TabIndex = 9;
             // 
             // frmNota
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(840, 378);
+            this.BackColor = System.Drawing.Color.Gray;
+            this.ClientSize = new System.Drawing.Size(837, 378);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblFaixa);
             this.Controls.Add(this.txtTitulo);
