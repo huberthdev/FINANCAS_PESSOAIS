@@ -32,15 +32,11 @@ namespace Setup.Financas
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorio));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.atualizar = new System.Windows.Forms.ToolStripMenuItem();
             this.excluir = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,16 +56,14 @@ namespace Setup.Financas
             this.cbConta = new Setup.Controles.cbCombo();
             this.ckReceita = new System.Windows.Forms.CheckBox();
             this.ckDespesa = new System.Windows.Forms.CheckBox();
-            this.status = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDescricao = new Setup.Controles.Txt();
             this.label7 = new System.Windows.Forms.Label();
             this.txtValor1 = new Setup.Controles.Decimal();
             this.label8 = new System.Windows.Forms.Label();
             this.txtValor2 = new Setup.Controles.Decimal();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.status = new System.Windows.Forms.StatusStrip();
             this.lista = new Setup.Controles.dgView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,6 +172,7 @@ namespace Setup.Financas
             // txtDataInicio
             // 
             this.txtDataInicio.BackColor = System.Drawing.Color.Black;
+            this.txtDataInicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDataInicio.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDataInicio.ForeColor = System.Drawing.Color.White;
             this.txtDataInicio.Location = new System.Drawing.Point(42, 32);
@@ -199,6 +194,7 @@ namespace Setup.Financas
             // txtDataFim
             // 
             this.txtDataFim.BackColor = System.Drawing.Color.Black;
+            this.txtDataFim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDataFim.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDataFim.ForeColor = System.Drawing.Color.White;
             this.txtDataFim.Location = new System.Drawing.Point(188, 32);
@@ -280,26 +276,6 @@ namespace Setup.Financas
             this.ckDespesa.CheckedChanged += new System.EventHandler(this.ckDespesa_CheckedChanged);
             this.ckDespesa.Click += new System.EventHandler(this.ckDespesa_Click);
             // 
-            // status
-            // 
-            this.status.AutoSize = false;
-            this.status.BackColor = System.Drawing.Color.Transparent;
-            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 343);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(842, 22);
-            this.status.SizingGrip = false;
-            this.status.Stretch = false;
-            this.status.TabIndex = 6;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(23, 17);
-            this.statusLabel.Text = ">>";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -313,6 +289,7 @@ namespace Setup.Financas
             // txtDescricao
             // 
             this.txtDescricao.BackColor = System.Drawing.Color.Black;
+            this.txtDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescricao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDescricao.ForeColor = System.Drawing.Color.White;
             this.txtDescricao.Location = new System.Drawing.Point(79, 63);
@@ -333,6 +310,7 @@ namespace Setup.Financas
             // txtValor1
             // 
             this.txtValor1.BackColor = System.Drawing.Color.Black;
+            this.txtValor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor1.ForeColor = System.Drawing.Color.White;
             this.txtValor1.Location = new System.Drawing.Point(454, 63);
@@ -354,6 +332,7 @@ namespace Setup.Financas
             // txtValor2
             // 
             this.txtValor2.BackColor = System.Drawing.Color.Black;
+            this.txtValor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor2.ForeColor = System.Drawing.Color.White;
             this.txtValor2.Location = new System.Drawing.Point(579, 63);
@@ -362,22 +341,26 @@ namespace Setup.Financas
             this.txtValor2.TabIndex = 7;
             this.txtValor2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label9
+            // statusLabel
             // 
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(0, 97);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(850, 1);
-            this.label9.TabIndex = 9;
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(23, 17);
+            this.statusLabel.Text = ">>";
             // 
-            // label10
+            // status
             // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label10.Location = new System.Drawing.Point(0, 342);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(842, 1);
-            this.label10.TabIndex = 10;
+            this.status.AutoSize = false;
+            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.status.Location = new System.Drawing.Point(0, 345);
+            this.status.Name = "status";
+            this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.status.Size = new System.Drawing.Size(842, 22);
+            this.status.SizingGrip = false;
+            this.status.Stretch = false;
+            this.status.TabIndex = 6;
             // 
             // lista
             // 
@@ -391,7 +374,6 @@ namespace Setup.Financas
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.Black;
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -410,36 +392,36 @@ namespace Setup.Financas
             this.CLASSE,
             this.VALOR,
             this.DESC});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lista.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle5;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
             this.lista.GridColor = System.Drawing.Color.DimGray;
-            this.lista.Location = new System.Drawing.Point(2, 101);
+            this.lista.Location = new System.Drawing.Point(12, 92);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -448,16 +430,13 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(837, 238);
+            this.lista.Size = new System.Drawing.Size(819, 250);
             this.lista.TabIndex = 1;
-            this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
             // 
             // ID
             // 
             this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ID.DataPropertyName = "ID";
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            this.ID.DefaultCellStyle = dataGridViewCellStyle3;
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
@@ -468,8 +447,6 @@ namespace Setup.Financas
             // 
             this.TIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.TIPO.DataPropertyName = "TIPO";
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.TIPO.DefaultCellStyle = dataGridViewCellStyle4;
             this.TIPO.HeaderText = "TIPO";
             this.TIPO.Name = "TIPO";
             this.TIPO.ReadOnly = true;
@@ -480,72 +457,55 @@ namespace Setup.Financas
             // 
             this.DATA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DATA.DataPropertyName = "DATA";
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = "-";
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Transparent;
-            this.DATA.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DATA.FillWeight = 29.37201F;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DATA.DefaultCellStyle = dataGridViewCellStyle3;
             this.DATA.HeaderText = "DATA";
-            this.DATA.MinimumWidth = 80;
+            this.DATA.MinimumWidth = 90;
             this.DATA.Name = "DATA";
             this.DATA.ReadOnly = true;
-            this.DATA.Width = 80;
+            this.DATA.Width = 90;
             // 
             // CLASSE
             // 
-            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCellsExceptHeader;
+            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CLASSE.DataPropertyName = "CLASSE";
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Silver;
-            this.CLASSE.DefaultCellStyle = dataGridViewCellStyle6;
-            this.CLASSE.FillWeight = 397.6419F;
             this.CLASSE.HeaderText = "CLASSE";
-            this.CLASSE.MinimumWidth = 200;
+            this.CLASSE.MinimumWidth = 250;
             this.CLASSE.Name = "CLASSE";
             this.CLASSE.ReadOnly = true;
-            this.CLASSE.Width = 200;
+            this.CLASSE.Width = 250;
             // 
             // VALOR
             // 
             this.VALOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.VALOR.DataPropertyName = "VALOR";
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Format = "N2";
-            dataGridViewCellStyle7.NullValue = "0,00";
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Transparent;
-            this.VALOR.DefaultCellStyle = dataGridViewCellStyle7;
-            this.VALOR.FillWeight = 2.176008F;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0,00";
+            this.VALOR.DefaultCellStyle = dataGridViewCellStyle4;
             this.VALOR.HeaderText = "VALOR";
-            this.VALOR.MinimumWidth = 80;
+            this.VALOR.MinimumWidth = 90;
             this.VALOR.Name = "VALOR";
             this.VALOR.ReadOnly = true;
-            this.VALOR.Width = 80;
+            this.VALOR.Width = 90;
             // 
             // DESC
             // 
             this.DESC.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DESC.DataPropertyName = "DESC";
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Silver;
-            this.DESC.DefaultCellStyle = dataGridViewCellStyle8;
-            this.DESC.FillWeight = 1.224657F;
             this.DESC.HeaderText = "DESCRIÇÃO";
-            this.DESC.MinimumWidth = 200;
+            this.DESC.MinimumWidth = 320;
             this.DESC.Name = "DESC";
             this.DESC.ReadOnly = true;
-            this.DESC.Width = 400;
+            this.DESC.Width = 320;
             // 
             // frmRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(842, 365);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
+            this.ClientSize = new System.Drawing.Size(842, 367);
+            this.Controls.Add(this.lista);
             this.Controls.Add(this.txtDataInicio);
             this.Controls.Add(this.txtDataFim);
             this.Controls.Add(this.cbClasse);
@@ -555,7 +515,6 @@ namespace Setup.Financas
             this.Controls.Add(this.txtValor2);
             this.Controls.Add(this.ckReceita);
             this.Controls.Add(this.ckDespesa);
-            this.Controls.Add(this.lista);
             this.Controls.Add(this.status);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -573,6 +532,7 @@ namespace Setup.Financas
             this.MaximizeBox = false;
             this.Name = "frmRelatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmRelatorio_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRelatorio_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -605,18 +565,15 @@ namespace Setup.Financas
         private Controles.cbCombo cbConta;
         private System.Windows.Forms.CheckBox ckReceita;
         private System.Windows.Forms.CheckBox ckDespesa;
-        private System.Windows.Forms.StatusStrip status;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.Label label6;
         private Controles.Txt txtDescricao;
         private System.Windows.Forms.Label label7;
         private Controles.Decimal txtValor1;
         private System.Windows.Forms.Label label8;
         private Controles.Decimal txtValor2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.StatusStrip status;
         private Controles.dgView lista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATA;

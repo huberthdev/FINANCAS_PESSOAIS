@@ -10,6 +10,7 @@ namespace Setup.Financas
             InitializeComponent();
 
             CarregarCbClassesCartoes();
+            CarregarLista();
         }
 
         private void CarregarCbClassesCartoes(string campo = "")
@@ -43,9 +44,12 @@ namespace Setup.Financas
         {
             string chave = "";
             string dia_venc;
+            int dia_compra;
+            int x;
             string melhor_dia_comp;
             string parcela;
             string vlParc;
+            string data;
             int qtdParc;
 
             string cartao = ((Classes.CartaoCredito)cbCartao.SelectedItem).id.ToString();
@@ -91,9 +95,34 @@ namespace Setup.Financas
             string[] c = new string[5];
             string[] vl = new string[5];
 
+            //Configuração de parâmetros para distribuição das parcelas de acordo com a configuração do cartão selecionado
+
+            dia_compra = DateTime.Parse(txtData.Text).Day;
+
+            if (dia_compra >= int.Parse(melhor_dia_comp))
+            {
+                data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                data = DateTime.Parse(data).AddMonths(1).ToString("d");
+            }
+            else
+            {
+                if(dia_compra >= int.Parse(dia_venc))
+                {
+                    data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                    data = DateTime.Parse(data).AddMonths(1).ToString("d");
+                }
+                else
+                {
+                    data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                    data = DateTime.Parse(data).AddMonths(-1).ToString("d");
+                }
+            }
+
             for (int i = 0; i < qtdParc; i++)
             {
-                parcela = i + "/" + qtdParc;
+                x = i + 1;
+
+                parcela = (x) + "/" + qtdParc;
 
                 c[0] = "chave";
                 vl[0] = chave;
@@ -105,13 +134,33 @@ namespace Setup.Financas
                 vl[2] = parcela;
 
                 c[3] = "data_parcela";
-                vl[3] = "";
+                vl[3] = BD.CvData(data);
 
                 c[4] = "status";
                 vl[4] = "0";
 
+                BD.Salvar("COMPRA_CREDITO", c, vl);
+
+                data = DateTime.Parse(data).AddMonths(1).ToString("d");
             }
 
+            CarregarLista();
+        }
+
+        private void CarregarLista()
+        {
+            string sql = "SELECT B.CHAVE, A.COMPRA_CREDITO_ID AS ID, B.DATA_COMPRA AS DATA, C.CLASSE, A.VALOR, A.PARCELA, ";
+            sql += "A.DATA_PARCELA AS DATA_PGMTO, A.STATUS FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ";
+            sql += "ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID";
+
+            try
+            {
+                lista.DataSource = BD.Buscar(sql);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

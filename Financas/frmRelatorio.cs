@@ -263,5 +263,10 @@ namespace Setup.Financas
             CarregarLista();
             CarregarCbClassesContas("classe");
         }
+
+        private void frmRelatorio_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

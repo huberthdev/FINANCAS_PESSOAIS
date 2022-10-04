@@ -277,7 +277,7 @@ namespace Setup.Financas
         private void ToolRelatorio_Click(object sender, EventArgs e)
         {
             frmRelatorio rel = new frmRelatorio();
-            rel.Show();
+            rel.ShowDialog();
         }
 
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
@@ -364,7 +364,7 @@ namespace Setup.Financas
 
         private void limpar_Click(object sender, EventArgs e)
         {
-            COD.LimparCampos(this, txtData, cbClasse);
+            COD.LimparCampos(this.tabReceita_Despesa, txtData, cbClasse);
         }
 
         private void comprasCredito_Click(object sender, EventArgs e)
