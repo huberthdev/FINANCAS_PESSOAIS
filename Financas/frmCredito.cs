@@ -162,5 +162,16 @@ namespace Setup.Financas
 
             }
         }
+
+        private void cartoes_Click(object sender, EventArgs e)
+        {
+            boxCartaoCredito boxC = new boxCartaoCredito();
+            boxC.ShowDialog();
+        }
+
+        private void frmCredito_Activated(object sender, EventArgs e)
+        {
+            CarregarCbClassesCartoes("cartao");
+        }
     }
 }

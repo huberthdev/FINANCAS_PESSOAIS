@@ -49,7 +49,7 @@ namespace Setup
                     }
                     else if (controle is ComboBox)
                     {
-                        ((ComboBox)controle).Text = "";
+                        ((ComboBox)controle).SelectedIndex = -1;
                     }
                     else if (controle is RichTextBox)
                     {

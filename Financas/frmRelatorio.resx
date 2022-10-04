@@ -77,20 +77,17 @@
   </data>
   <data name="excluir.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAsxJREFUOE91
-        k1tIlFEUhZejk7e8pgaZFfQQKEEYKkFSRmrSDUSUwLwg+lBIgaWGZU4DSlqQZARWEClTTnnNdEbMWzBh
-        auZ4iRypNMQsFNGKjHK153celHLBeTj77G/v/a9zfvxPJwG3QuD4bSDnDpBXKqFMwN92vLaiAGctUFSm
-        Ui00hIXRlJrK7owMGiMjWe7i8rsYqDoHBNjSVysE8NUAffqAAFqKizml0/HzijVRXs7m0FDeAL6cVdJX
-        yA9wOA906r28aLl0ge+vFnC85AonirUcL9Tyg1ZLS0EBxzQaGgIDeR2YPgpssuHAQSDtHsBXMQc4cDmT
-        3yfHOVSSTcvFJI7lprA3M5XzllEOFhWxLy6OOnt7ngHuK/A6QJUD9Nbaq/jmxB723szn0tISF+fn2JUb
-        z9a0cM5YRmiVpbGBbWGhNHp6sgz4uR3YgPWAz13gj9EZNEc58mWCF7tKc5UiP+ZmOT06qMAjzbWsD/Gh
-        aZsrW1TgA5l4H3DMeje7KmXT5gkORoGWFPBFEth4LV8BrTK3GvkwQk1zDNizE2x3A6uEOQKcthoYZN20
-        SXAgAnybCNbEe3PC3GfDyW+zM9QnB3MgQXL2g11+YLUwkUAGVICHjDPf5ACagsGn0d6cGl6GP5qq2VuR
-        bfucGRrSg9lzCGyVaa0FdgDhVh/Vcq91dRJo8JURS3IVeFLg7kw1h/PAd4+ylCJT3c00hIL14kE58Ema
-        uyo3sQWIaAB+1cjBE3879mvS2X5Yzf5kcOgU+DpDitxKZGesB+s8xB9pFgNkCWqnFBA5xgKFRmBJbycG
-        ecs0QWDLXjEsGuwQ8wwh4GNX8JnA8mINQsoFrpZ7nBR5DizWS5JOpqlwAisF0qnFWIm1S4M8oEYNbLQx
-        /8hlMxCZLUl64GuTANaOUnChCOjYrfyocFtOXVvijTJegJO8EXFJOGyV5W47WyHgL3JOkI9jEE60AAAA
-        AElFTkSuQmCC
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAACCUlEQVQ4T6WQT0iTYRyAf+H0
+        y+W2Pts3zRqFF4UIsYF2XSeJLjtllwKLCVkSaSUVFhKCK60oLDo0sn/zkgWjOqxdOgWfRGZBpIcYH0FE
+        l7xk6dfzi+1LQYLqhWfv+/v3vPtecV33v1gx+Tf8+smIyLhIG9hFrtwnNwY34CbcAfq2UOuHh5D0BFoE
+        +0dvrzvX1bU42dLiaHxrieC2yFCmouIl+Wd3RXbCKk+QpgGSNNovWludTx0dbqG9fX4iEnmLIDYeDKbz
+        jY2z1LP0bdILEfz+BBXoLddpHhVJgT0Zj395l0gsPGloKOSbmgrkHiGr1d4/CeQSDCMaQZJrbv6ai8Xm
+        r1VWThPLRdBdWSY4S1BiQMQa5JEydXUfs/X130YMYyodDn8YLi+foianoa+IJyglTkG/yOV7luXko9GF
+        lGFMnxHZT+7BVb9/hv3xyWLvMsERAuWYSOdoIDBj19S4Y6GQc4IUQ6JDxxGnfL437IM9xEfBExwiOMzr
+        dvPdryzr+3PTnOOcRWqqWG/TAXID8JTeuM54giQBXEj7/c5sdbXbV1b2upOHTJAvre1wEOg7B0MHRHye
+        oJbCPm5/b5qLE1VVnzmfX69TK6xtQL2njaMnYG2ksHcPkt0iuYjIDnKbgaOEIABrwYINUf7QVpFdSwVB
+        CINerOigDqyB1WAUd42114R1nuDfceUneZR6RqCIHXQAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="alterar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

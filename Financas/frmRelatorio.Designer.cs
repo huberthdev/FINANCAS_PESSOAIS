@@ -221,6 +221,7 @@ namespace Setup.Financas
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
             this.cbClasse.Location = new System.Drawing.Point(353, 32);
+            this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(209, 23);
             this.cbClasse.TabIndex = 3;
@@ -244,6 +245,7 @@ namespace Setup.Financas
             this.cbConta.ForeColor = System.Drawing.Color.White;
             this.cbConta.FormattingEnabled = true;
             this.cbConta.Location = new System.Drawing.Point(616, 32);
+            this.cbConta.MaxDropDownItems = 10;
             this.cbConta.Name = "cbConta";
             this.cbConta.Size = new System.Drawing.Size(209, 23);
             this.cbConta.TabIndex = 4;

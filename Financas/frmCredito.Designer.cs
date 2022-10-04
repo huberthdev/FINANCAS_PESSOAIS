@@ -35,10 +35,10 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Ano");
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Ano");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.salvar = new System.Windows.Forms.ToolStripMenuItem();
             this.limpar = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,9 +56,6 @@ namespace Setup.Financas
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lista = new Setup.Controles.dgView();
-            this.treeFaturas = new System.Windows.Forms.TreeView();
-            this.status = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,6 +65,9 @@ namespace Setup.Financas
             this.DATA_PGMTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.treeFaturas = new System.Windows.Forms.TreeView();
+            this.status = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
@@ -106,6 +106,7 @@ namespace Setup.Financas
             this.cartoes.Name = "cartoes";
             this.cartoes.Size = new System.Drawing.Size(75, 20);
             this.cartoes.Text = "Cartões";
+            this.cartoes.Click += new System.EventHandler(this.cartoes_Click);
             // 
             // txtDesc
             // 
@@ -163,6 +164,7 @@ namespace Setup.Financas
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
             this.cbClasse.Location = new System.Drawing.Point(421, 32);
+            this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(309, 23);
             this.cbClasse.TabIndex = 25;
@@ -175,6 +177,7 @@ namespace Setup.Financas
             this.cbCartao.ForeColor = System.Drawing.Color.White;
             this.cbCartao.FormattingEnabled = true;
             this.cbCartao.Location = new System.Drawing.Point(60, 32);
+            this.cbCartao.MaxDropDownItems = 10;
             this.cbCartao.Name = "cbCartao";
             this.cbCartao.Size = new System.Drawing.Size(309, 23);
             this.cbCartao.TabIndex = 26;
@@ -307,41 +310,6 @@ namespace Setup.Financas
             this.lista.Size = new System.Drawing.Size(718, 303);
             this.lista.TabIndex = 1;
             // 
-            // treeFaturas
-            // 
-            this.treeFaturas.BackColor = System.Drawing.Color.Black;
-            this.treeFaturas.Dock = System.Windows.Forms.DockStyle.Right;
-            this.treeFaturas.ForeColor = System.Drawing.Color.White;
-            this.treeFaturas.Location = new System.Drawing.Point(740, 24);
-            this.treeFaturas.Name = "treeFaturas";
-            treeNode1.Name = "Ano";
-            treeNode1.Text = "Ano";
-            this.treeFaturas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.treeFaturas.Size = new System.Drawing.Size(234, 404);
-            this.treeFaturas.TabIndex = 32;
-            // 
-            // status
-            // 
-            this.status.AutoSize = false;
-            this.status.BackColor = System.Drawing.Color.Transparent;
-            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 406);
-            this.status.Name = "status";
-            this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.status.Size = new System.Drawing.Size(740, 22);
-            this.status.SizingGrip = false;
-            this.status.Stretch = false;
-            this.status.TabIndex = 33;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(23, 17);
-            this.statusLabel.Text = ">>";
-            // 
             // CHAVE
             // 
             this.CHAVE.DataPropertyName = "CHAVE";
@@ -417,6 +385,41 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
             // 
+            // treeFaturas
+            // 
+            this.treeFaturas.BackColor = System.Drawing.Color.Black;
+            this.treeFaturas.Dock = System.Windows.Forms.DockStyle.Right;
+            this.treeFaturas.ForeColor = System.Drawing.Color.White;
+            this.treeFaturas.Location = new System.Drawing.Point(740, 24);
+            this.treeFaturas.Name = "treeFaturas";
+            treeNode1.Name = "Ano";
+            treeNode1.Text = "Ano";
+            this.treeFaturas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            this.treeFaturas.Size = new System.Drawing.Size(234, 404);
+            this.treeFaturas.TabIndex = 32;
+            // 
+            // status
+            // 
+            this.status.AutoSize = false;
+            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.status.Location = new System.Drawing.Point(0, 406);
+            this.status.Name = "status";
+            this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.status.Size = new System.Drawing.Size(740, 22);
+            this.status.SizingGrip = false;
+            this.status.Stretch = false;
+            this.status.TabIndex = 33;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(23, 17);
+            this.statusLabel.Text = ">>";
+            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -446,6 +449,7 @@ namespace Setup.Financas
             this.Name = "frmCredito";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Activated += new System.EventHandler(this.frmCredito_Activated);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
