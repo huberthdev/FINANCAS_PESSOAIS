@@ -32,17 +32,19 @@ namespace Setup.Financas
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCredito));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Ano");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Selecione um Período");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.limpar = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluir = new System.Windows.Forms.ToolStripMenuItem();
             this.cartoes = new System.Windows.Forms.ToolStripMenuItem();
+            this.limpar = new System.Windows.Forms.ToolStripMenuItem();
             this.txtDesc = new Setup.Controles.Txt();
             this.txtQtdeParc = new Setup.Controles.Inteiro();
             this.txtValor = new Setup.Controles.Decimal();
@@ -68,6 +70,10 @@ namespace Setup.Financas
             this.treeFaturas = new System.Windows.Forms.TreeView();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbFCartao = new Setup.Controles.cbCombo();
+            this.lblPeriodo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
@@ -77,8 +83,9 @@ namespace Setup.Financas
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salvar,
-            this.limpar,
-            this.cartoes});
+            this.excluir,
+            this.cartoes,
+            this.limpar});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(974, 24);
@@ -93,12 +100,13 @@ namespace Setup.Financas
             this.salvar.Text = "Salvar";
             this.salvar.Click += new System.EventHandler(this.salvar_Click);
             // 
-            // limpar
+            // excluir
             // 
-            this.limpar.Image = ((System.Drawing.Image)(resources.GetObject("limpar.Image")));
-            this.limpar.Name = "limpar";
-            this.limpar.Size = new System.Drawing.Size(72, 20);
-            this.limpar.Text = "Limpar";
+            this.excluir.Image = ((System.Drawing.Image)(resources.GetObject("excluir.Image")));
+            this.excluir.Name = "excluir";
+            this.excluir.Size = new System.Drawing.Size(70, 20);
+            this.excluir.Text = "Excluir";
+            this.excluir.Click += new System.EventHandler(this.excluir_Click);
             // 
             // cartoes
             // 
@@ -107,6 +115,14 @@ namespace Setup.Financas
             this.cartoes.Size = new System.Drawing.Size(75, 20);
             this.cartoes.Text = "Cartões";
             this.cartoes.Click += new System.EventHandler(this.cartoes_Click);
+            // 
+            // limpar
+            // 
+            this.limpar.Image = ((System.Drawing.Image)(resources.GetObject("limpar.Image")));
+            this.limpar.Name = "limpar";
+            this.limpar.Size = new System.Drawing.Size(72, 20);
+            this.limpar.Text = "Limpar";
+            this.limpar.Click += new System.EventHandler(this.limpar_Click);
             // 
             // txtDesc
             // 
@@ -269,36 +285,36 @@ namespace Setup.Financas
             this.DATA_PGMTO,
             this.DESCRICAO,
             this.dataGridViewTextBoxColumn1});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lista.DefaultCellStyle = dataGridViewCellStyle6;
-            this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.lista.EnableHeadersVisualStyles = false;
-            this.lista.GridColor = System.Drawing.Color.DimGray;
-            this.lista.Location = new System.Drawing.Point(12, 95);
-            this.lista.MultiSelect = false;
-            this.lista.Name = "lista";
-            this.lista.ReadOnly = true;
-            this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle7;
+            this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.lista.EnableHeadersVisualStyles = false;
+            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.Location = new System.Drawing.Point(12, 130);
+            this.lista.MultiSelect = false;
+            this.lista.Name = "lista";
+            this.lista.ReadOnly = true;
+            this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -307,78 +323,106 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(718, 303);
+            this.lista.Size = new System.Drawing.Size(718, 275);
             this.lista.TabIndex = 1;
             // 
             // CHAVE
             // 
+            this.CHAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CHAVE.DataPropertyName = "CHAVE";
             this.CHAVE.HeaderText = "CHAVE";
             this.CHAVE.Name = "CHAVE";
             this.CHAVE.ReadOnly = true;
             this.CHAVE.Visible = false;
+            this.CHAVE.Width = 5;
             // 
             // ID
             // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ID.DataPropertyName = "ID";
             this.ID.HeaderText = "ID";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
+            this.ID.Width = 5;
             // 
             // DATA
             // 
+            this.DATA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DATA.DataPropertyName = "DATA";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Format = "d";
             dataGridViewCellStyle3.NullValue = null;
             this.DATA.DefaultCellStyle = dataGridViewCellStyle3;
             this.DATA.HeaderText = "DATA";
+            this.DATA.MinimumWidth = 80;
             this.DATA.Name = "DATA";
             this.DATA.ReadOnly = true;
+            this.DATA.Width = 80;
             // 
             // CLASSE
             // 
+            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CLASSE.DataPropertyName = "CLASSE";
             this.CLASSE.HeaderText = "CLASSE";
+            this.CLASSE.MinimumWidth = 175;
             this.CLASSE.Name = "CLASSE";
             this.CLASSE.ReadOnly = true;
+            this.CLASSE.Width = 175;
             // 
             // VALOR
             // 
+            this.VALOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.VALOR.DataPropertyName = "VALOR";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.Format = "N2";
             dataGridViewCellStyle4.NullValue = "0,00";
             this.VALOR.DefaultCellStyle = dataGridViewCellStyle4;
             this.VALOR.HeaderText = "VALOR";
+            this.VALOR.MinimumWidth = 80;
             this.VALOR.Name = "VALOR";
             this.VALOR.ReadOnly = true;
+            this.VALOR.Width = 80;
             // 
             // PARCELA
             // 
+            this.PARCELA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.PARCELA.DataPropertyName = "PARCELA";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PARCELA.DefaultCellStyle = dataGridViewCellStyle5;
             this.PARCELA.HeaderText = "PARCELA";
+            this.PARCELA.MinimumWidth = 60;
             this.PARCELA.Name = "PARCELA";
             this.PARCELA.ReadOnly = true;
+            this.PARCELA.Width = 60;
             // 
             // DATA_PGMTO
             // 
+            this.DATA_PGMTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DATA_PGMTO.DataPropertyName = "DATA_PGMTO";
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.DATA_PGMTO.DefaultCellStyle = dataGridViewCellStyle5;
-            this.DATA_PGMTO.HeaderText = "DATA PGMTO";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.DATA_PGMTO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DATA_PGMTO.HeaderText = "PAGAMENTO";
+            this.DATA_PGMTO.MinimumWidth = 80;
             this.DATA_PGMTO.Name = "DATA_PGMTO";
             this.DATA_PGMTO.ReadOnly = true;
+            this.DATA_PGMTO.Width = 80;
             // 
             // DESCRICAO
             // 
+            this.DESCRICAO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DESCRICAO.DataPropertyName = "DESCRICAO";
             this.DESCRICAO.HeaderText = "DESCRIÇÃO";
+            this.DESCRICAO.MinimumWidth = 180;
             this.DESCRICAO.Name = "DESCRICAO";
             this.DESCRICAO.ReadOnly = true;
+            this.DESCRICAO.Width = 180;
             // 
             // dataGridViewTextBoxColumn1
             // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "STATUS";
             this.dataGridViewTextBoxColumn1.HeaderText = "STATUS";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -388,16 +432,17 @@ namespace Setup.Financas
             // treeFaturas
             // 
             this.treeFaturas.BackColor = System.Drawing.Color.Black;
-            this.treeFaturas.Dock = System.Windows.Forms.DockStyle.Right;
             this.treeFaturas.ForeColor = System.Drawing.Color.White;
-            this.treeFaturas.Location = new System.Drawing.Point(740, 24);
+            this.treeFaturas.Location = new System.Drawing.Point(740, 32);
             this.treeFaturas.Name = "treeFaturas";
-            treeNode1.Name = "Ano";
-            treeNode1.Text = "Ano";
+            treeNode1.ForeColor = System.Drawing.Color.Turquoise;
+            treeNode1.Name = "Selecione";
+            treeNode1.Text = "Selecione um Período";
             this.treeFaturas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1});
-            this.treeFaturas.Size = new System.Drawing.Size(234, 404);
+            this.treeFaturas.Size = new System.Drawing.Size(222, 373);
             this.treeFaturas.TabIndex = 32;
+            this.treeFaturas.DoubleClick += new System.EventHandler(this.treeFaturas_DoubleClick);
             // 
             // status
             // 
@@ -405,10 +450,10 @@ namespace Setup.Financas
             this.status.BackColor = System.Drawing.Color.Transparent;
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 406);
+            this.status.Location = new System.Drawing.Point(0, 414);
             this.status.Name = "status";
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.status.Size = new System.Drawing.Size(740, 22);
+            this.status.Size = new System.Drawing.Size(974, 22);
             this.status.SizingGrip = false;
             this.status.Stretch = false;
             this.status.TabIndex = 33;
@@ -420,12 +465,57 @@ namespace Setup.Financas
             this.statusLabel.Size = new System.Drawing.Size(23, 17);
             this.statusLabel.Text = ">>";
             // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(12, 96);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(718, 1);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "label7";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(12, 110);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 15);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Cartão";
+            // 
+            // cbFCartao
+            // 
+            this.cbFCartao.BackColor = System.Drawing.Color.Black;
+            this.cbFCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbFCartao.ForeColor = System.Drawing.Color.White;
+            this.cbFCartao.FormattingEnabled = true;
+            this.cbFCartao.Location = new System.Drawing.Point(60, 102);
+            this.cbFCartao.MaxDropDownItems = 10;
+            this.cbFCartao.Name = "cbFCartao";
+            this.cbFCartao.Size = new System.Drawing.Size(309, 23);
+            this.cbFCartao.TabIndex = 26;
+            this.cbFCartao.TabStop = false;
+            this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
+            // 
+            // lblPeriodo
+            // 
+            this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPeriodo.ForeColor = System.Drawing.Color.Turquoise;
+            this.lblPeriodo.Location = new System.Drawing.Point(375, 102);
+            this.lblPeriodo.Name = "lblPeriodo";
+            this.lblPeriodo.Size = new System.Drawing.Size(355, 23);
+            this.lblPeriodo.TabIndex = 24;
+            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(974, 428);
+            this.ClientSize = new System.Drawing.Size(974, 436);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.status);
             this.Controls.Add(this.treeFaturas);
             this.Controls.Add(this.lista);
@@ -434,11 +524,14 @@ namespace Setup.Financas
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.cbClasse);
+            this.Controls.Add(this.cbFCartao);
             this.Controls.Add(this.cbCartao);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblPeriodo);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -482,6 +575,7 @@ namespace Setup.Financas
         private System.Windows.Forms.TreeView treeFaturas;
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.ToolStripMenuItem excluir;
         private System.Windows.Forms.DataGridViewTextBoxColumn CHAVE;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATA;
@@ -491,5 +585,9 @@ namespace Setup.Financas
         private System.Windows.Forms.DataGridViewTextBoxColumn DATA_PGMTO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private Controles.cbCombo cbFCartao;
+        private System.Windows.Forms.Label lblPeriodo;
     }
 }
