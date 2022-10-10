@@ -90,9 +90,10 @@ namespace Setup.Financas
             string classe = listaClasse.CurrentRow.Cells[1].Value.ToString();
 
             COD.Pergunta("Excluir Classe: " + classe);
-            if (COD.Resposta == false) return;
+            if (COD.Resposta == false) 
+                return;
 
-            if (BD.Delete("CLASSE", id))
+            if (BD.Delete("CLASSE", id).Item1)
                 CarregarListasClasseConta();                
         }
 
@@ -174,7 +175,7 @@ namespace Setup.Financas
             if (COD.Resposta == false) 
                 return;
 
-            if (BD.Delete("CONTA", id))
+            if (BD.Delete("CONTA", id).Item1)
                 CarregarListasClasseConta();
         }
 

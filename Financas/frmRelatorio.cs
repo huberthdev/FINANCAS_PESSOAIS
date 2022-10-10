@@ -245,6 +245,10 @@ namespace Setup.Financas
             {
                 Classes.Geral.ExcluirLancamento(id);
             }
+            else if (tipo == "C")
+            {
+                Classes.Geral.ExcluirCompraCredito(id);
+            }
 
             CarregarLista();
         }

@@ -121,7 +121,11 @@ namespace Setup.Financas
             id = lista.SelectedRows[0].Cells[0].Value.ToString();
             cartao = lista.SelectedRows[0].Cells[1].Value.ToString();
 
-            BD.Delete("CARTAO_CREDITO", id, "Excluir Cartão. Confirma? \r\n\r\n Cartão: "+ cartao +"");
+            if(BD.Delete("CARTAO_CREDITO", id, "Excluir Cartão. Confirma? \r\n\r\n Cartão: "+ cartao + "").Item2.Contains("CHAVE"))
+            {
+                COD.Erro("Não foi possível excluir este cartão. Existem compras atreladas à ele!");
+                return;
+            }
 
             Novo();
 

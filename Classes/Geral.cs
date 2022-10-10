@@ -93,6 +93,29 @@ namespace Setup.Classes
                 COD.Erro("Não foi possível excluir este lançamento!");
             }
         }
+
+        public static void ExcluirCompraCredito(string chave)
+        {
+            string sql;
+
+            sql = "SELECT SUM(STATUS) FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
+            BD.Buscar(sql);
+            if (int.Parse(BD.Resultado.Rows[0][0].ToString()) > 0)
+            {
+                COD.Erro("Exclusão não permitida!\r\n\r\nEsta compra já possui parcela paga!");
+                return;
+            }
+
+            COD.Pergunta("Excluir Compra. Confirma?");
+            if (COD.Resposta == false)
+                return;
+
+            sql = "DELETE FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
+            BD.ExecutarSQL(sql);
+
+            sql = "DELETE FROM KEY_COMPRA_CREDITO WHERE CHAVE = " + chave + "";
+            BD.ExecutarSQL(sql);
+        }
     }
 
     public class Classe

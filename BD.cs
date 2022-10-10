@@ -182,10 +182,10 @@ namespace Setup
 
         }
 
-        public static bool Delete(string Tabela, string ID, string TextoConfirmacao = "")
+        public static Tuple<bool, string> Delete(string Tabela, string ID, string TextoConfirmacao = "")
         {
-
             int codigo = 0;
+            string erro;
 
             if (ID != "")
                 codigo = int.Parse(ID);
@@ -196,17 +196,28 @@ namespace Setup
             {
                 COD.Pergunta(TextoConfirmacao.ToString());
                 if (!COD.Resposta)
-                    return false;
+                    return new Tuple<bool, string>(false, "");
             }
 
             try
             {
                 ExecutarSQL(sql);
-                return true;
+                return new Tuple<bool, string>(true, "");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return false;
+                erro = ex.ToString();
+
+                if (erro.Contains("FOREIGN"))
+                {
+                    erro = "CHAVE ESTRANGEIRA EM USO";
+                }
+                else
+                {
+                    erro = "";
+                }
+
+                return new Tuple<bool, string>(false, erro);
             }
                        
         

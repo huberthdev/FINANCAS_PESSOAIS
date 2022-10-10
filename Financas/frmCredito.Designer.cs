@@ -39,7 +39,6 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Selecione um Período");
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.salvar = new System.Windows.Forms.ToolStripMenuItem();
             this.excluir = new System.Windows.Forms.ToolStripMenuItem();
@@ -446,11 +445,6 @@ namespace Setup.Financas
             this.treeFaturas.ForeColor = System.Drawing.Color.White;
             this.treeFaturas.Location = new System.Drawing.Point(740, 32);
             this.treeFaturas.Name = "treeFaturas";
-            treeNode1.ForeColor = System.Drawing.Color.Turquoise;
-            treeNode1.Name = "Selecione";
-            treeNode1.Text = "Selecione um Período";
-            this.treeFaturas.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
             this.treeFaturas.Size = new System.Drawing.Size(222, 373);
             this.treeFaturas.TabIndex = 32;
             this.treeFaturas.DoubleClick += new System.EventHandler(this.treeFaturas_DoubleClick);
@@ -516,17 +510,21 @@ namespace Setup.Financas
             // 
             this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPeriodo.ForeColor = System.Drawing.Color.Turquoise;
+            this.lblPeriodo.ForeColor = System.Drawing.Color.Silver;
             this.lblPeriodo.Location = new System.Drawing.Point(456, 102);
             this.lblPeriodo.Name = "lblPeriodo";
             this.lblPeriodo.Size = new System.Drawing.Size(274, 23);
             this.lblPeriodo.TabIndex = 24;
+            this.lblPeriodo.Text = "2022/JANEIRO";
             this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnPagarFatura
             // 
             this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnPagarFatura.ForeColor = System.Drawing.Color.White;
+            this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPagarFatura.ForeColor = System.Drawing.Color.Black;
             this.btnPagarFatura.Location = new System.Drawing.Point(375, 102);
             this.btnPagarFatura.Name = "btnPagarFatura";
             this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);

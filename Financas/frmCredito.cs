@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.ComponentModel;
 using System.Globalization;
 using System.Drawing;
 
@@ -238,7 +239,7 @@ namespace Setup.Financas
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
                 ano = BD.Resultado.Rows[i][0].ToString();
-                treeFaturas.Nodes.Add(ano).ForeColor = Color.Turquoise;
+                treeFaturas.Nodes.Add("ano", ano).ForeColor = Color.Turquoise;
             }
 
             //PREENCHER OS NODES COM OS MESES DISTINTOS
@@ -288,7 +289,8 @@ namespace Setup.Financas
                     {
                         if (treeFaturas.Nodes[j].Nodes[k].Name == periodo)
                         {
-                            treeFaturas.Nodes[j].Nodes[k].Nodes.Add(periodo, cartao + " • " + double.Parse(valor).ToString("C")).BackColor = Color.FromArgb(int.Parse(cor));
+                            treeFaturas.Nodes[j].Nodes[k].Nodes.Add(periodo, cartao + " • "
+                                + double.Parse(valor).ToString("C"), cartao.Length).BackColor = Color.FromArgb(int.Parse(cor));
                         }
                     }
                 }
@@ -305,7 +307,10 @@ namespace Setup.Financas
             //VERIFICA SE A FATURA DO MES ESTÁ PAGA E MUDA A COR PARA VERMELHO[NÃO PAGO] E VERDE[PAGO]
 
 
-
+            if (treeFaturas.Nodes.Count == 0)
+            {
+                lblPeriodo.Text = "";
+            }
         }
 
         private void cartoes_Click(object sender, EventArgs e)
@@ -323,30 +328,13 @@ namespace Setup.Financas
         private void excluir_Click(object sender, EventArgs e)
         {
             string chave;
-            string sql;
 
-            if (lista.RowCount == 0)
+            if (lista.RowCount == 0 || lista.SelectedRows.Count == 0)
                 return;
 
             chave = lista.SelectedRows[0].Cells[1].Value.ToString();
 
-            sql = "SELECT SUM(STATUS) FROM COMPRA_CREDITO WHERE CHAVE = "+ chave +"";
-            BD.Buscar(sql);
-            if (int.Parse(BD.Resultado.Rows[0][0].ToString()) > 0)
-            {
-                COD.Erro("Exclusão não permitida! \r\n\r\n Esta compra já possui parcela paga!");
-                return;
-            }
-
-            COD.Pergunta("Excluir Compra. Confirma?");
-            if (COD.Resposta == false)
-                return;
-
-            sql = "DELETE FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
-            BD.ExecutarSQL(sql);
-
-            sql = "DELETE FROM KEY_COMPRA_CREDITO WHERE CHAVE = " + chave + "";
-            BD.ExecutarSQL(sql);
+            Classes.Geral.ExcluirCompraCredito(chave);
 
             CarregarLista();
             CarregarTreeFaturas();
@@ -371,15 +359,30 @@ namespace Setup.Financas
         {
             string chave;
             string periodo;
+            string cartao = "";
 
-            chave = treeFaturas.SelectedNode.Name;
-
-            if (chave == "" || chave.Contains("Selecione"))
+            if (treeFaturas.SelectedNode is null || treeFaturas.SelectedNode.Name == "ano")
             {
                 return;
             }
-                
+
+            chave = treeFaturas.SelectedNode.Name;
             periodo = chave.Substring(chave.Length - 4, 4) + "/" + treeFaturas.SelectedNode.Text;
+
+            if(treeFaturas.SelectedNode.Level == 2)
+            {
+                cartao = treeFaturas.SelectedNode.Text;
+                cartao = cartao.Substring(0, treeFaturas.SelectedNode.ImageIndex);
+            }
+
+            try
+            {
+                cbFCartao.Text = cartao;
+            }
+            catch (Exception)
+            {
+
+            }
 
             lblPeriodo.Text = periodo;
             lblPeriodo.Tag = chave;
