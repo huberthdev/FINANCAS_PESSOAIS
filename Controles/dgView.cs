@@ -88,5 +88,11 @@ namespace Setup.Controles
             this.ClearSelection();
             base.OnLostFocus(e);
         }
+
+        protected override void OnDataBindingComplete(DataGridViewBindingCompleteEventArgs e)
+        {
+            this.ClearSelection();
+            base.OnDataBindingComplete(e);
+        }
     }
 }

@@ -10,7 +10,6 @@ namespace Setup.Financas
         {
             InitializeComponent();        
             CarregarLista();
-            ColorirLinhas();
         }
 
         private void lblCor_Click(object sender, EventArgs e)
@@ -133,8 +132,10 @@ namespace Setup.Financas
             {
                 COD.Pergunta("Deseja sair sem salvar?");
                 if (COD.Resposta == false)
+                {
                     e.Cancel = true;
                     return;
+                }
             }
 
             e.Cancel = false;
@@ -149,7 +150,6 @@ namespace Setup.Financas
 
             try
             {
-
                 id = lista.Rows[e.Row.Index].Cells[0].Value.ToString();
 
                 COD.Pergunta("Excluir nota selecionada?");
@@ -162,7 +162,6 @@ namespace Setup.Financas
                 e.Cancel = true;
                 BD.Delete("NOTA", id);
                 COD.LimparCampos(this);
-
             }
             catch
             {
@@ -180,17 +179,11 @@ namespace Setup.Financas
 
         }
 
-        private void frmNota_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lista_MouseClick(object sender, MouseEventArgs e)
         {
             
             if(lista.Rows.Count != 0)
             {
-
                 string c;
                 int cor;
 
@@ -202,19 +195,12 @@ namespace Setup.Financas
 
                 lblCor.BackColor = Color.FromArgb(cor);
                 lblFaixa.BackColor = Color.FromArgb(cor);
-
             }
-
-
         }
 
-        private void frmNota_MouseMove(object sender, MouseEventArgs e)
+        private void frmNota_Activated(object sender, EventArgs e)
         {
-            ColorirLinhas();
-        }
-
-        private void lista_MouseMove(object sender, MouseEventArgs e)
-        {
+            lista.AllowUserToDeleteRows = true;
             ColorirLinhas();
         }
     }

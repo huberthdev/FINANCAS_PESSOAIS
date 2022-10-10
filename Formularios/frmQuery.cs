@@ -158,5 +158,15 @@ namespace Setup.Formularios
         {
             CarregarTreeTabelas();
         }
+
+        private void frmQuery_Activated(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            lista.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
     }
 }
