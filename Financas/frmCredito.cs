@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -26,7 +27,6 @@ namespace Setup.Financas
             if (campo == "classe" || campo == "")
             {
                 cbClasse.Items.Clear();
-                cbClasse.Items.Add("");
                 Classes.Classe.Tipo = 0;
                 foreach (Classes.Classe c in Classes.Classe.Lista())
                 {
@@ -39,7 +39,6 @@ namespace Setup.Financas
             {
                 cbCartao.Items.Clear();
                 cbFCartao.Items.Clear();
-                cbCartao.Items.Add("");
                 cbFCartao.Items.Add("");
                 foreach (Classes.CartaoCredito c in Classes.CartaoCredito.Lista())
                 {
@@ -61,8 +60,14 @@ namespace Setup.Financas
             string vlParc;
             string data = "";
             int qtdParc;
+            string sql;
 
-            string cartao = ((Classes.CartaoCredito)cbCartao.SelectedItem).id.ToString();
+            if (COD.ValidarCampos(this) == false)
+            {
+                return;
+            }
+
+            string cartao = ((Classes.CartaoCredito)cbCartao.SelectedItem).cartao.ToString();
             string classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
 
             string[] v = new string[6];
@@ -96,7 +101,7 @@ namespace Setup.Financas
             vlParc = (double.Parse(txtValor.Text) / qtdParc).ToString("C2");
             vlParc = BD.CvNum(vlParc);
 
-            string sql = "SELECT DIA_VENC, MELHOR_DIA_COMPRA FROM CARTAO_CREDITO WHERE ";
+            sql = "SELECT DIA_VENC, MELHOR_DIA_COMPRA FROM CARTAO_CREDITO WHERE ";
             sql += "CARTAO_CREDITO_ID = "+ cartao +"";
             BD.Buscar(sql);
 
@@ -182,7 +187,7 @@ namespace Setup.Financas
 
             if (cbFCartao.Text != "")
             {
-                cartao = ((Classes.CartaoCredito)cbFCartao.SelectedItem).id.ToString();
+                cartao = ((Classes.CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
             }
 
             periodo = lblPeriodo.Tag.ToString();
@@ -218,7 +223,11 @@ namespace Setup.Financas
             string sql;
             string ano;
             string mes;
+            string periodo;
+            string cartao;
+            string cor;
             string mesNome;
+            string valor;
 
             treeFaturas.Nodes.Clear();
 
@@ -229,30 +238,74 @@ namespace Setup.Financas
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
                 ano = BD.Resultado.Rows[i][0].ToString();
-                treeFaturas.Nodes.Add(ano);
+                treeFaturas.Nodes.Add(ano).ForeColor = Color.Turquoise;
             }
 
             //PREENCHER OS NODES COM OS MESES DISTINTOS
-            sql = "SELECT DISTINCT EXTRACT(MONTH FROM DATA_PARCELA), EXTRACT(YEAR FROM DATA_PARCELA) FROM COMPRA_CREDITO ";
-            sql += "ORDER BY EXTRACT(YEAR FROM DATA_PARCELA)";
+            sql = "SELECT DISTINCT EXTRACT(MONTH FROM DATA_PARCELA), EXTRACT(YEAR FROM DATA_PARCELA), SUM(VALOR) FROM COMPRA_CREDITO ";
+            sql += "GROUP BY EXTRACT(MONTH FROM DATA_PARCELA), EXTRACT(YEAR FROM DATA_PARCELA) ";
+            sql += "ORDER BY EXTRACT(YEAR FROM DATA_PARCELA) ";
             BD.Buscar(sql);
 
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
                 mes = BD.Resultado.Rows[i][0].ToString();
                 ano = BD.Resultado.Rows[i][1].ToString();
+                valor = BD.Resultado.Rows[i][2].ToString();
 
                 for (int x = 0; x < treeFaturas.Nodes.Count; x++)
                 {
                     if (treeFaturas.Nodes[x].Text == ano)
                     {
                         mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(int.Parse(mes)).ToUpper();
-                        treeFaturas.Nodes[x].Nodes.Add(mes + ano, mesNome);
+                        treeFaturas.Nodes[x].Nodes.Add(mes + ano, mesNome + " • " + double.Parse(valor).ToString("C"));
                     }
                 }
             }
 
-            treeFaturas.ExpandAll();
+            //PREENCHE OS NODES COM OS CARTÕES E SEUS VALORES RESPECTIVOS DENTRO DE CADA MÊS
+            sql = "SELECT DISTINCT D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA) || EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR, SUM(A.VALOR) ";
+            sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ";
+            sql += "ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID GROUP BY ";
+            sql += "D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA), EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR ORDER BY EXTRACT(YEAR FROM A.DATA_PARCELA)";
+            BD.Buscar(sql);
+
+            for (int i = 0; i < BD.Resultado.Rows.Count; i++)
+            {
+                cartao = BD.Resultado.Rows[i][0].ToString();
+                periodo = BD.Resultado.Rows[i][1].ToString();
+                cor = BD.Resultado.Rows[i][2].ToString();
+                valor = BD.Resultado.Rows[i][3].ToString();
+
+                if (cor == "")
+                {
+                    cor = "-16777216";
+                }
+
+                for (int j = 0; j < treeFaturas.Nodes.Count; j++)
+                {
+                    for (int k = 0; k < treeFaturas.Nodes[j].Nodes.Count; k++)
+                    {
+                        if (treeFaturas.Nodes[j].Nodes[k].Name == periodo)
+                        {
+                            treeFaturas.Nodes[j].Nodes[k].Nodes.Add(periodo, cartao + " • " + double.Parse(valor).ToString("C")).BackColor = Color.FromArgb(int.Parse(cor));
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < treeFaturas.Nodes.Count; i++)
+            {
+                if(treeFaturas.Nodes[i].Text == DateTime.Today.Year.ToString())
+                {
+                    treeFaturas.Nodes[i].Expand();
+                }
+            }
+
+            //VERIFICA SE A FATURA DO MES ESTÁ PAGA E MUDA A COR PARA VERMELHO[NÃO PAGO] E VERDE[PAGO]
+
+
+
         }
 
         private void cartoes_Click(object sender, EventArgs e)
@@ -264,6 +317,7 @@ namespace Setup.Financas
         private void frmCredito_Activated(object sender, EventArgs e)
         {
             CarregarCbClassesCartoes("cartao");
+            CarregarTreeFaturas();
         }
 
         private void excluir_Click(object sender, EventArgs e)
@@ -325,12 +379,26 @@ namespace Setup.Financas
                 return;
             }
                 
-            periodo = treeFaturas.SelectedNode.Text + " • " + chave.Substring(chave.Length-4, 4);
+            periodo = chave.Substring(chave.Length - 4, 4) + "/" + treeFaturas.SelectedNode.Text;
 
             lblPeriodo.Text = periodo;
             lblPeriodo.Tag = chave;
 
             CarregarLista();
+        }
+
+        private void cbFCartao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmCredito_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SendKeys.Send("{TAB}");
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }

@@ -298,6 +298,7 @@ namespace Setup.Financas
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(297, 23);
             this.txtDescricao.TabIndex = 5;
+            this.txtDescricao.TextChanged += new System.EventHandler(this.txtDescricao_TextChanged);
             // 
             // label7
             // 
@@ -434,6 +435,7 @@ namespace Setup.Financas
             this.lista.ShowEditingIcon = false;
             this.lista.Size = new System.Drawing.Size(819, 250);
             this.lista.TabIndex = 1;
+            this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
             // 
             // ID
             // 
@@ -534,7 +536,7 @@ namespace Setup.Financas
             this.MaximizeBox = false;
             this.Name = "frmRelatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmRelatorio_Load);
+            this.Activated += new System.EventHandler(this.frmRelatorio_Activated);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRelatorio_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

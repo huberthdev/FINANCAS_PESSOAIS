@@ -74,6 +74,7 @@ namespace Setup.Financas
             this.label8 = new System.Windows.Forms.Label();
             this.cbFCartao = new Setup.Controles.cbCombo();
             this.lblPeriodo = new System.Windows.Forms.Label();
+            this.btnPagarFatura = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
@@ -146,6 +147,7 @@ namespace Setup.Financas
             this.txtQtdeParc.Name = "txtQtdeParc";
             this.txtQtdeParc.Size = new System.Drawing.Size(48, 23);
             this.txtQtdeParc.TabIndex = 29;
+            this.txtQtdeParc.Tag = "\'Qtd. Parcelas\'";
             this.txtQtdeParc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtValor
@@ -158,6 +160,7 @@ namespace Setup.Financas
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(90, 23);
             this.txtValor.TabIndex = 28;
+            this.txtValor.Tag = "\'Valor\'";
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtData
@@ -170,33 +173,41 @@ namespace Setup.Financas
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(90, 23);
             this.txtData.TabIndex = 27;
+            this.txtData.Tag = "\'Data\'";
             this.txtData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // cbClasse
             // 
+            this.cbClasse.AllowDrop = true;
             this.cbClasse.BackColor = System.Drawing.Color.Black;
+            this.cbClasse.DropDownHeight = 136;
             this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
+            this.cbClasse.IntegralHeight = false;
             this.cbClasse.Location = new System.Drawing.Point(421, 32);
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(309, 23);
             this.cbClasse.TabIndex = 25;
+            this.cbClasse.Tag = "\'Classe\'";
             // 
             // cbCartao
             // 
             this.cbCartao.BackColor = System.Drawing.Color.Black;
+            this.cbCartao.DropDownHeight = 136;
             this.cbCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbCartao.ForeColor = System.Drawing.Color.White;
             this.cbCartao.FormattingEnabled = true;
+            this.cbCartao.IntegralHeight = false;
             this.cbCartao.Location = new System.Drawing.Point(60, 32);
             this.cbCartao.MaxDropDownItems = 10;
             this.cbCartao.Name = "cbCartao";
             this.cbCartao.Size = new System.Drawing.Size(309, 23);
             this.cbCartao.TabIndex = 26;
+            this.cbCartao.Tag = "\'Cartão\'";
             // 
             // label2
             // 
@@ -486,16 +497,19 @@ namespace Setup.Financas
             // cbFCartao
             // 
             this.cbFCartao.BackColor = System.Drawing.Color.Black;
+            this.cbFCartao.DropDownHeight = 136;
             this.cbFCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbFCartao.ForeColor = System.Drawing.Color.White;
             this.cbFCartao.FormattingEnabled = true;
+            this.cbFCartao.IntegralHeight = false;
             this.cbFCartao.Location = new System.Drawing.Point(60, 102);
             this.cbFCartao.MaxDropDownItems = 10;
             this.cbFCartao.Name = "cbFCartao";
             this.cbFCartao.Size = new System.Drawing.Size(309, 23);
             this.cbFCartao.TabIndex = 26;
             this.cbFCartao.TabStop = false;
+            this.cbFCartao.SelectedIndexChanged += new System.EventHandler(this.cbFCartao_SelectedIndexChanged);
             this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
             // 
             // lblPeriodo
@@ -503,11 +517,22 @@ namespace Setup.Financas
             this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPeriodo.ForeColor = System.Drawing.Color.Turquoise;
-            this.lblPeriodo.Location = new System.Drawing.Point(375, 102);
+            this.lblPeriodo.Location = new System.Drawing.Point(456, 102);
             this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(355, 23);
+            this.lblPeriodo.Size = new System.Drawing.Size(274, 23);
             this.lblPeriodo.TabIndex = 24;
             this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnPagarFatura
+            // 
+            this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnPagarFatura.ForeColor = System.Drawing.Color.White;
+            this.btnPagarFatura.Location = new System.Drawing.Point(375, 102);
+            this.btnPagarFatura.Name = "btnPagarFatura";
+            this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
+            this.btnPagarFatura.TabIndex = 35;
+            this.btnPagarFatura.Text = "PAGAR";
+            this.btnPagarFatura.UseVisualStyleBackColor = false;
             // 
             // frmCredito
             // 
@@ -515,6 +540,7 @@ namespace Setup.Financas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(974, 436);
+            this.Controls.Add(this.btnPagarFatura);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.status);
             this.Controls.Add(this.treeFaturas);
@@ -537,12 +563,14 @@ namespace Setup.Financas
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "frmCredito";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Activated += new System.EventHandler(this.frmCredito_Activated);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCredito_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
@@ -589,5 +617,6 @@ namespace Setup.Financas
         private System.Windows.Forms.Label label8;
         private Controles.cbCombo cbFCartao;
         private System.Windows.Forms.Label lblPeriodo;
+        private System.Windows.Forms.Button btnPagarFatura;
     }
 }

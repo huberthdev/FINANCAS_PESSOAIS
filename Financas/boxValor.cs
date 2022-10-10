@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -25,6 +21,18 @@ namespace Setup.Financas
             BD.SaldoInicial = BD.CvNum(saldo);
 
             this.Close();
+        }
+
+        private void txtSaldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar.ToString() == "\u001b") //Faz com que a tecla ESC limpe o campo
+                this.Text = "";
+
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+                e.Handled = true;
+
+            if (e.KeyChar == ',' && this.Text.Contains(","))
+                e.Handled = true;
         }
     }
 }

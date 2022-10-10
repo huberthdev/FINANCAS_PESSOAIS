@@ -10,7 +10,7 @@ namespace Setup.Controles
         {
             this.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             this.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.MaxDropDownItems = 10;
+            this.DropDownHeight = 136;
             this.BackColor = Color.Black;
             this.ForeColor = Color.White;
             base.OnCreateControl();

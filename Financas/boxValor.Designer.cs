@@ -37,28 +37,11 @@ namespace Setup.Financas
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boxValor));
-            this.txtSaldo = new Setup.Controles.Decimal();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnOK = new System.Windows.Forms.Label();
+            this.txtSaldo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtSaldo
-            // 
-            this.txtSaldo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txtSaldo.BackColor = System.Drawing.Color.White;
-            this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSaldo.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSaldo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtSaldo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtSaldo.Location = new System.Drawing.Point(69, 55);
-            this.txtSaldo.Margin = new System.Windows.Forms.Padding(5);
-            this.txtSaldo.Name = "txtSaldo";
-            this.txtSaldo.Size = new System.Drawing.Size(132, 23);
-            this.txtSaldo.TabIndex = 1;
-            this.txtSaldo.Text = "0,00";
-            this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtSaldo.WordWrap = false;
             // 
             // pictureBox1
             // 
@@ -87,6 +70,18 @@ namespace Setup.Financas
             this.btnOK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // txtSaldo
+            // 
+            this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSaldo.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtSaldo.Location = new System.Drawing.Point(68, 56);
+            this.txtSaldo.Name = "txtSaldo";
+            this.txtSaldo.Size = new System.Drawing.Size(134, 22);
+            this.txtSaldo.TabIndex = 5;
+            this.txtSaldo.Text = "0,00";
+            this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldo_KeyPress);
+            // 
             // boxValor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -107,8 +102,8 @@ namespace Setup.Financas
         }
 
         #endregion
-        private Controles.Decimal txtSaldo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label btnOK;
+        private System.Windows.Forms.TextBox txtSaldo;
     }
 }

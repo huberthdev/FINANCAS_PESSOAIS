@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading.Tasks;
 
 namespace Setup.Financas
 {
@@ -20,6 +21,7 @@ namespace Setup.Financas
         {
             string classe = "";
             string conta = "";
+            string descricao = "";
 
             string data1 = txtDataInicio.Text.Replace("/", ".");
             string data2 = txtDataFim.Text.Replace("/", ".");
@@ -30,6 +32,9 @@ namespace Setup.Financas
             if (data2 == "")
                 data2 = "31.12.9999";
 
+            if(txtDescricao.Text != "")
+                descricao = "%" + txtDescricao.Text.Replace("*", "%").ToUpper().Trim() + "%";
+
             lista.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             if (sql == "")
@@ -38,7 +43,11 @@ namespace Setup.Financas
                 sql = "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA, B.CLASSE, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
                 sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.DATA BETWEEN ";
                 sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
-                
+                if(descricao != "")
+                {
+                    sql += "AND UPPER(A.DESCRICAO) LIKE '" + descricao + "' ";
+                }
+
                 if (ckReceita.Checked == true && ckDespesa.Checked == false)
                     sql += "AND A.VALOR > 0 ";
                 else if (ckReceita.Checked == false && ckDespesa.Checked == true)
@@ -61,24 +70,42 @@ namespace Setup.Financas
                 sql += "UNION SELECT TRANSFERENCIA_ID AS ID, 'T' AS TIPO, DATA, ";
                 sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, VALOR, DESCRICAO AS DESC ";
                 sql += "FROM TRANSFERENCIA WHERE DATA BETWEEN ";
-                sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE)";
+                sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
 
-                try
+                sql += "UNION SELECT B.CHAVE AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
+                sql += "C.CLASSE, B.VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
+                sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
+                sql += "ON B.CLASSE = C.CLASSE_ID WHERE A.DATA_PARCELA BETWEEN ";
+                sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                if (descricao != "")
                 {
-                    lista.DataSource = BD.Buscar(sql);
+                    sql += "AND UPPER(B.DESCRICAO) LIKE '" + descricao + "' ";
                 }
-                catch (Exception ex)
+
+                //FILTRO CLASSE
+                if (cbClasse.Text != "")
                 {
-                    status.Items[0].Text = ex.Message.ToString();
+                    classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
+                    sql += "AND C.CLASSE_ID = " + classe + " ";
                 }
 
-                //PREENCHE A BARRA DE STATUS A QUANTIDADE DE LINHAS DA LISTA
-                status.Items[0].Text = "LINHAS: " + lista.RowCount;
-
-                Formatacao_Condicional();
-                SomarColunaValor();
             }
 
+            try
+            {
+                lista.DataSource = BD.Buscar(sql);
+            }
+            catch (Exception ex)
+            {
+                status.Items[0].Text = ex.Message.ToString();
+            }
+
+            //PREENCHE A BARRA DE STATUS A QUANTIDADE DE LINHAS DA LISTA
+            status.Items[0].Text = "LINHAS: " + lista.RowCount;
+
+            //Thread.Sleep(5000);
+            Formatacao_Condicional();
+            SomarColunaValor();
         }
 
         private void CarregarCbClassesContas(string campo = "")
@@ -159,6 +186,13 @@ namespace Setup.Financas
                         lista.Rows[i].Cells[c].Style.ForeColor = Color.Fuchsia;
                     }
                 }
+                else if (lista.Rows[i].Cells[1].Value.ToString() == "C")
+                {
+                    for (int c = 0; c < lista.ColumnCount; c++)
+                    {
+                        lista.Rows[i].Cells[c].Style.ForeColor = Color.Turquoise;
+                    }
+                }
             }
 
         }
@@ -170,12 +204,12 @@ namespace Setup.Financas
 
         private void ckReceita_CheckedChanged(object sender, EventArgs e)
         {
-
+            CarregarLista();
         }
 
         private void ckDespesa_CheckedChanged(object sender, EventArgs e)
         {
-
+            CarregarLista();
         }
 
         private void frmRelatorio_KeyDown(object sender, KeyEventArgs e)
@@ -264,9 +298,14 @@ namespace Setup.Financas
             CarregarCbClassesContas("classe");
         }
 
-        private void frmRelatorio_Load(object sender, EventArgs e)
+        private void frmRelatorio_Activated(object sender, EventArgs e)
         {
+            Formatacao_Condicional();
+        }
 
+        private void txtDescricao_TextChanged(object sender, EventArgs e)
+        {
+            CarregarLista();
         }
     }
 }

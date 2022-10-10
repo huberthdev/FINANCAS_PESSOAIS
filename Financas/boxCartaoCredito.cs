@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -20,6 +21,12 @@ namespace Setup.Financas
                 cbVenc.Items.Add(i);
                 cbFecha.Items.Add(i);
             }
+
+            cbCartao.Items.Clear();
+            foreach (Classes.CartaoCredito c in Classes.CartaoCredito.Lista())
+            {
+                cbCartao.Items.Add(c);
+            }
         }
 
         private void ConfigurarLista()
@@ -34,8 +41,9 @@ namespace Setup.Financas
 
         private void CarregarLista()
         {
-            string sql = "SELECT CARTAO_CREDITO_ID AS ID, CARTAO, STATUS AS ATIVO ";
-            sql += "FROM CARTAO_CREDITO";
+            string sql = "SELECT A.CARTAO_CREDITO_ID AS ID, B.CONTA AS CARTAO, A.STATUS AS ATIVO ";
+            sql += "FROM CARTAO_CREDITO A INNER JOIN CONTA B ON A.CONTA = B.CONTA_ID ";
+            sql += "WHERE B.CARTAO_CREDITO = 1";
 
             lista.DataSource = BD.Buscar(sql);
         }
@@ -47,16 +55,18 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(lblID.Tag.ToString());
-
             if (COD.ValidarCampos(this) == false)
                 return;
-            
-            string[] c = new string[6];
-            string[] v = new string[6];
 
-            c[0] = "cartao";
-            v[0] = txtNome.Text;
+            int cor = lblCor.BackColor.ToArgb();
+            int id = int.Parse(lblID.Tag.ToString());
+            string conta = ((Classes.CartaoCredito)cbCartao.SelectedItem).conta.ToString();
+            
+            string[] c = new string[7];
+            string[] v = new string[7];
+
+            c[0] = "conta";
+            v[0] = conta;
 
             c[1] = "limite";
             v[1] = BD.CvNum(txtLimite.Text);
@@ -73,7 +83,10 @@ namespace Setup.Financas
             c[5] = "status";
             v[5] = Convert.ToInt32(ckStatus.Checked).ToString();
 
-            if(id == 0)
+            c[6] = "cor";
+            v[6] = cor.ToString();
+
+            if (id == 0)
                 BD.Salvar("CARTAO_CREDITO", c, v, 0, "Cartão Adicionado com Sucesso!");
             else
                 BD.Salvar("CARTAO_CREDITO", c, v, id, "Cartão Alterado com Sucesso!");
@@ -85,10 +98,11 @@ namespace Setup.Financas
 
         private void Novo()
         {
-            COD.LimparCampos(this, null, txtNome);
+            COD.LimparCampos(this, null, cbCartao);
             lblID.Text = "ID Selecionado: 0";
             lblID.Tag = "";
             txtLimite.Tag = "0";
+            lblCor.BackColor = Color.Black;
         }
 
         private void novo_Click(object sender, EventArgs e)
@@ -118,6 +132,7 @@ namespace Setup.Financas
         {
             string sql;
             string id;
+            string cor;
 
             if (lista.RowCount == 0)
                 return;
@@ -127,16 +142,31 @@ namespace Setup.Financas
             lblID.Text = "ID Selecionado: " + id;
             lblID.Tag = id;
 
-            sql = "SELECT CARTAO, LIMITE, DIA_VENC, MELHOR_DIA_COMPRA, STATUS, UTILIZADO ";
-            sql += "FROM CARTAO_CREDITO WHERE CARTAO_CREDITO_ID = "+ id +"";
+            sql = "SELECT B.CONTA, A.LIMITE, A.DIA_VENC, A.MELHOR_DIA_COMPRA, A.STATUS, A.UTILIZADO, A.COR ";
+            sql += "FROM CARTAO_CREDITO A INNER JOIN CONTA B ON A.CONTA = B.CONTA_ID ";
+            sql += "WHERE A.CARTAO_CREDITO_ID = "+ id +"";
             BD.Buscar(sql);
 
-            txtNome.Text = BD.Resultado.Rows[0][0].ToString();
+            cbCartao.Text = BD.Resultado.Rows[0][0].ToString();
             txtLimite.Text = Convert.ToDouble(BD.Resultado.Rows[0][1].ToString()).ToString("N");
             cbVenc.Text = BD.Resultado.Rows[0][2].ToString();
             cbFecha.Text = BD.Resultado.Rows[0][3].ToString();
             ckStatus.Checked = Convert.ToBoolean(int.Parse(BD.Resultado.Rows[0][4].ToString()));
             txtLimite.Tag = BD.Resultado.Rows[0][5].ToString();
+            
+            cor = BD.Resultado.Rows[0][6].ToString();
+            if(cor != "")
+            {
+                lblCor.BackColor = Color.FromArgb(int.Parse(cor));
+            }
+        }
+
+        private void lblCor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                lblCor.BackColor = colorDialog1.Color;
+            }
         }
     }
 }

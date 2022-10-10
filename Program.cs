@@ -21,7 +21,7 @@ namespace Setup
                 BD.TestarConexao();
 
                 //Abre o formulário de boas vindas
-                //Application.Run(new Formularios.frmSplash());
+                Application.Run(new Formularios.frmSplash());
 
                 //Abre o formulário de login
                 Formularios.frmLogin login = new Formularios.frmLogin();

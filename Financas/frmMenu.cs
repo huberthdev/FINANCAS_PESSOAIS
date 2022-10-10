@@ -27,23 +27,10 @@ namespace Setup.Financas
             Process.Start("calc.exe");
         }
 
-        //ABRIR FORMULÁRIO DE CONFIGURAÇÃO DO BANCO DE DADOS
-        private void conexãoBancoDeDadosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Formularios.frmConfigBD bd = new Formularios.frmConfigBD();
-            bd.ShowDialog();
-        }
-
         //NAVEGAÇÃO ENTRE AS ABAS/FORMULÁRIOS DE UTILIDADES DO SISTEMA
         private void receitaDespesaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabelaMenu.SelectedIndex = 0;
-        }
-
-        private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Formularios.frmUsuario usuario = new Formularios.frmUsuario();
-            usuario.ShowDialog();
         }
 
         private void novoLançamentoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -89,20 +76,10 @@ namespace Setup.Financas
 
             if (tabela == "" || tabela == "conta")
             {
-                listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA FROM CONTA WHERE " +
+                listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, CARTAO_CREDITO AS CREDITO FROM CONTA WHERE " +
                     "UPPER(CONTA) LIKE '" + conta + "'");
-
+                listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-        }
-
-        private void optReceita_CheckedChanged(object sender, EventArgs e)
-        {
-            CarregarListasClasseConta();
-        }
-
-        private void optDespesa_CheckedChanged(object sender, EventArgs e)
-        {
-            CarregarListasClasseConta();
         }
 
         private void btnExcluirClasse_Click(object sender, EventArgs e)
@@ -121,10 +98,6 @@ namespace Setup.Financas
 
         private void btnSalvarClasse_Click(object sender, EventArgs e)
         {
-            string saldo;
-
-            saldo = "";
-
             if (COD.ValidarCampos(gpClasse, errorProvider1) == false)
                 return;
 
@@ -166,8 +139,8 @@ namespace Setup.Financas
 
             int at = Convert.ToInt32(ckAtivoConta.Checked);
 
-            string[] c = new string[3];
-            string[] v = new string[3];
+            string[] c = new string[4];
+            string[] v = new string[4];
 
             c[0] = "conta";
             v[0] = txtConta.Text.Trim();
@@ -177,6 +150,9 @@ namespace Setup.Financas
 
             c[2] = "ativo";
             v[2] = at.ToString();
+
+            c[3] = "cartao_credito";
+            v[3] = "0";
 
             BD.Salvar("CONTA", c, v, 0, "Conta cadastrada com sucesso!");
 
@@ -188,13 +164,15 @@ namespace Setup.Financas
 
         private void btnExcluirConta_Click(object sender, EventArgs e)
         {
-            if (listaConta.RowCount == 0) return;
+            if (listaConta.RowCount == 0)
+                return;
 
-            string id = listaClasse.CurrentRow.Cells[0].Value.ToString();
-            string conta = listaClasse.CurrentRow.Cells[1].Value.ToString();
+            string id = listaConta.CurrentRow.Cells[0].Value.ToString();
+            string conta = listaConta.CurrentRow.Cells[1].Value.ToString();
 
             COD.Pergunta("Excluir Conta: " + conta);
-            if (COD.Resposta == false) return;
+            if (COD.Resposta == false) 
+                return;
 
             if (BD.Delete("CONTA", id))
                 CarregarListasClasseConta();
@@ -262,12 +240,6 @@ namespace Setup.Financas
             CarregarCbClassesContas("classe");
         }
 
-        private void ToolQuery_Click(object sender, EventArgs e)
-        {
-            Formularios.frmQuery query = new Formularios.frmQuery();
-            query.Show();
-        }
-
         private void queryDesenvolvedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Formularios.frmQuery query = new Formularios.frmQuery();
@@ -321,11 +293,15 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            if (COD.ValidarCampos(this, errorProvider1) == false)
+            string classe;
+            string conta;
+
+            if (COD.ValidarCampos(pnLancamento, errorProvider1) == false)
                 return;
 
-            string classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
-            string conta = ((Classes.Conta)cbConta.SelectedItem).id.ToString();
+            classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
+            conta = ((Classes.Conta)cbConta.SelectedItem).id.ToString();
+
             string valor = txtValor.Text;
 
             if (opDespesa.Checked == true)
@@ -354,23 +330,94 @@ namespace Setup.Financas
             c[5] = "status";
             v[5] = "1";
 
-            BD.Salvar("bd", c, v, 0, "Operação salva com sucesso!");
+            BD.Salvar("bd", c, v, 0, "Registro salvo com sucesso!");
             Classes.Geral.AtualizarSaldoConta(conta, valor);
 
-            COD.LimparCampos(this, txtData, cbClasse);
+            COD.LimparCampos(pnLancamento, txtData, cbClasse);
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
         }
 
         private void limpar_Click(object sender, EventArgs e)
         {
-            COD.LimparCampos(this.tabReceita_Despesa, txtData, cbClasse);
+            COD.LimparCampos(pnLancamento, txtData, cbClasse);
         }
 
         private void comprasCredito_Click(object sender, EventArgs e)
         {
             frmCredito cred = new frmCredito();
             cred.ShowDialog();
+        }
+
+        private void optReceita_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregarListasClasseConta();
+        }
+
+        private void optDespesa_CheckedChanged(object sender, EventArgs e)
+        {
+            CarregarListasClasseConta();
+        }
+
+        private void cartaoDeCreditoAdd_Click(object sender, EventArgs e)
+        {
+            boxCartaoCredito boxCartaoADD = new boxCartaoCredito();
+            boxCartaoADD.ShowDialog();
+        }
+
+        private void usuarioAdd_Click(object sender, EventArgs e)
+        {
+            Formularios.frmUsuario usuario = new Formularios.frmUsuario();
+            usuario.ShowDialog();
+        }
+
+        private void connBD_Click(object sender, EventArgs e)
+        {
+            Formularios.frmConfigBD bd = new Formularios.frmConfigBD();
+            bd.ShowDialog();
+        }
+
+        private void compraCredito_Click(object sender, EventArgs e)
+        {
+            frmCredito cred = new frmCredito();
+            cred.ShowDialog();
+        }
+
+        private void transf_Click(object sender, EventArgs e)
+        {
+            frmTransf transf = new frmTransf();
+            transf.ShowDialog();
+        }
+
+        private void listaConta_MouseEnter(object sender, EventArgs e)
+        {
+            listaConta.ReadOnly = false;
+            listaConta.Columns[1].ReadOnly = true;
+        }
+
+        private void listaConta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string ck = "0";
+            string id;
+
+            if (listaConta.RowCount == 0)
+                return;
+
+            id = listaConta.SelectedRows[0].Cells[0].Value.ToString();
+
+            if(e.ColumnIndex == 2)
+            {
+                listaConta.EndEdit();
+                ck = listaConta.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+                string sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
+                BD.ExecutarSQL(sql);
+            }
+        }
+
+        private void menu_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

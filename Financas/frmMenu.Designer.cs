@@ -54,14 +54,15 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new System.Windows.Forms.ToolStripMenuItem();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,29 +70,43 @@ namespace Setup.Financas
             this.comprasCredito = new System.Windows.Forms.ToolStripMenuItem();
             this.transferencia = new System.Windows.Forms.ToolStripMenuItem();
             this.relatorios = new System.Windows.Forms.ToolStripMenuItem();
-            this.cadastrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastros = new System.Windows.Forms.ToolStripMenuItem();
             this.classesDeCustoAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cartaoDeCreditoAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportar = new System.Windows.Forms.ToolStripMenuItem();
             this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previsaoDeCustos = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuracoes = new System.Windows.Forms.ToolStripMenuItem();
+            this.usuarioAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.connBD = new System.Windows.Forms.ToolStripMenuItem();
             this.query = new System.Windows.Forms.ToolStripMenuItem();
             this.anotacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolLancamento = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraCredito = new System.Windows.Forms.ToolStripMenuItem();
+            this.transf = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolRelatorio = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolVisaoGeral = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolConfiguracoes = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.conexãoBancoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolAnotacoes = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolCalculadora = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolPrevisao = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolQuery = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolCalculadora = new System.Windows.Forms.ToolStripMenuItem();
             this.tabelaMenu = new System.Windows.Forms.TabControl();
             this.tabReceita_Despesa = new System.Windows.Forms.TabPage();
+            this.pnLancamento = new System.Windows.Forms.Panel();
+            this.cbClasse = new Setup.Controles.cbCombo();
+            this.cbConta = new Setup.Controles.cbCombo();
+            this.txtData = new Setup.Controles.Data();
+            this.txtValor = new Setup.Controles.Decimal();
+            this.txtDescricao = new Setup.Controles.Txt();
+            this.opReceita = new System.Windows.Forms.RadioButton();
+            this.opDespesa = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label7 = new System.Windows.Forms.Label();
@@ -103,28 +118,16 @@ namespace Setup.Financas
             this.CLASSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbConta = new Setup.Controles.cbCombo();
-            this.txtData = new Setup.Controles.Data();
-            this.txtValor = new Setup.Controles.Decimal();
-            this.txtDescricao = new Setup.Controles.Txt();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.opReceita = new System.Windows.Forms.RadioButton();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.salvar = new System.Windows.Forms.ToolStripMenuItem();
             this.limpar = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbClasse = new Setup.Controles.cbCombo();
-            this.opDespesa = new System.Windows.Forms.RadioButton();
             this.tabCad_Classes = new System.Windows.Forms.TabPage();
             this.gpConta = new System.Windows.Forms.GroupBox();
             this.listaConta = new Setup.Controles.dgView();
             this.ID_CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CONT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CREDITO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ckAtivoConta = new System.Windows.Forms.CheckBox();
             this.btnExcluirConta = new System.Windows.Forms.Button();
             this.txtConta = new Setup.Controles.Txt();
@@ -143,10 +146,11 @@ namespace Setup.Financas
             this.menuStrip1.SuspendLayout();
             this.tabelaMenu.SuspendLayout();
             this.tabReceita_Despesa.SuspendLayout();
+            this.pnLancamento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.tabCad_Classes.SuspendLayout();
             this.gpConta.SuspendLayout();
@@ -162,13 +166,12 @@ namespace Setup.Financas
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu,
             this.ToolLancamento,
+            this.compraCredito,
+            this.transf,
             this.ToolRelatorio,
             this.ToolVisaoGeral,
-            this.ToolConfiguracoes,
-            this.ToolAnotacoes,
-            this.ToolCalculadora,
             this.ToolPrevisao,
-            this.ToolQuery});
+            this.ToolCalculadora});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -181,9 +184,10 @@ namespace Setup.Financas
             this.menu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novoLancamento,
             this.relatorios,
-            this.cadastrosToolStripMenuItem,
-            this.exportarToolStripMenuItem,
+            this.cadastros,
+            this.exportar,
             this.previsaoDeCustos,
+            this.configuracoes,
             this.query,
             this.anotacoes,
             this.sairToolStripMenuItem});
@@ -193,6 +197,7 @@ namespace Setup.Financas
             this.menu.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.menu.Size = new System.Drawing.Size(66, 20);
             this.menu.Text = "Menu";
+            this.menu.Click += new System.EventHandler(this.menu_Click);
             // 
             // novoLancamento
             // 
@@ -242,16 +247,16 @@ namespace Setup.Financas
             this.relatorios.Text = "Relatório";
             this.relatorios.Click += new System.EventHandler(this.relatóriosToolStripMenuItem_Click);
             // 
-            // cadastrosToolStripMenuItem
+            // cadastros
             // 
-            this.cadastrosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastros.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.classesDeCustoAdd,
             this.contasAdd,
             this.cartaoDeCreditoAdd});
-            this.cadastrosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("cadastrosToolStripMenuItem.Image")));
-            this.cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            this.cadastrosToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.cadastrosToolStripMenuItem.Text = "Cadastros";
+            this.cadastros.Image = ((System.Drawing.Image)(resources.GetObject("cadastros.Image")));
+            this.cadastros.Name = "cadastros";
+            this.cadastros.Size = new System.Drawing.Size(246, 22);
+            this.cadastros.Text = "Cadastros";
             // 
             // classesDeCustoAdd
             // 
@@ -277,16 +282,17 @@ namespace Setup.Financas
             this.cartaoDeCreditoAdd.Name = "cartaoDeCreditoAdd";
             this.cartaoDeCreditoAdd.Size = new System.Drawing.Size(205, 22);
             this.cartaoDeCreditoAdd.Text = "Cartão de Crédito";
+            this.cartaoDeCreditoAdd.Click += new System.EventHandler(this.cartaoDeCreditoAdd_Click);
             // 
-            // exportarToolStripMenuItem
+            // exportar
             // 
-            this.exportarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pDFToolStripMenuItem,
             this.excelToolStripMenuItem});
-            this.exportarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportarToolStripMenuItem.Image")));
-            this.exportarToolStripMenuItem.Name = "exportarToolStripMenuItem";
-            this.exportarToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.exportarToolStripMenuItem.Text = "Exportar";
+            this.exportar.Image = ((System.Drawing.Image)(resources.GetObject("exportar.Image")));
+            this.exportar.Name = "exportar";
+            this.exportar.Size = new System.Drawing.Size(246, 22);
+            this.exportar.Text = "Exportar";
             // 
             // pDFToolStripMenuItem
             // 
@@ -310,6 +316,32 @@ namespace Setup.Financas
             | System.Windows.Forms.Keys.P)));
             this.previsaoDeCustos.Size = new System.Drawing.Size(246, 22);
             this.previsaoDeCustos.Text = "Previsão de Custos";
+            // 
+            // configuracoes
+            // 
+            this.configuracoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usuarioAdd,
+            this.connBD});
+            this.configuracoes.Image = ((System.Drawing.Image)(resources.GetObject("configuracoes.Image")));
+            this.configuracoes.Name = "configuracoes";
+            this.configuracoes.Size = new System.Drawing.Size(246, 22);
+            this.configuracoes.Text = "Configurações";
+            // 
+            // usuarioAdd
+            // 
+            this.usuarioAdd.Image = ((System.Drawing.Image)(resources.GetObject("usuarioAdd.Image")));
+            this.usuarioAdd.Name = "usuarioAdd";
+            this.usuarioAdd.Size = new System.Drawing.Size(209, 22);
+            this.usuarioAdd.Text = "Usuários";
+            this.usuarioAdd.Click += new System.EventHandler(this.usuarioAdd_Click);
+            // 
+            // connBD
+            // 
+            this.connBD.Image = ((System.Drawing.Image)(resources.GetObject("connBD.Image")));
+            this.connBD.Name = "connBD";
+            this.connBD.Size = new System.Drawing.Size(209, 22);
+            this.connBD.Text = "Conexão Banco de Dados";
+            this.connBD.Click += new System.EventHandler(this.connBD_Click);
             // 
             // query
             // 
@@ -346,6 +378,24 @@ namespace Setup.Financas
             this.ToolLancamento.Text = "Receitas • Despesas";
             this.ToolLancamento.Click += new System.EventHandler(this.novoLançamentoToolStripMenuItem1_Click);
             // 
+            // compraCredito
+            // 
+            this.compraCredito.ForeColor = System.Drawing.Color.White;
+            this.compraCredito.Image = ((System.Drawing.Image)(resources.GetObject("compraCredito.Image")));
+            this.compraCredito.Name = "compraCredito";
+            this.compraCredito.Size = new System.Drawing.Size(142, 20);
+            this.compraCredito.Text = "Compras no Crédito";
+            this.compraCredito.Click += new System.EventHandler(this.compraCredito_Click);
+            // 
+            // transf
+            // 
+            this.transf.ForeColor = System.Drawing.Color.White;
+            this.transf.Image = ((System.Drawing.Image)(resources.GetObject("transf.Image")));
+            this.transf.Name = "transf";
+            this.transf.Size = new System.Drawing.Size(109, 20);
+            this.transf.Text = "Transferências";
+            this.transf.Click += new System.EventHandler(this.transf_Click);
+            // 
             // ToolRelatorio
             // 
             this.ToolRelatorio.ForeColor = System.Drawing.Color.White;
@@ -364,51 +414,6 @@ namespace Setup.Financas
             this.ToolVisaoGeral.Size = new System.Drawing.Size(93, 20);
             this.ToolVisaoGeral.Text = "Visão Geral";
             // 
-            // ToolConfiguracoes
-            // 
-            this.ToolConfiguracoes.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usuáriosToolStripMenuItem,
-            this.conexãoBancoDeDadosToolStripMenuItem});
-            this.ToolConfiguracoes.ForeColor = System.Drawing.Color.White;
-            this.ToolConfiguracoes.Image = ((System.Drawing.Image)(resources.GetObject("ToolConfiguracoes.Image")));
-            this.ToolConfiguracoes.Name = "ToolConfiguracoes";
-            this.ToolConfiguracoes.Size = new System.Drawing.Size(112, 20);
-            this.ToolConfiguracoes.Text = "Configurações";
-            // 
-            // usuáriosToolStripMenuItem
-            // 
-            this.usuáriosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("usuáriosToolStripMenuItem.Image")));
-            this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.usuáriosToolStripMenuItem.Text = "Usuários";
-            this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
-            // 
-            // conexãoBancoDeDadosToolStripMenuItem
-            // 
-            this.conexãoBancoDeDadosToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("conexãoBancoDeDadosToolStripMenuItem.Image")));
-            this.conexãoBancoDeDadosToolStripMenuItem.Name = "conexãoBancoDeDadosToolStripMenuItem";
-            this.conexãoBancoDeDadosToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-            this.conexãoBancoDeDadosToolStripMenuItem.Text = "Conexão Banco de Dados";
-            this.conexãoBancoDeDadosToolStripMenuItem.Click += new System.EventHandler(this.conexãoBancoDeDadosToolStripMenuItem_Click);
-            // 
-            // ToolAnotacoes
-            // 
-            this.ToolAnotacoes.ForeColor = System.Drawing.Color.White;
-            this.ToolAnotacoes.Image = ((System.Drawing.Image)(resources.GetObject("ToolAnotacoes.Image")));
-            this.ToolAnotacoes.Name = "ToolAnotacoes";
-            this.ToolAnotacoes.Size = new System.Drawing.Size(91, 20);
-            this.ToolAnotacoes.Text = "Anotações";
-            this.ToolAnotacoes.Click += new System.EventHandler(this.anotaçõesToolStripMenuItem1_Click);
-            // 
-            // ToolCalculadora
-            // 
-            this.ToolCalculadora.ForeColor = System.Drawing.Color.White;
-            this.ToolCalculadora.Image = ((System.Drawing.Image)(resources.GetObject("ToolCalculadora.Image")));
-            this.ToolCalculadora.Name = "ToolCalculadora";
-            this.ToolCalculadora.Size = new System.Drawing.Size(98, 20);
-            this.ToolCalculadora.Text = "Calculadora";
-            this.ToolCalculadora.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
-            // 
             // ToolPrevisao
             // 
             this.ToolPrevisao.ForeColor = System.Drawing.Color.White;
@@ -419,15 +424,14 @@ namespace Setup.Financas
             this.ToolPrevisao.Size = new System.Drawing.Size(134, 20);
             this.ToolPrevisao.Text = "Previsão de Custos";
             // 
-            // ToolQuery
+            // ToolCalculadora
             // 
-            this.ToolQuery.ForeColor = System.Drawing.Color.White;
-            this.ToolQuery.Image = ((System.Drawing.Image)(resources.GetObject("ToolQuery.Image")));
-            this.ToolQuery.Name = "ToolQuery";
-            this.ToolQuery.Size = new System.Drawing.Size(56, 20);
-            this.ToolQuery.Text = "SQL";
-            this.ToolQuery.ToolTipText = "SQL";
-            this.ToolQuery.Click += new System.EventHandler(this.ToolQuery_Click);
+            this.ToolCalculadora.ForeColor = System.Drawing.Color.White;
+            this.ToolCalculadora.Image = ((System.Drawing.Image)(resources.GetObject("ToolCalculadora.Image")));
+            this.ToolCalculadora.Name = "ToolCalculadora";
+            this.ToolCalculadora.Size = new System.Drawing.Size(98, 20);
+            this.ToolCalculadora.Text = "Calculadora";
+            this.ToolCalculadora.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
             // tabelaMenu
             // 
@@ -446,40 +450,212 @@ namespace Setup.Financas
             // tabReceita_Despesa
             // 
             this.tabReceita_Despesa.BackColor = System.Drawing.Color.Black;
+            this.tabReceita_Despesa.Controls.Add(this.pnLancamento);
             this.tabReceita_Despesa.Controls.Add(this.statusStrip);
             this.tabReceita_Despesa.Controls.Add(this.label7);
             this.tabReceita_Despesa.Controls.Add(this.listaSaldo_Contas);
             this.tabReceita_Despesa.Controls.Add(this.lista_Gastos_Classe);
-            this.tabReceita_Despesa.Controls.Add(this.pictureBox1);
             this.tabReceita_Despesa.Controls.Add(this.label1);
-            this.tabReceita_Despesa.Controls.Add(this.cbConta);
-            this.tabReceita_Despesa.Controls.Add(this.txtData);
-            this.tabReceita_Despesa.Controls.Add(this.txtValor);
-            this.tabReceita_Despesa.Controls.Add(this.txtDescricao);
-            this.tabReceita_Despesa.Controls.Add(this.label3);
-            this.tabReceita_Despesa.Controls.Add(this.label6);
-            this.tabReceita_Despesa.Controls.Add(this.label5);
-            this.tabReceita_Despesa.Controls.Add(this.label4);
-            this.tabReceita_Despesa.Controls.Add(this.label2);
-            this.tabReceita_Despesa.Controls.Add(this.opReceita);
             this.tabReceita_Despesa.Controls.Add(this.menuStrip2);
-            this.tabReceita_Despesa.Controls.Add(this.cbClasse);
-            this.tabReceita_Despesa.Controls.Add(this.opDespesa);
             this.tabReceita_Despesa.Location = new System.Drawing.Point(4, 27);
             this.tabReceita_Despesa.Name = "tabReceita_Despesa";
             this.tabReceita_Despesa.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReceita_Despesa.Size = new System.Drawing.Size(891, 339);
+            this.tabReceita_Despesa.Size = new System.Drawing.Size(891, 315);
             this.tabReceita_Despesa.TabIndex = 0;
             this.tabReceita_Despesa.Tag = "Lancamento";
             this.tabReceita_Despesa.Text = "Receitas • Despesas";
             this.tabReceita_Despesa.UseVisualStyleBackColor = true;
+            // 
+            // pnLancamento
+            // 
+            this.pnLancamento.Controls.Add(this.cbClasse);
+            this.pnLancamento.Controls.Add(this.cbConta);
+            this.pnLancamento.Controls.Add(this.txtData);
+            this.pnLancamento.Controls.Add(this.txtValor);
+            this.pnLancamento.Controls.Add(this.txtDescricao);
+            this.pnLancamento.Controls.Add(this.opReceita);
+            this.pnLancamento.Controls.Add(this.opDespesa);
+            this.pnLancamento.Controls.Add(this.label3);
+            this.pnLancamento.Controls.Add(this.label6);
+            this.pnLancamento.Controls.Add(this.label5);
+            this.pnLancamento.Controls.Add(this.label4);
+            this.pnLancamento.Controls.Add(this.label2);
+            this.pnLancamento.Controls.Add(this.pictureBox1);
+            this.pnLancamento.Location = new System.Drawing.Point(7, 31);
+            this.pnLancamento.Name = "pnLancamento";
+            this.pnLancamento.Size = new System.Drawing.Size(876, 62);
+            this.pnLancamento.TabIndex = 34;
+            // 
+            // cbClasse
+            // 
+            this.cbClasse.AllowDrop = true;
+            this.cbClasse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbClasse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbClasse.BackColor = System.Drawing.Color.Black;
+            this.cbClasse.DisplayMember = "1";
+            this.cbClasse.DropDownHeight = 136;
+            this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClasse.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbClasse.ForeColor = System.Drawing.Color.White;
+            this.cbClasse.FormattingEnabled = true;
+            this.cbClasse.IntegralHeight = false;
+            this.cbClasse.Location = new System.Drawing.Point(215, 3);
+            this.cbClasse.MaxDropDownItems = 10;
+            this.cbClasse.Name = "cbClasse";
+            this.cbClasse.Size = new System.Drawing.Size(288, 23);
+            this.cbClasse.TabIndex = 35;
+            this.cbClasse.Tag = "A";
+            // 
+            // cbConta
+            // 
+            this.cbConta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbConta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbConta.BackColor = System.Drawing.Color.Black;
+            this.cbConta.DropDownHeight = 136;
+            this.cbConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbConta.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbConta.ForeColor = System.Drawing.Color.White;
+            this.cbConta.FormattingEnabled = true;
+            this.cbConta.IntegralHeight = false;
+            this.cbConta.Location = new System.Drawing.Point(576, 3);
+            this.cbConta.MaxDropDownItems = 10;
+            this.cbConta.Name = "cbConta";
+            this.cbConta.Size = new System.Drawing.Size(288, 23);
+            this.cbConta.TabIndex = 36;
+            this.cbConta.Tag = "B";
+            // 
+            // txtData
+            // 
+            this.txtData.BackColor = System.Drawing.Color.Black;
+            this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtData.ForeColor = System.Drawing.Color.White;
+            this.txtData.Location = new System.Drawing.Point(215, 32);
+            this.txtData.Name = "txtData";
+            this.txtData.Size = new System.Drawing.Size(110, 23);
+            this.txtData.TabIndex = 37;
+            this.txtData.Tag = "C";
+            this.txtData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtValor
+            // 
+            this.txtValor.BackColor = System.Drawing.Color.Black;
+            this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtValor.ForeColor = System.Drawing.Color.White;
+            this.txtValor.Location = new System.Drawing.Point(393, 33);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(110, 23);
+            this.txtValor.TabIndex = 38;
+            this.txtValor.Tag = "D";
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtDescricao
+            // 
+            this.txtDescricao.BackColor = System.Drawing.Color.Black;
+            this.txtDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescricao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtDescricao.ForeColor = System.Drawing.Color.White;
+            this.txtDescricao.Location = new System.Drawing.Point(604, 32);
+            this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.Size = new System.Drawing.Size(260, 23);
+            this.txtDescricao.TabIndex = 39;
+            // 
+            // opReceita
+            // 
+            this.opReceita.AutoSize = true;
+            this.opReceita.ForeColor = System.Drawing.Color.White;
+            this.opReceita.Location = new System.Drawing.Point(77, 7);
+            this.opReceita.Name = "opReceita";
+            this.opReceita.Size = new System.Drawing.Size(74, 19);
+            this.opReceita.TabIndex = 40;
+            this.opReceita.TabStop = true;
+            this.opReceita.Text = "Receita";
+            this.opReceita.UseVisualStyleBackColor = true;
+            this.opReceita.CheckedChanged += new System.EventHandler(this.opReceita_CheckedChanged);
+            // 
+            // opDespesa
+            // 
+            this.opDespesa.AutoSize = true;
+            this.opDespesa.Checked = true;
+            this.opDespesa.ForeColor = System.Drawing.Color.White;
+            this.opDespesa.Location = new System.Drawing.Point(77, 36);
+            this.opDespesa.Name = "opDespesa";
+            this.opDespesa.Size = new System.Drawing.Size(74, 19);
+            this.opDespesa.TabIndex = 41;
+            this.opDespesa.TabStop = true;
+            this.opDespesa.Text = "Despesa";
+            this.opDespesa.UseVisualStyleBackColor = true;
+            this.opDespesa.CheckedChanged += new System.EventHandler(this.opDespesa_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(528, 11);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 15);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Conta";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(528, 40);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 15);
+            this.label6.TabIndex = 43;
+            this.label6.Text = "Descrição";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(345, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 15);
+            this.label5.TabIndex = 44;
+            this.label5.Text = "Valor";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(174, 41);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.TabIndex = 45;
+            this.label4.Text = "Data";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(160, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 15);
+            this.label2.TabIndex = 46;
+            this.label2.Text = "Classe";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(13, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
             // 
             // statusStrip
             // 
             this.statusStrip.BackColor = System.Drawing.Color.Black;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(3, 313);
+            this.statusStrip.Location = new System.Drawing.Point(3, 289);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip.Size = new System.Drawing.Size(885, 22);
@@ -497,7 +673,7 @@ namespace Setup.Financas
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label7.ForeColor = System.Drawing.Color.Tomato;
-            this.label7.Location = new System.Drawing.Point(3, 335);
+            this.label7.Location = new System.Drawing.Point(3, 311);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(885, 1);
             this.label7.TabIndex = 33;
@@ -688,16 +864,6 @@ namespace Setup.Financas
             this.VALOR.Name = "VALOR";
             this.VALOR.ReadOnly = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(8, 37);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(55, 55);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 34;
-            this.pictureBox1.TabStop = false;
-            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.White;
@@ -707,122 +873,6 @@ namespace Setup.Financas
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(885, 1);
             this.label1.TabIndex = 32;
-            // 
-            // cbConta
-            // 
-            this.cbConta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbConta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbConta.BackColor = System.Drawing.Color.Black;
-            this.cbConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbConta.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbConta.ForeColor = System.Drawing.Color.White;
-            this.cbConta.FormattingEnabled = true;
-            this.cbConta.Location = new System.Drawing.Point(571, 35);
-            this.cbConta.Name = "cbConta";
-            this.cbConta.Size = new System.Drawing.Size(288, 23);
-            this.cbConta.TabIndex = 19;
-            this.cbConta.Tag = "B";
-            // 
-            // txtData
-            // 
-            this.txtData.BackColor = System.Drawing.Color.Black;
-            this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtData.ForeColor = System.Drawing.Color.White;
-            this.txtData.Location = new System.Drawing.Point(210, 64);
-            this.txtData.Name = "txtData";
-            this.txtData.Size = new System.Drawing.Size(110, 23);
-            this.txtData.TabIndex = 21;
-            this.txtData.Tag = "C";
-            this.txtData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtValor
-            // 
-            this.txtValor.BackColor = System.Drawing.Color.Black;
-            this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtValor.ForeColor = System.Drawing.Color.White;
-            this.txtValor.Location = new System.Drawing.Point(388, 65);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(110, 23);
-            this.txtValor.TabIndex = 22;
-            this.txtValor.Tag = "D";
-            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.BackColor = System.Drawing.Color.Black;
-            this.txtDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescricao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDescricao.ForeColor = System.Drawing.Color.White;
-            this.txtDescricao.Location = new System.Drawing.Point(599, 64);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(260, 23);
-            this.txtDescricao.TabIndex = 23;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(523, 43);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 15);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Conta";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(523, 72);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 15);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "Descrição";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(340, 73);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 15);
-            this.label5.TabIndex = 28;
-            this.label5.Text = "Valor";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(169, 73);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 15);
-            this.label4.TabIndex = 29;
-            this.label4.Text = "Data";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(155, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 15);
-            this.label2.TabIndex = 30;
-            this.label2.Text = "Classe";
-            // 
-            // opReceita
-            // 
-            this.opReceita.AutoSize = true;
-            this.opReceita.ForeColor = System.Drawing.Color.White;
-            this.opReceita.Location = new System.Drawing.Point(72, 39);
-            this.opReceita.Name = "opReceita";
-            this.opReceita.Size = new System.Drawing.Size(74, 19);
-            this.opReceita.TabIndex = 24;
-            this.opReceita.TabStop = true;
-            this.opReceita.Text = "Receita";
-            this.opReceita.UseVisualStyleBackColor = true;
-            this.opReceita.CheckedChanged += new System.EventHandler(this.opReceita_CheckedChanged);
             // 
             // menuStrip2
             // 
@@ -859,38 +909,6 @@ namespace Setup.Financas
             this.limpar.Text = "Limpar";
             this.limpar.Click += new System.EventHandler(this.limpar_Click);
             // 
-            // cbClasse
-            // 
-            this.cbClasse.AllowDrop = true;
-            this.cbClasse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbClasse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbClasse.BackColor = System.Drawing.Color.Black;
-            this.cbClasse.DisplayMember = "1";
-            this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbClasse.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbClasse.ForeColor = System.Drawing.Color.White;
-            this.cbClasse.FormattingEnabled = true;
-            this.cbClasse.Location = new System.Drawing.Point(210, 35);
-            this.cbClasse.Name = "cbClasse";
-            this.cbClasse.Size = new System.Drawing.Size(288, 23);
-            this.cbClasse.TabIndex = 16;
-            this.cbClasse.Tag = "A";
-            // 
-            // opDespesa
-            // 
-            this.opDespesa.AutoSize = true;
-            this.opDespesa.Checked = true;
-            this.opDespesa.ForeColor = System.Drawing.Color.White;
-            this.opDespesa.Location = new System.Drawing.Point(72, 68);
-            this.opDespesa.Name = "opDespesa";
-            this.opDespesa.Size = new System.Drawing.Size(74, 19);
-            this.opDespesa.TabIndex = 25;
-            this.opDespesa.TabStop = true;
-            this.opDespesa.Text = "Despesa";
-            this.opDespesa.UseVisualStyleBackColor = true;
-            this.opDespesa.CheckedChanged += new System.EventHandler(this.opDespesa_CheckedChanged);
-            // 
             // tabCad_Classes
             // 
             this.tabCad_Classes.BackColor = System.Drawing.Color.Black;
@@ -902,7 +920,7 @@ namespace Setup.Financas
             this.tabCad_Classes.Size = new System.Drawing.Size(891, 339);
             this.tabCad_Classes.TabIndex = 2;
             this.tabCad_Classes.Tag = "Cadastro";
-            this.tabCad_Classes.Text = "Classes";
+            this.tabCad_Classes.Text = "ADD";
             this.tabCad_Classes.UseVisualStyleBackColor = true;
             // 
             // gpConta
@@ -946,15 +964,16 @@ namespace Setup.Financas
             this.listaConta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaConta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_CONTA,
-            this.CONT});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaConta.DefaultCellStyle = dataGridViewCellStyle15;
+            this.CONT,
+            this.CREDITO});
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaConta.DefaultCellStyle = dataGridViewCellStyle16;
             this.listaConta.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaConta.EnableHeadersVisualStyles = false;
             this.listaConta.GridColor = System.Drawing.Color.DimGray;
@@ -963,20 +982,20 @@ namespace Setup.Financas
             this.listaConta.Name = "listaConta";
             this.listaConta.ReadOnly = true;
             this.listaConta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaConta.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.listaConta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            this.listaConta.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaConta.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.listaConta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            this.listaConta.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.listaConta.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.listaConta.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.listaConta.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -987,21 +1006,43 @@ namespace Setup.Financas
             this.listaConta.ShowEditingIcon = false;
             this.listaConta.Size = new System.Drawing.Size(419, 246);
             this.listaConta.TabIndex = 1;
+            this.listaConta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaConta_CellContentClick);
+            this.listaConta.MouseEnter += new System.EventHandler(this.listaConta_MouseEnter);
             // 
             // ID_CONTA
             // 
+            this.ID_CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ID_CONTA.DataPropertyName = "CONTA_ID";
             this.ID_CONTA.HeaderText = "CONTA_ID";
             this.ID_CONTA.Name = "ID_CONTA";
             this.ID_CONTA.ReadOnly = true;
             this.ID_CONTA.Visible = false;
+            this.ID_CONTA.Width = 5;
             // 
             // CONT
             // 
+            this.CONT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CONT.DataPropertyName = "CONTA";
             this.CONT.HeaderText = "CONTA";
+            this.CONT.MinimumWidth = 220;
             this.CONT.Name = "CONT";
             this.CONT.ReadOnly = true;
+            this.CONT.Width = 220;
+            // 
+            // CREDITO
+            // 
+            this.CREDITO.DataPropertyName = "CREDITO";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.NullValue = false;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CREDITO.DefaultCellStyle = dataGridViewCellStyle15;
+            this.CREDITO.FalseValue = "0";
+            this.CREDITO.HeaderText = "FUNÇÃO CRÉDITO?";
+            this.CREDITO.Name = "CREDITO";
+            this.CREDITO.ReadOnly = true;
+            this.CREDITO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CREDITO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CREDITO.TrueValue = "1";
             // 
             // ckAtivoConta
             // 
@@ -1079,36 +1120,36 @@ namespace Setup.Financas
             // 
             this.listaClasse.AllowUserToAddRows = false;
             this.listaClasse.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            this.listaClasse.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.White;
+            this.listaClasse.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.listaClasse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listaClasse.BackgroundColor = System.Drawing.Color.Black;
             this.listaClasse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.listaClasse.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.listaClasse.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaClasse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaClasse.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.listaClasse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaClasse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
             this.CLASS});
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaClasse.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaClasse.DefaultCellStyle = dataGridViewCellStyle21;
             this.listaClasse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaClasse.EnableHeadersVisualStyles = false;
             this.listaClasse.GridColor = System.Drawing.Color.DimGray;
@@ -1117,20 +1158,20 @@ namespace Setup.Financas
             this.listaClasse.Name = "listaClasse";
             this.listaClasse.ReadOnly = true;
             this.listaClasse.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaClasse.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
-            this.listaClasse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
-            this.listaClasse.RowsDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaClasse.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.listaClasse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.White;
+            this.listaClasse.RowsDefaultCellStyle = dataGridViewCellStyle23;
             this.listaClasse.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.listaClasse.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.listaClasse.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -1263,11 +1304,13 @@ namespace Setup.Financas
             this.tabelaMenu.ResumeLayout(false);
             this.tabReceita_Despesa.ResumeLayout(false);
             this.tabReceita_Despesa.PerformLayout();
+            this.pnLancamento.ResumeLayout(false);
+            this.pnLancamento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.tabCad_Classes.ResumeLayout(false);
@@ -1292,11 +1335,11 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripMenuItem relatorios;
         private System.Windows.Forms.ToolStripMenuItem comprasCredito;
         private System.Windows.Forms.ToolStripMenuItem transferencia;
-        private System.Windows.Forms.ToolStripMenuItem cadastrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastros;
         private System.Windows.Forms.ToolStripMenuItem classesDeCustoAdd;
         private System.Windows.Forms.ToolStripMenuItem contasAdd;
         private System.Windows.Forms.ToolStripMenuItem cartaoDeCreditoAdd;
-        private System.Windows.Forms.ToolStripMenuItem exportarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportar;
         private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem previsaoDeCustos;
@@ -1305,16 +1348,11 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolRelatorio;
         private System.Windows.Forms.ToolStripMenuItem ToolVisaoGeral;
-        private System.Windows.Forms.ToolStripMenuItem ToolConfiguracoes;
-        private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ToolAnotacoes;
         private System.Windows.Forms.ToolStripMenuItem ToolLancamento;
         private System.Windows.Forms.ToolStripMenuItem ToolCalculadora;
         private System.Windows.Forms.ToolStripMenuItem ToolPrevisao;
-        private System.Windows.Forms.ToolStripMenuItem conexãoBancoDeDadosToolStripMenuItem;
         private System.Windows.Forms.TabControl tabelaMenu;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.ToolStripMenuItem ToolQuery;
         private System.Windows.Forms.TabPage tabReceita_Despesa;
         private System.Windows.Forms.TabPage tabCad_Classes;
         private System.Windows.Forms.GroupBox gpConta;
@@ -1334,8 +1372,22 @@ namespace Setup.Financas
         private System.Windows.Forms.Label label7;
         private Controles.dgView listaSaldo_Contas;
         public Controles.dgView lista_Gastos_Classe;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem salvar;
+        private System.Windows.Forms.ToolStripMenuItem limpar;
+        private Controles.dgView listaClasse;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLASS;
+        private Controles.dgView listaConta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CONTA_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CONTA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VALOR;
+        private System.Windows.Forms.Panel pnLancamento;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private Controles.cbCombo cbConta;
         private Controles.Data txtData;
         private Controles.Decimal txtValor;
@@ -1346,22 +1398,15 @@ namespace Setup.Financas
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton opReceita;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem salvar;
-        private System.Windows.Forms.ToolStripMenuItem limpar;
         private Controles.cbCombo cbClasse;
         private System.Windows.Forms.RadioButton opDespesa;
-        private Controles.dgView listaClasse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASS;
-        private Controles.dgView listaConta;
+        private System.Windows.Forms.ToolStripMenuItem configuracoes;
+        private System.Windows.Forms.ToolStripMenuItem usuarioAdd;
+        private System.Windows.Forms.ToolStripMenuItem connBD;
+        private System.Windows.Forms.ToolStripMenuItem compraCredito;
+        private System.Windows.Forms.ToolStripMenuItem transf;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_CONTA;
         private System.Windows.Forms.DataGridViewTextBoxColumn CONT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CONTA_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CONTA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VALOR;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CREDITO;
     }
 }

@@ -30,12 +30,12 @@ namespace Setup.Financas
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boxCartaoCredito));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,7 +43,6 @@ namespace Setup.Financas
             this.txtLimite = new Setup.Controles.Decimal();
             this.cbVenc = new Setup.Controles.cbCombo();
             this.cbFecha = new Setup.Controles.cbCombo();
-            this.txtNome = new Setup.Controles.Txt();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.salvar = new System.Windows.Forms.ToolStripMenuItem();
             this.novo = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +54,9 @@ namespace Setup.Financas
             this.ATIVO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ckStatus = new System.Windows.Forms.CheckBox();
             this.lblID = new System.Windows.Forms.Label();
+            this.cbCartao = new Setup.Controles.cbCombo();
+            this.lblCor = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
@@ -111,10 +113,12 @@ namespace Setup.Financas
             // cbVenc
             // 
             this.cbVenc.BackColor = System.Drawing.Color.Black;
+            this.cbVenc.DropDownHeight = 136;
             this.cbVenc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVenc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbVenc.ForeColor = System.Drawing.Color.White;
             this.cbVenc.FormattingEnabled = true;
+            this.cbVenc.IntegralHeight = false;
             this.cbVenc.Location = new System.Drawing.Point(150, 101);
             this.cbVenc.MaxDropDownItems = 10;
             this.cbVenc.Name = "cbVenc";
@@ -125,28 +129,18 @@ namespace Setup.Financas
             // cbFecha
             // 
             this.cbFecha.BackColor = System.Drawing.Color.Black;
+            this.cbFecha.DropDownHeight = 136;
             this.cbFecha.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFecha.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbFecha.ForeColor = System.Drawing.Color.White;
             this.cbFecha.FormattingEnabled = true;
+            this.cbFecha.IntegralHeight = false;
             this.cbFecha.Location = new System.Drawing.Point(150, 133);
             this.cbFecha.MaxDropDownItems = 10;
             this.cbFecha.Name = "cbFecha";
             this.cbFecha.Size = new System.Drawing.Size(177, 23);
             this.cbFecha.TabIndex = 4;
             this.cbFecha.Tag = "\'Fechamento Fatura\'";
-            // 
-            // txtNome
-            // 
-            this.txtNome.BackColor = System.Drawing.Color.Black;
-            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNome.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtNome.ForeColor = System.Drawing.Color.White;
-            this.txtNome.Location = new System.Drawing.Point(63, 37);
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(264, 23);
-            this.txtNome.TabIndex = 1;
-            this.txtNome.Tag = "\'Cartão\'";
             // 
             // menuStrip1
             // 
@@ -198,37 +192,37 @@ namespace Setup.Financas
             // 
             this.lista.AllowUserToAddRows = false;
             this.lista.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.Black;
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
             this.CARTAO,
             this.ATIVO});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lista.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle16;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
             this.lista.GridColor = System.Drawing.Color.DimGray;
@@ -237,20 +231,20 @@ namespace Setup.Financas
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -287,10 +281,10 @@ namespace Setup.Financas
             // ATIVO
             // 
             this.ATIVO.DataPropertyName = "ATIVO";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = "False";
-            this.ATIVO.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle15.Format = "N0";
+            dataGridViewCellStyle15.NullValue = "False";
+            this.ATIVO.DefaultCellStyle = dataGridViewCellStyle15;
             this.ATIVO.HeaderText = "ATIVO";
             this.ATIVO.Name = "ATIVO";
             this.ATIVO.ReadOnly = true;
@@ -321,13 +315,42 @@ namespace Setup.Financas
             this.lblID.Text = "ID Selecionado: 0";
             this.lblID.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // cbCartao
+            // 
+            this.cbCartao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbCartao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbCartao.BackColor = System.Drawing.Color.Black;
+            this.cbCartao.DropDownHeight = 136;
+            this.cbCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbCartao.ForeColor = System.Drawing.Color.White;
+            this.cbCartao.FormattingEnabled = true;
+            this.cbCartao.IntegralHeight = false;
+            this.cbCartao.Location = new System.Drawing.Point(63, 37);
+            this.cbCartao.MaxDropDownItems = 10;
+            this.cbCartao.Name = "cbCartao";
+            this.cbCartao.Size = new System.Drawing.Size(236, 23);
+            this.cbCartao.TabIndex = 37;
+            this.cbCartao.Tag = "\'Cartão\'";
+            // 
+            // lblCor
+            // 
+            this.lblCor.BackColor = System.Drawing.Color.Transparent;
+            this.lblCor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCor.Location = new System.Drawing.Point(305, 37);
+            this.lblCor.Name = "lblCor";
+            this.lblCor.Size = new System.Drawing.Size(22, 23);
+            this.lblCor.TabIndex = 38;
+            this.lblCor.Click += new System.EventHandler(this.lblCor_Click);
+            // 
             // boxCartaoCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(341, 441);
-            this.Controls.Add(this.txtNome);
+            this.Controls.Add(this.lblCor);
+            this.Controls.Add(this.cbCartao);
             this.Controls.Add(this.txtLimite);
             this.Controls.Add(this.cbVenc);
             this.Controls.Add(this.cbFecha);
@@ -362,7 +385,6 @@ namespace Setup.Financas
         private Controles.Decimal txtLimite;
         private Controles.cbCombo cbVenc;
         private Controles.cbCombo cbFecha;
-        private Controles.Txt txtNome;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem salvar;
         private System.Windows.Forms.ToolStripMenuItem novo;
@@ -374,5 +396,8 @@ namespace Setup.Financas
         private System.Windows.Forms.DataGridViewCheckBoxColumn ATIVO;
         private System.Windows.Forms.CheckBox ckStatus;
         private System.Windows.Forms.Label lblID;
+        private Controles.cbCombo cbCartao;
+        private System.Windows.Forms.Label lblCor;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }

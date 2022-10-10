@@ -16,8 +16,10 @@ namespace Setup.Financas
         private void lblCor_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
                 lblCor.BackColor = colorDialog1.Color;
-                lblFaixa.BackColor = colorDialog1.Color;                
+                lblFaixa.BackColor = colorDialog1.Color;
+            }
         }
 
         private void txtTexto_TextChanged(object sender, EventArgs e)
@@ -115,8 +117,10 @@ namespace Setup.Financas
                 if(hash[1] == null)
                 {
                     if (txtTexto.Text.Trim() != "" || txtTitulo.Text.Trim() != "")
+                    {
                         SalvarNota();
                         CarregarLista();
+                    }
                 }
                 
             }

@@ -165,7 +165,8 @@ namespace Setup.Classes
 
     public class CartaoCredito
     {
-        public int id;
+        public int conta;
+        public int cartao;
         public string nome;
 
         public override string ToString()
@@ -175,16 +176,22 @@ namespace Setup.Classes
 
         public static List<CartaoCredito> Lista()
         {
+            string sql;
             var lista = new List<CartaoCredito>();
             var c1 = new CartaoCredito();
 
-            BD.Buscar("SELECT CARTAO_CREDITO_ID, CARTAO FROM CARTAO_CREDITO ORDER BY CARTAO");
+            sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA FROM CONTA A LEFT JOIN ";
+            sql += "CARTAO_CREDITO B ON A.CONTA_ID = B.CONTA WHERE A.CARTAO_CREDITO = 1 ";
+            sql += "ORDER BY A.CONTA";
+
+            BD.Buscar(sql);
 
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
                 c1 = new CartaoCredito();
-                c1.id = int.Parse(BD.Resultado.Rows[i][0].ToString());
-                c1.nome = BD.Resultado.Rows[i][1].ToString();
+                c1.conta = int.Parse(BD.Resultado.Rows[i][0].ToString());
+                c1.cartao = int.Parse(BD.Resultado.Rows[i][1].ToString());
+                c1.nome = BD.Resultado.Rows[i][2].ToString();
                 lista.Add(c1);
             }
 
