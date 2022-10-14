@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Threading.Tasks;
 
 namespace Setup.Financas
 {
@@ -11,7 +10,12 @@ namespace Setup.Financas
         {
             InitializeComponent();
 
-            txtDataInicio.Text = "01/" + DateTime.Today.ToString("MM/yyyy");
+            int mes = DateTime.Today.Month;
+            int ano = DateTime.Today.Year;
+            int ultDia = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
+
+            txtDataInicio.Value = new DateTime(ano, mes, 01);
+            txtDataFim.Value = new DateTime(ano, mes, ultDia);
 
             CarregarCbClassesContas();
             CarregarLista();
@@ -19,12 +23,18 @@ namespace Setup.Financas
 
         private void CarregarLista(string sql = "")
         {
-            string classe = "";
-            string conta = "";
-            string descricao = "";
+            string classe, conta, descricao = "";
+            string data1 = "", data2 = "";
 
-            string data1 = txtDataInicio.Text.Replace("/", ".");
-            string data2 = txtDataFim.Text.Replace("/", ".");
+            if (txtDataInicio.Checked)
+            {
+                data1 = BD.CvData(txtDataInicio.Value.ToShortDateString());
+            }
+
+            if (txtDataFim.Checked)
+            {
+                data2 = BD.CvData(txtDataFim.Value.ToShortDateString());
+            }
 
             string v1 = BD.CvNum(txtValor1.Text);
             string v2 = BD.CvNum(txtValor2.Text);
@@ -402,6 +412,16 @@ namespace Setup.Financas
         private void lista_Sorted(object sender, EventArgs e)
         {
             Formatacao_Condicional();
+        }
+
+        private void txtDataInicio_ValueChanged(object sender, EventArgs e)
+        {
+            CarregarLista();
+        }
+
+        private void txtDataFim_ValueChanged(object sender, EventArgs e)
+        {
+            CarregarLista();
         }
     }
 }

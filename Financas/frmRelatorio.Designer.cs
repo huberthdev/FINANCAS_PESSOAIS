@@ -54,9 +54,6 @@ namespace Setup.Financas
             this.pdf = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtDataInicio = new Setup.Controles.Data();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDataFim = new Setup.Controles.Data();
             this.label4 = new System.Windows.Forms.Label();
             this.cbClasse = new Setup.Controles.cbCombo();
             this.label5 = new System.Windows.Forms.Label();
@@ -83,6 +80,9 @@ namespace Setup.Financas
             this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDataFim = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -181,42 +181,6 @@ namespace Setup.Financas
             this.label2.Size = new System.Drawing.Size(24, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "De:";
-            // 
-            // txtDataInicio
-            // 
-            this.txtDataInicio.BackColor = System.Drawing.Color.Black;
-            this.txtDataInicio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDataInicio.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDataInicio.ForeColor = System.Drawing.Color.White;
-            this.txtDataInicio.Location = new System.Drawing.Point(42, 32);
-            this.txtDataInicio.MaxLength = 10;
-            this.txtDataInicio.Name = "txtDataInicio";
-            this.txtDataInicio.Size = new System.Drawing.Size(110, 23);
-            this.txtDataInicio.TabIndex = 1;
-            this.txtDataInicio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(158, 40);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "De:";
-            // 
-            // txtDataFim
-            // 
-            this.txtDataFim.BackColor = System.Drawing.Color.Black;
-            this.txtDataFim.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtDataFim.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDataFim.ForeColor = System.Drawing.Color.White;
-            this.txtDataFim.Location = new System.Drawing.Point(188, 32);
-            this.txtDataFim.MaxLength = 10;
-            this.txtDataFim.Name = "txtDataFim";
-            this.txtDataFim.Size = new System.Drawing.Size(110, 23);
-            this.txtDataFim.TabIndex = 2;
-            this.txtDataFim.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label4
             // 
@@ -438,6 +402,7 @@ namespace Setup.Financas
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -453,7 +418,7 @@ namespace Setup.Financas
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -469,12 +434,14 @@ namespace Setup.Financas
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowsDefaultCellStyle = dataGridViewCellStyle7;
@@ -566,15 +533,49 @@ namespace Setup.Financas
             this.imageList1.Images.SetKeyName(0, "alert.png");
             this.imageList1.Images.SetKeyName(1, "exit.png");
             // 
+            // txtDataInicio
+            // 
+            this.txtDataInicio.CalendarForeColor = System.Drawing.Color.White;
+            this.txtDataInicio.CalendarMonthBackground = System.Drawing.Color.Black;
+            this.txtDataInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataInicio.Location = new System.Drawing.Point(42, 32);
+            this.txtDataInicio.Name = "txtDataInicio";
+            this.txtDataInicio.ShowCheckBox = true;
+            this.txtDataInicio.Size = new System.Drawing.Size(109, 23);
+            this.txtDataInicio.TabIndex = 10;
+            this.txtDataInicio.ValueChanged += new System.EventHandler(this.txtDataInicio_ValueChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(157, 40);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(28, 15);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Até:";
+            // 
+            // txtDataFim
+            // 
+            this.txtDataFim.CalendarForeColor = System.Drawing.Color.White;
+            this.txtDataFim.CalendarMonthBackground = System.Drawing.Color.Black;
+            this.txtDataFim.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.txtDataFim.Location = new System.Drawing.Point(191, 32);
+            this.txtDataFim.Name = "txtDataFim";
+            this.txtDataFim.ShowCheckBox = true;
+            this.txtDataFim.Size = new System.Drawing.Size(109, 23);
+            this.txtDataFim.TabIndex = 10;
+            this.txtDataFim.ValueChanged += new System.EventHandler(this.txtDataFim_ValueChanged);
+            // 
             // frmRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(842, 370);
-            this.Controls.Add(this.lista);
-            this.Controls.Add(this.txtDataInicio);
             this.Controls.Add(this.txtDataFim);
+            this.Controls.Add(this.txtDataInicio);
+            this.Controls.Add(this.lista);
             this.Controls.Add(this.cbClasse);
             this.Controls.Add(this.cbConta);
             this.Controls.Add(this.txtDescricao);
@@ -585,10 +586,10 @@ namespace Setup.Financas
             this.Controls.Add(this.status);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -623,9 +624,6 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripMenuItem pdf;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private Controles.Data txtDataInicio;
-        private System.Windows.Forms.Label label3;
-        private Controles.Data txtDataFim;
         private System.Windows.Forms.Label label4;
         private Controles.cbCombo cbClasse;
         private System.Windows.Forms.Label label5;
@@ -652,5 +650,8 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripStatusLabel somaLn;
         private System.Windows.Forms.ToolStripStatusLabel sp1;
         private System.Windows.Forms.ToolStripStatusLabel sp2;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.DateTimePicker txtDataInicio;
+        public System.Windows.Forms.DateTimePicker txtDataFim;
     }
 }
