@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Setup.Classes
 {
@@ -96,9 +99,22 @@ namespace Setup.Classes
 
         public static void ExcluirCompraCredito(string chave)
         {
-            string sql;
+            string sql, chv;
 
-            sql = "SELECT SUM(STATUS) FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
+            try
+            {
+                sql = "SELECT CHAVE FROM COMPRA_CREDITO WHERE COMPRA_CREDITO_ID = " + chave + "";
+                chv = BD.Buscar(sql).Rows[0][0].ToString();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
+            if (chave == "")
+                return;
+
+            sql = "SELECT SUM(STATUS) FROM COMPRA_CREDITO WHERE CHAVE = " + chv + "";
             BD.Buscar(sql);
             if (int.Parse(BD.Resultado.Rows[0][0].ToString()) > 0)
             {
@@ -110,12 +126,85 @@ namespace Setup.Classes
             if (COD.Resposta == false)
                 return;
 
-            sql = "DELETE FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
+            sql = "DELETE FROM COMPRA_CREDITO WHERE CHAVE = " + chv + "";
             BD.ExecutarSQL(sql);
 
-            sql = "DELETE FROM KEY_COMPRA_CREDITO WHERE CHAVE = " + chave + "";
+            sql = "DELETE FROM KEY_COMPRA_CREDITO WHERE CHAVE = " + chv + "";
             BD.ExecutarSQL(sql);
         }
+
+        public static void AbrirDetalheTransacao(string id, string tipo)
+        {
+            string sql, texto;
+
+            if (tipo == "C")
+            {
+                sql = "SELECT A.COMPRA_CREDITO_ID, B.CHAVE, C.CLASSE, E.CONTA, A.VALOR AS VALOR_PARCELA, A.PARCELA, A.DATA_PARCELA, A.STATUS, ";
+                sql += "B.VALOR AS VALOR_TOTAL, B.DATA_COMPRA, B.DESCRICAO, D.COR ";
+                sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
+                sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID ";
+                sql += "INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
+                sql += "INNER JOIN CONTA E ON D.CONTA = E.CONTA_ID ";
+                sql += "WHERE A.COMPRA_CREDITO_ID = " + id + "";
+
+                BD.Buscar(sql);
+
+                string id_compra = "Código da Parcela: " + BD.Resultado.Rows[0][0].ToString();
+                string chave = "Compra Nº: " + BD.Resultado.Rows[0][1].ToString();
+                string classe = "Classe: " + BD.Resultado.Rows[0][2].ToString();
+                string cartao = "Cartão: " + BD.Resultado.Rows[0][3].ToString();
+                string v_parcela = "Valor da Parcela: " + double.Parse(BD.Resultado.Rows[0][4].ToString()).ToString("N");
+                string parcela = "Parcela: " + BD.Resultado.Rows[0][5].ToString();
+                string dt_parcela = "Data da Parcela: " + DateTime.Parse(BD.Resultado.Rows[0][6].ToString()).ToShortDateString();
+                string status = "Status: " + BD.Resultado.Rows[0][7].ToString();
+                string v_total = "Valor Total: " + double.Parse(BD.Resultado.Rows[0][8].ToString()).ToString("N");
+                string dt_compra = "Data: " + DateTime.Parse(BD.Resultado.Rows[0][9].ToString()).ToShortDateString();
+                string descricao = "Descrição: " + BD.Resultado.Rows[0][10].ToString();
+                string cor = BD.Resultado.Rows[0][11].ToString();
+
+                texto = dt_compra + "\t" + v_total + "\r\n\r\n";
+                texto += id_compra + "\t" + chave + "\r\n\r\n" + classe + "\r\n\r\n" + cartao;
+                texto += "\r\n\r\n" + dt_parcela + "\t" + parcela;
+                texto += "\r\n\r\n" + v_parcela + "\t" + status;
+                texto += "\r\n\r\n" + descricao;
+
+                Financas.boxDescricao desc = new Financas.boxDescricao();
+                desc.txtTexto.Text = texto;
+
+                //ColorirPalavra(desc.txtTexto, "Cartão:");
+
+                if(cor != "")
+                {
+                    if(cor != "-16777216")
+                    {
+                        desc.lnD.BackColor = Color.FromArgb(int.Parse(cor));
+                        desc.lnU.BackColor = Color.FromArgb(int.Parse(cor));
+                        desc.lnL.BackColor = Color.FromArgb(int.Parse(cor));
+                        desc.lnR.BackColor = Color.FromArgb(int.Parse(cor));
+                    }
+                }
+
+                desc.ShowDialog();
+            }
+            
+        }
+
+        //private static void ColorirPalavra(Control CampoTexto, string texto)
+        //{
+        //    StreamReader str = new StreamReader(CampoTexto.Text);
+
+        //    string ln = str.ReadLine();
+
+        //    for (int i = 0; i < CampoTexto.Text.Length; i++)
+        //    {
+        //        string x =ln;
+        //        if (x == texto)
+        //        {
+                    
+        //        }
+        //    }
+        //}
+
     }
 
     public class Classe
@@ -141,7 +230,7 @@ namespace Setup.Classes
             var lista = new List<Classe>();
             var c1 = new Classe();
 
-            String sql = "SELECT CLASSE_ID, CLASSE FROM CLASSE WHERE TIPO = "+ opt +" ORDER BY CLASSE";
+            string sql = "SELECT CLASSE_ID, CLASSE FROM CLASSE WHERE TIPO = "+ opt +" ORDER BY CLASSE";
             
             BD.Buscar(sql);
 

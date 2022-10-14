@@ -13,7 +13,8 @@ namespace Setup.Controles
             this.BackColor = Color.Black;
             this.BorderStyle = BorderStyle.FixedSingle;
             this.ForeColor = Color.White;
-            
+            this.MaxLength = 10;
+
             base.OnCreateControl();
         }
 

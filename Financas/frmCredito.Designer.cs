@@ -128,9 +128,11 @@ namespace Setup.Financas
             // 
             this.txtDesc.BackColor = System.Drawing.Color.Black;
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDesc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDesc.ForeColor = System.Drawing.Color.White;
             this.txtDesc.Location = new System.Drawing.Point(493, 64);
+            this.txtDesc.MaxLength = 200;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(237, 23);
             this.txtDesc.TabIndex = 30;
@@ -169,6 +171,7 @@ namespace Setup.Financas
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtData.ForeColor = System.Drawing.Color.White;
             this.txtData.Location = new System.Drawing.Point(60, 64);
+            this.txtData.MaxLength = 10;
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(90, 23);
             this.txtData.TabIndex = 27;
@@ -335,6 +338,7 @@ namespace Setup.Financas
             this.lista.ShowEditingIcon = false;
             this.lista.Size = new System.Drawing.Size(718, 275);
             this.lista.TabIndex = 1;
+            this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // CHAVE
             // 

@@ -29,6 +29,7 @@ namespace Setup.Financas
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorio));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -64,6 +65,7 @@ namespace Setup.Financas
             this.txtValor2 = new Setup.Controles.Decimal();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.status = new System.Windows.Forms.StatusStrip();
+            this.total = new System.Windows.Forms.ToolStripStatusLabel();
             this.lista = new Setup.Controles.dgView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +73,7 @@ namespace Setup.Financas
             this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -176,6 +179,7 @@ namespace Setup.Financas
             this.txtDataInicio.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDataInicio.ForeColor = System.Drawing.Color.White;
             this.txtDataInicio.Location = new System.Drawing.Point(42, 32);
+            this.txtDataInicio.MaxLength = 10;
             this.txtDataInicio.Name = "txtDataInicio";
             this.txtDataInicio.Size = new System.Drawing.Size(110, 23);
             this.txtDataInicio.TabIndex = 1;
@@ -198,6 +202,7 @@ namespace Setup.Financas
             this.txtDataFim.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDataFim.ForeColor = System.Drawing.Color.White;
             this.txtDataFim.Location = new System.Drawing.Point(188, 32);
+            this.txtDataFim.MaxLength = 10;
             this.txtDataFim.Name = "txtDataFim";
             this.txtDataFim.Size = new System.Drawing.Size(110, 23);
             this.txtDataFim.TabIndex = 2;
@@ -216,10 +221,12 @@ namespace Setup.Financas
             // cbClasse
             // 
             this.cbClasse.BackColor = System.Drawing.Color.Black;
+            this.cbClasse.DropDownHeight = 136;
             this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
+            this.cbClasse.IntegralHeight = false;
             this.cbClasse.Location = new System.Drawing.Point(353, 32);
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
@@ -240,10 +247,12 @@ namespace Setup.Financas
             // cbConta
             // 
             this.cbConta.BackColor = System.Drawing.Color.Black;
+            this.cbConta.DropDownHeight = 136;
             this.cbConta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbConta.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbConta.ForeColor = System.Drawing.Color.White;
             this.cbConta.FormattingEnabled = true;
+            this.cbConta.IntegralHeight = false;
             this.cbConta.Location = new System.Drawing.Point(616, 32);
             this.cbConta.MaxDropDownItems = 10;
             this.cbConta.Name = "cbConta";
@@ -261,7 +270,6 @@ namespace Setup.Financas
             this.ckReceita.TabIndex = 8;
             this.ckReceita.Text = "Receita";
             this.ckReceita.UseVisualStyleBackColor = true;
-            this.ckReceita.CheckedChanged += new System.EventHandler(this.ckReceita_CheckedChanged);
             this.ckReceita.Click += new System.EventHandler(this.ckReceita_Click);
             // 
             // ckDespesa
@@ -275,7 +283,6 @@ namespace Setup.Financas
             this.ckDespesa.Text = "Despesa";
             this.ckDespesa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ckDespesa.UseVisualStyleBackColor = true;
-            this.ckDespesa.CheckedChanged += new System.EventHandler(this.ckDespesa_CheckedChanged);
             this.ckDespesa.Click += new System.EventHandler(this.ckDespesa_Click);
             // 
             // label6
@@ -356,14 +363,23 @@ namespace Setup.Financas
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.Transparent;
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 345);
+            this.statusLabel,
+            this.total});
+            this.status.Location = new System.Drawing.Point(0, 348);
             this.status.Name = "status";
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.status.Size = new System.Drawing.Size(842, 22);
             this.status.SizingGrip = false;
             this.status.Stretch = false;
             this.status.TabIndex = 6;
+            // 
+            // total
+            // 
+            this.total.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.total.ForeColor = System.Drawing.Color.Turquoise;
+            this.total.Name = "total";
+            this.total.Size = new System.Drawing.Size(48, 17);
+            this.total.Text = "R$ 0,00";
             // 
             // lista
             // 
@@ -436,6 +452,7 @@ namespace Setup.Financas
             this.lista.Size = new System.Drawing.Size(819, 250);
             this.lista.TabIndex = 1;
             this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
+            this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // ID
             // 
@@ -503,12 +520,20 @@ namespace Setup.Financas
             this.DESC.ReadOnly = true;
             this.DESC.Width = 320;
             // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "alert.png");
+            this.imageList1.Images.SetKeyName(1, "exit.png");
+            // 
             // frmRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(842, 367);
+            this.ClientSize = new System.Drawing.Size(842, 370);
             this.Controls.Add(this.lista);
             this.Controls.Add(this.txtDataInicio);
             this.Controls.Add(this.txtDataFim);
@@ -584,5 +609,7 @@ namespace Setup.Financas
         private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE;
         private System.Windows.Forms.DataGridViewTextBoxColumn VALOR;
         private System.Windows.Forms.DataGridViewTextBoxColumn DESC;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripStatusLabel total;
     }
 }

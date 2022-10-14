@@ -46,6 +46,12 @@ namespace Setup
             }
         }
            
+        /// <summary>
+        /// Função para converter o formato de data com "/" para "."
+        /// </summary>
+        /// <param name="data">Informar a data no formato string 00/00/0000 para a função converter
+        /// para o formato aceito no banco de dados Firebird 00.00.0000</param>
+        /// <returns></returns>
         public static string CvData(string data)
         {
             if (data == "")

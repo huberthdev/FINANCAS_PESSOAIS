@@ -26,6 +26,9 @@ namespace Setup.Financas
             string data1 = txtDataInicio.Text.Replace("/", ".");
             string data2 = txtDataFim.Text.Replace("/", ".");
 
+            string v1 = BD.CvNum(txtValor1.Text);
+            string v2 = BD.CvNum(txtValor2.Text);
+
             if (data1 == "")
                 data1 = "01.01.1900";
 
@@ -43,16 +46,38 @@ namespace Setup.Financas
                 sql = "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA, B.CLASSE, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
                 sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.DATA BETWEEN ";
                 sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+
                 if(descricao != "")
                 {
                     sql += "AND UPPER(A.DESCRICAO) LIKE '" + descricao + "' ";
                 }
 
                 if (ckReceita.Checked == true && ckDespesa.Checked == false)
-                    sql += "AND A.VALOR > 0 ";
+                {
+                    if(txtValor1.Text == "" && txtValor2.Text == "")
+                        sql += "AND A.VALOR > 0 ";
+                    else if(txtValor1.Text != "" && txtValor2.Text == "")
+                        sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND 1000000 ";
+                    else if (txtValor1.Text == "" && txtValor2.Text != "")
+                        sql += "AND A.VALOR BETWEEN 0 AND CAST(" + v2 + " AS DECIMAL) ";
+                    else if (txtValor1.Text != "" && txtValor2.Text != "")
+                        sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND CAST(" + v2 + " AS DECIMAL) ";
+                }
                 else if (ckReceita.Checked == false && ckDespesa.Checked == true)
-                    sql += "AND A.VALOR < 0 ";
+                {
+                    v1 = "-" + v1;
+                    v2 = "-" + v2;
 
+                    if (txtValor1.Text == "" && txtValor2.Text == "")
+                        sql += "AND A.VALOR < 0 ";
+                    else if (txtValor1.Text != "" && txtValor2.Text == "")
+                        sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND 0 ";
+                    else if (txtValor1.Text == "" && txtValor2.Text != "")
+                        sql += "AND A.VALOR BETWEEN -1000000 AND CAST(" + v2 + " AS DECIMAL) ";
+                    else if (txtValor1.Text != "" && txtValor2.Text != "")
+                        sql += "AND A.VALOR BETWEEN CAST(" + v2 + " AS DECIMAL) AND CAST(" + v1 + " AS DECIMAL) ";
+                }
+                    
                 //FILTRO CLASSE
                 if (cbClasse.Text != "")
                 {
@@ -72,7 +97,7 @@ namespace Setup.Financas
                 sql += "FROM TRANSFERENCIA WHERE DATA BETWEEN ";
                 sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
 
-                sql += "UNION SELECT B.CHAVE AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
+                sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
                 sql += "C.CLASSE, B.VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
                 sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
                 sql += "ON B.CLASSE = C.CLASSE_ID WHERE A.DATA_PARCELA BETWEEN ";
@@ -93,6 +118,8 @@ namespace Setup.Financas
 
             try
             {
+                status.Items[0].Text = "";
+                status.Items[0].Image = null;
                 lista.DataSource = BD.Buscar(sql);
             }
             catch (Exception ex)
@@ -102,6 +129,17 @@ namespace Setup.Financas
 
             //PREENCHE A BARRA DE STATUS A QUANTIDADE DE LINHAS DA LISTA
             status.Items[0].Text = "LINHAS: " + lista.RowCount;
+
+            if(txtValor1.Text != "" && txtValor2.Text != "")
+            {
+                v1 = txtValor1.Text;
+                v2 = txtValor2.Text;
+                if(Math.Abs(decimal.Parse(v1)) > Math.Abs(decimal.Parse(v2)))
+                {
+                    status.Items[0].Text = "No Filtro: O campo Valor1 não pode ser 'MAIOR' que o campo Valor2";
+                    status.Items[0].Image = imageList1.Images[1];
+                }
+            }
 
             //Thread.Sleep(5000);
             Formatacao_Condicional();
@@ -139,6 +177,10 @@ namespace Setup.Financas
             }
         }
 
+        /// <summary>
+        /// Funcão para somar a coluna de valor do relatório. Os valores referente
+        /// às transferências não são contabilizadas na soma total.
+        /// </summary>
         private void SomarColunaValor()
         {
             string tipo;
@@ -146,18 +188,18 @@ namespace Setup.Financas
 
             if (lista.RowCount == 0)
             {
-                status.Items[0].Text += " | Soma: 0,00";
+                status.Items["total"].Text = "Total: R$ 0,00";
                 return;
             }
 
             for (int i = 0; i < lista.RowCount; i++)
             {
                 tipo = lista.Rows[i].Cells[1].Value.ToString();
-                if(tipo=="D")
+                if(tipo == "D" || tipo == "C")
                     valor = valor + double.Parse(lista.Rows[i].Cells[4].Value.ToString());
             }
 
-            status.Items[0].Text += " | Soma: " + valor.ToString("c");
+            status.Items["total"].Text = "Total: " + valor.ToString("c");
         }
 
         private void Formatacao_Condicional()
@@ -198,16 +240,6 @@ namespace Setup.Financas
         }
 
         private void atualizar_Click(object sender, EventArgs e)
-        {
-            CarregarLista();
-        }
-
-        private void ckReceita_CheckedChanged(object sender, EventArgs e)
-        {
-            CarregarLista();
-        }
-
-        private void ckDespesa_CheckedChanged(object sender, EventArgs e)
         {
             CarregarLista();
         }
@@ -310,6 +342,19 @@ namespace Setup.Financas
         private void txtDescricao_TextChanged(object sender, EventArgs e)
         {
             CarregarLista();
+        }
+
+        private void lista_DoubleClick(object sender, EventArgs e)
+        {
+            string id, tipo;
+
+            if (lista.RowCount == 0)
+                return;
+
+            id = lista.SelectedRows[0].Cells[0].Value.ToString();
+            tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
+
+            Classes.Geral.AbrirDetalheTransacao(id, tipo);
         }
     }
 }

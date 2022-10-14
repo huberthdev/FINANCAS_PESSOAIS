@@ -403,5 +403,17 @@ namespace Setup.Financas
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void lista_DoubleClick(object sender, EventArgs e)
+        {
+            string id;
+
+            if (lista.RowCount == 0)
+                return;
+
+            id = lista.SelectedRows[0].Cells[2].Value.ToString();
+
+            Classes.Geral.AbrirDetalheTransacao(id, "C");
+        }
     }
 }
