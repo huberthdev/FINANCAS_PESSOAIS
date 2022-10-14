@@ -92,26 +92,31 @@ namespace Setup.Financas
                     sql += "AND A.CONTA = " + conta + " ";
                 }
 
+                //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA TRANSFERENCIA
                 sql += "UNION SELECT TRANSFERENCIA_ID AS ID, 'T' AS TIPO, DATA, ";
                 sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, VALOR, DESCRICAO AS DESC ";
                 sql += "FROM TRANSFERENCIA WHERE DATA BETWEEN ";
                 sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
 
-                sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
-                sql += "C.CLASSE, B.VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
-                sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
-                sql += "ON B.CLASSE = C.CLASSE_ID WHERE A.DATA_PARCELA BETWEEN ";
-                sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
-                if (descricao != "")
+                //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA COMPRA_CREDITO
+                if (!(!ckDespesa.Checked && ckReceita.Checked))
                 {
-                    sql += "AND UPPER(B.DESCRICAO) LIKE '" + descricao + "' ";
-                }
+                    sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
+                    sql += "C.CLASSE, (B.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
+                    sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
+                    sql += "ON B.CLASSE = C.CLASSE_ID WHERE A.DATA_PARCELA BETWEEN ";
+                    sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                    if (descricao != "")
+                    {
+                        sql += "AND UPPER(B.DESCRICAO) LIKE '" + descricao + "' ";
+                    }
 
-                //FILTRO CLASSE
-                if (cbClasse.Text != "")
-                {
-                    classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
-                    sql += "AND C.CLASSE_ID = " + classe + " ";
+                    //FILTRO CLASSE
+                    if (cbClasse.Text != "")
+                    {
+                        classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
+                        sql += "AND C.CLASSE_ID = " + classe + " ";
+                    }
                 }
 
             }
