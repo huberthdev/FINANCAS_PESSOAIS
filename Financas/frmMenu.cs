@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Setup.Financas
 {
@@ -15,8 +16,6 @@ namespace Setup.Financas
         private void frmMenu_Load(object sender, EventArgs e)
         {
             CarregarListasClasseConta();
-            CarregarListaSaldoContas();
-            CarregarListaGastoClasseMesAtual();
             CarregarCbClassesContas();
             txtData.Text = DateTime.Today.ToShortDateString();
         }
@@ -77,7 +76,7 @@ namespace Setup.Financas
             if (tabela == "" || tabela == "conta")
             {
                 listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, CARTAO_CREDITO AS CREDITO FROM CONTA WHERE " +
-                    "UPPER(CONTA) LIKE '" + conta + "'");
+                    "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC");
                 listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
@@ -196,14 +195,30 @@ namespace Setup.Financas
 
         private void CarregarListaGastoClasseMesAtual()
         {
-            string mesAtual = DateTime.Today.Month.ToString();
+            string mesNome;
+            double total = 0;
+
+            int mesAtual = DateTime.Today.Month;
+            int anoAtual = DateTime.Today.Year;
+
+            mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(mesAtual).ToUpper();
 
             string sql = "select b.CLASSE_ID, b.CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
             sql += "a inner join classe b on a.CLASSE = b.CLASSE_ID where a.VALOR < '0' and ";
-            sql += "extract(month from a.DATA) = " + mesAtual + " ";
-            sql += "group by b.CLASSE_ID, b.CLASSE";
+            sql += "extract(month from a.DATA) = " + mesAtual + " and extract(year from a.DATA) = " + anoAtual + "";
+            sql += "group by b.CLASSE_ID, b.CLASSE order by b.classe";
 
             lista_Gastos_Classe.DataSource = BD.Buscar(sql);
+
+            for (int i = 0; i < BD.Resultado.Rows.Count; i++)
+            {
+                total += double.Parse(BD.Resultado.Rows[i][2].ToString());
+                //RowTemplate.DefaultCellStyle.ForeColor = Color.Red
+                //lista_Gastos_Classe.Rows[i].Cells[2].Style.ForeColor = Color.Red;
+            }
+
+            lista_Gastos_Classe.Columns[1].HeaderText = "Gasto: " + mesNome;
+            lista_Gastos_Classe.Columns[2].HeaderText = total.ToString("C");
         }
 
         private void CarregarCbClassesContas(string tabela = "")
@@ -420,5 +435,6 @@ namespace Setup.Financas
         {
 
         }
+
     }
 }

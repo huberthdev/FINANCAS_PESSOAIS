@@ -21,6 +21,12 @@ namespace Setup.Financas
             base.Dispose(disposing);
         }
 
+        protected override void OnCreateControl()
+        {
+            this.lista.MultiSelect = true;
+            base.OnCreateControl();
+        }
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -63,9 +69,12 @@ namespace Setup.Financas
             this.txtValor1 = new Setup.Controles.Decimal();
             this.label8 = new System.Windows.Forms.Label();
             this.txtValor2 = new Setup.Controles.Decimal();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.totalLn = new System.Windows.Forms.ToolStripStatusLabel();
             this.status = new System.Windows.Forms.StatusStrip();
             this.total = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.somaLn = new System.Windows.Forms.ToolStripStatusLabel();
             this.lista = new Setup.Controles.dgView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -131,6 +140,7 @@ namespace Setup.Financas
             // 
             // exportar
             // 
+            this.exportar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exportar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.excel,
             this.pdf});
@@ -302,6 +312,7 @@ namespace Setup.Financas
             this.txtDescricao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDescricao.ForeColor = System.Drawing.Color.White;
             this.txtDescricao.Location = new System.Drawing.Point(79, 63);
+            this.txtDescricao.MaxLength = 200;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(297, 23);
             this.txtDescricao.TabIndex = 5;
@@ -351,20 +362,25 @@ namespace Setup.Financas
             this.txtValor2.TabIndex = 7;
             this.txtValor2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // statusLabel
+            // totalLn
             // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(23, 17);
-            this.statusLabel.Text = ">>";
+            this.totalLn.BackColor = System.Drawing.Color.Transparent;
+            this.totalLn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.totalLn.ForeColor = System.Drawing.Color.White;
+            this.totalLn.Name = "totalLn";
+            this.totalLn.Size = new System.Drawing.Size(63, 17);
+            this.totalLn.Text = "LINHAS: 0";
             // 
             // status
             // 
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.Transparent;
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel,
-            this.total});
+            this.total,
+            this.sp1,
+            this.totalLn,
+            this.sp2,
+            this.somaLn});
             this.status.Location = new System.Drawing.Point(0, 348);
             this.status.Name = "status";
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -380,6 +396,30 @@ namespace Setup.Financas
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(48, 17);
             this.total.Text = "R$ 0,00";
+            // 
+            // sp1
+            // 
+            this.sp1.ForeColor = System.Drawing.Color.White;
+            this.sp1.Name = "sp1";
+            this.sp1.Size = new System.Drawing.Size(10, 17);
+            this.sp1.Text = "|";
+            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // sp2
+            // 
+            this.sp2.ForeColor = System.Drawing.Color.White;
+            this.sp2.Name = "sp2";
+            this.sp2.Size = new System.Drawing.Size(10, 17);
+            this.sp2.Text = "|";
+            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // somaLn
+            // 
+            this.somaLn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.somaLn.ForeColor = System.Drawing.Color.White;
+            this.somaLn.Name = "somaLn";
+            this.somaLn.Size = new System.Drawing.Size(25, 17);
+            this.somaLn.Text = "<--";
             // 
             // lista
             // 
@@ -398,7 +438,6 @@ namespace Setup.Financas
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -414,7 +453,7 @@ namespace Setup.Financas
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -430,14 +469,12 @@ namespace Setup.Financas
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowsDefaultCellStyle = dataGridViewCellStyle7;
@@ -452,6 +489,7 @@ namespace Setup.Financas
             this.lista.Size = new System.Drawing.Size(819, 250);
             this.lista.TabIndex = 1;
             this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
+            this.lista.Sorted += new System.EventHandler(this.lista_Sorted);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // ID
@@ -600,7 +638,7 @@ namespace Setup.Financas
         private Controles.Decimal txtValor1;
         private System.Windows.Forms.Label label8;
         private Controles.Decimal txtValor2;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel totalLn;
         private System.Windows.Forms.StatusStrip status;
         private Controles.dgView lista;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
@@ -611,5 +649,8 @@ namespace Setup.Financas
         private System.Windows.Forms.DataGridViewTextBoxColumn DESC;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripStatusLabel total;
+        private System.Windows.Forms.ToolStripStatusLabel somaLn;
+        private System.Windows.Forms.ToolStripStatusLabel sp1;
+        private System.Windows.Forms.ToolStripStatusLabel sp2;
     }
 }

@@ -1,5 +1,7 @@
 ﻿
 using System;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -21,6 +23,12 @@ namespace Setup.Financas
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        protected override void OnCreateControl()
+        {
+            this.lista_Gastos_Classe.Columns[2].CellTemplate.Style.ForeColor = Color.Red;
+            base.OnCreateControl();
         }
 
         protected override void OnActivated(EventArgs e)
@@ -51,7 +59,6 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -63,6 +70,7 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new System.Windows.Forms.ToolStripMenuItem();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
@@ -115,9 +123,6 @@ namespace Setup.Financas
             this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lista_Gastos_Classe = new Setup.Controles.dgView();
-            this.CLASSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.salvar = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,6 +148,9 @@ namespace Setup.Financas
             this.optReceita = new System.Windows.Forms.RadioButton();
             this.txtClasse = new Setup.Controles.Txt();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CLASSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabelaMenu.SuspendLayout();
             this.tabReceita_Despesa.SuspendLayout();
@@ -460,7 +468,7 @@ namespace Setup.Financas
             this.tabReceita_Despesa.Location = new System.Drawing.Point(4, 27);
             this.tabReceita_Despesa.Name = "tabReceita_Despesa";
             this.tabReceita_Despesa.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReceita_Despesa.Size = new System.Drawing.Size(891, 315);
+            this.tabReceita_Despesa.Size = new System.Drawing.Size(891, 339);
             this.tabReceita_Despesa.TabIndex = 0;
             this.tabReceita_Despesa.Tag = "Lancamento";
             this.tabReceita_Despesa.Text = "Receitas • Despesas";
@@ -532,6 +540,7 @@ namespace Setup.Financas
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtData.ForeColor = System.Drawing.Color.White;
             this.txtData.Location = new System.Drawing.Point(215, 32);
+            this.txtData.MaxLength = 10;
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(110, 23);
             this.txtData.TabIndex = 37;
@@ -655,10 +664,12 @@ namespace Setup.Financas
             this.statusStrip.BackColor = System.Drawing.Color.Black;
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(3, 289);
+            this.statusStrip.Location = new System.Drawing.Point(3, 313);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.statusStrip.Size = new System.Drawing.Size(885, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 20;
             // 
             // statusLabel
@@ -673,7 +684,7 @@ namespace Setup.Financas
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label7.ForeColor = System.Drawing.Color.Tomato;
-            this.label7.Location = new System.Drawing.Point(3, 311);
+            this.label7.Location = new System.Drawing.Point(3, 335);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(885, 1);
             this.label7.TabIndex = 33;
@@ -695,7 +706,6 @@ namespace Setup.Financas
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -708,7 +718,7 @@ namespace Setup.Financas
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -724,14 +734,12 @@ namespace Setup.Financas
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.listaSaldo_Contas.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.listaSaldo_Contas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             this.listaSaldo_Contas.RowsDefaultCellStyle = dataGridViewCellStyle6;
@@ -788,7 +796,6 @@ namespace Setup.Financas
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -801,7 +808,7 @@ namespace Setup.Financas
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -817,14 +824,12 @@ namespace Setup.Financas
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista_Gastos_Classe.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.lista_Gastos_Classe.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
             this.lista_Gastos_Classe.RowsDefaultCellStyle = dataGridViewCellStyle12;
@@ -838,31 +843,6 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ShowEditingIcon = false;
             this.lista_Gastos_Classe.Size = new System.Drawing.Size(436, 206);
             this.lista_Gastos_Classe.TabIndex = 1;
-            // 
-            // CLASSE_ID
-            // 
-            this.CLASSE_ID.DataPropertyName = "CLASSE_ID";
-            this.CLASSE_ID.HeaderText = "CLASSE_ID";
-            this.CLASSE_ID.Name = "CLASSE_ID";
-            this.CLASSE_ID.ReadOnly = true;
-            this.CLASSE_ID.Visible = false;
-            // 
-            // CLASSE
-            // 
-            this.CLASSE.DataPropertyName = "CLASSE";
-            this.CLASSE.HeaderText = "CLASSE";
-            this.CLASSE.Name = "CLASSE";
-            this.CLASSE.ReadOnly = true;
-            // 
-            // VALOR
-            // 
-            this.VALOR.DataPropertyName = "VALOR";
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = "0,00";
-            this.VALOR.DefaultCellStyle = dataGridViewCellStyle9;
-            this.VALOR.HeaderText = "VALOR";
-            this.VALOR.Name = "VALOR";
-            this.VALOR.ReadOnly = true;
             // 
             // label1
             // 
@@ -956,7 +936,6 @@ namespace Setup.Financas
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle14.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle14.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -985,14 +964,12 @@ namespace Setup.Financas
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle17.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.listaConta.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.listaConta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
             this.listaConta.RowsDefaultCellStyle = dataGridViewCellStyle18;
@@ -1133,7 +1110,6 @@ namespace Setup.Financas
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle20.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -1161,14 +1137,12 @@ namespace Setup.Financas
             dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle22.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.listaClasse.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.listaClasse.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle23.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.White;
             this.listaClasse.RowsDefaultCellStyle = dataGridViewCellStyle23;
@@ -1280,6 +1254,32 @@ namespace Setup.Financas
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // CLASSE_ID
+            // 
+            this.CLASSE_ID.DataPropertyName = "CLASSE_ID";
+            this.CLASSE_ID.HeaderText = "CLASSE_ID";
+            this.CLASSE_ID.Name = "CLASSE_ID";
+            this.CLASSE_ID.ReadOnly = true;
+            this.CLASSE_ID.Visible = false;
+            // 
+            // CLASSE
+            // 
+            this.CLASSE.DataPropertyName = "CLASSE";
+            this.CLASSE.HeaderText = "CLASSE";
+            this.CLASSE.Name = "CLASSE";
+            this.CLASSE.ReadOnly = true;
+            // 
+            // VALOR
+            // 
+            this.VALOR.DataPropertyName = "VALOR";
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Red;
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = "0,00";
+            this.VALOR.DefaultCellStyle = dataGridViewCellStyle9;
+            this.VALOR.HeaderText = "VALOR";
+            this.VALOR.Name = "VALOR";
+            this.VALOR.ReadOnly = true;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1328,85 +1328,85 @@ namespace Setup.Financas
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem menu;
-        private System.Windows.Forms.ToolStripMenuItem novoLancamento;
-        private System.Windows.Forms.ToolStripMenuItem receitaDespesa;
-        private System.Windows.Forms.ToolStripMenuItem relatorios;
-        private System.Windows.Forms.ToolStripMenuItem comprasCredito;
-        private System.Windows.Forms.ToolStripMenuItem transferencia;
-        private System.Windows.Forms.ToolStripMenuItem cadastros;
-        private System.Windows.Forms.ToolStripMenuItem classesDeCustoAdd;
-        private System.Windows.Forms.ToolStripMenuItem contasAdd;
-        private System.Windows.Forms.ToolStripMenuItem cartaoDeCreditoAdd;
-        private System.Windows.Forms.ToolStripMenuItem exportar;
-        private System.Windows.Forms.ToolStripMenuItem pDFToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem excelToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem previsaoDeCustos;
-        private System.Windows.Forms.ToolStripMenuItem query;
-        private System.Windows.Forms.ToolStripMenuItem anotacoes;
-        private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ToolRelatorio;
-        private System.Windows.Forms.ToolStripMenuItem ToolVisaoGeral;
-        private System.Windows.Forms.ToolStripMenuItem ToolLancamento;
-        private System.Windows.Forms.ToolStripMenuItem ToolCalculadora;
-        private System.Windows.Forms.ToolStripMenuItem ToolPrevisao;
-        private System.Windows.Forms.TabControl tabelaMenu;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.TabPage tabReceita_Despesa;
-        private System.Windows.Forms.TabPage tabCad_Classes;
-        private System.Windows.Forms.GroupBox gpConta;
-        private System.Windows.Forms.CheckBox ckAtivoConta;
-        private System.Windows.Forms.Button btnExcluirConta;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem menu;
+        private ToolStripMenuItem novoLancamento;
+        private ToolStripMenuItem receitaDespesa;
+        private ToolStripMenuItem relatorios;
+        private ToolStripMenuItem comprasCredito;
+        private ToolStripMenuItem transferencia;
+        private ToolStripMenuItem cadastros;
+        private ToolStripMenuItem classesDeCustoAdd;
+        private ToolStripMenuItem contasAdd;
+        private ToolStripMenuItem cartaoDeCreditoAdd;
+        private ToolStripMenuItem exportar;
+        private ToolStripMenuItem pDFToolStripMenuItem;
+        private ToolStripMenuItem excelToolStripMenuItem;
+        private ToolStripMenuItem previsaoDeCustos;
+        private ToolStripMenuItem query;
+        private ToolStripMenuItem anotacoes;
+        private ToolStripMenuItem sairToolStripMenuItem;
+        private ToolStripMenuItem ToolRelatorio;
+        private ToolStripMenuItem ToolVisaoGeral;
+        private ToolStripMenuItem ToolLancamento;
+        private ToolStripMenuItem ToolCalculadora;
+        private ToolStripMenuItem ToolPrevisao;
+        private TabControl tabelaMenu;
+        private ErrorProvider errorProvider1;
+        private TabPage tabReceita_Despesa;
+        private TabPage tabCad_Classes;
+        private GroupBox gpConta;
+        private CheckBox ckAtivoConta;
+        private Button btnExcluirConta;
         private Controles.Txt txtConta;
-        private System.Windows.Forms.Button btnSalvarConta;
-        private System.Windows.Forms.GroupBox gpClasse;
-        private System.Windows.Forms.CheckBox ckAtivoClasse;
-        private System.Windows.Forms.Button btnExcluirClasse;
-        private System.Windows.Forms.Button btnSalvarClasse;
-        private System.Windows.Forms.RadioButton optDespesa;
-        private System.Windows.Forms.RadioButton optReceita;
+        private Button btnSalvarConta;
+        private GroupBox gpClasse;
+        private CheckBox ckAtivoClasse;
+        private Button btnExcluirClasse;
+        private Button btnSalvarClasse;
+        private RadioButton optDespesa;
+        private RadioButton optReceita;
         private Controles.Txt txtClasse;
-        private System.Windows.Forms.StatusStrip statusStrip;
-        private System.Windows.Forms.ToolStripStatusLabel statusLabel;
-        private System.Windows.Forms.Label label7;
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel statusLabel;
+        private Label label7;
         private Controles.dgView listaSaldo_Contas;
         public Controles.dgView lista_Gastos_Classe;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip2;
-        private System.Windows.Forms.ToolStripMenuItem salvar;
-        private System.Windows.Forms.ToolStripMenuItem limpar;
+        private Label label1;
+        private MenuStrip menuStrip2;
+        private ToolStripMenuItem salvar;
+        private ToolStripMenuItem limpar;
         private Controles.dgView listaClasse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASS;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn CLASS;
         private Controles.dgView listaConta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CONTA_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CONTA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SALDO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASSE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VALOR;
-        private System.Windows.Forms.Panel pnLancamento;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private DataGridViewTextBoxColumn CONTA_ID;
+        private DataGridViewTextBoxColumn CONTA;
+        private DataGridViewTextBoxColumn SALDO;
+        private Panel pnLancamento;
+        private PictureBox pictureBox1;
         private Controles.cbCombo cbConta;
         private Controles.Data txtData;
         private Controles.Decimal txtValor;
         private Controles.Txt txtDescricao;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.RadioButton opReceita;
+        private Label label3;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label2;
+        private RadioButton opReceita;
         private Controles.cbCombo cbClasse;
-        private System.Windows.Forms.RadioButton opDespesa;
-        private System.Windows.Forms.ToolStripMenuItem configuracoes;
-        private System.Windows.Forms.ToolStripMenuItem usuarioAdd;
-        private System.Windows.Forms.ToolStripMenuItem connBD;
-        private System.Windows.Forms.ToolStripMenuItem compraCredito;
-        private System.Windows.Forms.ToolStripMenuItem transf;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CONTA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CONT;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CREDITO;
+        private RadioButton opDespesa;
+        private ToolStripMenuItem configuracoes;
+        private ToolStripMenuItem usuarioAdd;
+        private ToolStripMenuItem connBD;
+        private ToolStripMenuItem compraCredito;
+        private ToolStripMenuItem transf;
+        private DataGridViewTextBoxColumn ID_CONTA;
+        private DataGridViewTextBoxColumn CONT;
+        private DataGridViewCheckBoxColumn CREDITO;
+        private DataGridViewTextBoxColumn CLASSE_ID;
+        private DataGridViewTextBoxColumn CLASSE;
+        private DataGridViewTextBoxColumn VALOR;
     }
 }

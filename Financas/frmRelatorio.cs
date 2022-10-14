@@ -118,17 +118,17 @@ namespace Setup.Financas
 
             try
             {
-                status.Items[0].Text = "";
-                status.Items[0].Image = null;
+                status.Items["totalLn"].Text = "";
+                status.Items["totalLn"].Image = null;
                 lista.DataSource = BD.Buscar(sql);
             }
             catch (Exception ex)
             {
-                status.Items[0].Text = ex.Message.ToString();
+                status.Items["totalLn"].Text = ex.Message.ToString();
             }
 
             //PREENCHE A BARRA DE STATUS A QUANTIDADE DE LINHAS DA LISTA
-            status.Items[0].Text = "LINHAS: " + lista.RowCount;
+            status.Items["totalLn"].Text = "LINHAS: " + lista.RowCount;
 
             if(txtValor1.Text != "" && txtValor2.Text != "")
             {
@@ -136,8 +136,8 @@ namespace Setup.Financas
                 v2 = txtValor2.Text;
                 if(Math.Abs(decimal.Parse(v1)) > Math.Abs(decimal.Parse(v2)))
                 {
-                    status.Items[0].Text = "No Filtro: O campo Valor1 não pode ser 'MAIOR' que o campo Valor2";
-                    status.Items[0].Image = imageList1.Images[1];
+                    status.Items["totalLn"].Text = "No Filtro: O campo Valor1 não pode ser 'MAIOR' que o campo Valor2";
+                    status.Items["totalLn"].Image = imageList1.Images[1];
                 }
             }
 
@@ -196,10 +196,17 @@ namespace Setup.Financas
             {
                 tipo = lista.Rows[i].Cells[1].Value.ToString();
                 if(tipo == "D" || tipo == "C")
+                {
                     valor = valor + double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                }
             }
 
-            status.Items["total"].Text = "Total: " + valor.ToString("c");
+            status.Items["total"].Text = "Total: " + valor.ToString("C");
+
+            if(valor > 0)
+            {
+                status.Items["total"].ForeColor = Color.Red;
+            }
         }
 
         private void Formatacao_Condicional()
@@ -288,7 +295,8 @@ namespace Setup.Financas
         private void lista_SelectionChanged(object sender, EventArgs e)
         {
             string tipo;
-
+            double soma = 0;
+            
             try
             {
                 tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
@@ -302,6 +310,33 @@ namespace Setup.Financas
                 menuStrip1.Items[2].Enabled = false;
             else
                 menuStrip1.Items[2].Enabled = true;
+
+            status.Items["somaLn"].Text = "";
+
+            if (lista.SelectedRows.Count > 1)
+            {
+                for (int i = 0; i < lista.RowCount; i++)
+                {
+                    if (lista.Rows[i].Selected)
+                    {
+                        soma += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                    }
+                }
+
+                status.Items["somaLn"].Text = "Seleção: " + soma.ToString("C");
+
+                status.Items["somaLn"].ForeColor = Color.White;
+
+                if (soma < 0)
+                {
+                    status.Items["somaLn"].ForeColor = Color.Red;
+                }
+                else if(soma > 0)
+                {
+                    status.Items["somaLn"].ForeColor = Color.Green;
+                }
+            }
+
         }
 
         private void cbClasse_SelectedValueChanged(object sender, EventArgs e)
@@ -355,6 +390,11 @@ namespace Setup.Financas
             tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
 
             Classes.Geral.AbrirDetalheTransacao(id, tipo);
+        }
+
+        private void lista_Sorted(object sender, EventArgs e)
+        {
+            Formatacao_Condicional();
         }
     }
 }

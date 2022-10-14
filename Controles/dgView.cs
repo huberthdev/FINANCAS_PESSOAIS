@@ -33,7 +33,7 @@ namespace Setup.Controles
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.DarkGray;
             dataGridViewCellStyle2.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            //dataGridViewCellStyle2.ForeColor = Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = Color.DarkGray;
             dataGridViewCellStyle2.SelectionForeColor = Color.Black;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
@@ -43,7 +43,7 @@ namespace Setup.Controles
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.Black;
             dataGridViewCellStyle3.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = Color.White;
+            //dataGridViewCellStyle3.ForeColor = Color.White;
             dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle3.SelectionForeColor = Color.White;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
@@ -58,7 +58,7 @@ namespace Setup.Controles
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.Black;
             dataGridViewCellStyle4.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = Color.White;
+            //dataGridViewCellStyle4.ForeColor = Color.White;
             dataGridViewCellStyle4.SelectionBackColor = Color.Black;
             dataGridViewCellStyle4.SelectionForeColor = Color.White;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
@@ -66,12 +66,12 @@ namespace Setup.Controles
             this.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
             dataGridViewCellStyle5.BackColor = Color.Black;
-            dataGridViewCellStyle5.ForeColor = Color.White;
+            //dataGridViewCellStyle5.ForeColor = Color.White;
             dataGridViewCellStyle5.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle5.SelectionForeColor = Color.White;
             this.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.RowTemplate.DefaultCellStyle.BackColor = Color.Black;
-            this.RowTemplate.DefaultCellStyle.ForeColor = Color.White;// Color.Transparent;
+            //this.RowTemplate.DefaultCellStyle.ForeColor = Color.Red;// Color.Transparent;
             this.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             this.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             this.RowTemplate.Height = 25;
