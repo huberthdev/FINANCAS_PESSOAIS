@@ -186,6 +186,8 @@ namespace Setup.Financas
             string tipo;
             double valor = 0;
 
+            status.Items["total"].ForeColor = Color.Turquoise;
+
             if (lista.RowCount == 0)
             {
                 status.Items["total"].Text = "Total: R$ 0,00";
@@ -197,7 +199,7 @@ namespace Setup.Financas
                 tipo = lista.Rows[i].Cells[1].Value.ToString();
                 if(tipo == "D" || tipo == "C")
                 {
-                    valor = valor + double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                    valor += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
                 }
             }
 
