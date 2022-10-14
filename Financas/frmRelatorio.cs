@@ -203,7 +203,7 @@ namespace Setup.Financas
 
             status.Items["total"].Text = "Total: " + valor.ToString("C");
 
-            if(valor > 0)
+            if(valor < 0)
             {
                 status.Items["total"].ForeColor = Color.Red;
             }
