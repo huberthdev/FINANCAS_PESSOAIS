@@ -436,5 +436,20 @@ namespace Setup.Financas
 
         }
 
+        private void lista_Gastos_Classe_DoubleClick(object sender, EventArgs e)
+        {
+            string classe;
+
+            if (lista_Gastos_Classe.Rows.Count == 0)
+                return;
+
+            classe = lista_Gastos_Classe.SelectedRows[0].Cells[1].Value.ToString();
+
+            frmRelatorio rel = new frmRelatorio();
+            rel.ckDespesa.Checked = true;
+            rel.CarregarCbClassesContas("classe");
+            rel.cbClasse.Text = classe;
+            rel.ShowDialog();
+        }
     }
 }

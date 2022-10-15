@@ -18,7 +18,6 @@ namespace Setup.Financas
             txtDataFim.Value = new DateTime(ano, mes, ultDia);
 
             CarregarCbClassesContas();
-            CarregarLista();
         }
 
         private void CarregarLista(string sql = "")
@@ -161,7 +160,7 @@ namespace Setup.Financas
             SomarColunaValor();
         }
 
-        private void CarregarCbClassesContas(string campo = "")
+        public void CarregarCbClassesContas(string campo = "")
         {
             //Preenche o combobox com as classes cadastradas no banco de dados
             if(campo=="classe" || campo == "")
@@ -313,7 +312,7 @@ namespace Setup.Financas
         {
             string tipo;
             double soma = 0;
-            
+
             try
             {
                 tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
@@ -323,10 +322,21 @@ namespace Setup.Financas
                 return;
             }
 
-            if (tipo != "D")
+            if (lista.SelectedRows.Count > 1)
+            {
+                menuStrip1.Items[1].Enabled = false;
                 menuStrip1.Items[2].Enabled = false;
+            }
             else
+            {
+                menuStrip1.Items[1].Enabled = true;
                 menuStrip1.Items[2].Enabled = true;
+
+                if (tipo != "D")
+                    menuStrip1.Items[2].Enabled = false;
+                else
+                    menuStrip1.Items[2].Enabled = true;
+            }
 
             status.Items["somaLn"].Text = "";
 

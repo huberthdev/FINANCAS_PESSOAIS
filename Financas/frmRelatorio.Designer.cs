@@ -625,11 +625,9 @@ namespace Setup.Financas
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private Controles.cbCombo cbClasse;
         private System.Windows.Forms.Label label5;
         private Controles.cbCombo cbConta;
         private System.Windows.Forms.CheckBox ckReceita;
-        private System.Windows.Forms.CheckBox ckDespesa;
         private System.Windows.Forms.Label label6;
         private Controles.Txt txtDescricao;
         private System.Windows.Forms.Label label7;
@@ -638,7 +636,6 @@ namespace Setup.Financas
         private Controles.Decimal txtValor2;
         private System.Windows.Forms.ToolStripStatusLabel totalLn;
         private System.Windows.Forms.StatusStrip status;
-        private Controles.dgView lista;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIPO;
         private System.Windows.Forms.DataGridViewTextBoxColumn DATA;
@@ -653,5 +650,8 @@ namespace Setup.Financas
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.DateTimePicker txtDataInicio;
         public System.Windows.Forms.DateTimePicker txtDataFim;
+        public Controles.cbCombo cbClasse;
+        public System.Windows.Forms.CheckBox ckDespesa;
+        public Controles.dgView lista;
     }
 }
