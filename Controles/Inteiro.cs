@@ -45,5 +45,28 @@ namespace Setup.Controles
 
             base.OnKeyPress(e);
         }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            string txt;
+
+            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            {
+                txt = Clipboard.GetText().Trim();
+
+                try
+                {
+                    txt = Convert.ToInt64(txt).ToString();
+                    Clipboard.SetText(txt);
+                }
+                catch
+                {
+                    Clipboard.SetText("0");
+                }
+            }
+
+            base.OnKeyDown(e);
+        }
+
     }
 }

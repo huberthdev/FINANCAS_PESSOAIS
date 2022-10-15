@@ -56,6 +56,15 @@ namespace Setup.Financas
 
             lista.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+            if (txtValor1.Text != "" && txtValor2.Text != "")
+            {
+                if (Math.Abs(double.Parse(v1)) > Math.Abs(double.Parse(v2)))
+                {
+                    v2 = BD.CvNum(txtValor1.Text);
+                    v1 = BD.CvNum(txtValor2.Text);
+                }
+            }
+
             if (sql == "")
             {
                 sql = "SELECT ID, TIPO, DATA, CLASSE, VALOR, DESC FROM( ";
@@ -78,8 +87,10 @@ namespace Setup.Financas
                         sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND 1000000 ";
                     else if (txtValor1.Text == "" && txtValor2.Text != "")
                         sql += "AND A.VALOR BETWEEN 0 AND CAST(" + v2 + " AS DECIMAL) ";
-                    else if (txtValor1.Text != "" && txtValor2.Text != "")
+                    else if (txtValor1.Text != "" && txtValor2.Text != "" && txtValor1.Text != txtValor2.Text)
                         sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND CAST(" + v2 + " AS DECIMAL) ";
+                    else if (txtValor1.Text != "" && txtValor2.Text != "" && txtValor1.Text == txtValor2.Text)
+                        sql += "AND A.VALOR = "+ v1 +" ";
                 }
                 else if (ckReceita.Checked == false && ckDespesa.Checked == true)//DESPESAS
                 {
@@ -92,8 +103,10 @@ namespace Setup.Financas
                         sql += "AND A.VALOR BETWEEN -1000000 AND CAST(" + v1 + " AS DECIMAL) ";
                     else if (txtValor1.Text == "" && txtValor2.Text != "")
                         sql += "AND A.VALOR BETWEEN CAST(" + v2 + " AS DECIMAL) AND 0 ";
-                    else if (txtValor1.Text != "" && txtValor2.Text != "")
+                    else if (txtValor1.Text != "" && txtValor2.Text != "" && txtValor1.Text != txtValor2.Text)
                         sql += "AND A.VALOR BETWEEN CAST(" + v2 + " AS DECIMAL) AND CAST(" + v1 + " AS DECIMAL) ";
+                    else if (txtValor1.Text != "" && txtValor2.Text != "" && txtValor1.Text == txtValor2.Text)
+                        sql += "AND A.VALOR = " + v1 + " ";
                 }
                     
                 //FILTRO CLASSE
@@ -142,28 +155,18 @@ namespace Setup.Financas
 
             try
             {
-                status.Items["totalLn"].Text = "";
-                status.Items["totalLn"].Image = null;
+                status.Items["msg"].Text = "";
+                status.Items["msg"].Image = null;
+
                 lista.DataSource = BD.Buscar(sql);
             }
             catch (Exception ex)
             {
-                status.Items["totalLn"].Text = ex.Message.ToString();
+                status.Items["msg"].Text = ex.Message.ToString();
             }
 
             //PREENCHE A BARRA DE STATUS A QUANTIDADE DE LINHAS DA LISTA
             status.Items["totalLn"].Text = "LINHAS: " + lista.RowCount;
-
-            if(txtValor1.Text != "" && txtValor2.Text != "")
-            {
-                v1 = txtValor1.Text;
-                v2 = txtValor2.Text;
-                if(Math.Abs(decimal.Parse(v1)) > Math.Abs(decimal.Parse(v2)))
-                {
-                    status.Items["totalLn"].Text = "No Filtro: O campo Valor1 não pode ser 'MAIOR' que o campo Valor2";
-                    status.Items["totalLn"].Image = imageList1.Images[1];
-                }
-            }
 
             //Thread.Sleep(5000);
             Formatacao_Condicional();
@@ -210,7 +213,7 @@ namespace Setup.Financas
             string tipo;
             double valor = 0;
 
-            status.Items["total"].ForeColor = Color.Turquoise;
+            status.Items["total"].ForeColor = Color.Black;
 
             if (lista.RowCount == 0)
             {
@@ -251,7 +254,7 @@ namespace Setup.Financas
                 }
                 else
                 {
-                    lista.Rows[i].Cells[4].Style.ForeColor = Color.Green;
+                    lista.Rows[i].Cells[4].Style.ForeColor = Color.Lime;
                 }
 
                 if (lista.Rows[i].Cells[1].Value.ToString()=="T")
@@ -265,7 +268,7 @@ namespace Setup.Financas
                 {
                     for (int c = 0; c < lista.ColumnCount; c++)
                     {
-                        lista.Rows[i].Cells[c].Style.ForeColor = Color.Turquoise;
+                        lista.Rows[i].Cells[c].Style.ForeColor = Color.Blue;
                     }
                 }
             }
@@ -362,7 +365,7 @@ namespace Setup.Financas
 
                 status.Items["somaLn"].Text = "Seleção: " + soma.ToString("C");
 
-                status.Items["somaLn"].ForeColor = Color.White;
+                status.Items["somaLn"].ForeColor = Color.Black;
 
                 if (soma < 0)
                 {

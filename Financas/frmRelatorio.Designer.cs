@@ -88,6 +88,9 @@ namespace Setup.Financas
             this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.txtDataFim = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.msg = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -339,7 +342,7 @@ namespace Setup.Financas
             // 
             this.totalLn.BackColor = System.Drawing.Color.Transparent;
             this.totalLn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.totalLn.ForeColor = System.Drawing.Color.White;
+            this.totalLn.ForeColor = System.Drawing.Color.Black;
             this.totalLn.Name = "totalLn";
             this.totalLn.Size = new System.Drawing.Size(63, 17);
             this.totalLn.Text = "LINHAS: 0";
@@ -347,18 +350,19 @@ namespace Setup.Financas
             // status
             // 
             this.status.AutoSize = false;
-            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.BackColor = System.Drawing.Color.White;
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.total,
             this.sp1,
             this.totalLn,
             this.sp2,
-            this.somaLn,
-            this.sp3,
             this.lg1,
             this.lg2,
             this.lg3,
-            this.lg4});
+            this.lg4,
+            this.sp3,
+            this.somaLn,
+            this.msg});
             this.status.Location = new System.Drawing.Point(0, 348);
             this.status.Name = "status";
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -370,14 +374,14 @@ namespace Setup.Financas
             // total
             // 
             this.total.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.total.ForeColor = System.Drawing.Color.White;
+            this.total.ForeColor = System.Drawing.Color.Black;
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(48, 17);
             this.total.Text = "R$ 0,00";
             // 
             // sp1
             // 
-            this.sp1.ForeColor = System.Drawing.Color.White;
+            this.sp1.ForeColor = System.Drawing.Color.Black;
             this.sp1.Name = "sp1";
             this.sp1.Size = new System.Drawing.Size(10, 17);
             this.sp1.Text = "|";
@@ -385,7 +389,7 @@ namespace Setup.Financas
             // 
             // sp2
             // 
-            this.sp2.ForeColor = System.Drawing.Color.White;
+            this.sp2.ForeColor = System.Drawing.Color.Black;
             this.sp2.Name = "sp2";
             this.sp2.Size = new System.Drawing.Size(10, 17);
             this.sp2.Text = "|";
@@ -394,14 +398,14 @@ namespace Setup.Financas
             // somaLn
             // 
             this.somaLn.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.somaLn.ForeColor = System.Drawing.Color.White;
+            this.somaLn.ForeColor = System.Drawing.Color.Black;
             this.somaLn.Name = "somaLn";
             this.somaLn.Size = new System.Drawing.Size(25, 17);
             this.somaLn.Text = "<--";
             // 
             // sp3
             // 
-            this.sp3.ForeColor = System.Drawing.Color.White;
+            this.sp3.ForeColor = System.Drawing.Color.Black;
             this.sp3.Name = "sp3";
             this.sp3.Size = new System.Drawing.Size(10, 17);
             this.sp3.Text = "|";
@@ -423,7 +427,7 @@ namespace Setup.Financas
             // 
             // lg3
             // 
-            this.lg3.ForeColor = System.Drawing.Color.Turquoise;
+            this.lg3.ForeColor = System.Drawing.Color.Blue;
             this.lg3.Name = "lg3";
             this.lg3.Size = new System.Drawing.Size(59, 17);
             this.lg3.Text = "■ Crédito";
@@ -617,12 +621,38 @@ namespace Setup.Financas
             this.txtDataFim.TabIndex = 10;
             this.txtDataFim.ValueChanged += new System.EventHandler(this.txtDataFim_ValueChanged);
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label9.Location = new System.Drawing.Point(0, 25);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(1, 323);
+            this.label9.TabIndex = 11;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.White;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label10.Location = new System.Drawing.Point(841, 25);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(1, 323);
+            this.label10.TabIndex = 12;
+            // 
+            // msg
+            // 
+            this.msg.ForeColor = System.Drawing.Color.Black;
+            this.msg.Name = "msg";
+            this.msg.Size = new System.Drawing.Size(0, 17);
+            // 
             // frmRelatorio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(842, 370);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.txtDataFim);
             this.Controls.Add(this.txtDataInicio);
             this.Controls.Add(this.lista);
@@ -708,5 +738,8 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripStatusLabel lg2;
         private System.Windows.Forms.ToolStripStatusLabel lg3;
         private System.Windows.Forms.ToolStripStatusLabel lg4;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ToolStripStatusLabel msg;
     }
 }

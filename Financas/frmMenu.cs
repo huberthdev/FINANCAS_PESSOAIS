@@ -199,7 +199,7 @@ namespace Setup.Financas
                 }
                 else
                 {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Green;
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Lime;
                 }
             }
 

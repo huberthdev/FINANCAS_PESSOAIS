@@ -24,9 +24,16 @@ namespace Setup.Controles
         {
             if (this.Text != "")
             {
-                string valor = this.Text;
-                valor.Trim();
-                this.Text = Convert.ToDouble(valor).ToString("n");
+                string valor = this.Text.Trim();
+
+                try
+                {
+                    this.Text = Convert.ToDouble(valor).ToString("N");
+                }
+                catch
+                {
+                    this.Text = "0,00";
+                }
             }
 
             base.OnLostFocus(e);
@@ -44,6 +51,28 @@ namespace Setup.Controles
                 e.Handled = true;
 
             base.OnKeyPress(e);
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            string txt;
+
+            if(e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            {
+                txt = Clipboard.GetText().Trim();
+
+                try
+                {
+                    txt = Convert.ToDouble(txt).ToString("N");
+                    Clipboard.SetText(txt);
+                }
+                catch
+                {
+                    Clipboard.SetText("0,00");
+                }
+            }
+
+            base.OnKeyDown(e);
         }
     }
 }

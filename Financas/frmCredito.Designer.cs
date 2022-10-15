@@ -524,7 +524,7 @@ namespace Setup.Financas
             // 
             // btnPagarFatura
             // 
-            this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnPagarFatura.BackColor = System.Drawing.Color.Lime;
             this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);

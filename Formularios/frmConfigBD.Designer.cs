@@ -160,7 +160,7 @@ namespace Setup.Formularios
             // 
             // btnSalvar
             // 
-            this.btnSalvar.BackColor = System.Drawing.Color.Green;
+            this.btnSalvar.BackColor = System.Drawing.Color.Lime;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
             this.btnSalvar.Location = new System.Drawing.Point(173, 131);
