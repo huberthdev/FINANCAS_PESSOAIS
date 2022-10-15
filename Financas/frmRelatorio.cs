@@ -10,14 +10,21 @@ namespace Setup.Financas
         {
             InitializeComponent();
 
+            CarregarCbClassesContas();
+            DatasPadrao();
+        }
+
+        private void DatasPadrao()
+        {
             int mes = DateTime.Today.Month;
             int ano = DateTime.Today.Year;
             int ultDia = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month);
 
             txtDataInicio.Value = new DateTime(ano, mes, 01);
-            txtDataFim.Value = new DateTime(ano, mes, ultDia);
+            txtDataInicio.Checked = true;
 
-            CarregarCbClassesContas();
+            txtDataFim.Value = new DateTime(ano, mes, ultDia);
+            txtDataFim.Checked = true;
         }
 
         private void CarregarLista(string sql = "")
@@ -379,9 +386,10 @@ namespace Setup.Financas
         private void limparFiltro_Click(object sender, EventArgs e)
         {
             COD.LimparCampos(this);
-            txtDataInicio.Text = "01/" + DateTime.Today.ToString("MM/yyyy");
+            DatasPadrao();
             ckReceita.Checked = false;
             ckDespesa.Checked = false;
+            CarregarLista();
         }
 
         private void ckReceita_Click(object sender, EventArgs e)

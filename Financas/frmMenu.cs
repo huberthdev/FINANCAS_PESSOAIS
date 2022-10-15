@@ -181,16 +181,29 @@ namespace Setup.Financas
         //TODAS AS FUNÇÕES DA ABA LANÇAMENTO DE RECEITAS E DESPESAS
         private void CarregarListaSaldoContas()
         {
+            double valor, total = 0;
+
             string sql = "SELECT CONTA_ID, CONTA, SALDO FROM CONTA ";
             sql += "WHERE SALDO <> 0 ORDER BY SALDO DESC";
+
             listaSaldo_Contas.DataSource = BD.Buscar(sql);
 
             for (int i = 0; i < listaSaldo_Contas.RowCount; i++)
             {
-                String valor = listaSaldo_Contas.Rows[i].Cells[2].Value.ToString();
-                if (Decimal.Parse(valor) < 0)
+                valor = double.Parse(listaSaldo_Contas.Rows[i].Cells[2].Value.ToString());
+                total += valor;
+
+                if (valor < 0)
+                {
                     listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Red;
+                }
+                else
+                {
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Green;
+                }
             }
+
+            listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
         }
 
         private void CarregarListaGastoClasseMesAtual()
@@ -309,16 +322,15 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string classe;
-            string conta;
+            string classe, conta, valor;
 
-            if (COD.ValidarCampos(pnLancamento, errorProvider1) == false)
+            if (!COD.ValidarCampos(pnLancamento, errorProvider1))
                 return;
 
             classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
             conta = ((Classes.Conta)cbConta.SelectedItem).id.ToString();
 
-            string valor = txtValor.Text;
+            valor = txtValor.Text;
 
             if (opDespesa.Checked == true)
                 valor = BD.CvNum((decimal.Parse(valor) * -1).ToString());

@@ -53,7 +53,6 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -71,6 +70,7 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new System.Windows.Forms.ToolStripMenuItem();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,9 +119,6 @@ namespace Setup.Financas
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label7 = new System.Windows.Forms.Label();
             this.listaSaldo_Contas = new Setup.Controles.dgView();
-            this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lista_Gastos_Classe = new Setup.Controles.dgView();
             this.CLASSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,6 +148,9 @@ namespace Setup.Financas
             this.optReceita = new System.Windows.Forms.RadioButton();
             this.txtClasse = new Setup.Controles.Txt();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.tabelaMenu.SuspendLayout();
             this.tabReceita_Despesa.SuspendLayout();
@@ -757,31 +757,6 @@ namespace Setup.Financas
             this.listaSaldo_Contas.Size = new System.Drawing.Size(436, 206);
             this.listaSaldo_Contas.TabIndex = 1;
             // 
-            // CONTA_ID
-            // 
-            this.CONTA_ID.DataPropertyName = "CONTA_ID";
-            this.CONTA_ID.HeaderText = "ID";
-            this.CONTA_ID.Name = "CONTA_ID";
-            this.CONTA_ID.ReadOnly = true;
-            this.CONTA_ID.Visible = false;
-            // 
-            // CONTA
-            // 
-            this.CONTA.DataPropertyName = "CONTA";
-            this.CONTA.HeaderText = "CONTA";
-            this.CONTA.Name = "CONTA";
-            this.CONTA.ReadOnly = true;
-            // 
-            // SALDO
-            // 
-            this.SALDO.DataPropertyName = "SALDO";
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0,00";
-            this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SALDO.HeaderText = "SALDO";
-            this.SALDO.Name = "SALDO";
-            this.SALDO.ReadOnly = true;
-            // 
             // lista_Gastos_Classe
             // 
             this.lista_Gastos_Classe.AllowUserToAddRows = false;
@@ -1293,6 +1268,33 @@ namespace Setup.Financas
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // CONTA_ID
+            // 
+            this.CONTA_ID.DataPropertyName = "CONTA_ID";
+            this.CONTA_ID.HeaderText = "ID";
+            this.CONTA_ID.Name = "CONTA_ID";
+            this.CONTA_ID.ReadOnly = true;
+            this.CONTA_ID.Visible = false;
+            // 
+            // CONTA
+            // 
+            this.CONTA.DataPropertyName = "CONTA";
+            this.CONTA.HeaderText = "CONTA";
+            this.CONTA.Name = "CONTA";
+            this.CONTA.ReadOnly = true;
+            this.CONTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // SALDO
+            // 
+            this.SALDO.DataPropertyName = "SALDO";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0,00";
+            this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
+            this.SALDO.HeaderText = "SALDO";
+            this.SALDO.Name = "SALDO";
+            this.SALDO.ReadOnly = true;
+            this.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1393,9 +1395,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn CLASS;
         private Controles.dgView listaConta;
-        private DataGridViewTextBoxColumn CONTA_ID;
-        private DataGridViewTextBoxColumn CONTA;
-        private DataGridViewTextBoxColumn SALDO;
         private Panel pnLancamento;
         private PictureBox pictureBox1;
         private Controles.cbCombo cbConta;
@@ -1421,5 +1420,8 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CLASSE_ID;
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn VALOR;
+        private DataGridViewTextBoxColumn CONTA_ID;
+        private DataGridViewTextBoxColumn CONTA;
+        private DataGridViewTextBoxColumn SALDO;
     }
 }
