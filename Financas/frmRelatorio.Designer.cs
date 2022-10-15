@@ -72,6 +72,11 @@ namespace Setup.Financas
             this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.somaLn = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lg1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lg2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lg3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lg4 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lista = new Setup.Controles.dgView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -244,6 +249,7 @@ namespace Setup.Financas
             this.ckReceita.TabIndex = 8;
             this.ckReceita.Text = "Receita";
             this.ckReceita.UseVisualStyleBackColor = true;
+            this.ckReceita.CheckedChanged += new System.EventHandler(this.ckReceita_CheckedChanged);
             this.ckReceita.Click += new System.EventHandler(this.ckReceita_Click);
             // 
             // ckDespesa
@@ -257,6 +263,7 @@ namespace Setup.Financas
             this.ckDespesa.Text = "Despesa";
             this.ckDespesa.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ckDespesa.UseVisualStyleBackColor = true;
+            this.ckDespesa.CheckedChanged += new System.EventHandler(this.ckDespesa_CheckedChanged);
             this.ckDespesa.Click += new System.EventHandler(this.ckDespesa_Click);
             // 
             // label6
@@ -296,6 +303,7 @@ namespace Setup.Financas
             // 
             this.txtValor1.BackColor = System.Drawing.Color.Black;
             this.txtValor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValor1.Enabled = false;
             this.txtValor1.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor1.ForeColor = System.Drawing.Color.White;
             this.txtValor1.Location = new System.Drawing.Point(454, 63);
@@ -318,6 +326,7 @@ namespace Setup.Financas
             // 
             this.txtValor2.BackColor = System.Drawing.Color.Black;
             this.txtValor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValor2.Enabled = false;
             this.txtValor2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor2.ForeColor = System.Drawing.Color.White;
             this.txtValor2.Location = new System.Drawing.Point(579, 63);
@@ -344,7 +353,12 @@ namespace Setup.Financas
             this.sp1,
             this.totalLn,
             this.sp2,
-            this.somaLn});
+            this.somaLn,
+            this.sp3,
+            this.lg1,
+            this.lg2,
+            this.lg3,
+            this.lg4});
             this.status.Location = new System.Drawing.Point(0, 348);
             this.status.Name = "status";
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -356,7 +370,7 @@ namespace Setup.Financas
             // total
             // 
             this.total.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.total.ForeColor = System.Drawing.Color.Turquoise;
+            this.total.ForeColor = System.Drawing.Color.White;
             this.total.Name = "total";
             this.total.Size = new System.Drawing.Size(48, 17);
             this.total.Text = "R$ 0,00";
@@ -384,6 +398,42 @@ namespace Setup.Financas
             this.somaLn.Name = "somaLn";
             this.somaLn.Size = new System.Drawing.Size(25, 17);
             this.somaLn.Text = "<--";
+            // 
+            // sp3
+            // 
+            this.sp3.ForeColor = System.Drawing.Color.White;
+            this.sp3.Name = "sp3";
+            this.sp3.Size = new System.Drawing.Size(10, 17);
+            this.sp3.Text = "|";
+            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lg1
+            // 
+            this.lg1.ForeColor = System.Drawing.Color.Green;
+            this.lg1.Name = "lg1";
+            this.lg1.Size = new System.Drawing.Size(58, 17);
+            this.lg1.Text = "■ Receita";
+            // 
+            // lg2
+            // 
+            this.lg2.ForeColor = System.Drawing.Color.Red;
+            this.lg2.Name = "lg2";
+            this.lg2.Size = new System.Drawing.Size(63, 17);
+            this.lg2.Text = "■ Despesa";
+            // 
+            // lg3
+            // 
+            this.lg3.ForeColor = System.Drawing.Color.Turquoise;
+            this.lg3.Name = "lg3";
+            this.lg3.Size = new System.Drawing.Size(59, 17);
+            this.lg3.Text = "■ Crédito";
+            // 
+            // lg4
+            // 
+            this.lg4.ForeColor = System.Drawing.Color.Fuchsia;
+            this.lg4.Name = "lg4";
+            this.lg4.Size = new System.Drawing.Size(89, 17);
+            this.lg4.Text = "■ Transferência";
             // 
             // lista
             // 
@@ -653,5 +703,10 @@ namespace Setup.Financas
         public Controles.cbCombo cbClasse;
         public System.Windows.Forms.CheckBox ckDespesa;
         public Controles.dgView lista;
+        private System.Windows.Forms.ToolStripStatusLabel sp3;
+        private System.Windows.Forms.ToolStripStatusLabel lg1;
+        private System.Windows.Forms.ToolStripStatusLabel lg2;
+        private System.Windows.Forms.ToolStripStatusLabel lg3;
+        private System.Windows.Forms.ToolStripStatusLabel lg4;
     }
 }

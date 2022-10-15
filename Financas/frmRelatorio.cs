@@ -58,8 +58,10 @@ namespace Setup.Financas
 
             if (sql == "")
             {
+                sql = "SELECT ID, TIPO, DATA, CLASSE, VALOR, DESC FROM( ";
+
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA BD - RECEITAS E DESPESAS
-                sql = "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA, B.CLASSE, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
+                sql += "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA AS DATA, B.CLASSE, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
                 sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.DATA BETWEEN ";
                 sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
 
@@ -68,7 +70,7 @@ namespace Setup.Financas
                     sql += "AND UPPER(A.DESCRICAO) LIKE '" + descricao + "' ";
                 }
 
-                if (ckReceita.Checked == true && ckDespesa.Checked == false)
+                if (ckReceita.Checked == true && ckDespesa.Checked == false)//RECEITAS
                 {
                     if(txtValor1.Text == "" && txtValor2.Text == "")
                         sql += "AND A.VALOR > 0 ";
@@ -79,7 +81,7 @@ namespace Setup.Financas
                     else if (txtValor1.Text != "" && txtValor2.Text != "")
                         sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND CAST(" + v2 + " AS DECIMAL) ";
                 }
-                else if (ckReceita.Checked == false && ckDespesa.Checked == true)
+                else if (ckReceita.Checked == false && ckDespesa.Checked == true)//DESPESAS
                 {
                     v1 = "-" + v1;
                     v2 = "-" + v2;
@@ -87,9 +89,9 @@ namespace Setup.Financas
                     if (txtValor1.Text == "" && txtValor2.Text == "")
                         sql += "AND A.VALOR < 0 ";
                     else if (txtValor1.Text != "" && txtValor2.Text == "")
-                        sql += "AND A.VALOR BETWEEN CAST(" + v1 + " AS DECIMAL) AND 0 ";
+                        sql += "AND A.VALOR BETWEEN -1000000 AND CAST(" + v1 + " AS DECIMAL) ";
                     else if (txtValor1.Text == "" && txtValor2.Text != "")
-                        sql += "AND A.VALOR BETWEEN -1000000 AND CAST(" + v2 + " AS DECIMAL) ";
+                        sql += "AND A.VALOR BETWEEN CAST(" + v2 + " AS DECIMAL) AND 0 ";
                     else if (txtValor1.Text != "" && txtValor2.Text != "")
                         sql += "AND A.VALOR BETWEEN CAST(" + v2 + " AS DECIMAL) AND CAST(" + v1 + " AS DECIMAL) ";
                 }
@@ -109,7 +111,7 @@ namespace Setup.Financas
                 }
 
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA TRANSFERENCIA
-                sql += "UNION SELECT TRANSFERENCIA_ID AS ID, 'T' AS TIPO, DATA, ";
+                sql += "UNION SELECT TRANSFERENCIA_ID AS ID, 'T' AS TIPO, DATA AS DATA, ";
                 sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, VALOR, DESCRICAO AS DESC ";
                 sql += "FROM TRANSFERENCIA WHERE DATA BETWEEN ";
                 sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
@@ -135,6 +137,7 @@ namespace Setup.Financas
                     }
                 }
 
+                sql += ")ORDER BY DATA DESC ";
             }
 
             try
@@ -440,6 +443,34 @@ namespace Setup.Financas
         private void txtDataFim_ValueChanged(object sender, EventArgs e)
         {
             CarregarLista();
+        }
+
+        private void ckReceita_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckReceita.Checked == true && ckDespesa.Checked == true || ckReceita.Checked == false && ckDespesa.Checked == false)
+            {
+                txtValor1.Enabled = false;
+                txtValor2.Enabled = false;
+            }
+            else
+            {
+                txtValor1.Enabled = true;
+                txtValor2.Enabled = true;
+            }
+        }
+
+        private void ckDespesa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckReceita.Checked == true && ckDespesa.Checked == true || ckReceita.Checked == false && ckDespesa.Checked == false)
+            {
+                txtValor1.Enabled = false;
+                txtValor2.Enabled = false;
+            }
+            else
+            {
+                txtValor1.Enabled = true;
+                txtValor2.Enabled = true;
+            }
         }
     }
 }
