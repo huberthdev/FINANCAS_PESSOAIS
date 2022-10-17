@@ -41,8 +41,8 @@ namespace Setup.Formularios
             this.selectFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.atualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.executarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.novoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.executar = new System.Windows.Forms.ToolStripMenuItem();
+            this.novo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolLimite = new System.Windows.Forms.ToolStripTextBox();
             this.treeTabelas = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -60,7 +60,7 @@ namespace Setup.Formularios
             // 
             // txtSQL
             // 
-            this.txtSQL.BackColor = System.Drawing.Color.Black;
+            this.txtSQL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtSQL.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSQL.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtSQL.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -99,9 +99,10 @@ namespace Setup.Formularios
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.executarToolStripMenuItem,
-            this.novoToolStripMenuItem,
+            this.executar,
+            this.novo,
             this.toolLimite});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -109,35 +110,35 @@ namespace Setup.Formularios
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // executarToolStripMenuItem
+            // executar
             // 
-            this.executarToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.executarToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.executarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("executarToolStripMenuItem.Image")));
-            this.executarToolStripMenuItem.Name = "executarToolStripMenuItem";
-            this.executarToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.executarToolStripMenuItem.Size = new System.Drawing.Size(103, 25);
-            this.executarToolStripMenuItem.Text = "Executar {F4}";
-            this.executarToolStripMenuItem.Click += new System.EventHandler(this.executarToolStripMenuItem_Click);
+            this.executar.BackColor = System.Drawing.Color.Transparent;
+            this.executar.ForeColor = System.Drawing.Color.White;
+            this.executar.Image = ((System.Drawing.Image)(resources.GetObject("executar.Image")));
+            this.executar.Name = "executar";
+            this.executar.ShortcutKeys = System.Windows.Forms.Keys.F4;
+            this.executar.Size = new System.Drawing.Size(103, 25);
+            this.executar.Text = "Executar {F4}";
+            this.executar.Click += new System.EventHandler(this.executarToolStripMenuItem_Click);
             // 
-            // novoToolStripMenuItem
+            // novo
             // 
-            this.novoToolStripMenuItem.BackColor = System.Drawing.Color.Transparent;
-            this.novoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.novoToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripMenuItem.Image")));
-            this.novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            this.novoToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.novoToolStripMenuItem.Size = new System.Drawing.Size(87, 25);
-            this.novoToolStripMenuItem.Text = "Novo {F5}";
-            this.novoToolStripMenuItem.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
+            this.novo.BackColor = System.Drawing.Color.Transparent;
+            this.novo.ForeColor = System.Drawing.Color.White;
+            this.novo.Image = ((System.Drawing.Image)(resources.GetObject("novo.Image")));
+            this.novo.Name = "novo";
+            this.novo.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.novo.Size = new System.Drawing.Size(87, 25);
+            this.novo.Text = "Novo {F5}";
+            this.novo.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // toolLimite
             // 
             this.toolLimite.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolLimite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.toolLimite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.toolLimite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.toolLimite.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.toolLimite.ForeColor = System.Drawing.Color.Black;
+            this.toolLimite.ForeColor = System.Drawing.Color.White;
             this.toolLimite.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.toolLimite.Name = "toolLimite";
             this.toolLimite.Size = new System.Drawing.Size(100, 25);
@@ -146,7 +147,7 @@ namespace Setup.Formularios
             // 
             // treeTabelas
             // 
-            this.treeTabelas.BackColor = System.Drawing.Color.Black;
+            this.treeTabelas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.treeTabelas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeTabelas.ContextMenuStrip = this.contextMenuStrip1;
             this.treeTabelas.Cursor = System.Windows.Forms.Cursors.Default;
@@ -185,26 +186,26 @@ namespace Setup.Formularios
             this.lista.AllowUserToAddRows = false;
             this.lista.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.lista.BackgroundColor = System.Drawing.Color.Black;
-            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -221,20 +222,20 @@ namespace Setup.Formularios
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
@@ -248,7 +249,7 @@ namespace Setup.Formularios
             // 
             // status
             // 
-            this.status.BackColor = System.Drawing.Color.Black;
+            this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
             this.status.Location = new System.Drawing.Point(0, 218);
@@ -256,6 +257,7 @@ namespace Setup.Formularios
             this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.status.ShowItemToolTips = true;
             this.status.Size = new System.Drawing.Size(621, 22);
+            this.status.SizingGrip = false;
             this.status.TabIndex = 6;
             // 
             // statusLabel
@@ -268,20 +270,19 @@ namespace Setup.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(797, 350);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.treeTabelas);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MinimumSize = new System.Drawing.Size(655, 313);
             this.Name = "frmQuery";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SQL";
             this.Activated += new System.EventHandler(this.frmQuery_Activated);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
@@ -301,8 +302,8 @@ namespace Setup.Formularios
 
         private System.Windows.Forms.RichTextBox txtSQL;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem executarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem novoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem executar;
+        private System.Windows.Forms.ToolStripMenuItem novo;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem selectFromToolStripMenuItem;
         private System.Windows.Forms.TreeView treeTabelas;

@@ -10,7 +10,7 @@ namespace Setup.Controles
         {
             this.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             this.TextAlign = HorizontalAlignment.Center;
-            this.BackColor = Color.Black;
+            this.BackColor = Color.FromArgb(37,37,38);
             this.BorderStyle = BorderStyle.FixedSingle;
             this.ForeColor = Color.White;
             this.MaxLength = 10;

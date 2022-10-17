@@ -195,11 +195,11 @@ namespace Setup.Financas
 
                 if (valor < 0)
                 {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Red;
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.FromArgb(37,37,38);
                 }
                 else
                 {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Lime;
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
                 }
             }
 
@@ -226,8 +226,8 @@ namespace Setup.Financas
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
                 total += double.Parse(BD.Resultado.Rows[i][2].ToString());
-                //RowTemplate.DefaultCellStyle.ForeColor = Color.Red
-                //lista_Gastos_Classe.Rows[i].Cells[2].Style.ForeColor = Color.Red;
+                //RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(236, 35, 0)
+                //lista_Gastos_Classe.Rows[i].Cells[2].Style.ForeColor = Color.FromArgb(236, 35, 0);
             }
 
             lista_Gastos_Classe.Columns[1].HeaderText = "Gasto: " + mesNome;
@@ -443,11 +443,6 @@ namespace Setup.Financas
             }
         }
 
-        private void menu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void lista_Gastos_Classe_DoubleClick(object sender, EventArgs e)
         {
             string classe;
@@ -462,6 +457,17 @@ namespace Setup.Financas
             rel.CarregarCbClassesContas("classe");
             rel.cbClasse.Text = classe;
             rel.ShowDialog();
+        }
+
+        private void ToolVisaoGeral_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ToolPrevisao_Click(object sender, EventArgs e)
+        {
+            frmPrevisao prev = new frmPrevisao();
+            prev.ShowDialog();
         }
     }
 }

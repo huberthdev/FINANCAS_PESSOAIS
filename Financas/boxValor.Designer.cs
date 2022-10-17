@@ -92,7 +92,7 @@ namespace Setup.Financas
             // 
             // txtSaldo
             // 
-            this.txtSaldo.BackColor = System.Drawing.Color.Black;
+            this.txtSaldo.BackColor = System.Drawing.Color.FromArgb(37,37,38);
             this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSaldo.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSaldo.ForeColor = System.Drawing.Color.White;
@@ -107,7 +107,7 @@ namespace Setup.Financas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.FromArgb(37,37,38);
             this.ClientSize = new System.Drawing.Size(166, 119);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.btnSalvar);

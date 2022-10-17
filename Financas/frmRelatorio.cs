@@ -213,7 +213,7 @@ namespace Setup.Financas
             string tipo;
             double valor = 0;
 
-            status.Items["total"].ForeColor = Color.Black;
+            status.Items["total"].ForeColor = Color.White;
 
             if (lista.RowCount == 0)
             {
@@ -234,7 +234,7 @@ namespace Setup.Financas
 
             if(valor < 0)
             {
-                status.Items["total"].ForeColor = Color.Red;
+                status.Items["total"].ForeColor = Color.FromArgb(236, 35, 0);
             }
         }
 
@@ -250,11 +250,11 @@ namespace Setup.Financas
                 valor = double.Parse(lista.Rows[i].Cells[4].Value.ToString());
                 if (valor < 0)
                 {
-                    lista.Rows[i].Cells[4].Style.ForeColor = Color.Red;
+                    lista.Rows[i].Cells[4].Style.ForeColor = Color.FromArgb(236, 35, 0);
                 }
                 else
                 {
-                    lista.Rows[i].Cells[4].Style.ForeColor = Color.Lime;
+                    lista.Rows[i].Cells[4].Style.ForeColor = Color.LimeGreen;
                 }
 
                 if (lista.Rows[i].Cells[1].Value.ToString()=="T")
@@ -268,9 +268,11 @@ namespace Setup.Financas
                 {
                     for (int c = 0; c < lista.ColumnCount; c++)
                     {
-                        lista.Rows[i].Cells[c].Style.ForeColor = Color.Blue;
+                        lista.Rows[i].Cells[c].Style.ForeColor = Color.DodgerBlue;
                     }
                 }
+
+                //lista.Rows[i].Cells[4].Style.Font = new Font(this.Font, FontStyle.Bold);
             }
 
         }
@@ -365,11 +367,11 @@ namespace Setup.Financas
 
                 status.Items["somaLn"].Text = "Seleção: " + soma.ToString("C");
 
-                status.Items["somaLn"].ForeColor = Color.Black;
+                status.Items["somaLn"].ForeColor = Color.FromArgb(37,37,38);
 
                 if (soma < 0)
                 {
-                    status.Items["somaLn"].ForeColor = Color.Red;
+                    status.Items["somaLn"].ForeColor = Color.FromArgb(236, 35, 0);
                 }
                 else if(soma > 0)
                 {
@@ -391,10 +393,15 @@ namespace Setup.Financas
 
         private void limparFiltro_Click(object sender, EventArgs e)
         {
+            LimparFiltro();
+        }
+
+        private void LimparFiltro(bool receita = false, bool despesa = false)
+        {
             COD.LimparCampos(this);
             DatasPadrao();
-            ckReceita.Checked = false;
-            ckDespesa.Checked = false;
+            ckReceita.Checked = receita;
+            ckDespesa.Checked = despesa;
             CarregarLista();
         }
 
@@ -474,6 +481,21 @@ namespace Setup.Financas
                 txtValor1.Enabled = true;
                 txtValor2.Enabled = true;
             }
+        }
+
+        private void lista_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
+
+        private void lg2_Click(object sender, EventArgs e)
+        {
+            LimparFiltro(despesa:true);
+        }
+
+        private void lg1_Click(object sender, EventArgs e)
+        {
+            LimparFiltro(receita:true);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Setup.Controles
             this.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             this.TextAlign = HorizontalAlignment.Center;
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.BackColor = Color.Black;
+            this.BackColor = Color.FromArgb(37,37,38);
             this.ForeColor = Color.White;
 
             base.OnCreateControl();

@@ -126,7 +126,7 @@ namespace Setup.Financas
             // 
             // txtDesc
             // 
-            this.txtDesc.BackColor = System.Drawing.Color.Black;
+            this.txtDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDesc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -139,7 +139,7 @@ namespace Setup.Financas
             // 
             // txtQtdeParc
             // 
-            this.txtQtdeParc.BackColor = System.Drawing.Color.Black;
+            this.txtQtdeParc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtQtdeParc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQtdeParc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtQtdeParc.ForeColor = System.Drawing.Color.White;
@@ -153,7 +153,7 @@ namespace Setup.Financas
             // 
             // txtValor
             // 
-            this.txtValor.BackColor = System.Drawing.Color.Black;
+            this.txtValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor.ForeColor = System.Drawing.Color.White;
@@ -166,7 +166,7 @@ namespace Setup.Financas
             // 
             // txtData
             // 
-            this.txtData.BackColor = System.Drawing.Color.Black;
+            this.txtData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtData.ForeColor = System.Drawing.Color.White;
@@ -181,7 +181,7 @@ namespace Setup.Financas
             // cbClasse
             // 
             this.cbClasse.AllowDrop = true;
-            this.cbClasse.BackColor = System.Drawing.Color.Black;
+            this.cbClasse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cbClasse.DropDownHeight = 136;
             this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -197,7 +197,7 @@ namespace Setup.Financas
             // 
             // cbCartao
             // 
-            this.cbCartao.BackColor = System.Drawing.Color.Black;
+            this.cbCartao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cbCartao.DropDownHeight = 136;
             this.cbCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -270,21 +270,21 @@ namespace Setup.Financas
             this.lista.AllowUserToAddRows = false;
             this.lista.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.lista.BackgroundColor = System.Drawing.Color.Black;
+            this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -299,7 +299,7 @@ namespace Setup.Financas
             this.DESCRICAO,
             this.dataGridViewTextBoxColumn1});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
@@ -315,20 +315,20 @@ namespace Setup.Financas
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowsDefaultCellStyle = dataGridViewCellStyle9;
-            this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.Black;
+            this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
@@ -445,7 +445,7 @@ namespace Setup.Financas
             // 
             // treeFaturas
             // 
-            this.treeFaturas.BackColor = System.Drawing.Color.Black;
+            this.treeFaturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.treeFaturas.ForeColor = System.Drawing.Color.White;
             this.treeFaturas.Location = new System.Drawing.Point(740, 32);
             this.treeFaturas.Name = "treeFaturas";
@@ -494,7 +494,7 @@ namespace Setup.Financas
             // 
             // cbFCartao
             // 
-            this.cbFCartao.BackColor = System.Drawing.Color.Black;
+            this.cbFCartao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cbFCartao.DropDownHeight = 136;
             this.cbFCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -524,11 +524,11 @@ namespace Setup.Financas
             // 
             // btnPagarFatura
             // 
-            this.btnPagarFatura.BackColor = System.Drawing.Color.Lime;
+            this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
             this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPagarFatura.ForeColor = System.Drawing.Color.Black;
+            this.btnPagarFatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.btnPagarFatura.Location = new System.Drawing.Point(375, 102);
             this.btnPagarFatura.Name = "btnPagarFatura";
             this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
@@ -540,7 +540,7 @@ namespace Setup.Financas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(974, 436);
             this.Controls.Add(this.btnPagarFatura);
             this.Controls.Add(this.label7);
@@ -565,6 +565,7 @@ namespace Setup.Financas
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;

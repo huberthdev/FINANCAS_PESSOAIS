@@ -76,9 +76,10 @@ namespace Setup.Formularios
             // 
             // txtSenha
             // 
+            this.txtSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenha.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtSenha.ForeColor = System.Drawing.Color.Black;
+            this.txtSenha.ForeColor = System.Drawing.Color.White;
             this.txtSenha.Location = new System.Drawing.Point(21, 91);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '•';
@@ -88,9 +89,10 @@ namespace Setup.Formularios
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUsuario.ForeColor = System.Drawing.Color.Black;
+            this.txtUsuario.ForeColor = System.Drawing.Color.White;
             this.txtUsuario.Location = new System.Drawing.Point(21, 38);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(217, 23);
@@ -104,7 +106,7 @@ namespace Setup.Formularios
             this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSair.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btnSair.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.btnSair.Location = new System.Drawing.Point(144, 154);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(94, 27);
@@ -154,7 +156,7 @@ namespace Setup.Formularios
             // lblMsg
             // 
             this.lblMsg.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblMsg.ForeColor = System.Drawing.Color.Red;
+            this.lblMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
             this.lblMsg.Location = new System.Drawing.Point(93, 121);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(152, 21);
@@ -182,7 +184,7 @@ namespace Setup.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Desktop;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(284, 285);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
@@ -191,9 +193,7 @@ namespace Setup.Formularios
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmLogin";
-            this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.panel1.ResumeLayout(false);

@@ -20,12 +20,12 @@ namespace Setup.Controles
             //this.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSlateGray;
 
             dataGridViewCellStyle1.BackColor = Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = Color.Black;
+            dataGridViewCellStyle1.ForeColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = Color.White;
             this.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            this.BackgroundColor = Color.Black;
+            this.BackgroundColor = Color.FromArgb(37,37,38);
             this.BorderStyle = BorderStyle.Fixed3D;
             this.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             this.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -33,15 +33,15 @@ namespace Setup.Controles
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = Color.DarkGray;
             dataGridViewCellStyle2.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = Color.Black;
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle2.SelectionBackColor = Color.DarkGray;
-            dataGridViewCellStyle2.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             this.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.Black;
+            dataGridViewCellStyle3.BackColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle3.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = Color.White;
             dataGridViewCellStyle3.SelectionBackColor = Color.RoyalBlue;
@@ -56,21 +56,21 @@ namespace Setup.Controles
             this.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = Color.Black;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle4.Font = new Font("Consolas", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             dataGridViewCellStyle4.ForeColor = Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle4.SelectionForeColor = Color.White;
             dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
             this.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 
-            dataGridViewCellStyle5.BackColor = Color.Black;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle5.ForeColor = Color.White;
             dataGridViewCellStyle5.SelectionBackColor = Color.RoyalBlue;
             dataGridViewCellStyle5.SelectionForeColor = Color.White;
             this.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.RowTemplate.DefaultCellStyle.BackColor = Color.Black;
+            this.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(37,37,38);
             this.RowTemplate.DefaultCellStyle.ForeColor = Color.White;
             this.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
             this.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;

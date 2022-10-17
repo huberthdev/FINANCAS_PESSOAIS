@@ -16,7 +16,7 @@ namespace Setup.Controles
 
         protected override void OnGotFocus(EventArgs e)
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.FromArgb(37,37,38);
             this.ForeColor = Color.White;
             this.SelectAll();
             base.OnGotFocus(e);
@@ -24,7 +24,7 @@ namespace Setup.Controles
 
         protected override void OnLostFocus(EventArgs e)
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.FromArgb(37,37,38);
             this.ForeColor = Color.White;
 
             if(this.Text != "")

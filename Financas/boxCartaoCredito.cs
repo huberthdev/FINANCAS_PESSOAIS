@@ -102,7 +102,7 @@ namespace Setup.Financas
             lblID.Text = "ID Selecionado: 0";
             lblID.Tag = "";
             txtLimite.Tag = "0";
-            lblCor.BackColor = Color.Black;
+            lblCor.BackColor = Color.FromArgb(37,37,38);
         }
 
         private void novo_Click(object sender, EventArgs e)

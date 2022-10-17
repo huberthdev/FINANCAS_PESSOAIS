@@ -8,7 +8,7 @@ namespace Setup.Controles
     {
         protected override void OnCreateControl()
         {
-            this.BackColor = Color.Black;
+            this.BackColor = Color.FromArgb(37,37,38);
             this.BorderStyle = BorderStyle.FixedSingle;
             this.ForeColor = Color.White;
             base.OnCreateControl();

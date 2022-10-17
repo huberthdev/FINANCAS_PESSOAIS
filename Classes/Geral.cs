@@ -189,22 +189,6 @@ namespace Setup.Classes
             
         }
 
-        //private static void ColorirPalavra(Control CampoTexto, string texto)
-        //{
-        //    StreamReader str = new StreamReader(CampoTexto.Text);
-
-        //    string ln = str.ReadLine();
-
-        //    for (int i = 0; i < CampoTexto.Text.Length; i++)
-        //    {
-        //        string x =ln;
-        //        if (x == texto)
-        //        {
-                    
-        //        }
-        //    }
-        //}
-
     }
 
     public class Classe

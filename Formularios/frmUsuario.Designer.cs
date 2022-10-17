@@ -29,6 +29,11 @@ namespace Setup.Formularios
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.painel = new System.Windows.Forms.Panel();
@@ -39,24 +44,24 @@ namespace Setup.Formularios
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtBuscar = new System.Windows.Forms.TextBox();
-            this.lista = new System.Windows.Forms.DataGridView();
-            this.USUARIO_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NOME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ACESSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblID = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.txtBuscar = new Setup.Controles.Txt();
+            this.lista = new Setup.Controles.dgView();
+            this.USUARIO_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.USUARIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NOME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ACESSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.painel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.Gray;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -69,7 +74,9 @@ namespace Setup.Formularios
             // 
             // painel
             // 
-            this.painel.BackColor = System.Drawing.Color.White;
+            this.painel.BackColor = System.Drawing.Color.Transparent;
+            this.painel.Controls.Add(this.lista);
+            this.painel.Controls.Add(this.txtBuscar);
             this.painel.Controls.Add(this.txtUsuario);
             this.painel.Controls.Add(this.txtNome);
             this.painel.Controls.Add(this.txtSenha);
@@ -77,13 +84,12 @@ namespace Setup.Formularios
             this.painel.Controls.Add(this.btnSalvar);
             this.painel.Controls.Add(this.btnExcluir);
             this.painel.Controls.Add(this.label6);
-            this.painel.Controls.Add(this.txtBuscar);
-            this.painel.Controls.Add(this.lista);
             this.painel.Controls.Add(this.lblID);
             this.painel.Controls.Add(this.label5);
             this.painel.Controls.Add(this.label4);
             this.painel.Controls.Add(this.label3);
             this.painel.Controls.Add(this.label2);
+            this.painel.ForeColor = System.Drawing.Color.White;
             this.painel.Location = new System.Drawing.Point(12, 39);
             this.painel.Name = "painel";
             this.painel.Size = new System.Drawing.Size(663, 255);
@@ -91,7 +97,10 @@ namespace Setup.Formularios
             // 
             // txtUsuario
             // 
+            this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtUsuario.ForeColor = System.Drawing.Color.White;
             this.txtUsuario.Location = new System.Drawing.Point(10, 33);
             this.txtUsuario.MaxLength = 6;
             this.txtUsuario.Name = "txtUsuario";
@@ -101,7 +110,10 @@ namespace Setup.Formularios
             // 
             // txtNome
             // 
+            this.txtNome.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNome.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtNome.ForeColor = System.Drawing.Color.White;
             this.txtNome.Location = new System.Drawing.Point(111, 33);
             this.txtNome.MaxLength = 120;
             this.txtNome.Name = "txtNome";
@@ -111,10 +123,12 @@ namespace Setup.Formularios
             // 
             // txtSenha
             // 
+            this.txtSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSenha.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtSenha.ForeColor = System.Drawing.Color.White;
             this.txtSenha.Location = new System.Drawing.Point(297, 33);
             this.txtSenha.Name = "txtSenha";
-            this.txtSenha.PasswordChar = '•';
             this.txtSenha.Size = new System.Drawing.Size(121, 23);
             this.txtSenha.TabIndex = 2;
             this.txtSenha.Tag = "\'Senha\'";
@@ -172,72 +186,6 @@ namespace Setup.Formularios
             this.label6.TabIndex = 8;
             this.label6.Text = "Buscar:";
             // 
-            // txtBuscar
-            // 
-            this.txtBuscar.Location = new System.Drawing.Point(61, 61);
-            this.txtBuscar.MaxLength = 19;
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(591, 23);
-            this.txtBuscar.TabIndex = 7;
-            this.txtBuscar.TabStop = false;
-            this.txtBuscar.TextChanged += new System.EventHandler(this.txtBuscar_TextChanged);
-            // 
-            // lista
-            // 
-            this.lista.AllowUserToAddRows = false;
-            this.lista.AllowUserToDeleteRows = false;
-            this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.lista.BackgroundColor = System.Drawing.Color.White;
-            this.lista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
-            this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.USUARIO_ID,
-            this.USUARIO,
-            this.NOME,
-            this.ACESSO});
-            this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.lista.GridColor = System.Drawing.Color.White;
-            this.lista.Location = new System.Drawing.Point(10, 87);
-            this.lista.MultiSelect = false;
-            this.lista.Name = "lista";
-            this.lista.ReadOnly = true;
-            this.lista.RowTemplate.Height = 25;
-            this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.lista.Size = new System.Drawing.Size(642, 157);
-            this.lista.TabIndex = 6;
-            this.lista.TabStop = false;
-            this.lista.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lista_MouseDoubleClick);
-            // 
-            // USUARIO_ID
-            // 
-            this.USUARIO_ID.DataPropertyName = "USUARIO_ID";
-            this.USUARIO_ID.HeaderText = "USUARIO_ID";
-            this.USUARIO_ID.Name = "USUARIO_ID";
-            this.USUARIO_ID.ReadOnly = true;
-            this.USUARIO_ID.Visible = false;
-            // 
-            // USUARIO
-            // 
-            this.USUARIO.DataPropertyName = "USUARIO";
-            this.USUARIO.HeaderText = "USUÁRIO";
-            this.USUARIO.Name = "USUARIO";
-            this.USUARIO.ReadOnly = true;
-            // 
-            // NOME
-            // 
-            this.NOME.DataPropertyName = "NOME";
-            this.NOME.HeaderText = "NOME";
-            this.NOME.Name = "NOME";
-            this.NOME.ReadOnly = true;
-            // 
-            // ACESSO
-            // 
-            this.ACESSO.DataPropertyName = "ACESSO";
-            this.ACESSO.HeaderText = "ACESSO";
-            this.ACESSO.Name = "ACESSO";
-            this.ACESSO.ReadOnly = true;
-            // 
             // lblID
             // 
             this.lblID.ForeColor = System.Drawing.Color.DimGray;
@@ -284,11 +232,120 @@ namespace Setup.Formularios
             this.label2.TabIndex = 0;
             this.label2.Text = "Nome:";
             // 
+            // txtBuscar
+            // 
+            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBuscar.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtBuscar.ForeColor = System.Drawing.Color.White;
+            this.txtBuscar.Location = new System.Drawing.Point(55, 61);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(597, 23);
+            this.txtBuscar.TabIndex = 9;
+            // 
+            // lista
+            // 
+            this.lista.AllowUserToAddRows = false;
+            this.lista.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.USUARIO_ID,
+            this.USUARIO,
+            this.NOME,
+            this.ACESSO});
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle8;
+            this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.lista.EnableHeadersVisualStyles = false;
+            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.Location = new System.Drawing.Point(10, 90);
+            this.lista.MultiSelect = false;
+            this.lista.Name = "lista";
+            this.lista.ReadOnly = true;
+            this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowTemplate.Height = 25;
+            this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.lista.ShowEditingIcon = false;
+            this.lista.Size = new System.Drawing.Size(642, 162);
+            this.lista.TabIndex = 1;
+            // 
+            // USUARIO_ID
+            // 
+            this.USUARIO_ID.DataPropertyName = "USUARIO_ID";
+            this.USUARIO_ID.HeaderText = "USUARIO_ID";
+            this.USUARIO_ID.Name = "USUARIO_ID";
+            this.USUARIO_ID.ReadOnly = true;
+            this.USUARIO_ID.Visible = false;
+            // 
+            // USUARIO
+            // 
+            this.USUARIO.DataPropertyName = "USUARIO";
+            this.USUARIO.HeaderText = "USUARIO";
+            this.USUARIO.Name = "USUARIO";
+            this.USUARIO.ReadOnly = true;
+            // 
+            // NOME
+            // 
+            this.NOME.DataPropertyName = "NOME";
+            this.NOME.HeaderText = "NOME";
+            this.NOME.Name = "NOME";
+            this.NOME.ReadOnly = true;
+            // 
+            // ACESSO
+            // 
+            this.ACESSO.DataPropertyName = "ACESSO";
+            this.ACESSO.HeaderText = "ACESSO";
+            this.ACESSO.Name = "ACESSO";
+            this.ACESSO.ReadOnly = true;
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(687, 304);
             this.Controls.Add(this.painel);
             this.Controls.Add(this.label1);
@@ -296,6 +353,7 @@ namespace Setup.Formularios
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmUsuario";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.painel.ResumeLayout(false);
@@ -317,12 +375,12 @@ namespace Setup.Formularios
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblID;
-        private System.Windows.Forms.DataGridView lista;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtBuscar;
         private Controles.Txt txtSenha;
         private Controles.Txt txtNome;
         private Controles.Txt txtUsuario;
+        private Controles.Txt txtBuscar;
+        private Controles.dgView lista;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn USUARIO;
         private System.Windows.Forms.DataGridViewTextBoxColumn NOME;

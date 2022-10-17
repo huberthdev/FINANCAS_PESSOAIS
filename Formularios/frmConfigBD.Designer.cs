@@ -52,7 +52,7 @@ namespace Setup.Formularios
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtPorta);
             this.panel1.Controls.Add(this.label3);
@@ -63,7 +63,7 @@ namespace Setup.Formularios
             this.panel1.Controls.Add(this.btnSair);
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel1.ForeColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(12, 58);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(466, 179);
@@ -122,12 +122,15 @@ namespace Setup.Formularios
             // 
             // btnCaminhoBD
             // 
+            this.btnCaminhoBD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.btnCaminhoBD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCaminhoBD.ForeColor = System.Drawing.Color.White;
             this.btnCaminhoBD.Location = new System.Drawing.Point(428, 39);
             this.btnCaminhoBD.Name = "btnCaminhoBD";
             this.btnCaminhoBD.Size = new System.Drawing.Size(30, 23);
             this.btnCaminhoBD.TabIndex = 13;
             this.btnCaminhoBD.Text = "...";
-            this.btnCaminhoBD.UseVisualStyleBackColor = true;
+            this.btnCaminhoBD.UseVisualStyleBackColor = false;
             this.btnCaminhoBD.Click += new System.EventHandler(this.btnCaminhoBD_Click);
             // 
             // txtBD
@@ -146,8 +149,9 @@ namespace Setup.Formularios
             // 
             // btnSair
             // 
-            this.btnSair.BackColor = System.Drawing.Color.Red;
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSair.ForeColor = System.Drawing.Color.White;
             this.btnSair.Location = new System.Drawing.Point(318, 131);
             this.btnSair.Name = "btnSair";
@@ -160,8 +164,9 @@ namespace Setup.Formularios
             // 
             // btnSalvar
             // 
-            this.btnSalvar.BackColor = System.Drawing.Color.Lime;
+            this.btnSalvar.BackColor = System.Drawing.Color.LimeGreen;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
             this.btnSalvar.Location = new System.Drawing.Point(173, 131);
             this.btnSalvar.Name = "btnSalvar";
@@ -205,7 +210,7 @@ namespace Setup.Formularios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Gray;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(490, 247);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);

@@ -1,24 +1,19 @@
-﻿using System;
+﻿using System.Drawing;
 using System.Windows.Forms;
-using System.Drawing;
 
-namespace Setup.Controles
+namespace Setup.Financas.Previsao
 {
-    public class Txt : TextBox
+    public class TxtOrcado : TextBox
     {
         protected override void OnCreateControl()
         {
             this.Font = new Font("Consolas", 10F, FontStyle.Regular, GraphicsUnit.Point);
             this.BackColor = Color.FromArgb(37,37,38);
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.ForeColor = Color.White;
+            this.ForeColor = Color.FromArgb(Prev.cor);
+            this.Size = new Size(86, 25);
+            this.TextAlign = HorizontalAlignment.Center;
             base.OnCreateControl();
-        }
-
-        protected override void OnGotFocus(EventArgs e)
-        {
-            this.SelectAll();
-            base.OnGotFocus(e);
         }
     }
 }

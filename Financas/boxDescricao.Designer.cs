@@ -41,7 +41,7 @@ namespace Setup.Financas
             // 
             // txtTexto
             // 
-            this.txtTexto.BackColor = System.Drawing.Color.Black;
+            this.txtTexto.BackColor = System.Drawing.Color.FromArgb(37,37,38);
             this.txtTexto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTexto.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtTexto.ForeColor = System.Drawing.Color.White;
@@ -110,7 +110,7 @@ namespace Setup.Financas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.FromArgb(37,37,38);
             this.ClientSize = new System.Drawing.Size(448, 434);
             this.Controls.Add(this.lnD);
             this.Controls.Add(this.lnL);
