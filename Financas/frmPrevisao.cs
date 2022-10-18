@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Setup.Financas
 {
@@ -14,6 +15,7 @@ namespace Setup.Financas
         private void frmPrevisao_Load(object sender, EventArgs e)
         {
             CarregarPrevisao();
+            CarregarCbMesAno();
         }
 
         private void CarregarPrevisao()
@@ -145,6 +147,42 @@ namespace Setup.Financas
         private void atualizar_Click(object sender, EventArgs e)
         {
             CarregarPrevisao();
+        }
+
+        private void CarregarCbMesAno()
+        {
+            ToolStripComboBox ano = new ToolStripComboBox();
+            ToolStripComboBox mes = new ToolStripComboBox();
+
+            string mesNome;
+
+            foreach (ToolStripItem item in menuStrip1.Items)
+            {
+                if (item.Name == "ano")
+                {
+                    ano = ((ToolStripComboBox)item);
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        ano.Items.AddRange(new object[] {(DateTime.Today.Year -1 + i )});
+                    }
+
+                    ano.Text = DateTime.Today.Year.ToString();
+                }
+                else if(item.Name == "mes")
+                {
+                    mes = ((ToolStripComboBox)item);
+
+                    for (int i = 1; i < 13; i++)
+                    {
+                        mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(i).ToUpper();
+                        mes.Items.AddRange(new object[] { (mesNome) });
+                    }
+
+                    mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper();
+                    mes.Text = mesNome;
+                }
+            }
         }
     }
 }

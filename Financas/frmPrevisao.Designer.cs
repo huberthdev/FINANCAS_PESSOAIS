@@ -60,7 +60,6 @@ namespace Setup.Financas
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1050, 27);
             this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
             // 
             // novo
             // 
@@ -108,19 +107,19 @@ namespace Setup.Financas
             // 
             this.ano.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.ano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.ano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ano.ForeColor = System.Drawing.Color.White;
             this.ano.Name = "ano";
             this.ano.Size = new System.Drawing.Size(121, 23);
-            this.ano.Text = "Ano";
             // 
             // mes
             // 
             this.mes.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.mes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.mes.ForeColor = System.Drawing.Color.White;
             this.mes.Name = "mes";
             this.mes.Size = new System.Drawing.Size(121, 23);
-            this.mes.Text = "Mês";
             // 
             // panel
             // 

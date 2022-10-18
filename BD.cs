@@ -259,7 +259,7 @@ namespace Setup
             }
             
         }
-
+        
         public static bool Salvar(string Tabela, string[] Campos, string[] Valores, long ID = 0, string Msg = "")
         {
 
