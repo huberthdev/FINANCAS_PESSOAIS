@@ -54,7 +54,7 @@ namespace Setup.Financas
             if(txtDescricao.Text != "")
                 descricao = "%" + txtDescricao.Text.Replace("*", "%").ToUpper().Trim() + "%";
 
-            lista.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            lista.Columns[5].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             if (txtValor1.Text != "" && txtValor2.Text != "")
             {
@@ -67,12 +67,13 @@ namespace Setup.Financas
 
             if (sql == "")
             {
-                sql = "SELECT ID, TIPO, DATA, CLASSE, VALOR, DESC FROM( ";
+                sql = "SELECT ID, TIPO, DATA, CLASSE, CONTA, VALOR, DESC FROM( ";
 
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA BD - RECEITAS E DESPESAS
-                sql += "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA AS DATA, B.CLASSE, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
-                sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.DATA BETWEEN ";
-                sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                sql += "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA AS DATA, B.CLASSE, C.CONTA, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
+                sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
+                sql += "INNER JOIN CONTA C ON A.CONTA = C.CONTA_ID ";
+                sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
 
                 if(descricao != "")
                 {
@@ -122,18 +123,20 @@ namespace Setup.Financas
                     conta = ((Classes.Conta)cbConta.SelectedItem).id.ToString();
                     sql += "AND A.CONTA = " + conta + " ";
                 }
-
+                //
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA TRANSFERENCIA
-                sql += "UNION SELECT TRANSFERENCIA_ID AS ID, 'T' AS TIPO, DATA AS DATA, ";
-                sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, VALOR, DESCRICAO AS DESC ";
-                sql += "FROM TRANSFERENCIA WHERE DATA BETWEEN ";
-                sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
-
+                //
+                sql += "UNION SELECT A.TRANSFERENCIA_ID AS ID, 'T' AS TIPO, A.DATA AS DATA, ";
+                sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA, A.VALOR, A.DESCRICAO AS DESC ";
+                sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ";
+                sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                //
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA COMPRA_CREDITO
+                //
                 if (!(!ckDespesa.Checked && ckReceita.Checked))
                 {
                     sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
-                    sql += "C.CLASSE, (B.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
+                    sql += "C.CLASSE, '' AS CONTA, (B.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
                     sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
                     sql += "ON B.CLASSE = C.CLASSE_ID WHERE A.DATA_PARCELA BETWEEN ";
                     sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
@@ -226,7 +229,7 @@ namespace Setup.Financas
                 tipo = lista.Rows[i].Cells[1].Value.ToString();
                 if(tipo == "D" || tipo == "C")
                 {
-                    valor += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                    valor += double.Parse(lista.Rows[i].Cells[5].Value.ToString());
                 }
             }
 
@@ -247,14 +250,14 @@ namespace Setup.Financas
 
             for (int i = 0; i < lista.RowCount; i++)
             {
-                valor = double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                valor = double.Parse(lista.Rows[i].Cells[5].Value.ToString());
                 if (valor < 0)
                 {
-                    lista.Rows[i].Cells[4].Style.ForeColor = Color.FromArgb(236, 35, 0);
+                    lista.Rows[i].Cells[5].Style.ForeColor = Color.FromArgb(236, 35, 0);
                 }
                 else
                 {
-                    lista.Rows[i].Cells[4].Style.ForeColor = Color.LimeGreen;
+                    lista.Rows[i].Cells[5].Style.ForeColor = Color.LimeGreen;
                 }
 
                 if (lista.Rows[i].Cells[1].Value.ToString()=="T")
@@ -361,7 +364,7 @@ namespace Setup.Financas
                 {
                     if (lista.Rows[i].Selected)
                     {
-                        soma += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                        soma += double.Parse(lista.Rows[i].Cells[5].Value.ToString());
                     }
                 }
 
@@ -375,7 +378,7 @@ namespace Setup.Financas
                 }
                 else if(soma > 0)
                 {
-                    status.Items["somaLn"].ForeColor = Color.Green;
+                    status.Items["somaLn"].ForeColor = Color.LimeGreen;
                 }
             }
 

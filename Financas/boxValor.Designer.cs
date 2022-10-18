@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace Setup.Financas
 {
@@ -33,18 +31,18 @@ namespace Setup.Financas
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boxValor));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnSalvar = new System.Windows.Forms.Label();
+            this.label1 = new Label();
+            this.label2 = new Label();
+            this.label3 = new Label();
+            this.label4 = new Label();
+            this.btnSalvar = new Label();
             this.txtSaldo = new Setup.Controles.Decimal();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.DimGray;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Dock = DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Ebrima", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -56,7 +54,7 @@ namespace Setup.Financas
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.DimGray;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Dock = DockStyle.Right;
             this.label2.Location = new System.Drawing.Point(165, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(1, 96);
@@ -65,7 +63,7 @@ namespace Setup.Financas
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.DimGray;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label3.Dock = DockStyle.Left;
             this.label3.Location = new System.Drawing.Point(0, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(1, 96);
@@ -74,7 +72,7 @@ namespace Setup.Financas
             // label4
             // 
             this.label4.BackColor = System.Drawing.Color.DimGray;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label4.Dock = DockStyle.Bottom;
             this.label4.Location = new System.Drawing.Point(1, 118);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(164, 1);
@@ -82,7 +80,7 @@ namespace Setup.Financas
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvar.Cursor = Cursors.Hand;
             this.btnSalvar.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvar.Image")));
             this.btnSalvar.Location = new System.Drawing.Point(58, 66);
             this.btnSalvar.Name = "btnSalvar";
@@ -93,7 +91,7 @@ namespace Setup.Financas
             // txtSaldo
             // 
             this.txtSaldo.BackColor = System.Drawing.Color.FromArgb(37,37,38);
-            this.txtSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSaldo.BorderStyle = BorderStyle.FixedSingle;
             this.txtSaldo.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSaldo.ForeColor = System.Drawing.Color.White;
             this.txtSaldo.Location = new System.Drawing.Point(28, 37);
@@ -101,12 +99,12 @@ namespace Setup.Financas
             this.txtSaldo.Size = new System.Drawing.Size(110, 23);
             this.txtSaldo.TabIndex = 39;
             this.txtSaldo.Tag = "D";
-            this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSaldo.TextAlign = HorizontalAlignment.Center;
             // 
             // boxValor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(37,37,38);
             this.ClientSize = new System.Drawing.Size(166, 119);
             this.Controls.Add(this.txtSaldo);
@@ -115,21 +113,21 @@ namespace Setup.Financas
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "boxValor";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label btnSalvar;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label btnSalvar;
         private Controles.Decimal txtSaldo;
     }
 }

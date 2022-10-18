@@ -1,4 +1,6 @@
-﻿namespace Setup.Financas.Previsao
+﻿using System.Windows.Forms;
+
+namespace Setup.Financas.Previsao
 {
     public class Prev
     {

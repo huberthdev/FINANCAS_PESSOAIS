@@ -1,4 +1,5 @@
-﻿
+﻿using System.Windows.Forms;
+
 namespace Setup.Financas
 {
     partial class boxDescricao
@@ -41,7 +42,7 @@ namespace Setup.Financas
             // 
             // txtTexto
             // 
-            this.txtTexto.BackColor = System.Drawing.Color.FromArgb(37,37,38);
+            this.txtTexto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtTexto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTexto.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtTexto.ForeColor = System.Drawing.Color.White;
@@ -110,7 +111,7 @@ namespace Setup.Financas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(37,37,38);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(448, 434);
             this.Controls.Add(this.lnD);
             this.Controls.Add(this.lnL);
@@ -122,6 +123,7 @@ namespace Setup.Financas
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "boxDescricao";
+            this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "boxDescricao";
             this.ResumeLayout(false);
@@ -129,12 +131,12 @@ namespace Setup.Financas
         }
 
         #endregion
-        private System.Windows.Forms.Label btnSair;
-        public System.Windows.Forms.RichTextBox txtTexto;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label lnU;
-        public System.Windows.Forms.Label lnR;
-        public System.Windows.Forms.Label lnL;
-        public System.Windows.Forms.Label lnD;
+        private Label btnSair;
+        public RichTextBox txtTexto;
+        private Label label1;
+        public Label lnU;
+        public Label lnR;
+        public Label lnL;
+        public Label lnD;
     }
 }

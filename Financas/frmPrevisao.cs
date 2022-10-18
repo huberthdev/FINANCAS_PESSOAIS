@@ -30,13 +30,18 @@ namespace Setup.Financas
             panel.Controls.Clear();
 
             //Montagem do SQL
+            //
+            //Compras no Crédito
+            //
             sql = "SELECT D.CONTA, ' Cartão de Crédito' AS TIPO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, ";
             sql += "'0,00' AS ORCADO, SUM(A.VALOR * -1) AS REALIZADO, SUM(A.VALOR) AS DESVIO, C.COR AS COR, 'A' AS ORD FROM COMPRA_CREDITO A ";
             sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID ";
             sql += "INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID ";
             sql += "WHERE A.STATUS = 0 AND EXTRACT(MONTH FROM A.DATA_PARCELA) = 11 AND EXTRACT(YEAR FROM A.DATA_PARCELA) = 2022 ";
-            sql += "GROUP BY D.CONTA, DIA, C.COR";
+            sql += "GROUP BY D.CONTA, DIA, C.COR ";
+            //
+            //
             //
             BD.Buscar(sql);
 
@@ -141,7 +146,8 @@ namespace Setup.Financas
 
         private void novo_Click(object sender, EventArgs e)
         {
-
+            boxAddPrev prev = new boxAddPrev();
+            prev.ShowDialog();
         }
 
         private void atualizar_Click(object sender, EventArgs e)

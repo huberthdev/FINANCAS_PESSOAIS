@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.Drawing;
 
@@ -72,7 +71,7 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.menu = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu = new Setup.Controles.Cabecalho();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
             this.receitaDespesa = new System.Windows.Forms.ToolStripMenuItem();
             this.comprasCredito = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,13 +91,13 @@ namespace Setup.Financas
             this.query = new System.Windows.Forms.ToolStripMenuItem();
             this.anotacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.sair = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolLancamento = new System.Windows.Forms.ToolStripMenuItem();
-            this.compraCredito = new System.Windows.Forms.ToolStripMenuItem();
-            this.transf = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolRelatorio = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolVisaoGeral = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolPrevisao = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolCalculadora = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolLancamento = new Setup.Controles.Cabecalho();
+            this.compraCredito = new Setup.Controles.Cabecalho();
+            this.transf = new Setup.Controles.Cabecalho();
+            this.ToolRelatorio = new Setup.Controles.Cabecalho();
+            this.ToolVisaoGeral = new Setup.Controles.Cabecalho();
+            this.ToolPrevisao = new Setup.Controles.Cabecalho();
+            this.ToolCalculadora = new Setup.Controles.Cabecalho();
             this.tabelaMenu = new System.Windows.Forms.TabControl();
             this.tabReceita_Despesa = new System.Windows.Forms.TabPage();
             this.pnLancamento = new System.Windows.Forms.Panel();
@@ -115,9 +114,6 @@ namespace Setup.Financas
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label7 = new System.Windows.Forms.Label();
             this.listaSaldo_Contas = new Setup.Controles.dgView();
             this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -151,12 +147,14 @@ namespace Setup.Financas
             this.optReceita = new System.Windows.Forms.RadioButton();
             this.txtClasse = new Setup.Controles.Txt();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label7 = new System.Windows.Forms.Label();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.tabelaMenu.SuspendLayout();
             this.tabReceita_Despesa.SuspendLayout();
             this.pnLancamento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
             this.menuStrip2.SuspendLayout();
@@ -166,6 +164,7 @@ namespace Setup.Financas
             this.gpClasse.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaClasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            this.statusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -185,6 +184,7 @@ namespace Setup.Financas
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.menuStrip1.Size = new System.Drawing.Size(899, 24);
             this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // menu
@@ -447,21 +447,18 @@ namespace Setup.Financas
             this.tabelaMenu.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabelaMenu.Controls.Add(this.tabReceita_Despesa);
             this.tabelaMenu.Controls.Add(this.tabCad_Classes);
-            this.tabelaMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabelaMenu.Location = new System.Drawing.Point(0, 0);
+            this.tabelaMenu.Location = new System.Drawing.Point(-3, -2);
             this.tabelaMenu.Margin = new System.Windows.Forms.Padding(0);
             this.tabelaMenu.Name = "tabelaMenu";
             this.tabelaMenu.Padding = new System.Drawing.Point(0, 0);
             this.tabelaMenu.SelectedIndex = 0;
-            this.tabelaMenu.Size = new System.Drawing.Size(899, 370);
+            this.tabelaMenu.Size = new System.Drawing.Size(905, 369);
             this.tabelaMenu.TabIndex = 0;
             // 
             // tabReceita_Despesa
             // 
             this.tabReceita_Despesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.tabReceita_Despesa.Controls.Add(this.pnLancamento);
-            this.tabReceita_Despesa.Controls.Add(this.statusStrip);
-            this.tabReceita_Despesa.Controls.Add(this.label7);
             this.tabReceita_Despesa.Controls.Add(this.listaSaldo_Contas);
             this.tabReceita_Despesa.Controls.Add(this.lista_Gastos_Classe);
             this.tabReceita_Despesa.Controls.Add(this.label1);
@@ -469,7 +466,7 @@ namespace Setup.Financas
             this.tabReceita_Despesa.Location = new System.Drawing.Point(4, 27);
             this.tabReceita_Despesa.Name = "tabReceita_Despesa";
             this.tabReceita_Despesa.Padding = new System.Windows.Forms.Padding(3);
-            this.tabReceita_Despesa.Size = new System.Drawing.Size(891, 339);
+            this.tabReceita_Despesa.Size = new System.Drawing.Size(897, 338);
             this.tabReceita_Despesa.TabIndex = 0;
             this.tabReceita_Despesa.Tag = "Lancamento";
             this.tabReceita_Despesa.Text = "Receitas • Despesas";
@@ -490,7 +487,7 @@ namespace Setup.Financas
             this.pnLancamento.Controls.Add(this.label4);
             this.pnLancamento.Controls.Add(this.label2);
             this.pnLancamento.Controls.Add(this.pictureBox1);
-            this.pnLancamento.Location = new System.Drawing.Point(7, 31);
+            this.pnLancamento.Location = new System.Drawing.Point(10, 31);
             this.pnLancamento.Name = "pnLancamento";
             this.pnLancamento.Size = new System.Drawing.Size(876, 66);
             this.pnLancamento.TabIndex = 34;
@@ -660,36 +657,6 @@ namespace Setup.Financas
             this.pictureBox1.TabIndex = 47;
             this.pictureBox1.TabStop = false;
             // 
-            // statusStrip
-            // 
-            this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(3, 313);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip.Size = new System.Drawing.Size(885, 22);
-            this.statusStrip.SizingGrip = false;
-            this.statusStrip.Stretch = false;
-            this.statusStrip.TabIndex = 20;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(23, 17);
-            this.statusLabel.Text = ">>";
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label7.ForeColor = System.Drawing.Color.Tomato;
-            this.label7.Location = new System.Drawing.Point(3, 335);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(885, 1);
-            this.label7.TabIndex = 33;
-            // 
             // listaSaldo_Contas
             // 
             this.listaSaldo_Contas.AllowUserToAddRows = false;
@@ -728,7 +695,7 @@ namespace Setup.Financas
             this.listaSaldo_Contas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaSaldo_Contas.EnableHeadersVisualStyles = false;
             this.listaSaldo_Contas.GridColor = System.Drawing.Color.DimGray;
-            this.listaSaldo_Contas.Location = new System.Drawing.Point(7, 99);
+            this.listaSaldo_Contas.Location = new System.Drawing.Point(10, 99);
             this.listaSaldo_Contas.MultiSelect = false;
             this.listaSaldo_Contas.Name = "listaSaldo_Contas";
             this.listaSaldo_Contas.ReadOnly = true;
@@ -755,7 +722,7 @@ namespace Setup.Financas
             this.listaSaldo_Contas.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.listaSaldo_Contas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaSaldo_Contas.ShowEditingIcon = false;
-            this.listaSaldo_Contas.Size = new System.Drawing.Size(436, 206);
+            this.listaSaldo_Contas.Size = new System.Drawing.Size(436, 228);
             this.listaSaldo_Contas.TabIndex = 1;
             // 
             // CONTA_ID
@@ -823,7 +790,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista_Gastos_Classe.EnableHeadersVisualStyles = false;
             this.lista_Gastos_Classe.GridColor = System.Drawing.Color.DimGray;
-            this.lista_Gastos_Classe.Location = new System.Drawing.Point(448, 99);
+            this.lista_Gastos_Classe.Location = new System.Drawing.Point(451, 99);
             this.lista_Gastos_Classe.MultiSelect = false;
             this.lista_Gastos_Classe.Name = "lista_Gastos_Classe";
             this.lista_Gastos_Classe.ReadOnly = true;
@@ -850,7 +817,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
-            this.lista_Gastos_Classe.Size = new System.Drawing.Size(436, 206);
+            this.lista_Gastos_Classe.Size = new System.Drawing.Size(436, 228);
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
             // 
@@ -887,7 +854,7 @@ namespace Setup.Financas
             this.label1.ForeColor = System.Drawing.Color.Tomato;
             this.label1.Location = new System.Drawing.Point(3, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(885, 1);
+            this.label1.Size = new System.Drawing.Size(891, 1);
             this.label1.TabIndex = 32;
             // 
             // menuStrip2
@@ -899,7 +866,7 @@ namespace Setup.Financas
             this.menuStrip2.Location = new System.Drawing.Point(3, 3);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip2.Size = new System.Drawing.Size(885, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(891, 24);
             this.menuStrip2.TabIndex = 31;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -933,11 +900,12 @@ namespace Setup.Financas
             this.tabCad_Classes.Location = new System.Drawing.Point(4, 27);
             this.tabCad_Classes.Name = "tabCad_Classes";
             this.tabCad_Classes.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCad_Classes.Size = new System.Drawing.Size(891, 339);
+            this.tabCad_Classes.Size = new System.Drawing.Size(897, 338);
             this.tabCad_Classes.TabIndex = 2;
             this.tabCad_Classes.Tag = "Cadastro";
             this.tabCad_Classes.Text = "ADD";
             this.tabCad_Classes.UseVisualStyleBackColor = true;
+            this.tabCad_Classes.Click += new System.EventHandler(this.tabCad_Classes_Click);
             // 
             // gpConta
             // 
@@ -948,9 +916,9 @@ namespace Setup.Financas
             this.gpConta.Controls.Add(this.txtConta);
             this.gpConta.Controls.Add(this.btnSalvarConta);
             this.gpConta.ForeColor = System.Drawing.Color.White;
-            this.gpConta.Location = new System.Drawing.Point(449, 1);
+            this.gpConta.Location = new System.Drawing.Point(451, 3);
             this.gpConta.Name = "gpConta";
-            this.gpConta.Size = new System.Drawing.Size(431, 330);
+            this.gpConta.Size = new System.Drawing.Size(431, 326);
             this.gpConta.TabIndex = 11;
             this.gpConta.TabStop = false;
             this.gpConta.Text = "Cadastrar Conta";
@@ -993,7 +961,7 @@ namespace Setup.Financas
             this.listaConta.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaConta.EnableHeadersVisualStyles = false;
             this.listaConta.GridColor = System.Drawing.Color.DimGray;
-            this.listaConta.Location = new System.Drawing.Point(6, 74);
+            this.listaConta.Location = new System.Drawing.Point(7, 81);
             this.listaConta.MultiSelect = false;
             this.listaConta.Name = "listaConta";
             this.listaConta.ReadOnly = true;
@@ -1020,7 +988,7 @@ namespace Setup.Financas
             this.listaConta.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.listaConta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaConta.ShowEditingIcon = false;
-            this.listaConta.Size = new System.Drawing.Size(419, 246);
+            this.listaConta.Size = new System.Drawing.Size(419, 234);
             this.listaConta.TabIndex = 1;
             this.listaConta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaConta_CellContentClick);
             this.listaConta.MouseEnter += new System.EventHandler(this.listaConta_MouseEnter);
@@ -1065,7 +1033,7 @@ namespace Setup.Financas
             this.ckAtivoConta.AutoSize = true;
             this.ckAtivoConta.Checked = true;
             this.ckAtivoConta.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckAtivoConta.Location = new System.Drawing.Point(364, 48);
+            this.ckAtivoConta.Location = new System.Drawing.Point(365, 53);
             this.ckAtivoConta.Name = "ckAtivoConta";
             this.ckAtivoConta.Size = new System.Drawing.Size(61, 19);
             this.ckAtivoConta.TabIndex = 18;
@@ -1078,7 +1046,7 @@ namespace Setup.Financas
             this.btnExcluirConta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.btnExcluirConta.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluirConta.Image")));
             this.btnExcluirConta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluirConta.Location = new System.Drawing.Point(344, 19);
+            this.btnExcluirConta.Location = new System.Drawing.Point(345, 24);
             this.btnExcluirConta.Name = "btnExcluirConta";
             this.btnExcluirConta.Size = new System.Drawing.Size(81, 23);
             this.btnExcluirConta.TabIndex = 2;
@@ -1093,9 +1061,9 @@ namespace Setup.Financas
             this.txtConta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConta.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtConta.ForeColor = System.Drawing.Color.White;
-            this.txtConta.Location = new System.Drawing.Point(5, 19);
+            this.txtConta.Location = new System.Drawing.Point(6, 24);
             this.txtConta.Name = "txtConta";
-            this.txtConta.Size = new System.Drawing.Size(229, 23);
+            this.txtConta.Size = new System.Drawing.Size(246, 23);
             this.txtConta.TabIndex = 0;
             this.txtConta.Tag = "\'Conta\'";
             this.txtConta.TextChanged += new System.EventHandler(this.txtConta_TextChanged);
@@ -1105,7 +1073,7 @@ namespace Setup.Financas
             this.btnSalvarConta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.btnSalvarConta.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvarConta.Image")));
             this.btnSalvarConta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarConta.Location = new System.Drawing.Point(257, 19);
+            this.btnSalvarConta.Location = new System.Drawing.Point(258, 24);
             this.btnSalvarConta.Name = "btnSalvarConta";
             this.btnSalvarConta.Size = new System.Drawing.Size(81, 23);
             this.btnSalvarConta.TabIndex = 1;
@@ -1125,9 +1093,9 @@ namespace Setup.Financas
             this.gpClasse.Controls.Add(this.optReceita);
             this.gpClasse.Controls.Add(this.txtClasse);
             this.gpClasse.ForeColor = System.Drawing.Color.White;
-            this.gpClasse.Location = new System.Drawing.Point(10, 1);
+            this.gpClasse.Location = new System.Drawing.Point(12, 3);
             this.gpClasse.Name = "gpClasse";
-            this.gpClasse.Size = new System.Drawing.Size(430, 330);
+            this.gpClasse.Size = new System.Drawing.Size(430, 326);
             this.gpClasse.TabIndex = 10;
             this.gpClasse.TabStop = false;
             this.gpClasse.Text = "Cadastrar Classe";
@@ -1169,7 +1137,7 @@ namespace Setup.Financas
             this.listaClasse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaClasse.EnableHeadersVisualStyles = false;
             this.listaClasse.GridColor = System.Drawing.Color.DimGray;
-            this.listaClasse.Location = new System.Drawing.Point(6, 74);
+            this.listaClasse.Location = new System.Drawing.Point(6, 81);
             this.listaClasse.MultiSelect = false;
             this.listaClasse.Name = "listaClasse";
             this.listaClasse.ReadOnly = true;
@@ -1196,7 +1164,7 @@ namespace Setup.Financas
             this.listaClasse.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.listaClasse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaClasse.ShowEditingIcon = false;
-            this.listaClasse.Size = new System.Drawing.Size(418, 246);
+            this.listaClasse.Size = new System.Drawing.Size(418, 234);
             this.listaClasse.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn3
@@ -1219,7 +1187,7 @@ namespace Setup.Financas
             this.ckAtivoClasse.AutoSize = true;
             this.ckAtivoClasse.Checked = true;
             this.ckAtivoClasse.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckAtivoClasse.Location = new System.Drawing.Point(363, 50);
+            this.ckAtivoClasse.Location = new System.Drawing.Point(363, 55);
             this.ckAtivoClasse.Name = "ckAtivoClasse";
             this.ckAtivoClasse.Size = new System.Drawing.Size(61, 19);
             this.ckAtivoClasse.TabIndex = 18;
@@ -1232,7 +1200,7 @@ namespace Setup.Financas
             this.btnExcluirClasse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.btnExcluirClasse.Image = ((System.Drawing.Image)(resources.GetObject("btnExcluirClasse.Image")));
             this.btnExcluirClasse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExcluirClasse.Location = new System.Drawing.Point(343, 19);
+            this.btnExcluirClasse.Location = new System.Drawing.Point(343, 24);
             this.btnExcluirClasse.Name = "btnExcluirClasse";
             this.btnExcluirClasse.Size = new System.Drawing.Size(81, 23);
             this.btnExcluirClasse.TabIndex = 2;
@@ -1246,7 +1214,7 @@ namespace Setup.Financas
             this.btnSalvarClasse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.btnSalvarClasse.Image = ((System.Drawing.Image)(resources.GetObject("btnSalvarClasse.Image")));
             this.btnSalvarClasse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalvarClasse.Location = new System.Drawing.Point(256, 19);
+            this.btnSalvarClasse.Location = new System.Drawing.Point(256, 24);
             this.btnSalvarClasse.Name = "btnSalvarClasse";
             this.btnSalvarClasse.Size = new System.Drawing.Size(81, 23);
             this.btnSalvarClasse.TabIndex = 1;
@@ -1258,7 +1226,7 @@ namespace Setup.Financas
             // optDespesa
             // 
             this.optDespesa.AutoSize = true;
-            this.optDespesa.Location = new System.Drawing.Point(263, 49);
+            this.optDespesa.Location = new System.Drawing.Point(263, 54);
             this.optDespesa.Name = "optDespesa";
             this.optDespesa.Size = new System.Drawing.Size(74, 19);
             this.optDespesa.TabIndex = 17;
@@ -1270,7 +1238,7 @@ namespace Setup.Financas
             // 
             this.optReceita.AutoSize = true;
             this.optReceita.Checked = true;
-            this.optReceita.Location = new System.Drawing.Point(183, 49);
+            this.optReceita.Location = new System.Drawing.Point(183, 54);
             this.optReceita.Name = "optReceita";
             this.optReceita.Size = new System.Drawing.Size(74, 19);
             this.optReceita.TabIndex = 16;
@@ -1285,9 +1253,9 @@ namespace Setup.Financas
             this.txtClasse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtClasse.ForeColor = System.Drawing.Color.White;
-            this.txtClasse.Location = new System.Drawing.Point(4, 19);
+            this.txtClasse.Location = new System.Drawing.Point(4, 24);
             this.txtClasse.Name = "txtClasse";
-            this.txtClasse.Size = new System.Drawing.Size(229, 23);
+            this.txtClasse.Size = new System.Drawing.Size(246, 23);
             this.txtClasse.TabIndex = 0;
             this.txtClasse.Tag = "\'Classe\'";
             this.txtClasse.TextChanged += new System.EventHandler(this.txtClasse_TextChanged);
@@ -1296,13 +1264,45 @@ namespace Setup.Financas
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label7.Location = new System.Drawing.Point(0, 384);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(899, 1);
+            this.label7.TabIndex = 1;
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.AutoSize = false;
+            this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.statusStrip.Location = new System.Drawing.Point(0, 362);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip.Size = new System.Drawing.Size(899, 22);
+            this.statusStrip.SizingGrip = false;
+            this.statusStrip.Stretch = false;
+            this.statusStrip.TabIndex = 21;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(23, 17);
+            this.statusLabel.Text = ">>";
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(899, 370);
+            this.ClientSize = new System.Drawing.Size(899, 385);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.tabelaMenu);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -1323,8 +1323,6 @@ namespace Setup.Financas
             this.pnLancamento.ResumeLayout(false);
             this.pnLancamento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.statusStrip.ResumeLayout(false);
-            this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).EndInit();
             this.menuStrip2.ResumeLayout(false);
@@ -1337,6 +1335,8 @@ namespace Setup.Financas
             this.gpClasse.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaClasse)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1345,7 +1345,6 @@ namespace Setup.Financas
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem menu;
         private ToolStripMenuItem novoLancamento;
         private ToolStripMenuItem receitaDespesa;
         private ToolStripMenuItem relatorios;
@@ -1362,11 +1361,6 @@ namespace Setup.Financas
         private ToolStripMenuItem query;
         private ToolStripMenuItem anotacoes;
         private ToolStripMenuItem sair;
-        private ToolStripMenuItem ToolRelatorio;
-        private ToolStripMenuItem ToolVisaoGeral;
-        private ToolStripMenuItem ToolLancamento;
-        private ToolStripMenuItem ToolCalculadora;
-        private ToolStripMenuItem ToolPrevisao;
         private TabControl tabelaMenu;
         private ErrorProvider errorProvider1;
         private TabPage tabReceita_Despesa;
@@ -1383,9 +1377,6 @@ namespace Setup.Financas
         private RadioButton optDespesa;
         private RadioButton optReceita;
         private Controles.Txt txtClasse;
-        private StatusStrip statusStrip;
-        private ToolStripStatusLabel statusLabel;
-        private Label label7;
         private Controles.dgView listaSaldo_Contas;
         public Controles.dgView lista_Gastos_Classe;
         private Label label1;
@@ -1413,8 +1404,6 @@ namespace Setup.Financas
         private ToolStripMenuItem configuracoes;
         private ToolStripMenuItem usuarioAdd;
         private ToolStripMenuItem connBD;
-        private ToolStripMenuItem compraCredito;
-        private ToolStripMenuItem transf;
         private DataGridViewTextBoxColumn ID_CONTA;
         private DataGridViewTextBoxColumn CONT;
         private DataGridViewCheckBoxColumn CREDITO;
@@ -1424,5 +1413,16 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CONTA_ID;
         private DataGridViewTextBoxColumn CONTA;
         private DataGridViewTextBoxColumn SALDO;
+        private Controles.Cabecalho menu;
+        private Controles.Cabecalho ToolRelatorio;
+        private Controles.Cabecalho ToolVisaoGeral;
+        private Controles.Cabecalho ToolLancamento;
+        private Controles.Cabecalho ToolCalculadora;
+        private Controles.Cabecalho ToolPrevisao;
+        private Controles.Cabecalho compraCredito;
+        private Controles.Cabecalho transf;
+        private Label label7;
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel statusLabel;
     }
 }

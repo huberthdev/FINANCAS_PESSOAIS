@@ -65,7 +65,7 @@ namespace Setup.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap delete {
             get {
-                object obj = ResourceManager.GetObject("delete1", resourceCulture);
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -79,6 +79,5 @@ namespace Setup.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
     }
 }

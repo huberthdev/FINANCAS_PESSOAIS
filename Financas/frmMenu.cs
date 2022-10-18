@@ -98,7 +98,7 @@ namespace Setup.Financas
 
         private void btnSalvarClasse_Click(object sender, EventArgs e)
         {
-            if (COD.ValidarCampos(gpClasse, errorProvider1) == false)
+            if (COD.ValidarCampos(gpClasse) == false)
                 return;
 
             int tp = Convert.ToInt32(optReceita.Checked);
@@ -129,7 +129,7 @@ namespace Setup.Financas
 
         private void btnSalvarConta_Click(object sender, EventArgs e)
         {
-            if (COD.ValidarCampos(gpConta, errorProvider1) == false)
+            if (COD.ValidarCampos(gpConta) == false)
                 return;
 
             //PEGAR O VALOR DO SALDO INICIAL DA NOVA CONTA VIA FORMULÁRIO
@@ -468,6 +468,11 @@ namespace Setup.Financas
         {
             frmPrevisao prev = new frmPrevisao();
             prev.ShowDialog();
+        }
+
+        private void tabCad_Classes_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

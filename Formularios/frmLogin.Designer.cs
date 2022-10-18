@@ -1,4 +1,5 @@
-﻿
+﻿using System.Windows.Forms;
+
 namespace Setup.Formularios
 {
     partial class frmLogin
@@ -31,17 +32,17 @@ namespace Setup.Formularios
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ckLembrar = new System.Windows.Forms.CheckBox();
+            this.panel1 = new Panel();
+            this.ckLembrar = new CheckBox();
             this.txtSenha = new Setup.Controles.Txt();
             this.txtUsuario = new Setup.Controles.Txt();
-            this.btnSair = new System.Windows.Forms.Button();
-            this.btnEntrar = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblMsg = new System.Windows.Forms.Label();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnSair = new Button();
+            this.btnEntrar = new Button();
+            this.label3 = new Label();
+            this.label2 = new Label();
+            this.lblMsg = new Label();
+            this.errorProvider1 = new ErrorProvider(this.components);
+            this.label1 = new Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -77,7 +78,7 @@ namespace Setup.Formularios
             // txtSenha
             // 
             this.txtSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSenha.BorderStyle = BorderStyle.FixedSingle;
             this.txtSenha.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtSenha.ForeColor = System.Drawing.Color.White;
             this.txtSenha.Location = new System.Drawing.Point(21, 91);
@@ -90,7 +91,7 @@ namespace Setup.Formularios
             // txtUsuario
             // 
             this.txtUsuario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUsuario.BorderStyle = BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtUsuario.ForeColor = System.Drawing.Color.White;
             this.txtUsuario.Location = new System.Drawing.Point(21, 38);
@@ -102,9 +103,9 @@ namespace Setup.Formularios
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.Transparent;
-            this.btnSair.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSair.Cursor = Cursors.Hand;
             this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.FlatStyle = FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSair.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.btnSair.Location = new System.Drawing.Point(144, 154);
@@ -119,8 +120,8 @@ namespace Setup.Formularios
             // btnEntrar
             // 
             this.btnEntrar.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnEntrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEntrar.Cursor = Cursors.Hand;
+            this.btnEntrar.FlatStyle = FlatStyle.Popup;
             this.btnEntrar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnEntrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEntrar.Location = new System.Drawing.Point(21, 154);
@@ -170,7 +171,7 @@ namespace Setup.Formularios
             // 
             // label1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Dock = DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.DeepSkyBlue;
             this.label1.Location = new System.Drawing.Point(0, 0);
@@ -183,19 +184,19 @@ namespace Setup.Formularios
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(284, 285);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "frmLogin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmLogin_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
+            this.KeyDown += new KeyEventHandler(this.frmLogin_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -204,16 +205,16 @@ namespace Setup.Formularios
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Button btnEntrar;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblMsg;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private Panel panel1;
+        private Button btnSair;
+        private Button btnEntrar;
+        private Label label3;
+        private Label label2;
+        private Label lblMsg;
+        private ErrorProvider errorProvider1;
         private Controles.Txt txtSenha;
         private Controles.Txt txtUsuario;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox ckLembrar;
+        private Label label1;
+        private CheckBox ckLembrar;
     }
 }

@@ -1,4 +1,5 @@
-﻿
+﻿using System.Windows.Forms;
+
 namespace Setup.Formularios
 {
     partial class frmPergunta
@@ -30,12 +31,12 @@ namespace Setup.Formularios
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPergunta));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnSim = new System.Windows.Forms.Button();
-            this.btnNao = new System.Windows.Forms.Button();
-            this.lblMsg = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new Panel();
+            this.btnSim = new Button();
+            this.btnNao = new Button();
+            this.lblMsg = new Label();
+            this.pictureBox1 = new PictureBox();
+            this.label1 = new Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,7 +56,7 @@ namespace Setup.Formularios
             // btnSim
             // 
             this.btnSim.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSim.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSim.FlatStyle = FlatStyle.Popup;
             this.btnSim.ForeColor = System.Drawing.Color.White;
             this.btnSim.Location = new System.Drawing.Point(226, 123);
             this.btnSim.Name = "btnSim";
@@ -68,7 +69,7 @@ namespace Setup.Formularios
             // btnNao
             // 
             this.btnNao.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnNao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNao.FlatStyle = FlatStyle.Popup;
             this.btnNao.ForeColor = System.Drawing.Color.White;
             this.btnNao.Location = new System.Drawing.Point(307, 123);
             this.btnNao.Name = "btnNao";
@@ -93,13 +94,13 @@ namespace Setup.Formularios
             this.pictureBox1.Location = new System.Drawing.Point(7, 7);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(139, 139);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Dock = DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
@@ -112,14 +113,14 @@ namespace Setup.Formularios
             // frmPergunta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(400, 200);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.Name = "frmPergunta";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "frmPergunta";
             this.Load += new System.EventHandler(this.frmPergunta_Load);
             this.panel1.ResumeLayout(false);
@@ -130,11 +131,11 @@ namespace Setup.Formularios
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnSim;
-        private System.Windows.Forms.Button btnNao;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Label lblMsg;
+        private Panel panel1;
+        private Button btnSim;
+        private Button btnNao;
+        private PictureBox pictureBox1;
+        private Label label1;
+        public Label lblMsg;
     }
 }

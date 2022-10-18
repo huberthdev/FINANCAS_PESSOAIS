@@ -21,20 +21,18 @@ namespace Setup.Financas.Previsao
 
         protected override void OnMouseLeave(EventArgs e)
         {
-            this.BorderStyle = BorderStyle.None;
+            this.BackColor = Color.Transparent;
             base.OnMouseLeave(e);
         }
 
-        protected override void OnMouseHover(EventArgs e)
+        protected override void OnMouseMove(MouseEventArgs e)
         {
-            this.BorderStyle = BorderStyle.FixedSingle;
-            base.OnMouseHover(e);
+            this.BackColor = Color.FromArgb(58, 58, 58);
+            base.OnMouseMove(e);
         }
 
         protected override void OnClick(EventArgs e)
         {
-            
-
             base.OnClick(e);
         }
     }
