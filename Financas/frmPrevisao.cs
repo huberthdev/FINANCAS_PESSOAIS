@@ -85,7 +85,7 @@ namespace Setup.Financas
                 classe.Name = "classe" + i;
                 classe.Location = new Point(11, top1);
                 classe.Text = " " + BD.Resultado.Rows[i][0].ToString();
-                panel.Controls.Add(classe);
+                //panel.Controls.Add(classe);
                 //
                 //Controle para Tipo
                 //
@@ -93,7 +93,7 @@ namespace Setup.Financas
                 tipo.Name = "tipo" + i;
                 tipo.Location = new Point(245, top1);
                 tipo.Text = " " + BD.Resultado.Rows[i][1].ToString();
-                panel.Controls.Add(tipo);
+                //panel.Controls.Add(tipo);
                 //
                 //Controle para Dia
                 //
@@ -101,7 +101,7 @@ namespace Setup.Financas
                 dia.Name = "dia" + i;
                 dia.Location = new Point(393, top1);
                 dia.Text = BD.Resultado.Rows[i][2].ToString();
-                panel.Controls.Add(dia);
+                //panel.Controls.Add(dia);
                 //
                 //Controle para Orçado
                 //
@@ -109,7 +109,7 @@ namespace Setup.Financas
                 orcado.Name = "orcado" + i;
                 orcado.Location = new Point(450, top1);
                 orcado.Text = BD.Resultado.Rows[i][3].ToString();
-                panel.Controls.Add(orcado);
+                //panel.Controls.Add(orcado);
                 //
                 //Controle para Real
                 //
@@ -117,7 +117,7 @@ namespace Setup.Financas
                 real.Name = "real" + i;
                 real.Location = new Point(535, top1);
                 real.Text = BD.Resultado.Rows[i][4].ToString();
-                panel.Controls.Add(real);
+                //panel.Controls.Add(real);
                 //
                 //Controle para Desvio
                 //
@@ -125,14 +125,14 @@ namespace Setup.Financas
                 desvio.Name = "desvio" + i;
                 desvio.Location = new Point(620, top1);
                 desvio.Text = BD.Resultado.Rows[i][5].ToString();
-                panel.Controls.Add(desvio);
+                //panel.Controls.Add(desvio);
                 //
                 //Controle para Status
                 //
                 Previsao.CkStatus status = new Previsao.CkStatus();
                 status.Name = "status" + i;
                 status.Location = new Point(712, top3);
-                panel.Controls.Add(status);
+                //panel.Controls.Add(status);
                 //
                 Previsao.TxtObs obs = new Previsao.TxtObs();
                 obs.Name = "obs" + i;
@@ -141,7 +141,7 @@ namespace Setup.Financas
                 {
                     obs.Text = BD.Resultado.Rows[i][8].ToString();
                 }
-                panel.Controls.Add(obs);
+                //panel.Controls.Add(obs);
                 
                 if(ord != "A")
                 {
@@ -165,10 +165,11 @@ namespace Setup.Financas
                     //
                 }
 
+                panel.Controls.AddRange(new Control[] { (classe), (tipo), (dia), (orcado), (real), (desvio), (status), (obs) });
+
                 top1 += 31; //Texto
                 top2 += 31; //Botão
                 top3 += 31; //Check
-
             }
         }
 

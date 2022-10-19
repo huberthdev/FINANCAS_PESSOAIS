@@ -19,7 +19,7 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string chave, valor, obs;
+            string id, sql, chave, valor, obs;
             int dia, mes, ano, classe;
 
             if (!COD.ValidarCampos(this))
@@ -63,9 +63,17 @@ namespace Setup.Financas
             c[7] = "obs";
             v[7] = obs;
 
-            if(BD.Salvar("PREVISAO", c, v))
+            sql = "SELECT PREVISAO_ID FROM PREVISAO WHERE MES = "+ mes +" AND ANO = "+ ano +" AND CLASSE = "+ classe +"";
+            
+            try
             {
-                COD.OK("Previsão salva!");
+                BD.Buscar(sql);
+                id = BD.Resultado.Rows[0][0].ToString();
+                BD.Salvar("PREVISAO", c, v, int.Parse(id), "Previsão alterada!");
+            }
+            catch
+            {
+                BD.Salvar("PREVISAO", c, v, Msg:"Previsão salva!");
             }
 
             RecarregarPrevisao();
