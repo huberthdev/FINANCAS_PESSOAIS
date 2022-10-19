@@ -24,7 +24,7 @@ namespace Setup.Financas
             int top2 = 14; //Botão
             int top3 = 17; //Check
 
-            string sql, ord;
+            string sql, ord, chave;
             int cor = Previsao.Prev.cor;
 
             panel.Controls.Clear();
@@ -33,14 +33,32 @@ namespace Setup.Financas
             //
             //Compras no Crédito
             //
-            sql = "SELECT D.CONTA, ' Cartão de Crédito' AS TIPO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, ";
-            sql += "'0,00' AS ORCADO, SUM(A.VALOR * -1) AS REALIZADO, SUM(A.VALOR) AS DESVIO, C.COR AS COR, 'A' AS ORD FROM COMPRA_CREDITO A ";
+            sql = "SELECT CLASSE, TIPO, DIA, ORCADO, REALIZADO, DESVIO, STATUS, ORD, OBS, CHAVE FROM (";
+
+            sql += "SELECT D.CONTA AS CLASSE, ' Cartão de Crédito' AS TIPO, ";
+            sql += "EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, '0,00' AS ORCADO, ";
+            sql += "SUM(A.VALOR * -1) AS REALIZADO, SUM(A.VALOR) AS DESVIO, ";
+            sql += "C.COR AS STATUS, 'A' AS ORD, '' AS OBS, '' AS CHAVE FROM COMPRA_CREDITO A ";
             sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID ";
-            sql += "INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID ";
-            sql += "WHERE A.STATUS = 0 AND EXTRACT(MONTH FROM A.DATA_PARCELA) = 11 AND EXTRACT(YEAR FROM A.DATA_PARCELA) = 2022 ";
-            sql += "GROUP BY D.CONTA, DIA, C.COR ";
+            sql += "INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE A.STATUS = 0 AND ";
+            sql += "EXTRACT(MONTH FROM A.DATA_PARCELA) = 11 AND ";
+            sql += "EXTRACT(YEAR FROM A.DATA_PARCELA) = 2022 ";
+            sql += "GROUP BY D.CONTA, DIA, STATUS ";
             //
+            //PEGA O VALOR DO GASTO PREVISTO QUE AINDA NÃO TIVERAM DÉBITO REALIZADO NA CLASSE ESPECÍFICA
+            //
+            sql += "UNION SELECT B.CLASSE, ' Despesa' AS TIPO, ";
+            sql += "A.DIA, A.VALOR AS ORCADO, '0,00' AS REALIZADO, A.VALOR AS DESVIO, A.STATUS, 'B' AS ORD, A.OBS , A.CHAVE ";
+            sql += "FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
+            sql += "WHERE A.CLASSE NOT IN(SELECT DISTINCT CLASSE FROM BD WHERE ";
+            sql += "EXTRACT(MONTH FROM DATA) = 10 AND EXTRACT(YEAR FROM DATA) = 2022 AND VALOR < 0) ";
+            sql += "AND A.CLASSE NOT IN(SELECT DISTINCT B.CLASSE FROM COMPRA_CREDITO A ";
+            sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = 10 ";
+            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = 2022 AND A.STATUS = 0) ";
+            sql += "AND B.TIPO = 0 AND A.VALOR > 0 AND A.MES = 10 AND A.ANO = 2022 ";
+
+            sql += ") ORDER BY ORD";
             //
             //
             BD.Buscar(sql);
@@ -57,7 +75,7 @@ namespace Setup.Financas
                 }
                 else
                 {
-                    Previsao.Prev.cor = -16777216;
+                    Previsao.Prev.cor = -1000000;
                 }
 
                 //Controle para Classe
@@ -119,23 +137,31 @@ namespace Setup.Financas
                 obs.Location = new Point(731, top1);
                 if (ord != "A")
                 {
-                    obs.Text = BD.Resultado.Rows[i][6].ToString();
+                    obs.Text = BD.Resultado.Rows[i][8].ToString();
                 }
                 panel.Controls.Add(obs);
-                //
-                //Controle para Editar
-                //
-                Previsao.Icon_Edit editar = new Previsao.Icon_Edit();
-                editar.Name = "editar" + i;
-                editar.Location = new Point(986, top1);
-                panel.Controls.Add(editar);
-                //
-                //Controle para Excluir
-                //
-                Previsao.Icon_Delete excluir = new Previsao.Icon_Delete();
-                excluir.Name = "excluir" + i;
-                excluir.Location = new Point(1015, top1);
-                panel.Controls.Add(excluir);
+                
+                if(ord != "A")
+                {
+                    chave = BD.Resultado.Rows[i][9].ToString();
+                    //
+                    //Controle para Editar
+                    //
+                    Previsao.Icon_Edit editar = new Previsao.Icon_Edit();
+                    editar.Name = "editar" + i;
+                    editar.Location = new Point(986, top1);
+                    editar.Tag = chave;
+                    panel.Controls.Add(editar);
+                    //
+                    //Controle para Excluir
+                    //
+                    Previsao.Icon_Delete excluir = new Previsao.Icon_Delete();
+                    excluir.Name = "excluir" + i;
+                    excluir.Location = new Point(1015, top1);
+                    excluir.Tag = chave;
+                    panel.Controls.Add(excluir);
+                    //
+                }
 
                 top1 += 31; //Texto
                 top2 += 31; //Botão

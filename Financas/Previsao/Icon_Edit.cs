@@ -30,5 +30,11 @@ namespace Setup.Financas.Previsao
             this.BackColor = Color.FromArgb(58, 58, 58);
             base.OnMouseMove(e);
         }
+
+        protected override void OnClick(EventArgs e)
+        {
+            MessageBox.Show(this.Tag.ToString());
+            base.OnClick(e);
+        }
     }
 }

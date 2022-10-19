@@ -116,6 +116,7 @@ namespace Setup.Financas
             this.optReceita.TabStop = true;
             this.optReceita.Text = "Receita";
             this.optReceita.UseVisualStyleBackColor = true;
+            this.optReceita.Click += new System.EventHandler(this.optReceita_Click);
             // 
             // optDespesa
             // 
@@ -126,6 +127,7 @@ namespace Setup.Financas
             this.optDespesa.TabIndex = 13;
             this.optDespesa.Text = "Despesa";
             this.optDespesa.UseVisualStyleBackColor = true;
+            this.optDespesa.Click += new System.EventHandler(this.optDespesa_Click);
             // 
             // label3
             // 
@@ -186,11 +188,13 @@ namespace Setup.Financas
             // 
             this.txtValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtValor.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor.ForeColor = System.Drawing.Color.White;
             this.txtValor.Location = new System.Drawing.Point(58, 115);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(100, 23);
+            this.txtValor.Size = new System.Drawing.Size(100, 25);
             this.txtValor.TabIndex = 16;
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
             // 
@@ -256,6 +260,7 @@ namespace Setup.Financas
             this.salvar.Name = "salvar";
             this.salvar.Size = new System.Drawing.Size(66, 20);
             this.salvar.Text = "Salvar";
+            this.salvar.Click += new System.EventHandler(this.salvar_Click);
             // 
             // excluir
             // 
@@ -281,6 +286,7 @@ namespace Setup.Financas
             this.sair.Name = "sair";
             this.sair.Size = new System.Drawing.Size(54, 20);
             this.sair.Text = "Sair";
+            this.sair.Click += new System.EventHandler(this.sair_Click);
             // 
             // boxAddPrev
             // 
@@ -289,9 +295,9 @@ namespace Setup.Financas
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(448, 196);
             this.Controls.Add(this.cbClasse);
+            this.Controls.Add(this.cbDia);
             this.Controls.Add(this.cbMes);
             this.Controls.Add(this.cbAno);
-            this.Controls.Add(this.cbDia);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.txtObs);
             this.Controls.Add(this.label4);

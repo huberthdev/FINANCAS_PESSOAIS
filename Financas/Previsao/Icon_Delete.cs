@@ -33,6 +33,7 @@ namespace Setup.Financas.Previsao
 
         protected override void OnClick(EventArgs e)
         {
+            MessageBox.Show(this.Tag.ToString());
             base.OnClick(e);
         }
     }
