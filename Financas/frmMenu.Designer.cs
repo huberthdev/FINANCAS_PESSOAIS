@@ -904,7 +904,6 @@ namespace Setup.Financas
             this.tabCad_Classes.Tag = "Cadastro";
             this.tabCad_Classes.Text = "ADD";
             this.tabCad_Classes.UseVisualStyleBackColor = true;
-            this.tabCad_Classes.Click += new System.EventHandler(this.tabCad_Classes_Click);
             // 
             // gpConta
             // 

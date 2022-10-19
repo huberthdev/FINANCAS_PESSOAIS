@@ -32,31 +32,35 @@ namespace Setup.Financas
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrevisao));
-            this.menuStrip1 = new MenuStrip();
-            this.novo = new ToolStripMenuItem();
-            this.excluir = new ToolStripMenuItem();
-            this.replicar = new ToolStripMenuItem();
-            this.atualizar = new ToolStripMenuItem();
-            this.definicoes = new ToolStripMenuItem();
-            this.ano = new ToolStripComboBox();
-            this.mes = new ToolStripComboBox();
-            this.panel = new Panel();
-            this.status = new StatusStrip();
-            this.imagens = new ImageList(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.novo = new Setup.Controles.Cabecalho();
+            this.excluir = new Setup.Controles.Cabecalho();
+            this.replicar = new Setup.Controles.Cabecalho();
+            this.atualizar = new Setup.Controles.Cabecalho();
+            this.definicoes = new Setup.Controles.Cabecalho();
+            this.ano = new System.Windows.Forms.ToolStripComboBox();
+            this.mes = new System.Windows.Forms.ToolStripComboBox();
+            this.next = new System.Windows.Forms.ToolStripMenuItem();
+            this.back = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel = new System.Windows.Forms.Panel();
+            this.status = new System.Windows.Forms.StatusStrip();
+            this.imagens = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
-            this.menuStrip1.Items.AddRange(new ToolStripItem[] {
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.novo,
             this.excluir,
             this.replicar,
             this.atualizar,
             this.definicoes,
             this.ano,
-            this.mes});
+            this.mes,
+            this.next,
+            this.back});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1050, 27);
@@ -78,6 +82,7 @@ namespace Setup.Financas
             this.excluir.Name = "excluir";
             this.excluir.Size = new System.Drawing.Size(70, 23);
             this.excluir.Text = "Excluir";
+            this.excluir.Click += new System.EventHandler(this.excluir_Click);
             // 
             // replicar
             // 
@@ -106,32 +111,58 @@ namespace Setup.Financas
             // 
             // ano
             // 
-            this.ano.Alignment = ToolStripItemAlignment.Right;
+            this.ano.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.ano.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ano.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.ano.CausesValidation = false;
+            this.ano.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ano.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.ano.ForeColor = System.Drawing.Color.White;
             this.ano.Name = "ano";
             this.ano.Size = new System.Drawing.Size(121, 23);
+            this.ano.SelectedIndexChanged += new System.EventHandler(this.ano_SelectedIndexChanged);
             // 
             // mes
             // 
-            this.mes.Alignment = ToolStripItemAlignment.Right;
+            this.mes.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.mes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.mes.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.mes.CausesValidation = false;
+            this.mes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.mes.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.mes.ForeColor = System.Drawing.Color.White;
             this.mes.Name = "mes";
             this.mes.Size = new System.Drawing.Size(121, 23);
+            this.mes.SelectedIndexChanged += new System.EventHandler(this.mes_SelectedIndexChanged);
+            // 
+            // next
+            // 
+            this.next.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.next.ForeColor = System.Drawing.Color.White;
+            this.next.Image = ((System.Drawing.Image)(resources.GetObject("next.Image")));
+            this.next.Name = "next";
+            this.next.Size = new System.Drawing.Size(28, 23);
+            this.next.Click += new System.EventHandler(this.next_Click);
+            // 
+            // back
+            // 
+            this.back.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.back.ForeColor = System.Drawing.Color.White;
+            this.back.Image = ((System.Drawing.Image)(resources.GetObject("back.Image")));
+            this.back.Name = "back";
+            this.back.Size = new System.Drawing.Size(28, 23);
+            this.back.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.back.Click += new System.EventHandler(this.back_Click);
             // 
             // panel
             // 
             this.panel.AutoScroll = true;
-            this.panel.BorderStyle = BorderStyle.FixedSingle;
-            this.panel.Dock = DockStyle.Fill;
+            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.ForeColor = System.Drawing.Color.White;
             this.panel.Location = new System.Drawing.Point(0, 27);
             this.panel.Name = "panel";
             this.panel.Size = new System.Drawing.Size(1050, 479);
             this.panel.TabIndex = 1;
+            this.panel.CausesValidationChanged += new System.EventHandler(this.panel_CausesValidationChanged);
             // 
             // status
             // 
@@ -139,7 +170,7 @@ namespace Setup.Financas
             this.status.BackColor = System.Drawing.Color.Transparent;
             this.status.Location = new System.Drawing.Point(0, 484);
             this.status.Name = "status";
-            this.status.RenderMode = ToolStripRenderMode.Professional;
+            this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.status.Size = new System.Drawing.Size(1050, 22);
             this.status.SizingGrip = false;
             this.status.Stretch = false;
@@ -147,8 +178,8 @@ namespace Setup.Financas
             // 
             // imagens
             // 
-            this.imagens.ColorDepth = ColorDepth.Depth8Bit;
-            this.imagens.ImageStream = ((ImageListStreamer)(resources.GetObject("imagens.ImageStream")));
+            this.imagens.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imagens.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imagens.ImageStream")));
             this.imagens.TransparentColor = System.Drawing.Color.Transparent;
             this.imagens.Images.SetKeyName(0, "add");
             this.imagens.Images.SetKeyName(1, "clear");
@@ -160,7 +191,7 @@ namespace Setup.Financas
             // frmPrevisao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1050, 506);
             this.Controls.Add(this.status);
@@ -169,9 +200,10 @@ namespace Setup.Financas
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(712, 88);
             this.Name = "frmPrevisao";
             this.ShowIcon = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmPrevisao_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -183,15 +215,17 @@ namespace Setup.Financas
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem novo;
-        private ToolStripMenuItem excluir;
-        private ToolStripMenuItem replicar;
-        private ToolStripComboBox ano;
-        private ToolStripComboBox mes;
         private StatusStrip status;
         private ImageList imagens;
         public Panel panel;
-        private ToolStripMenuItem atualizar;
-        private ToolStripMenuItem definicoes;
+        private Controles.Cabecalho novo;
+        private Controles.Cabecalho excluir;
+        private Controles.Cabecalho replicar;
+        public ToolStripComboBox ano;
+        public ToolStripComboBox mes;
+        private Controles.Cabecalho atualizar;
+        private Controles.Cabecalho definicoes;
+        private ToolStripMenuItem next;
+        private ToolStripMenuItem back;
     }
 }

@@ -469,10 +469,5 @@ namespace Setup.Financas
             frmPrevisao prev = new frmPrevisao();
             prev.ShowDialog();
         }
-
-        private void tabCad_Classes_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

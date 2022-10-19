@@ -32,7 +32,7 @@ namespace Setup.Financas
             ano = int.Parse(cbAno.Text);
             classe = ((Classes.Classe)cbClasse.SelectedItem).id;
 
-            chave = String.Concat(dia, mes, ano, classe);
+            chave = String.Concat(dia, ".", mes, ".", ano, ".", classe);
             valor = BD.CvNum(txtValor.Text);
             obs = txtObs.Text;
 
@@ -63,11 +63,14 @@ namespace Setup.Financas
             c[7] = "obs";
             v[7] = obs;
 
-            BD.Salvar("PREVISAO", c, v);
-
+            if(BD.Salvar("PREVISAO", c, v))
+            {
+                COD.OK("Previsão salva!");
+            }
+           
         }
 
-        private void CarregarCBs()
+        public void CarregarCBs(string classe = "", string dia = "", string mes = "", string ano = "")
         {
             string mesNome;
 
@@ -78,29 +81,45 @@ namespace Setup.Financas
             {
                 cbClasse.Items.Add(c);
             }
+            if(classe != "")
+                cbClasse.Text = classe;
             //
             //Preenche o combobox com os Dias
             //
+            cbDia.Items.Clear();
             for (int i = 1; i < 31; i++)
             {
                 cbDia.Items.Add(i);
             }
+            if (dia != "")
+                cbDia.Text = dia;
+            else
+                cbDia.Text = DateTime.Today.Day.ToString();
             //
             //Preenche o combobox com os Meses
             //
+            cbMes.Items.Clear();
             for (int i = 1; i < 13; i++)
             {
                 mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(i).ToUpper();
                 cbMes.Items.Add(mesNome);
             }
+            if (mes != "")
+                cbMes.Text = mes;
+            else
+                cbMes.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper();
             //
             //Preenche o combobox com os Anos
             //
+            cbAno.Items.Clear();
             for (int i = 0; i < 3; i++)
             {
                 cbAno.Items.Add(DateTime.Today.Year - 1 + i);
             }
-
+            if (ano != "")
+                cbAno.Text = ano;
+            else
+                cbAno.Text = DateTime.Today.Year.ToString();
         }
 
         private void optReceita_Click(object sender, EventArgs e)

@@ -14,11 +14,10 @@ namespace Setup.Financas
 
         private void frmPrevisao_Load(object sender, EventArgs e)
         {
-            CarregarPrevisao();
             CarregarCbMesAno();
         }
 
-        private void CarregarPrevisao()
+        public void CarregarPrevisao()
         {
             int top1 = 12; //Texto
             int top2 = 14; //Botão
@@ -26,6 +25,9 @@ namespace Setup.Financas
 
             string sql, ord, chave;
             int cor = Previsao.Prev.cor;
+
+            int mes = ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1;
+            int ano = int.Parse(menuStrip1.Items["ano"].Text);
 
             panel.Controls.Clear();
 
@@ -42,8 +44,8 @@ namespace Setup.Financas
             sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID ";
             sql += "INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE A.STATUS = 0 AND ";
-            sql += "EXTRACT(MONTH FROM A.DATA_PARCELA) = 11 AND ";
-            sql += "EXTRACT(YEAR FROM A.DATA_PARCELA) = 2022 ";
+            sql += "EXTRACT(MONTH FROM A.DATA_PARCELA) = "+ mes +" AND ";
+            sql += "EXTRACT(YEAR FROM A.DATA_PARCELA) = "+ ano +" ";
             sql += "GROUP BY D.CONTA, DIA, STATUS ";
             //
             //PEGA O VALOR DO GASTO PREVISTO QUE AINDA NÃO TIVERAM DÉBITO REALIZADO NA CLASSE ESPECÍFICA
@@ -52,11 +54,11 @@ namespace Setup.Financas
             sql += "A.DIA, A.VALOR AS ORCADO, '0,00' AS REALIZADO, A.VALOR AS DESVIO, A.STATUS, 'B' AS ORD, A.OBS , A.CHAVE ";
             sql += "FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
             sql += "WHERE A.CLASSE NOT IN(SELECT DISTINCT CLASSE FROM BD WHERE ";
-            sql += "EXTRACT(MONTH FROM DATA) = 10 AND EXTRACT(YEAR FROM DATA) = 2022 AND VALOR < 0) ";
+            sql += "EXTRACT(MONTH FROM DATA) = "+ mes +" AND EXTRACT(YEAR FROM DATA) = "+ ano +" AND VALOR < 0) ";
             sql += "AND A.CLASSE NOT IN(SELECT DISTINCT B.CLASSE FROM COMPRA_CREDITO A ";
-            sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = 10 ";
-            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = 2022 AND A.STATUS = 0) ";
-            sql += "AND B.TIPO = 0 AND A.VALOR > 0 AND A.MES = 10 AND A.ANO = 2022 ";
+            sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = "+ mes +" ";
+            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = "+ ano +" AND A.STATUS = 0) ";
+            sql += "AND B.TIPO = 0 AND A.VALOR > 0 AND A.MES = "+ mes +" AND A.ANO = "+ ano +" ";
 
             sql += ") ORDER BY ORD";
             //
@@ -215,6 +217,75 @@ namespace Setup.Financas
                     mes.Text = mesNome;
                 }
             }
+        }
+
+        private void excluir_Click(object sender, EventArgs e)
+        {
+            int mes, ano;
+            string mesNome, sql;
+
+            mes = ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1;
+            mesNome = menuStrip1.Items["mes"].Text;
+            ano = int.Parse(menuStrip1.Items["ano"].Text);
+
+            COD.Pergunta("Deseja realmente excluir toda a previsão deste período?\r\n\r\n"+ mesNome +"/"+ ano +"");
+            if (!COD.Resposta)
+                return;
+
+            sql = "DELETE FROM PREVISAO WHERE MES = " + mes + " AND ANO = " + ano + "";
+            BD.ExecutarSQL(sql);
+
+            CarregarPrevisao();
+        }
+
+        private void mes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregarPrevisao();
+            panel.Focus();
+        }
+
+        private void ano_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregarPrevisao();
+            panel.Focus();
+        }
+
+        private void next_Click(object sender, EventArgs e)
+        {
+            MudarPeriodo(1);
+            panel.Focus();
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            MudarPeriodo();
+            panel.Focus();
+        }
+
+        private void MudarPeriodo(int x = 0)
+        {
+            string data, mes, ano;
+
+            if (x == 0)
+                x = -1;
+
+            mes = (((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1).ToString();
+            ano = menuStrip1.Items["ano"].Text;
+
+            data = String.Concat("01/", mes, "/", ano);
+
+            data = DateTime.Parse(data).AddMonths(x).ToShortDateString();
+
+            mes = ((DateTime.Parse(data).Month) - 1).ToString();
+            ano = DateTime.Parse(data).Year.ToString();
+
+            menuStrip1.Items["ano"].Text = ano;
+            ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex = int.Parse(mes);
+        }
+
+        private void panel_CausesValidationChanged(object sender, EventArgs e)
+        {
+            CarregarPrevisao();
         }
     }
 }

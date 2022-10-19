@@ -33,7 +33,20 @@ namespace Setup.Financas.Previsao
 
         protected override void OnClick(EventArgs e)
         {
-            MessageBox.Show(this.Tag.ToString());
+            string chave = this.Tag.ToString();
+
+            COD.Pergunta("Deseja realmente excluir este item?");
+            if (!COD.Resposta)
+                return;
+
+            string sql = "DELETE FROM PREVISAO WHERE CHAVE = '" + chave + "'";
+            BD.ExecutarSQL(sql);
+
+            if(this.Parent.CausesValidation == true)
+                this.Parent.CausesValidation = false;
+            else
+                this.Parent.CausesValidation = true;
+
             base.OnClick(e);
         }
     }

@@ -104,6 +104,7 @@ namespace Setup.Financas
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(243, 23);
             this.cbClasse.TabIndex = 12;
+            this.cbClasse.Tag = "\'Classe\'";
             // 
             // optReceita
             // 
@@ -151,6 +152,7 @@ namespace Setup.Financas
             this.cbMes.Name = "cbMes";
             this.cbMes.Size = new System.Drawing.Size(113, 23);
             this.cbMes.TabIndex = 15;
+            this.cbMes.Tag = "\'Mês\'";
             // 
             // label4
             // 
@@ -174,6 +176,7 @@ namespace Setup.Financas
             this.cbAno.Name = "cbAno";
             this.cbAno.Size = new System.Drawing.Size(89, 23);
             this.cbAno.TabIndex = 15;
+            this.cbAno.Tag = "\'Ano\'";
             // 
             // label5
             // 
@@ -194,6 +197,7 @@ namespace Setup.Financas
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(100, 25);
             this.txtValor.TabIndex = 16;
+            this.txtValor.Tag = "\'Valor\'";
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label6
@@ -218,6 +222,7 @@ namespace Setup.Financas
             this.cbDia.Name = "cbDia";
             this.cbDia.Size = new System.Drawing.Size(47, 23);
             this.cbDia.TabIndex = 15;
+            this.cbDia.Tag = "\'Dia\'";
             // 
             // txtObs
             // 
