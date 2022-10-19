@@ -109,12 +109,10 @@ namespace Setup.Financas
             // optReceita
             // 
             this.optReceita.AutoSize = true;
-            this.optReceita.Checked = true;
             this.optReceita.Location = new System.Drawing.Point(311, 40);
             this.optReceita.Name = "optReceita";
             this.optReceita.Size = new System.Drawing.Size(63, 19);
             this.optReceita.TabIndex = 13;
-            this.optReceita.TabStop = true;
             this.optReceita.Text = "Receita";
             this.optReceita.UseVisualStyleBackColor = true;
             this.optReceita.Click += new System.EventHandler(this.optReceita_Click);
@@ -122,10 +120,12 @@ namespace Setup.Financas
             // optDespesa
             // 
             this.optDespesa.AutoSize = true;
+            this.optDespesa.Checked = true;
             this.optDespesa.Location = new System.Drawing.Point(376, 40);
             this.optDespesa.Name = "optDespesa";
             this.optDespesa.Size = new System.Drawing.Size(68, 19);
             this.optDespesa.TabIndex = 13;
+            this.optDespesa.TabStop = true;
             this.optDespesa.Text = "Despesa";
             this.optDespesa.UseVisualStyleBackColor = true;
             this.optDespesa.Click += new System.EventHandler(this.optDespesa_Click);
@@ -263,6 +263,7 @@ namespace Setup.Financas
             this.salvar.ForeColor = System.Drawing.Color.White;
             this.salvar.Image = ((System.Drawing.Image)(resources.GetObject("salvar.Image")));
             this.salvar.Name = "salvar";
+            this.salvar.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
             this.salvar.Size = new System.Drawing.Size(66, 20);
             this.salvar.Text = "Salvar";
             this.salvar.Click += new System.EventHandler(this.salvar_Click);
@@ -272,6 +273,7 @@ namespace Setup.Financas
             this.excluir.ForeColor = System.Drawing.Color.White;
             this.excluir.Image = ((System.Drawing.Image)(resources.GetObject("excluir.Image")));
             this.excluir.Name = "excluir";
+            this.excluir.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.excluir.Size = new System.Drawing.Size(70, 20);
             this.excluir.Text = "Excluir";
             // 
@@ -334,23 +336,23 @@ namespace Setup.Financas
         public System.Windows.Forms.Label lnR;
         public System.Windows.Forms.Label lnD;
         private System.Windows.Forms.Label label2;
-        private Controles.cbCombo cbClasse;
-        private System.Windows.Forms.RadioButton optReceita;
-        private System.Windows.Forms.RadioButton optDespesa;
         private System.Windows.Forms.Label label3;
-        private Controles.cbCombo cbMes;
         private System.Windows.Forms.Label label4;
-        private Controles.cbCombo cbAno;
         private System.Windows.Forms.Label label5;
-        private Controles.Decimal txtValor;
         private System.Windows.Forms.Label label6;
-        private Controles.cbCombo cbDia;
-        private Controles.Txt txtObs;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private Controles.Cabecalho salvar;
         private Controles.Cabecalho excluir;
         private Controles.Cabecalho replicar;
         private Controles.Cabecalho sair;
+        public Controles.cbCombo cbClasse;
+        public System.Windows.Forms.RadioButton optReceita;
+        public System.Windows.Forms.RadioButton optDespesa;
+        public Controles.cbCombo cbMes;
+        public Controles.cbCombo cbAno;
+        public Controles.Decimal txtValor;
+        public Controles.cbCombo cbDia;
+        public Controles.Txt txtObs;
     }
 }

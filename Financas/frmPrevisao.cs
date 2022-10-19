@@ -174,7 +174,18 @@ namespace Setup.Financas
 
         private void novo_Click(object sender, EventArgs e)
         {
+            string mes, ano;
+
             boxAddPrev prev = new boxAddPrev();
+
+            mes = menuStrip1.Items["mes"].Text;
+            ano = menuStrip1.Items["ano"].Text;
+            
+            prev.cbMes.Text = mes;
+            prev.cbAno.Text = ano;
+
+            prev.CarregarCBs(mes:mes, ano:ano);
+
             prev.ShowDialog();
         }
 

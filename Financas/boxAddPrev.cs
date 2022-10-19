@@ -67,7 +67,18 @@ namespace Setup.Financas
             {
                 COD.OK("Previsão salva!");
             }
-           
+
+            RecarregarPrevisao();
+        }
+
+        private void RecarregarPrevisao()
+        {
+            Form frm = ((frmPrevisao)Application.OpenForms["frmPrevisao"]);
+
+            if (frm.Controls["panel"].CausesValidation == true)
+                frm.Controls["panel"].CausesValidation = false;
+            else
+                frm.Controls["panel"].CausesValidation = true;
         }
 
         public void CarregarCBs(string classe = "", string dia = "", string mes = "", string ano = "")
