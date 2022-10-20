@@ -231,11 +231,12 @@ namespace Setup.Financas
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(712, 88);
+            this.MinimumSize = new System.Drawing.Size(1066, 88);
             this.Name = "frmPrevisao";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmPrevisao_Load);
+            this.SizeChanged += new System.EventHandler(this.frmPrevisao_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

@@ -19,9 +19,10 @@ namespace Setup.Financas
 
         public void CarregarPrevisao()
         {
-            int top1 = 12; //Texto
-            int top2 = 14; //Botão
-            int top3 = 17; //Check
+            int top1 = 3; //Texto
+            int top2 = 3; //Botão
+            int top3 = 5; //Check
+            int top4 = 3; //Panel
 
             string sql, ord, chave;
             int cor = Previsao.Prev.cor;
@@ -125,14 +126,14 @@ namespace Setup.Financas
                 desvio.Name = "desvio" + i;
                 desvio.Location = new Point(620, top1);
                 desvio.Text = BD.Resultado.Rows[i][5].ToString();
-                //panel.Controls.Add(desvio);
+                //
                 //
                 //Controle para Status
                 //
                 Previsao.CkStatus status = new Previsao.CkStatus();
                 status.Name = "status" + i;
                 status.Location = new Point(712, top3);
-                //panel.Controls.Add(status);
+                //
                 //
                 Previsao.TxtObs obs = new Previsao.TxtObs();
                 obs.Name = "obs" + i;
@@ -141,9 +142,15 @@ namespace Setup.Financas
                 {
                     obs.Text = BD.Resultado.Rows[i][8].ToString();
                 }
-                //panel.Controls.Add(obs);
-                
-                if(ord != "A")
+
+                Panel pn = new Panel();
+                pn.Name = "pn" + i;
+                pn.Size = new Size(1044, 30);
+                pn.Location = new Point(3, top4);
+                pn.Anchor = AnchorStyles.Top;
+                panel.Controls.AddRange(new Control[] { pn });
+
+                if (ord != "A")
                 {
                     chave = BD.Resultado.Rows[i][9].ToString();
                     //
@@ -153,7 +160,7 @@ namespace Setup.Financas
                     editar.Name = "editar" + i;
                     editar.Location = new Point(986, top1);
                     editar.Tag = chave;
-                    panel.Controls.Add(editar);
+                    //panel.Controls.Add(editar);
                     //
                     //Controle para Excluir
                     //
@@ -161,15 +168,14 @@ namespace Setup.Financas
                     excluir.Name = "excluir" + i;
                     excluir.Location = new Point(1015, top1);
                     excluir.Tag = chave;
-                    panel.Controls.Add(excluir);
+                    //panel.Controls.Add(excluir);
                     //
+                    pn.Controls.AddRange(new Control[] { editar, excluir });
                 }
 
-                panel.Controls.AddRange(new Control[] { (classe), (tipo), (dia), (orcado), (real), (desvio), (status), (obs) });
+                pn.Controls.AddRange(new Control[] { classe, tipo, dia, orcado, real, desvio, status, obs });
 
-                top1 += 31; //Texto
-                top2 += 31; //Botão
-                top3 += 31; //Check
+                top4 += 31; //Panel
             }
         }
 
@@ -298,6 +304,26 @@ namespace Setup.Financas
         private void panel_CausesValidationChanged(object sender, EventArgs e)
         {
             CarregarPrevisao();
+        }
+
+        private void frmPrevisao_SizeChanged(object sender, EventArgs e)
+        {
+            //int xPnI = 1050, xPnF, xPn, xCtrl, vl;
+
+            //xPn = this.panel.Size.Width;
+
+            //foreach (Control c in panel.Controls)
+            //{
+            //    if (c.GetType().Name == "Panel")
+            //    {
+            //        xCtrl = c.Location.X;
+            //        xPnF = this.Size.Width;
+
+            //        vl = xPnF -xPnI ;
+
+            //        c.Location = new Point(vl, c.Location.Y);
+            //    }
+            //}
         }
     }
 }
