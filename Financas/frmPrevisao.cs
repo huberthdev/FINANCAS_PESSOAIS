@@ -77,7 +77,7 @@ namespace Setup.Financas
                 }
                 else
                 {
-                    Previsao.Prev.cor = -1000000;
+                    Previsao.Prev.cor = -1;
                 }
 
                 //Controle para Classe

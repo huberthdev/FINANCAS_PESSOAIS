@@ -27,5 +27,10 @@ namespace Setup.Formularios
                 this.Dispose();
             }
         }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

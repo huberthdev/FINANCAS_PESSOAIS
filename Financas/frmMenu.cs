@@ -469,5 +469,10 @@ namespace Setup.Financas
             frmPrevisao prev = new frmPrevisao();
             prev.ShowDialog();
         }
+
+        private void tabReceita_Despesa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

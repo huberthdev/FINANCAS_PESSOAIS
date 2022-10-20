@@ -95,21 +95,20 @@
   </metadata>
   <data name="executar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAACfSURBVDhPY6A6cNjvwAJlkgj+MzA6HAjfD8RfHPZHNDjsT+CAyhAHbA/FSAI1/4dh+wPhN50O
-        RjpBpQkDh/3RMsgGwLDjgfBVbkdjxaDKcANcBkDxe4eD4fkM/xuYoMoxAQEDoDjisPOhUC2oFlRAnAFg
-        /N5hfygPVBsC0MkA8r1AfiASHY0UJyRoUt4HxJ/JSsowELoqlBnKpAdgYAAAEIbbg16eJQ0AAAAASUVO
-        RK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJ9JREFUOE9j
+        oDpw2O/AAmWSCP4zMDocCN8PxF8c9kc0OOxP4IDKEAdsD8VIAjX/h2H7A+E3nQ5GOkGlCQOH/dEyyAbA
+        sOOB8FVuR2PFoMpwA1wGQPF7h4Ph+Qz/G5igyjEBAQOgOOKw86FQLagWVECcAWD83mF/KA9UGwLQyQDy
+        vUB+IBIdjRQnJGhS3gfEn8lKyjAQuiqUGcqkB2BgAAAQhtuDXp4lDQAAAABJRU5ErkJggg==
 </value>
   </data>
   <data name="novo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAADzSURBVDhPtVLLDcIwDA0b8TlwoykTAKJJgEG4FCEWaxO2aAtTdIBiB6M2HzggeNKTIvs9x7HD
-        /oOOjZZXOeVGHpALoyYYo+xn8FJtEy3vXMvOY5MauSFZHGC8RIwujTiT3AXeHDG0RCeeaLUmGwHeB4mb
-        L+SlyC39uJa1M5O0yGYREbSrjpaRnB3sC4kWu0GyhRZPaEwLNUfi2cYGz0EP2b8rwEupyM6Y3XlfoCe2
-        j4zlymxMdsBziE0oEjnd7MRh3VXwsfCT+EJgdI1QeEU2F/hJArFH7IjkcYBgDcI6NMrq7c0BcCYwpNSo
-        vd2QM7CfgrEHOlVAyyfwYHUAAAAASUVORK5CYII=
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAPNJREFUOE+1
+        UssNwjAMDRvxOXCjKRMAokmAQbgUIRZrE7ZoC1N0gGIHozYfOCB40pMi+z3HscP+g46Nllc55UYekAuj
+        Jhij7GfwUm0TLe9cy85jkxq5IVkcYLxEjC6NOJPcBd4cMbREJ55otSYbAd4HiZsv5KXILf24lrUzk7TI
+        ZhERtKuOlpGcHewLiRa7QbKFFk9oTAs1R+LZxgbPQQ/ZvyvAS6nIzpjdeV+gJ7aPjOXKbEx2wHOITSgS
+        Od3sxGHdVfCx8JP4QmB0jVB4RTYX+EkCsUfsiORxgGANwjo0yurtzQFwJjCk1Ki93ZAzsJ+CsQc6VUDL
+        J/BgdQAAAABJRU5ErkJggg==
 </value>
   </data>
   <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">

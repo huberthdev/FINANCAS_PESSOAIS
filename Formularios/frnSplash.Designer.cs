@@ -32,20 +32,21 @@ namespace Setup.Formularios
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplash));
-            this.progressBar1 = new ProgressBar();
-            this.timer1 = new Timer(this.components);
-            this.label1 = new Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(2, 378);
-            this.progressBar1.Maximum = 20;
+            this.progressBar1.Maximum = 40;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(716, 12);
-            this.progressBar1.Style = ProgressBarStyle.Continuous;
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
             this.progressBar1.Visible = false;
+            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // timer1
             // 
@@ -54,12 +55,12 @@ namespace Setup.Formularios
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.LightGreen;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.Turquoise;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(270, 112);
+            this.label1.Location = new System.Drawing.Point(197, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 153);
+            this.label1.Size = new System.Drawing.Size(330, 278);
             this.label1.TabIndex = 3;
             this.label1.Text = "Finanças";
             this.label1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -67,18 +68,18 @@ namespace Setup.Formularios
             // frmSplash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.BackgroundImageLayout = ImageLayout.Stretch;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(720, 392);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar1);
             this.DoubleBuffered = true;
-            this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSplash";
             this.Opacity = 0.8D;
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmSplash_Load);
             this.ResumeLayout(false);
 

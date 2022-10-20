@@ -31,19 +31,19 @@ namespace Setup.Formularios
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPergunta));
-            this.panel1 = new Panel();
-            this.btnSim = new Button();
-            this.btnNao = new Button();
-            this.lblMsg = new Label();
-            this.pictureBox1 = new PictureBox();
-            this.label1 = new Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSim = new System.Windows.Forms.Button();
+            this.btnNao = new System.Windows.Forms.Button();
+            this.lblMsg = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.panel1.Controls.Add(this.btnSim);
             this.panel1.Controls.Add(this.btnNao);
             this.panel1.Controls.Add(this.lblMsg);
@@ -55,8 +55,9 @@ namespace Setup.Formularios
             // 
             // btnSim
             // 
-            this.btnSim.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnSim.FlatStyle = FlatStyle.Popup;
+            this.btnSim.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.btnSim.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSim.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnSim.ForeColor = System.Drawing.Color.White;
             this.btnSim.Location = new System.Drawing.Point(226, 123);
             this.btnSim.Name = "btnSim";
@@ -68,8 +69,9 @@ namespace Setup.Formularios
             // 
             // btnNao
             // 
-            this.btnNao.BackColor = System.Drawing.Color.CadetBlue;
-            this.btnNao.FlatStyle = FlatStyle.Popup;
+            this.btnNao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.btnNao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNao.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnNao.ForeColor = System.Drawing.Color.White;
             this.btnNao.Location = new System.Drawing.Point(307, 123);
             this.btnNao.Name = "btnNao";
@@ -82,6 +84,7 @@ namespace Setup.Formularios
             // lblMsg
             // 
             this.lblMsg.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblMsg.ForeColor = System.Drawing.Color.White;
             this.lblMsg.Location = new System.Drawing.Point(152, 7);
             this.lblMsg.Name = "lblMsg";
             this.lblMsg.Size = new System.Drawing.Size(230, 113);
@@ -94,14 +97,15 @@ namespace Setup.Formularios
             this.pictureBox1.Location = new System.Drawing.Point(7, 7);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(139, 139);
-            this.pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            this.label1.Dock = DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
@@ -113,14 +117,14 @@ namespace Setup.Formularios
             // frmPergunta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CadetBlue;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.ClientSize = new System.Drawing.Size(400, 200);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmPergunta";
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPergunta";
             this.Load += new System.EventHandler(this.frmPergunta_Load);
             this.panel1.ResumeLayout(false);

@@ -57,7 +57,7 @@ namespace Setup.Financas
             // 
             // lnL
             // 
-            this.lnL.BackColor = System.Drawing.Color.DimGray;
+            this.lnL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnL.Dock = System.Windows.Forms.DockStyle.Left;
             this.lnL.Location = new System.Drawing.Point(0, 24);
             this.lnL.Name = "lnL";
@@ -66,7 +66,7 @@ namespace Setup.Financas
             // 
             // lnR
             // 
-            this.lnR.BackColor = System.Drawing.Color.DimGray;
+            this.lnR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnR.Dock = System.Windows.Forms.DockStyle.Right;
             this.lnR.Location = new System.Drawing.Point(447, 24);
             this.lnR.Name = "lnR";
@@ -75,7 +75,7 @@ namespace Setup.Financas
             // 
             // lnD
             // 
-            this.lnD.BackColor = System.Drawing.Color.DimGray;
+            this.lnD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnD.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lnD.Location = new System.Drawing.Point(1, 195);
             this.lnD.Name = "lnD";
@@ -246,7 +246,7 @@ namespace Setup.Financas
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.DimGray;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salvar,
             this.excluir,
