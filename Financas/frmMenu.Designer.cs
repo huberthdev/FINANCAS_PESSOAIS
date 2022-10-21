@@ -455,7 +455,7 @@ namespace Setup.Financas
             this.listaSaldo_Contas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaSaldo_Contas.EnableHeadersVisualStyles = false;
             this.listaSaldo_Contas.GridColor = System.Drawing.Color.DimGray;
-            this.listaSaldo_Contas.Location = new System.Drawing.Point(7, 213);
+            this.listaSaldo_Contas.Location = new System.Drawing.Point(7, 222);
             this.listaSaldo_Contas.MultiSelect = false;
             this.listaSaldo_Contas.Name = "listaSaldo_Contas";
             this.listaSaldo_Contas.ReadOnly = true;
@@ -483,16 +483,18 @@ namespace Setup.Financas
             this.listaSaldo_Contas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listaSaldo_Contas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaSaldo_Contas.ShowEditingIcon = false;
-            this.listaSaldo_Contas.Size = new System.Drawing.Size(335, 188);
+            this.listaSaldo_Contas.Size = new System.Drawing.Size(348, 179);
             this.listaSaldo_Contas.TabIndex = 1;
             // 
             // CONTA_ID
             // 
+            this.CONTA_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.CONTA_ID.DataPropertyName = "CONTA_ID";
             this.CONTA_ID.HeaderText = "ID";
             this.CONTA_ID.Name = "CONTA_ID";
             this.CONTA_ID.ReadOnly = true;
             this.CONTA_ID.Visible = false;
+            this.CONTA_ID.Width = 5;
             // 
             // CONTA
             // 
@@ -507,14 +509,17 @@ namespace Setup.Financas
             // 
             // SALDO
             // 
+            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.SALDO.DataPropertyName = "SALDO";
             dataGridViewCellStyle3.Format = "N2";
             dataGridViewCellStyle3.NullValue = "0,00";
             this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
             this.SALDO.HeaderText = "SALDO";
+            this.SALDO.MinimumWidth = 125;
             this.SALDO.Name = "SALDO";
             this.SALDO.ReadOnly = true;
             this.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SALDO.Width = 125;
             // 
             // lista_Gastos_Classe
             // 
@@ -625,7 +630,7 @@ namespace Setup.Financas
             this.pnSalvar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnSalvar.Location = new System.Drawing.Point(5, 26);
             this.pnSalvar.Name = "pnSalvar";
-            this.pnSalvar.Size = new System.Drawing.Size(348, 401);
+            this.pnSalvar.Size = new System.Drawing.Size(363, 401);
             this.pnSalvar.TabIndex = 0;
             // 
             // pnSalvarIn
@@ -646,7 +651,7 @@ namespace Setup.Financas
             this.pnSalvarIn.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnSalvarIn.Location = new System.Drawing.Point(0, 28);
             this.pnSalvarIn.Name = "pnSalvarIn";
-            this.pnSalvarIn.Size = new System.Drawing.Size(348, 184);
+            this.pnSalvarIn.Size = new System.Drawing.Size(363, 188);
             this.pnSalvarIn.TabIndex = 32;
             // 
             // label11
@@ -654,9 +659,9 @@ namespace Setup.Financas
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label11.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label11.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label11.Location = new System.Drawing.Point(0, 180);
+            this.label11.Location = new System.Drawing.Point(0, 184);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(348, 4);
+            this.label11.Size = new System.Drawing.Size(363, 4);
             this.label11.TabIndex = 47;
             // 
             // cbClasse
@@ -674,7 +679,7 @@ namespace Setup.Financas
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
             this.cbClasse.IntegralHeight = false;
-            this.cbClasse.Location = new System.Drawing.Point(94, 33);
+            this.cbClasse.Location = new System.Drawing.Point(101, 33);
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(237, 23);
@@ -686,7 +691,7 @@ namespace Setup.Financas
             this.opReceita.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.opReceita.AutoSize = true;
             this.opReceita.ForeColor = System.Drawing.Color.White;
-            this.opReceita.Location = new System.Drawing.Point(94, 8);
+            this.opReceita.Location = new System.Drawing.Point(101, 8);
             this.opReceita.Name = "opReceita";
             this.opReceita.Size = new System.Drawing.Size(74, 19);
             this.opReceita.TabIndex = 40;
@@ -700,7 +705,7 @@ namespace Setup.Financas
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(53, 97);
+            this.label4.Location = new System.Drawing.Point(60, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 15);
             this.label4.TabIndex = 45;
@@ -713,7 +718,7 @@ namespace Setup.Financas
             this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor.ForeColor = System.Drawing.Color.White;
-            this.txtValor.Location = new System.Drawing.Point(94, 120);
+            this.txtValor.Location = new System.Drawing.Point(101, 120);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(110, 23);
             this.txtValor.TabIndex = 38;
@@ -725,7 +730,7 @@ namespace Setup.Financas
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(46, 130);
+            this.label5.Location = new System.Drawing.Point(53, 130);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 15);
             this.label5.TabIndex = 44;
@@ -736,7 +741,7 @@ namespace Setup.Financas
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(39, 41);
+            this.label2.Location = new System.Drawing.Point(46, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 15);
             this.label2.TabIndex = 46;
@@ -754,7 +759,7 @@ namespace Setup.Financas
             this.cbConta.ForeColor = System.Drawing.Color.White;
             this.cbConta.FormattingEnabled = true;
             this.cbConta.IntegralHeight = false;
-            this.cbConta.Location = new System.Drawing.Point(94, 62);
+            this.cbConta.Location = new System.Drawing.Point(101, 62);
             this.cbConta.MaxDropDownItems = 10;
             this.cbConta.Name = "cbConta";
             this.cbConta.Size = new System.Drawing.Size(237, 23);
@@ -768,7 +773,7 @@ namespace Setup.Financas
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtData.ForeColor = System.Drawing.Color.White;
-            this.txtData.Location = new System.Drawing.Point(94, 91);
+            this.txtData.Location = new System.Drawing.Point(101, 91);
             this.txtData.MaxLength = 10;
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(110, 23);
@@ -781,7 +786,7 @@ namespace Setup.Financas
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(18, 157);
+            this.label6.Location = new System.Drawing.Point(25, 157);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(70, 15);
             this.label6.TabIndex = 43;
@@ -792,7 +797,7 @@ namespace Setup.Financas
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(46, 70);
+            this.label3.Location = new System.Drawing.Point(53, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 15);
             this.label3.TabIndex = 42;
@@ -806,7 +811,7 @@ namespace Setup.Financas
             this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDescricao.ForeColor = System.Drawing.Color.White;
-            this.txtDescricao.Location = new System.Drawing.Point(94, 149);
+            this.txtDescricao.Location = new System.Drawing.Point(101, 149);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(237, 23);
             this.txtDescricao.TabIndex = 39;
@@ -817,7 +822,7 @@ namespace Setup.Financas
             this.opDespesa.AutoSize = true;
             this.opDespesa.Checked = true;
             this.opDespesa.ForeColor = System.Drawing.Color.White;
-            this.opDespesa.Location = new System.Drawing.Point(174, 8);
+            this.opDespesa.Location = new System.Drawing.Point(181, 8);
             this.opDespesa.Name = "opDespesa";
             this.opDespesa.Size = new System.Drawing.Size(74, 19);
             this.opDespesa.TabIndex = 41;
@@ -832,7 +837,7 @@ namespace Setup.Financas
             this.label8.Dock = System.Windows.Forms.DockStyle.Top;
             this.label8.Location = new System.Drawing.Point(0, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(348, 4);
+            this.label8.Size = new System.Drawing.Size(363, 4);
             this.label8.TabIndex = 24;
             // 
             // stSalvar
@@ -846,7 +851,7 @@ namespace Setup.Financas
             this.stSalvar.Location = new System.Drawing.Point(0, 0);
             this.stSalvar.Name = "stSalvar";
             this.stSalvar.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.stSalvar.Size = new System.Drawing.Size(348, 24);
+            this.stSalvar.Size = new System.Drawing.Size(363, 24);
             this.stSalvar.TabIndex = 31;
             this.stSalvar.Text = "menuStrip2";
             // 
@@ -937,7 +942,7 @@ namespace Setup.Financas
             // 
             this.pnListaClasse.Controls.Add(this.lista_Gastos_Classe);
             this.pnListaClasse.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnListaClasse.Location = new System.Drawing.Point(357, 26);
+            this.pnListaClasse.Location = new System.Drawing.Point(372, 26);
             this.pnListaClasse.Name = "pnListaClasse";
             this.pnListaClasse.Size = new System.Drawing.Size(352, 401);
             this.pnListaClasse.TabIndex = 23;
@@ -946,7 +951,7 @@ namespace Setup.Financas
             // 
             this.lnLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lnLeft.Location = new System.Drawing.Point(709, 26);
+            this.lnLeft.Location = new System.Drawing.Point(724, 26);
             this.lnLeft.Name = "lnLeft";
             this.lnLeft.Size = new System.Drawing.Size(4, 401);
             this.lnLeft.TabIndex = 24;
@@ -973,7 +978,7 @@ namespace Setup.Financas
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label10.Location = new System.Drawing.Point(353, 26);
+            this.label10.Location = new System.Drawing.Point(368, 26);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(4, 401);
             this.label10.TabIndex = 24;
@@ -1104,9 +1109,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn VALOR;
         private ToolStripMenuItem cadastro;
-        private DataGridViewTextBoxColumn CONTA_ID;
-        private DataGridViewTextBoxColumn CONTA;
-        private DataGridViewTextBoxColumn SALDO;
         private Panel pnListaClasse;
         private Label label10;
         private Label label9;
@@ -1117,5 +1119,8 @@ namespace Setup.Financas
         private Label label12;
         private Panel pnSalvarIn;
         private Label lnRight;
+        private DataGridViewTextBoxColumn CONTA_ID;
+        private DataGridViewTextBoxColumn CONTA;
+        private DataGridViewTextBoxColumn SALDO;
     }
 }
