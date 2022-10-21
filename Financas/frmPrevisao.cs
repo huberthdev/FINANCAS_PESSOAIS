@@ -19,10 +19,9 @@ namespace Setup.Financas
 
         public void CarregarPrevisao()
         {
-            int top1 = 3; //Texto
-            int top2 = 3; //Botão
-            int top3 = 5; //Check
-            int top4 = 3; //Panel
+            int top1 = 3; //Texto/Botão
+            int top2 = 3; //Panel
+            int top3 = 8; //Check
 
             string sql, ord, chave;
             int cor = Previsao.Prev.cor;
@@ -45,22 +44,38 @@ namespace Setup.Financas
             sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID ";
             sql += "INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE A.STATUS = 0 AND ";
-            sql += "EXTRACT(MONTH FROM A.DATA_PARCELA) = "+ mes +" AND ";
-            sql += "EXTRACT(YEAR FROM A.DATA_PARCELA) = "+ ano +" ";
+            sql += "EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " AND ";
+            sql += "EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " ";
             sql += "GROUP BY D.CONTA, DIA, STATUS ";
             //
             //PEGA O VALOR DO GASTO PREVISTO QUE AINDA NÃO TIVERAM DÉBITO REALIZADO NA CLASSE ESPECÍFICA
             //
             sql += "UNION SELECT B.CLASSE, ' Despesa' AS TIPO, ";
-            sql += "A.DIA, A.VALOR AS ORCADO, '0,00' AS REALIZADO, A.VALOR AS DESVIO, A.STATUS, 'B' AS ORD, A.OBS , A.CHAVE ";
+            sql += "A.DIA, REPLACE(A.VALOR, '.', ',') AS ORCADO, '0,00' AS REALIZADO, REPLACE(A.VALOR, '.', ',') AS DESVIO, A.STATUS, 'B' AS ORD, A.OBS, A.CHAVE ";
             sql += "FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
             sql += "WHERE A.CLASSE NOT IN(SELECT DISTINCT CLASSE FROM BD WHERE ";
-            sql += "EXTRACT(MONTH FROM DATA) = "+ mes +" AND EXTRACT(YEAR FROM DATA) = "+ ano +" AND VALOR < 0) ";
+            sql += "EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " AND VALOR < 0) ";
             sql += "AND A.CLASSE NOT IN(SELECT DISTINCT B.CLASSE FROM COMPRA_CREDITO A ";
-            sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = "+ mes +" ";
-            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = "+ ano +" AND A.STATUS = 0) ";
-            sql += "AND B.TIPO = 0 AND A.VALOR > 0 AND A.MES = "+ mes +" AND A.ANO = "+ ano +" ";
-
+            sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " ";
+            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " AND A.STATUS = 0) ";
+            sql += "AND B.TIPO = 0 AND A.VALOR > 0 AND A.MES = "+ mes +" AND A.ANO = " + ano + " ";
+            //
+            //PEGA O VALOR DA RECEITA PREVISTA QUE AINDA NÃO TEVE O CRÉDITO REALIZADO NA CLASSE ESPECÍFICA
+            //
+            sql += "UNION SELECT B.CLASSE, ' Receita Prevista' AS TIPO, ";
+            sql += "A.DIA, REPLACE(A.VALOR, '.', ',') AS ORCADO, '0,00' AS REALIZADO, REPLACE(A.VALOR * -1, '.', ',') AS DESVIO, A.STATUS, 'B' AS ORD, A.OBS, A.CHAVE ";
+            sql += "FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
+            sql += "WHERE A.CLASSE NOT IN(SELECT DISTINCT CLASSE FROM BD WHERE ";
+            sql += "EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " AND VALOR > 0) ";
+            sql += "AND B.TIPO = 1 AND A.VALOR > 0 AND A.MES = " + mes + " AND A.ANO = " + ano + " ";
+            //
+            //PEGA OS DADOS DAS RECEITAS PREVISTAS CREDITADAS - FILTRO MÊS E ANO COM ORÇADO PARA CADA CLASSE
+            //
+            sql += "UNION SELECT C.CLASSE, ' Receita Creditada' AS TIPO, B.DIA, REPLACE(B.VALOR, '.', ',') AS ORCADO, REPLACE(SUM(A.VALOR), '.', ',') AS REALIZADO, '0,00' AS DESVIO, B.STATUS, 'B' AS ORD, B.OBS, B.CHAVE ";
+            sql += "FROM BD A INNER JOIN PREVISAO B ON A.CLASSE = B.CLASSE AND EXTRACT(MONTH FROM A.DATA) || EXTRACT(YEAR FROM A.DATA) = B.MES || B.ANO ";
+            sql += "INNER JOIN CLASSE C ON A.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " AND A.VALOR > 0 ";
+            sql += "GROUP BY C.CLASSE, B.DIA, ORCADO, B.STATUS, B.OBS, B.CHAVE ";
+            //
             sql += ") ORDER BY ORD";
             //
             //
@@ -146,7 +161,7 @@ namespace Setup.Financas
                 Panel pn = new Panel();
                 pn.Name = "pn" + i;
                 pn.Size = new Size(1044, 30);
-                pn.Location = new Point(3, top4);
+                pn.Location = new Point(3, top2);
                 pn.Anchor = AnchorStyles.Top;
                 panel.Controls.AddRange(new Control[] { pn });
 
@@ -175,7 +190,7 @@ namespace Setup.Financas
 
                 pn.Controls.AddRange(new Control[] { classe, tipo, dia, orcado, real, desvio, status, obs });
 
-                top4 += 31; //Panel
+                top2 += 31; //Panel
             }
         }
 
