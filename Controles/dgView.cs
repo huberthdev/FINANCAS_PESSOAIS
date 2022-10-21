@@ -72,7 +72,7 @@ namespace Setup.Controles
             this.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.RowTemplate.DefaultCellStyle.BackColor = Color.FromArgb(37,37,38);
             this.RowTemplate.DefaultCellStyle.ForeColor = Color.White;
-            this.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.RoyalBlue;
+            this.RowTemplate.DefaultCellStyle.SelectionBackColor = Color.FromArgb(25, 25, 26); ;
             this.RowTemplate.DefaultCellStyle.SelectionForeColor = Color.White;
             this.RowTemplate.Height = 25;
             this.RowTemplate.Resizable = DataGridViewTriState.True;

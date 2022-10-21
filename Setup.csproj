@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <PackageReference Include="FirebirdSql.Data.FirebirdClient" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Chart.Controls" Version="4.7.2046" />
   </ItemGroup>
 
   <ItemGroup>
