@@ -286,11 +286,6 @@ namespace Setup.Financas
             prev.ShowDialog();
         }
 
-        private void tabReceita_Despesa_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cadastro_Click(object sender, EventArgs e)
         {
             frmCadastro cad = new frmCadastro();
@@ -302,5 +297,6 @@ namespace Setup.Financas
             this.CarregarListaSaldoContas();
             this.CarregarListaGastoClasseMesAtual();
         }
+
     }
 }

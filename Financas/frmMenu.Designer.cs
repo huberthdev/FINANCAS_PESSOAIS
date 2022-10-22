@@ -59,13 +59,13 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new Setup.Controles.Cabecalho();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,6 +95,9 @@ namespace Setup.Financas
             this.ToolPrevisao = new Setup.Controles.Cabecalho();
             this.ToolCalculadora = new Setup.Controles.Cabecalho();
             this.listaSaldo_Contas = new Setup.Controles.dgView();
+            this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lista_Gastos_Classe = new Setup.Controles.dgView();
             this.CLASSE_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,9 +135,7 @@ namespace Setup.Financas
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lnRight = new System.Windows.Forms.Label();
-            this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label13 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -483,8 +484,43 @@ namespace Setup.Financas
             this.listaSaldo_Contas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listaSaldo_Contas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaSaldo_Contas.ShowEditingIcon = false;
-            this.listaSaldo_Contas.Size = new System.Drawing.Size(348, 179);
+            this.listaSaldo_Contas.Size = new System.Drawing.Size(348, 175);
             this.listaSaldo_Contas.TabIndex = 1;
+            // 
+            // CONTA_ID
+            // 
+            this.CONTA_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CONTA_ID.DataPropertyName = "CONTA_ID";
+            this.CONTA_ID.HeaderText = "ID";
+            this.CONTA_ID.Name = "CONTA_ID";
+            this.CONTA_ID.ReadOnly = true;
+            this.CONTA_ID.Visible = false;
+            this.CONTA_ID.Width = 5;
+            // 
+            // CONTA
+            // 
+            this.CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CONTA.DataPropertyName = "CONTA";
+            this.CONTA.HeaderText = "CONTA";
+            this.CONTA.MinimumWidth = 160;
+            this.CONTA.Name = "CONTA";
+            this.CONTA.ReadOnly = true;
+            this.CONTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CONTA.Width = 160;
+            // 
+            // SALDO
+            // 
+            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SALDO.DataPropertyName = "SALDO";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0,00";
+            this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
+            this.SALDO.HeaderText = "SALDO";
+            this.SALDO.MinimumWidth = 150;
+            this.SALDO.Name = "SALDO";
+            this.SALDO.ReadOnly = true;
+            this.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SALDO.Width = 150;
             // 
             // lista_Gastos_Classe
             // 
@@ -553,7 +589,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
-            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 401);
+            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 397);
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
             // 
@@ -595,7 +631,7 @@ namespace Setup.Financas
             this.pnSalvar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnSalvar.Location = new System.Drawing.Point(5, 26);
             this.pnSalvar.Name = "pnSalvar";
-            this.pnSalvar.Size = new System.Drawing.Size(363, 401);
+            this.pnSalvar.Size = new System.Drawing.Size(363, 397);
             this.pnSalvar.TabIndex = 0;
             // 
             // pnSalvarIn
@@ -871,7 +907,7 @@ namespace Setup.Financas
             this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(5, 431);
+            this.statusStrip.Location = new System.Drawing.Point(5, 427);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1095, 22);
             this.statusStrip.SizingGrip = false;
@@ -900,7 +936,7 @@ namespace Setup.Financas
             this.lblRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblRight.Location = new System.Drawing.Point(1104, 0);
             this.lblRight.Name = "lblRight";
-            this.lblRight.Size = new System.Drawing.Size(1, 453);
+            this.lblRight.Size = new System.Drawing.Size(1, 449);
             this.lblRight.TabIndex = 22;
             // 
             // pnListaClasse
@@ -909,7 +945,7 @@ namespace Setup.Financas
             this.pnListaClasse.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnListaClasse.Location = new System.Drawing.Point(372, 26);
             this.pnListaClasse.Name = "pnListaClasse";
-            this.pnListaClasse.Size = new System.Drawing.Size(352, 401);
+            this.pnListaClasse.Size = new System.Drawing.Size(352, 397);
             this.pnListaClasse.TabIndex = 23;
             // 
             // lnLeft
@@ -918,14 +954,14 @@ namespace Setup.Financas
             this.lnLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.lnLeft.Location = new System.Drawing.Point(724, 26);
             this.lnLeft.Name = "lnLeft";
-            this.lnLeft.Size = new System.Drawing.Size(4, 401);
+            this.lnLeft.Size = new System.Drawing.Size(4, 397);
             this.lnLeft.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(5, 427);
+            this.label1.Location = new System.Drawing.Point(5, 423);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1095, 4);
             this.label1.TabIndex = 24;
@@ -936,7 +972,7 @@ namespace Setup.Financas
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
             this.label9.Location = new System.Drawing.Point(1, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(4, 453);
+            this.label9.Size = new System.Drawing.Size(4, 449);
             this.label9.TabIndex = 24;
             // 
             // label10
@@ -945,7 +981,7 @@ namespace Setup.Financas
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
             this.label10.Location = new System.Drawing.Point(368, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(4, 401);
+            this.label10.Size = new System.Drawing.Size(4, 397);
             this.label10.TabIndex = 24;
             // 
             // label12
@@ -963,43 +999,17 @@ namespace Setup.Financas
             this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.lnRight.Location = new System.Drawing.Point(1100, 0);
             this.lnRight.Name = "lnRight";
-            this.lnRight.Size = new System.Drawing.Size(4, 453);
+            this.lnRight.Size = new System.Drawing.Size(4, 449);
             this.lnRight.TabIndex = 25;
             // 
-            // CONTA_ID
+            // label13
             // 
-            this.CONTA_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CONTA_ID.DataPropertyName = "CONTA_ID";
-            this.CONTA_ID.HeaderText = "ID";
-            this.CONTA_ID.Name = "CONTA_ID";
-            this.CONTA_ID.ReadOnly = true;
-            this.CONTA_ID.Visible = false;
-            this.CONTA_ID.Width = 5;
-            // 
-            // CONTA
-            // 
-            this.CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CONTA.DataPropertyName = "CONTA";
-            this.CONTA.HeaderText = "CONTA";
-            this.CONTA.MinimumWidth = 160;
-            this.CONTA.Name = "CONTA";
-            this.CONTA.ReadOnly = true;
-            this.CONTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CONTA.Width = 160;
-            // 
-            // SALDO
-            // 
-            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SALDO.DataPropertyName = "SALDO";
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0,00";
-            this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SALDO.HeaderText = "SALDO";
-            this.SALDO.MinimumWidth = 150;
-            this.SALDO.Name = "SALDO";
-            this.SALDO.ReadOnly = true;
-            this.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SALDO.Width = 150;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label13.Location = new System.Drawing.Point(1, 449);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(1104, 4);
+            this.label13.TabIndex = 26;
             // 
             // frmMenu
             // 
@@ -1018,6 +1028,7 @@ namespace Setup.Financas
             this.Controls.Add(this.lnRight);
             this.Controls.Add(this.lblRight);
             this.Controls.Add(this.label9);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.lblLeft);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1122,5 +1133,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CONTA_ID;
         private DataGridViewTextBoxColumn CONTA;
         private DataGridViewTextBoxColumn SALDO;
+        private Label label13;
     }
 }
