@@ -237,7 +237,7 @@ namespace Setup.Financas
 
             if(valor < 0)
             {
-                status.Items["total"].ForeColor = Color.FromArgb(236, 35, 0);
+                status.Items["total"].ForeColor = Color.Tomato;
             }
         }
 
@@ -253,7 +253,7 @@ namespace Setup.Financas
                 valor = double.Parse(lista.Rows[i].Cells[5].Value.ToString());
                 if (valor < 0)
                 {
-                    lista.Rows[i].Cells[5].Style.ForeColor = Color.FromArgb(236, 35, 0);
+                    lista.Rows[i].Cells[5].Style.ForeColor = Color.Tomato;
                 }
                 else
                 {
@@ -374,7 +374,7 @@ namespace Setup.Financas
 
                 if (soma < 0)
                 {
-                    status.Items["somaLn"].ForeColor = Color.FromArgb(236, 35, 0);
+                    status.Items["somaLn"].ForeColor = Color.Tomato;
                 }
                 else if(soma > 0)
                 {

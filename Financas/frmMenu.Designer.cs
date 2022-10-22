@@ -26,13 +26,15 @@ namespace Setup.Financas
 
         protected override void OnCreateControl()
         {
-            this.lista_Gastos_Classe.Columns[2].CellTemplate.Style.ForeColor = Color.FromArgb(236, 35, 0);
+            this.lista_Gastos_Classe.Columns[2].CellTemplate.Style.ForeColor = Color.Tomato;
             this.lista_Gastos_Classe.BorderStyle = BorderStyle.None;
             this.lista_Gastos_Classe.GridColor = Color.FromArgb(37, 37, 38);
             this.lista_Gastos_Classe.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
             this.lista_Gastos_Classe.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.lista_Gastos_Classe.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
             this.lista_Gastos_Classe.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            this.lista_Gastos_Classe.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.lista_Gastos_Classe.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             this.listaSaldo_Contas.BorderStyle = BorderStyle.None;
             this.listaSaldo_Contas.GridColor = Color.FromArgb(37, 37, 38);
@@ -40,6 +42,8 @@ namespace Setup.Financas
             this.listaSaldo_Contas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.listaSaldo_Contas.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
             this.listaSaldo_Contas.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            this.listaSaldo_Contas.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.listaSaldo_Contas.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             base.OnCreateControl();
         }
@@ -184,6 +188,7 @@ namespace Setup.Financas
             this.menu.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.menu.Size = new System.Drawing.Size(66, 20);
             this.menu.Text = "Menu";
+            this.menu.Click += new System.EventHandler(this.menu_Click);
             // 
             // novoLancamento
             // 

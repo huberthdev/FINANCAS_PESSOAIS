@@ -62,7 +62,7 @@ namespace Setup.Financas
 
                 if (valor < 0)
                 {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.FromArgb(37,37,38);
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
                 }
                 else
                 {
@@ -83,22 +83,25 @@ namespace Setup.Financas
 
             mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(mesAtual).ToUpper();
 
-            string sql = "select b.CLASSE_ID, b.CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
+            string sql = "select CLASSE_ID, CLASSE, VALOR from(select b.CLASSE_ID, b.CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
             sql += "a inner join classe b on a.CLASSE = b.CLASSE_ID where a.VALOR < '0' and ";
             sql += "extract(month from a.DATA) = " + mesAtual + " and extract(year from a.DATA) = " + anoAtual + "";
-            sql += "group by b.CLASSE_ID, b.CLASSE order by b.classe";
+            sql += "group by b.CLASSE_ID, b.CLASSE ";
+
+            sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
+            sql += "a inner join classe b on a.CLASSE = b.CLASSE_ID where a.VALOR < '0' and ";
+            sql += "extract(month from a.DATA) = " + mesAtual + " and extract(year from a.DATA) = " + anoAtual + " ";
+            sql += ") order by classe";
 
             lista_Gastos_Classe.DataSource = BD.Buscar(sql);
 
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
                 total += double.Parse(BD.Resultado.Rows[i][2].ToString());
-                //RowTemplate.DefaultCellStyle.ForeColor = Color.FromArgb(236, 35, 0)
-                //lista_Gastos_Classe.Rows[i].Cells[2].Style.ForeColor = Color.FromArgb(236, 35, 0);
             }
 
             lista_Gastos_Classe.Columns[1].HeaderText = "Gasto: " + mesNome;
-            lista_Gastos_Classe.Columns[2].HeaderText = total.ToString("C");
+            //lista_Gastos_Classe.Columns[2].HeaderText = total.ToString("C");
         }
 
         private void CarregarCbClassesContas(string tabela = "")
@@ -298,5 +301,9 @@ namespace Setup.Financas
             this.CarregarListaGastoClasseMesAtual();
         }
 
+        private void menu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
