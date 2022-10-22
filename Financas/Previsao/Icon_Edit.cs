@@ -42,7 +42,7 @@ namespace Setup.Financas.Previsao
             string classe = chave[3];
             string tipo, valor, obs;
 
-            string sql = "SELECT B.CLASSE, B.TIPO, A.VALOR, A.OBS FROM PREVISAO A INNER JOIN CLASSE B ";
+            string sql = "SELECT B.CLASSE, B.TIPO, REPLACE(A.VALOR, '.', ','), A.OBS FROM PREVISAO A INNER JOIN CLASSE B ";
             sql += "ON A.CLASSE = B.CLASSE_ID WHERE B.CLASSE_ID = " + classe + "";
             BD.Buscar(sql);
 

@@ -42,12 +42,19 @@ namespace Setup.Financas.Previsao
             string sql = "DELETE FROM PREVISAO WHERE CHAVE = '" + chave + "'";
             BD.ExecutarSQL(sql);
 
-            if(this.Parent.CausesValidation == true)
-                this.Parent.CausesValidation = false;
-            else
-                this.Parent.CausesValidation = true;
+            RecarregarPrevisao();
 
             base.OnClick(e);
+        }
+
+        private void RecarregarPrevisao()
+        {
+            Form frm = ((frmPrevisao)Application.OpenForms["frmPrevisao"]);
+
+            if (frm.Controls["panel"].CausesValidation == true)
+                frm.Controls["panel"].CausesValidation = false;
+            else
+                frm.Controls["panel"].CausesValidation = true;
         }
     }
 }

@@ -89,66 +89,77 @@ namespace Setup.Financas
                 frm.Controls["panel"].CausesValidation = true;
         }
 
-        public void CarregarCBs(string classe = "", string dia = "", string mes = "", string ano = "")
+        public void CarregarCBs(string x = "", string classe = "", string dia = "", string mes = "", string ano = "")
         {
             string mesNome;
 
             //Preenche o combobox com as classes cadastradas no banco de dados
-            cbClasse.Items.Clear();
-            Classes.Classe.Tipo = Convert.ToByte(optReceita.Checked);
-            foreach (Classes.Classe c in Classes.Classe.Lista())
-            {
-                cbClasse.Items.Add(c);
-            }
-            if(classe != "")
-                cbClasse.Text = classe;
+                cbClasse.Items.Clear();
+                Classes.Classe.Tipo = Convert.ToByte(optReceita.Checked);
+                foreach (Classes.Classe c in Classes.Classe.Lista())
+                {
+                    cbClasse.Items.Add(c);
+                }
+                if (classe != "")
+                    cbClasse.Text = classe;
             //
             //Preenche o combobox com os Dias
             //
-            cbDia.Items.Clear();
-            for (int i = 1; i < 31; i++)
+            if (x == "")
             {
-                cbDia.Items.Add(i);
+                cbDia.Items.Clear();
+                for (int i = 1; i < 31; i++)
+                {
+                    cbDia.Items.Add(i);
+                }
+                if (dia != "")
+                    cbDia.Text = dia;
+                else
+                    cbDia.Text = DateTime.Today.Day.ToString();
             }
-            if (dia != "")
-                cbDia.Text = dia;
-            else
-                cbDia.Text = DateTime.Today.Day.ToString();
             //
             //Preenche o combobox com os Meses
             //
-            cbMes.Items.Clear();
-            for (int i = 1; i < 13; i++)
+            if (x == "")
             {
-                mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(i).ToUpper();
-                cbMes.Items.Add(mesNome);
+                cbMes.Items.Clear();
+                for (int i = 1; i < 13; i++)
+                {
+                    mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(i).ToUpper();
+                    cbMes.Items.Add(mesNome);
+                }
+                if (mes != "")
+                    cbMes.Text = mes;
+                else
+                    cbMes.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper();
             }
-            if (mes != "")
-                cbMes.Text = mes;
-            else
-                cbMes.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper();
             //
             //Preenche o combobox com os Anos
             //
-            cbAno.Items.Clear();
-            for (int i = 0; i < 3; i++)
+            if (x == "")
             {
-                cbAno.Items.Add(DateTime.Today.Year - 1 + i);
+                cbAno.Items.Clear();
+                for (int i = 0; i < 3; i++)
+                {
+                    cbAno.Items.Add(DateTime.Today.Year - 1 + i);
+                }
+                if (ano != "")
+                    cbAno.Text = ano;
+                else
+                    cbAno.Text = DateTime.Today.Year.ToString();
             }
-            if (ano != "")
-                cbAno.Text = ano;
-            else
-                cbAno.Text = DateTime.Today.Year.ToString();
+
         }
 
         private void optReceita_Click(object sender, EventArgs e)
         {
-            CarregarCBs();
+            CarregarCBs(x:"x");
         }
 
         private void optDespesa_Click(object sender, EventArgs e)
         {
-            CarregarCBs();
+            CarregarCBs(x:"x");
         }
+
     }
 }
