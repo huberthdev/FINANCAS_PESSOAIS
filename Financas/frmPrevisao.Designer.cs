@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -22,6 +23,37 @@ namespace Setup.Financas
             base.Dispose(disposing);
         }
 
+        protected override void OnCreateControl()
+        {
+            this.lista.BorderStyle = BorderStyle.None;
+            this.lista.GridColor = Color.FromArgb(25, 25, 26);
+            this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            
+            this.lista.Columns["DIA"].CellTemplate.Style.BackColor = Color.FromArgb(58, 58, 58);
+            this.lista.Columns["DIA"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            this.lista.Columns["ORCADO"].CellTemplate.Style.BackColor = Color.FromArgb(58, 58, 58);
+            this.lista.Columns["ORCADO"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            this.lista.Columns["REALIZADO"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            this.lista.Columns["DESVIO"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            this.lista.Columns["EDITAR"].SortMode = DataGridViewColumnSortMode.Automatic;
+            this.lista.Columns["EDITAR"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            this.lista.ReadOnly = false;
+            this.lista.Columns["CLASSE"].ReadOnly = true;
+            this.lista.Columns["TIPO"].ReadOnly = true;
+            this.lista.Columns["REALIZADO"].ReadOnly = true;
+            this.lista.Columns["DESVIO"].ReadOnly = true;
+            this.lista.Columns["STATUSS"].ReadOnly = true;
+
+            base.OnCreateControl();
+        }
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -32,6 +64,15 @@ namespace Setup.Financas
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrevisao));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.novo = new Setup.Controles.Cabecalho();
             this.excluir = new Setup.Controles.Cabecalho();
@@ -43,12 +84,26 @@ namespace Setup.Financas
             this.next = new System.Windows.Forms.ToolStripMenuItem();
             this.back = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
+            this.lista = new Setup.Controles.dgView();
+            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORCADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REALIZADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STATUSS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ORD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.status = new System.Windows.Forms.StatusStrip();
             this.imagens = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDown = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -158,19 +213,219 @@ namespace Setup.Financas
             // panel
             // 
             this.panel.AutoScroll = true;
+            this.panel.Controls.Add(this.lista);
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel.ForeColor = System.Drawing.Color.White;
             this.panel.Location = new System.Drawing.Point(0, 27);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1050, 478);
+            this.panel.Size = new System.Drawing.Size(1050, 490);
             this.panel.TabIndex = 1;
             this.panel.CausesValidationChanged += new System.EventHandler(this.panel_CausesValidationChanged);
+            // 
+            // lista
+            // 
+            this.lista.AllowUserToAddRows = false;
+            this.lista.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CLASSE,
+            this.TIPO,
+            this.DIA,
+            this.ORCADO,
+            this.REALIZADO,
+            this.DESVIO,
+            this.STATUSS,
+            this.ORD,
+            this.OBS,
+            this.CHAVE,
+            this.EDITAR});
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle7;
+            this.lista.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.lista.EnableHeadersVisualStyles = false;
+            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.Location = new System.Drawing.Point(0, 0);
+            this.lista.MultiSelect = false;
+            this.lista.Name = "lista";
+            this.lista.ReadOnly = true;
+            this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowTemplate.Height = 25;
+            this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.lista.ShowEditingIcon = false;
+            this.lista.Size = new System.Drawing.Size(1050, 490);
+            this.lista.TabIndex = 1;
+            this.lista.DataSourceChanged += new System.EventHandler(this.lista_DataSourceChanged);
+            this.lista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellClick);
+            this.lista.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellMouseEnter);
+            this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
+            // 
+            // CLASSE
+            // 
+            this.CLASSE.DataPropertyName = "CLASSE";
+            this.CLASSE.HeaderText = "CLASSE";
+            this.CLASSE.Name = "CLASSE";
+            this.CLASSE.ReadOnly = true;
+            // 
+            // TIPO
+            // 
+            this.TIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPO.DataPropertyName = "TIPO";
+            this.TIPO.HeaderText = "TIPO";
+            this.TIPO.MinimumWidth = 150;
+            this.TIPO.Name = "TIPO";
+            this.TIPO.ReadOnly = true;
+            this.TIPO.Width = 150;
+            // 
+            // DIA
+            // 
+            this.DIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DIA.DataPropertyName = "DIA";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DIA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DIA.HeaderText = "DIA";
+            this.DIA.Name = "DIA";
+            this.DIA.ReadOnly = true;
+            this.DIA.Width = 52;
+            // 
+            // ORCADO
+            // 
+            this.ORCADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ORCADO.DataPropertyName = "ORCADO";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.ORCADO.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ORCADO.HeaderText = "ORÇADO";
+            this.ORCADO.MinimumWidth = 100;
+            this.ORCADO.Name = "ORCADO";
+            this.ORCADO.ReadOnly = true;
+            // 
+            // REALIZADO
+            // 
+            this.REALIZADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.REALIZADO.DataPropertyName = "REALIZADO";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.REALIZADO.DefaultCellStyle = dataGridViewCellStyle5;
+            this.REALIZADO.HeaderText = "REALIZADO";
+            this.REALIZADO.MinimumWidth = 100;
+            this.REALIZADO.Name = "REALIZADO";
+            this.REALIZADO.ReadOnly = true;
+            // 
+            // DESVIO
+            // 
+            this.DESVIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DESVIO.DataPropertyName = "DESVIO";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.DESVIO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DESVIO.HeaderText = "DESVIO";
+            this.DESVIO.MinimumWidth = 100;
+            this.DESVIO.Name = "DESVIO";
+            this.DESVIO.ReadOnly = true;
+            // 
+            // STATUSS
+            // 
+            this.STATUSS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.STATUSS.DataPropertyName = "STATUS";
+            this.STATUSS.FalseValue = "0";
+            this.STATUSS.HeaderText = "STATUS";
+            this.STATUSS.IndeterminateValue = "0";
+            this.STATUSS.Name = "STATUSS";
+            this.STATUSS.ReadOnly = true;
+            this.STATUSS.TrueValue = "1";
+            this.STATUSS.Width = 54;
+            // 
+            // ORD
+            // 
+            this.ORD.DataPropertyName = "ORD";
+            this.ORD.HeaderText = "ORD";
+            this.ORD.Name = "ORD";
+            this.ORD.ReadOnly = true;
+            this.ORD.Visible = false;
+            // 
+            // OBS
+            // 
+            this.OBS.DataPropertyName = "OBS";
+            this.OBS.HeaderText = "OBSERVAÇÃO";
+            this.OBS.Name = "OBS";
+            this.OBS.ReadOnly = true;
+            // 
+            // CHAVE
+            // 
+            this.CHAVE.DataPropertyName = "CHAVE";
+            this.CHAVE.HeaderText = "CHAVE";
+            this.CHAVE.Name = "CHAVE";
+            this.CHAVE.ReadOnly = true;
+            this.CHAVE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CHAVE.Visible = false;
+            // 
+            // EDITAR
+            // 
+            this.EDITAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.EDITAR.Description = "Editar";
+            this.EDITAR.HeaderText = "";
+            this.EDITAR.Image = ((System.Drawing.Image)(resources.GetObject("EDITAR.Image")));
+            this.EDITAR.MinimumWidth = 40;
+            this.EDITAR.Name = "EDITAR";
+            this.EDITAR.ReadOnly = true;
+            this.EDITAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EDITAR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EDITAR.Width = 40;
             // 
             // status
             // 
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.Transparent;
-            this.status.Location = new System.Drawing.Point(0, 483);
+            this.status.Location = new System.Drawing.Point(0, 495);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1050, 22);
             this.status.SizingGrip = false;
@@ -195,7 +450,7 @@ namespace Setup.Financas
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Location = new System.Drawing.Point(0, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1, 456);
+            this.label1.Size = new System.Drawing.Size(1, 468);
             this.label1.TabIndex = 8;
             // 
             // label2
@@ -204,14 +459,14 @@ namespace Setup.Financas
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
             this.label2.Location = new System.Drawing.Point(1049, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1, 456);
+            this.label2.Size = new System.Drawing.Size(1, 468);
             this.label2.TabIndex = 8;
             // 
             // lblDown
             // 
             this.lblDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lblDown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblDown.Location = new System.Drawing.Point(0, 505);
+            this.lblDown.Location = new System.Drawing.Point(0, 517);
             this.lblDown.Name = "lblDown";
             this.lblDown.Size = new System.Drawing.Size(1050, 1);
             this.lblDown.TabIndex = 8;
@@ -221,7 +476,7 @@ namespace Setup.Financas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1050, 506);
+            this.ClientSize = new System.Drawing.Size(1050, 518);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.status);
@@ -235,10 +490,13 @@ namespace Setup.Financas
             this.Name = "frmPrevisao";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPrevisao_Load);
             this.SizeChanged += new System.EventHandler(this.frmPrevisao_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +520,17 @@ namespace Setup.Financas
         private Label label1;
         private Label label2;
         private Label lblDown;
+        private Controles.dgView lista;
+        private DataGridViewTextBoxColumn CLASSE;
+        private DataGridViewTextBoxColumn TIPO;
+        private DataGridViewTextBoxColumn DIA;
+        private DataGridViewTextBoxColumn ORCADO;
+        private DataGridViewTextBoxColumn REALIZADO;
+        private DataGridViewTextBoxColumn DESVIO;
+        private DataGridViewCheckBoxColumn STATUSS;
+        private DataGridViewTextBoxColumn ORD;
+        private DataGridViewTextBoxColumn OBS;
+        private DataGridViewTextBoxColumn CHAVE;
+        private DataGridViewImageColumn EDITAR;
     }
 }

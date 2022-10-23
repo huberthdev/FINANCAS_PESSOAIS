@@ -171,5 +171,9 @@ namespace Setup.Financas
                 CarregarListasClasseConta();
         }
 
+        private void btnSalvarClasse_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

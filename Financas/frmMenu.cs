@@ -25,8 +25,6 @@ namespace Setup.Financas
             Process.Start("calc.exe");
         }
 
-        //NAVEGAÇÃO ENTRE AS ABAS/FORMULÁRIOS DE UTILIDADES DO SISTEMA
-
         private void anotaçõesToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmNota nota = new frmNota();

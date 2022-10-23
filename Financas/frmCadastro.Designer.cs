@@ -142,7 +142,7 @@ namespace Setup.Financas
             this.listaClasse.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.listaClasse.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.listaClasse.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.listaClasse.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.listaClasse.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.listaClasse.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.listaClasse.RowTemplate.Height = 25;
             this.listaClasse.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -204,6 +204,7 @@ namespace Setup.Financas
             this.btnSalvarClasse.Text = "Salvar";
             this.btnSalvarClasse.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarClasse.UseVisualStyleBackColor = true;
+            this.btnSalvarClasse.Click += new System.EventHandler(this.btnSalvarClasse_Click_1);
             // 
             // optDespesa
             // 
@@ -314,7 +315,7 @@ namespace Setup.Financas
             this.listaConta.RowsDefaultCellStyle = dataGridViewCellStyle11;
             this.listaConta.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.listaConta.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.listaConta.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.listaConta.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.listaConta.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.listaConta.RowTemplate.Height = 25;
             this.listaConta.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;

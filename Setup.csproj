@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controles\TxtLegenda.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="ADODB">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>1</VersionMinor>

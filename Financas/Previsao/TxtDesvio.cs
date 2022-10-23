@@ -13,6 +13,7 @@ namespace Setup.Financas.Previsao
             this.ForeColor = Color.FromArgb(Prev.cor);
             this.Size = new Size(86, 25);
             this.TextAlign = HorizontalAlignment.Center;
+            this.ReadOnly = true;
             base.OnCreateControl();
         }
     }

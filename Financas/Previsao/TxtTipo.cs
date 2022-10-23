@@ -12,6 +12,7 @@ namespace Setup.Financas.Previsao
             this.BorderStyle = BorderStyle.FixedSingle;
             this.ForeColor = Color.FromArgb(Prev.cor);
             this.Size = new Size(149, 25);
+            this.ReadOnly = true;
             base.OnCreateControl();
         }
     }
