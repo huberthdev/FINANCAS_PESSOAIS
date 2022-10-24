@@ -61,25 +61,25 @@ namespace Setup.Financas
             this.lnL.Dock = System.Windows.Forms.DockStyle.Left;
             this.lnL.Location = new System.Drawing.Point(0, 24);
             this.lnL.Name = "lnL";
-            this.lnL.Size = new System.Drawing.Size(1, 172);
+            this.lnL.Size = new System.Drawing.Size(2, 172);
             this.lnL.TabIndex = 6;
             // 
             // lnR
             // 
             this.lnR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnR.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lnR.Location = new System.Drawing.Point(447, 24);
+            this.lnR.Location = new System.Drawing.Point(446, 24);
             this.lnR.Name = "lnR";
-            this.lnR.Size = new System.Drawing.Size(1, 172);
+            this.lnR.Size = new System.Drawing.Size(2, 172);
             this.lnR.TabIndex = 7;
             // 
             // lnD
             // 
             this.lnD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnD.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lnD.Location = new System.Drawing.Point(1, 195);
+            this.lnD.Location = new System.Drawing.Point(2, 194);
             this.lnD.Name = "lnD";
-            this.lnD.Size = new System.Drawing.Size(446, 1);
+            this.lnD.Size = new System.Drawing.Size(444, 2);
             this.lnD.TabIndex = 8;
             // 
             // label2

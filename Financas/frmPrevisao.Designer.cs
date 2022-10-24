@@ -101,9 +101,17 @@ namespace Setup.Financas
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDown = new System.Windows.Forms.Label();
+            this.receita = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.despesa = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.restante = new System.Windows.Forms.ToolStripStatusLabel();
+            this.saldo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
+            this.status.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -218,7 +226,7 @@ namespace Setup.Financas
             this.panel.ForeColor = System.Drawing.Color.White;
             this.panel.Location = new System.Drawing.Point(0, 27);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1050, 490);
+            this.panel.Size = new System.Drawing.Size(1050, 468);
             this.panel.TabIndex = 1;
             this.panel.CausesValidationChanged += new System.EventHandler(this.panel_CausesValidationChanged);
             // 
@@ -296,11 +304,12 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(1050, 490);
+            this.lista.Size = new System.Drawing.Size(1050, 468);
             this.lista.TabIndex = 1;
             this.lista.DataSourceChanged += new System.EventHandler(this.lista_DataSourceChanged);
             this.lista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellClick);
             this.lista.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellMouseEnter);
+            this.lista.Sorted += new System.EventHandler(this.lista_Sorted);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // CLASSE
@@ -425,6 +434,14 @@ namespace Setup.Financas
             // 
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saldo,
+            this.sp1,
+            this.receita,
+            this.sp2,
+            this.despesa,
+            this.sp3,
+            this.restante});
             this.status.Location = new System.Drawing.Point(0, 495);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1050, 22);
@@ -471,6 +488,55 @@ namespace Setup.Financas
             this.lblDown.Size = new System.Drawing.Size(1050, 1);
             this.lblDown.TabIndex = 8;
             // 
+            // receita
+            // 
+            this.receita.Image = ((System.Drawing.Image)(resources.GetObject("receita.Image")));
+            this.receita.Name = "receita";
+            this.receita.Size = new System.Drawing.Size(104, 17);
+            this.receita.Text = "Receita: R$ 0,00";
+            // 
+            // sp1
+            // 
+            this.sp1.Name = "sp1";
+            this.sp1.Size = new System.Drawing.Size(10, 17);
+            this.sp1.Text = "|";
+            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // despesa
+            // 
+            this.despesa.Image = ((System.Drawing.Image)(resources.GetObject("despesa.Image")));
+            this.despesa.Name = "despesa";
+            this.despesa.Size = new System.Drawing.Size(109, 17);
+            this.despesa.Text = "Despesa: R$ 0,00";
+            // 
+            // sp2
+            // 
+            this.sp2.Name = "sp2";
+            this.sp2.Size = new System.Drawing.Size(10, 17);
+            this.sp2.Text = "|";
+            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // restante
+            // 
+            this.restante.Image = ((System.Drawing.Image)(resources.GetObject("restante.Image")));
+            this.restante.Name = "restante";
+            this.restante.Size = new System.Drawing.Size(111, 17);
+            this.restante.Text = "Restante: R$ 0,00";
+            // 
+            // saldo
+            // 
+            this.saldo.Image = ((System.Drawing.Image)(resources.GetObject("saldo.Image")));
+            this.saldo.Name = "saldo";
+            this.saldo.Size = new System.Drawing.Size(135, 17);
+            this.saldo.Text = "Saldo Contas: R$ 0,00";
+            // 
+            // sp3
+            // 
+            this.sp3.Name = "sp3";
+            this.sp3.Size = new System.Drawing.Size(10, 17);
+            this.sp3.Text = "|";
+            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // frmPrevisao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -479,8 +545,8 @@ namespace Setup.Financas
             this.ClientSize = new System.Drawing.Size(1050, 518);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.status);
             this.Controls.Add(this.panel);
+            this.Controls.Add(this.status);
             this.Controls.Add(this.lblDown);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.White;
@@ -497,6 +563,8 @@ namespace Setup.Financas
             this.menuStrip1.PerformLayout();
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
+            this.status.ResumeLayout(false);
+            this.status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,5 +600,12 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn OBS;
         private DataGridViewTextBoxColumn CHAVE;
         private DataGridViewImageColumn EDITAR;
+        private ToolStripStatusLabel receita;
+        private ToolStripStatusLabel sp1;
+        private ToolStripStatusLabel despesa;
+        private ToolStripStatusLabel sp2;
+        private ToolStripStatusLabel restante;
+        private ToolStripStatusLabel saldo;
+        private ToolStripStatusLabel sp3;
     }
 }

@@ -407,8 +407,11 @@ namespace Setup.Financas
             string classe = cv[3];
             string tipo, valor, obs;
 
-            string sql = "SELECT B.CLASSE, B.TIPO, REPLACE(IIF(A.VALOR IS NULL, 0, A.VALOR), '.', ','), A.OBS FROM PREVISAO A RIGHT JOIN CLASSE B ";
-            sql += "ON A.CLASSE = B.CLASSE_ID WHERE B.CLASSE_ID = " + classe + "";
+            string sql = "SELECT CLASSE, TIPO, VALOR, OBS FROM (SELECT B.CLASSE, B.TIPO, REPLACE(IIF(A.VALOR IS NULL, 0, A.VALOR), '.', ',') AS VALOR, A.OBS ";
+            sql += "FROM PREVISAO A INNER JOIN CLASSE B ";
+            sql += "ON A.CLASSE = B.CLASSE_ID WHERE B.CLASSE_ID = " + classe + " AND MES = " + mes + " AND ANO = " + ano + " ";
+            sql += "UNION SELECT CLASSE, TIPO, '0,00', '' FROM CLASSE WHERE CLASSE_ID = " + classe + ") ORDER BY VALOR DESC";
+
             BD.Buscar(sql);
 
             classe = BD.Resultado.Rows[0][0].ToString();
@@ -456,19 +459,68 @@ namespace Setup.Financas
             }
         }
 
-        private void lista_DataSourceChanged(object sender, EventArgs e)
+        private void ColorirLinhas()
         {
             for (int i = 0; i < lista.RowCount; i++)
             {
-                string tipo;
+                string ord, tipo;
 
-                tipo = lista.Rows[i].Cells[8].Value.ToString();
+                ord = lista.Rows[i].Cells[8].Value.ToString();
+                tipo = lista.Rows[i].Cells[2].Value.ToString();
 
-                if(tipo == "A")
+                if (tipo.Contains("Despesa"))
+                {
+                    lista.Rows[i].Cells[1].Style.ForeColor = Color.Tomato;
+                    lista.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
+                }
+                else if (tipo.Contains("Receita"))
+                {
+                    lista.Rows[i].Cells[1].Style.ForeColor = Color.LimeGreen;
+                    lista.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
+                }
+
+                if (ord == "A")
                 {
                     lista.SelectedRows[i].ReadOnly = true;
                 }
             }
+
+        }
+
+        private void lista_DataSourceChanged(object sender, EventArgs e)
+        {
+            string tipo;
+            double receita = 0, despesa = 0, desvio = 0;
+
+            if (lista.RowCount == 0)
+                return;
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                tipo = lista.Rows[i].Cells[2].Value.ToString();
+
+                if (tipo.Contains("Receita"))
+                {
+                    receita += Double.Parse(lista.Rows[i].Cells[6].Value.ToString());
+                }
+                else if (tipo.Contains("Despesa"))
+                {
+                    despesa += Double.Parse(lista.Rows[i].Cells[6].Value.ToString());
+                }
+            }
+
+            receita = Math.Abs(receita);
+            status.Items["receita"].Text = receita.ToString("C");
+
+            despesa = Math.Abs(despesa);
+            status.Items["despesa"].Text = despesa.ToString("C");
+
+            ColorirLinhas();
+        }
+
+        private void lista_Sorted(object sender, EventArgs e)
+        {
+            ColorirLinhas();
         }
     }
 }
