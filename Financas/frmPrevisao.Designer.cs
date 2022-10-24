@@ -38,6 +38,8 @@ namespace Setup.Financas
             this.lista.Columns["ORCADO"].CellTemplate.Style.BackColor = Color.FromArgb(58, 58, 58);
             this.lista.Columns["ORCADO"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
+            this.lista.Columns["OBS"].CellTemplate.Style.BackColor = Color.FromArgb(58, 58, 58);
+
             this.lista.Columns["REALIZADO"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             this.lista.Columns["DESVIO"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -96,18 +98,21 @@ namespace Setup.Financas
             this.OBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.status = new System.Windows.Forms.StatusStrip();
-            this.imagens = new System.Windows.Forms.ImageList(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblDown = new System.Windows.Forms.Label();
             this.receita = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.despesa = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.restante = new System.Windows.Forms.ToolStripStatusLabel();
             this.saldo = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.restante = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp4 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.msg = new System.Windows.Forms.ToolStripStatusLabel();
+            this.imagens = new System.Windows.Forms.ImageList(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblDown = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -137,6 +142,7 @@ namespace Setup.Financas
             this.novo.ForeColor = System.Drawing.Color.White;
             this.novo.Image = ((System.Drawing.Image)(resources.GetObject("novo.Image")));
             this.novo.Name = "novo";
+            this.novo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.novo.Size = new System.Drawing.Size(64, 23);
             this.novo.Text = "Novo";
             this.novo.Click += new System.EventHandler(this.novo_Click);
@@ -163,6 +169,7 @@ namespace Setup.Financas
             this.atualizar.ForeColor = System.Drawing.Color.White;
             this.atualizar.Image = ((System.Drawing.Image)(resources.GetObject("atualizar.Image")));
             this.atualizar.Name = "atualizar";
+            this.atualizar.ShortcutKeys = System.Windows.Forms.Keys.F5;
             this.atualizar.Size = new System.Drawing.Size(81, 23);
             this.atualizar.Text = "Atualizar";
             this.atualizar.Click += new System.EventHandler(this.atualizar_Click);
@@ -264,7 +271,8 @@ namespace Setup.Financas
             this.ORD,
             this.OBS,
             this.CHAVE,
-            this.EDITAR});
+            this.EDITAR,
+            this.dataGridViewImageColumn1});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -308,9 +316,12 @@ namespace Setup.Financas
             this.lista.TabIndex = 1;
             this.lista.DataSourceChanged += new System.EventHandler(this.lista_DataSourceChanged);
             this.lista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellClick);
+            this.lista.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellEndEdit);
             this.lista.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellMouseEnter);
+            this.lista.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.lista_DataError);
             this.lista.Sorted += new System.EventHandler(this.lista_Sorted);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
+            this.lista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lista_KeyDown);
             // 
             // CLASSE
             // 
@@ -335,7 +346,7 @@ namespace Setup.Financas
             this.DIA.DataPropertyName = "DIA";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.NullValue = "0";
             this.DIA.DefaultCellStyle = dataGridViewCellStyle3;
             this.DIA.HeaderText = "DIA";
             this.DIA.Name = "DIA";
@@ -376,7 +387,7 @@ namespace Setup.Financas
             dataGridViewCellStyle6.Format = "N2";
             dataGridViewCellStyle6.NullValue = "0";
             this.DESVIO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DESVIO.HeaderText = "DESVIO";
+            this.DESVIO.HeaderText = "RESTANTE";
             this.DESVIO.MinimumWidth = 100;
             this.DESVIO.Name = "DESVIO";
             this.DESVIO.ReadOnly = true;
@@ -430,24 +441,104 @@ namespace Setup.Financas
             this.EDITAR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.EDITAR.Width = 40;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn1.Description = "Excluir";
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
+            this.dataGridViewImageColumn1.MinimumWidth = 40;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.ReadOnly = true;
+            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dataGridViewImageColumn1.Width = 40;
+            // 
             // status
             // 
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.Transparent;
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saldo,
-            this.sp1,
             this.receita,
-            this.sp2,
+            this.sp1,
             this.despesa,
+            this.sp2,
+            this.saldo,
             this.sp3,
-            this.restante});
+            this.restante,
+            this.sp4,
+            this.msg});
             this.status.Location = new System.Drawing.Point(0, 495);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1050, 22);
             this.status.SizingGrip = false;
             this.status.Stretch = false;
             this.status.TabIndex = 7;
+            // 
+            // receita
+            // 
+            this.receita.Image = ((System.Drawing.Image)(resources.GetObject("receita.Image")));
+            this.receita.Name = "receita";
+            this.receita.Size = new System.Drawing.Size(104, 17);
+            this.receita.Text = "Receita: R$ 0,00";
+            this.receita.ToolTipText = "Total Receita";
+            // 
+            // sp1
+            // 
+            this.sp1.Name = "sp1";
+            this.sp1.Size = new System.Drawing.Size(10, 17);
+            this.sp1.Text = "|";
+            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // despesa
+            // 
+            this.despesa.Image = ((System.Drawing.Image)(resources.GetObject("despesa.Image")));
+            this.despesa.Name = "despesa";
+            this.despesa.Size = new System.Drawing.Size(109, 17);
+            this.despesa.Text = "Despesa: R$ 0,00";
+            this.despesa.ToolTipText = "Total Despesa";
+            // 
+            // sp2
+            // 
+            this.sp2.Name = "sp2";
+            this.sp2.Size = new System.Drawing.Size(10, 17);
+            this.sp2.Text = "|";
+            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // saldo
+            // 
+            this.saldo.Image = ((System.Drawing.Image)(resources.GetObject("saldo.Image")));
+            this.saldo.Name = "saldo";
+            this.saldo.Size = new System.Drawing.Size(135, 17);
+            this.saldo.Text = "Saldo Contas: R$ 0,00";
+            this.saldo.ToolTipText = "Saldo das Contas";
+            // 
+            // sp3
+            // 
+            this.sp3.Name = "sp3";
+            this.sp3.Size = new System.Drawing.Size(10, 17);
+            this.sp3.Text = "|";
+            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // restante
+            // 
+            this.restante.Image = ((System.Drawing.Image)(resources.GetObject("restante.Image")));
+            this.restante.Name = "restante";
+            this.restante.Size = new System.Drawing.Size(111, 17);
+            this.restante.Text = "Restante: R$ 0,00";
+            this.restante.ToolTipText = "Saldo Restante";
+            // 
+            // sp4
+            // 
+            this.sp4.Name = "sp4";
+            this.sp4.Size = new System.Drawing.Size(10, 17);
+            this.sp4.Text = "|";
+            this.sp4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // msg
+            // 
+            this.msg.Name = "msg";
+            this.msg.Size = new System.Drawing.Size(85, 17);
+            this.msg.Text = "Desvio: R$ 0,00";
             // 
             // imagens
             // 
@@ -487,55 +578,6 @@ namespace Setup.Financas
             this.lblDown.Name = "lblDown";
             this.lblDown.Size = new System.Drawing.Size(1050, 1);
             this.lblDown.TabIndex = 8;
-            // 
-            // receita
-            // 
-            this.receita.Image = ((System.Drawing.Image)(resources.GetObject("receita.Image")));
-            this.receita.Name = "receita";
-            this.receita.Size = new System.Drawing.Size(104, 17);
-            this.receita.Text = "Receita: R$ 0,00";
-            // 
-            // sp1
-            // 
-            this.sp1.Name = "sp1";
-            this.sp1.Size = new System.Drawing.Size(10, 17);
-            this.sp1.Text = "|";
-            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // despesa
-            // 
-            this.despesa.Image = ((System.Drawing.Image)(resources.GetObject("despesa.Image")));
-            this.despesa.Name = "despesa";
-            this.despesa.Size = new System.Drawing.Size(109, 17);
-            this.despesa.Text = "Despesa: R$ 0,00";
-            // 
-            // sp2
-            // 
-            this.sp2.Name = "sp2";
-            this.sp2.Size = new System.Drawing.Size(10, 17);
-            this.sp2.Text = "|";
-            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // restante
-            // 
-            this.restante.Image = ((System.Drawing.Image)(resources.GetObject("restante.Image")));
-            this.restante.Name = "restante";
-            this.restante.Size = new System.Drawing.Size(111, 17);
-            this.restante.Text = "Restante: R$ 0,00";
-            // 
-            // saldo
-            // 
-            this.saldo.Image = ((System.Drawing.Image)(resources.GetObject("saldo.Image")));
-            this.saldo.Name = "saldo";
-            this.saldo.Size = new System.Drawing.Size(135, 17);
-            this.saldo.Text = "Saldo Contas: R$ 0,00";
-            // 
-            // sp3
-            // 
-            this.sp3.Name = "sp3";
-            this.sp3.Size = new System.Drawing.Size(10, 17);
-            this.sp3.Text = "|";
-            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmPrevisao
             // 
@@ -589,6 +631,15 @@ namespace Setup.Financas
         private Label label2;
         private Label lblDown;
         private Controles.dgView lista;
+        private ToolStripStatusLabel receita;
+        private ToolStripStatusLabel sp1;
+        private ToolStripStatusLabel despesa;
+        private ToolStripStatusLabel sp2;
+        private ToolStripStatusLabel restante;
+        private ToolStripStatusLabel saldo;
+        private ToolStripStatusLabel sp3;
+        private ToolStripStatusLabel sp4;
+        private ToolStripStatusLabel msg;
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn TIPO;
         private DataGridViewTextBoxColumn DIA;
@@ -600,12 +651,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn OBS;
         private DataGridViewTextBoxColumn CHAVE;
         private DataGridViewImageColumn EDITAR;
-        private ToolStripStatusLabel receita;
-        private ToolStripStatusLabel sp1;
-        private ToolStripStatusLabel despesa;
-        private ToolStripStatusLabel sp2;
-        private ToolStripStatusLabel restante;
-        private ToolStripStatusLabel saldo;
-        private ToolStripStatusLabel sp3;
+        private DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }

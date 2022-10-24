@@ -255,6 +255,24 @@ namespace Setup.Classes
 
             return lista;
         }
+
+        public static double SaldoTotal(string id = "", bool ativo = true)
+        {
+            string sql = "SELECT SUM(SALDO) FROM CONTA";
+            if (id != "")
+            {
+                sql += "WHERE CONTA_ID = "+ id +"";
+            }
+
+            try
+            {
+                return double.Parse(BD.Buscar(sql).Rows[0][0].ToString());
+            }
+            catch 
+            {
+                return 0;
+            }
+        }
     }
 
     public class CartaoCredito

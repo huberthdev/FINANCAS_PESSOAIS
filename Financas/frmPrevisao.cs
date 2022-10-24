@@ -19,11 +19,7 @@ namespace Setup.Financas
 
         public void CarregarPrevisao()
         {
-            int top1 = 3; //Texto/Botão
-            int top2 = 3; //Panel
-            int top3 = 8; //Check
-
-            string sql, ord, chave;
+            string sql;
             int cor = Previsao.Prev.cor;
 
             int mes = ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1;
@@ -104,126 +100,15 @@ namespace Setup.Financas
             sql += ") ORDER BY ORD, DIA";
             //
             //
-            lista.DataSource = BD.Buscar(sql);
-
-            return;
-
-            if (sql == "")
+            try
             {
-                for (int i = 0; i < BD.Resultado.Rows.Count; i++)
-                {
-
-                    ord = BD.Resultado.Rows[i][7].ToString();
-
-                    if (ord == "A")
-                    {
-                        cor = int.Parse(BD.Resultado.Rows[i][6].ToString());
-                        Previsao.Prev.cor = cor;
-                    }
-                    else
-                    {
-                        Previsao.Prev.cor = -1;
-                    }
-
-                    //Controle para Classe
-                    Previsao.TxtClasse classe = new Previsao.TxtClasse();
-                    classe.Name = "classe" + i;
-                    classe.Location = new Point(11, top1);
-                    classe.Text = " " + BD.Resultado.Rows[i][0].ToString();
-                    //panel.Controls.Add(classe);
-                    //
-                    //Controle para Tipo
-                    //
-                    Previsao.TxtTipo tipo = new Previsao.TxtTipo();
-                    tipo.Name = "tipo" + i;
-                    tipo.Location = new Point(245, top1);
-                    tipo.Text = " " + BD.Resultado.Rows[i][1].ToString();
-                    //panel.Controls.Add(tipo);
-                    //
-                    //Controle para Dia
-                    //
-                    Previsao.TxtDia dia = new Previsao.TxtDia();
-                    dia.Name = "dia" + i;
-                    dia.Location = new Point(393, top1);
-                    dia.Text = BD.Resultado.Rows[i][2].ToString();
-                    //panel.Controls.Add(dia);
-                    //
-                    //Controle para Orçado
-                    //
-                    Previsao.TxtOrcado orcado = new Previsao.TxtOrcado();
-                    orcado.Name = "orcado" + i;
-                    orcado.Location = new Point(450, top1);
-                    orcado.Text = BD.Resultado.Rows[i][3].ToString();
-                    //panel.Controls.Add(orcado);
-                    //
-                    //Controle para Real
-                    //
-                    Previsao.TxtReal real = new Previsao.TxtReal();
-                    real.Name = "real" + i;
-                    real.Location = new Point(535, top1);
-                    real.Text = BD.Resultado.Rows[i][4].ToString();
-                    //panel.Controls.Add(real);
-                    //
-                    //Controle para Desvio
-                    //
-                    Previsao.TxtDesvio desvio = new Previsao.TxtDesvio();
-                    desvio.Name = "desvio" + i;
-                    desvio.Location = new Point(620, top1);
-                    desvio.Text = BD.Resultado.Rows[i][5].ToString();
-                    //
-                    //
-                    //Controle para Status
-                    //
-                    Previsao.CkStatus status = new Previsao.CkStatus();
-                    status.Name = "status" + i;
-                    status.Location = new Point(712, top3);
-                    //
-                    //
-                    Previsao.TxtObs obs = new Previsao.TxtObs();
-                    obs.Name = "obs" + i;
-                    obs.Location = new Point(731, top1);
-                    if (ord != "A")
-                    {
-                        obs.Text = BD.Resultado.Rows[i][8].ToString();
-                    }
-
-                    Panel pn = new Panel();
-                    pn.Name = "pn" + i;
-                    pn.Size = new Size(1044, 30);
-                    pn.Location = new Point(3, top2);
-                    pn.Anchor = AnchorStyles.Top;
-                    panel.Controls.AddRange(new Control[] { pn });
-
-                    if (ord != "A")
-                    {
-                        chave = BD.Resultado.Rows[i][9].ToString();
-                        //
-                        //Controle para Editar
-                        //
-                        Previsao.Icon_Edit editar = new Previsao.Icon_Edit();
-                        editar.Name = "editar" + i;
-                        editar.Location = new Point(986, top1);
-                        editar.Tag = chave;
-                        //panel.Controls.Add(editar);
-                        //
-                        //Controle para Excluir
-                        //
-                        Previsao.Icon_Delete excluir = new Previsao.Icon_Delete();
-                        excluir.Name = "excluir" + i;
-                        excluir.Location = new Point(1015, top1);
-                        excluir.Tag = chave;
-                        //panel.Controls.Add(excluir);
-                        //
-                        pn.Controls.AddRange(new Control[] { editar, excluir });
-                    }
-
-                    pn.Controls.AddRange(new Control[] { classe, tipo, dia, orcado, real, desvio, status, obs });
-
-                    top2 += 31; //Panel
-                }
+                lista.DataSource = BD.Buscar(sql);
+            }
+            catch
+            {
 
             }
-
+            
         }
 
         private void novo_Click(object sender, EventArgs e)
@@ -375,23 +260,34 @@ namespace Setup.Financas
 
         private void lista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (lista.RowCount == 0)
+            if (lista.RowCount == 0 || e.ColumnIndex > 1)
                 return;
 
-            if (e.ColumnIndex != 0)
-                return;
+            string chave = lista.SelectedRows[0].Cells[11].Value.ToString();
 
-            if (lista.RowCount == 0)
-                return;
-            try
+            if (e.ColumnIndex == 0)
             {
-                string chave = lista.SelectedRows[0].Cells[10].Value.ToString();
-                EditarLinha(chave);
-            }
-            catch
-            {
+                try
+                {
+                    EditarLinha(chave);
+                }
+                catch
+                {
 
-            }
+                }
+            } //Editar linha
+            else if (e.ColumnIndex == 1)
+            {
+                try
+                {
+                    ExcluirLinha(chave);
+                }
+                catch
+                {
+
+                }
+
+            } //Excluir linha
         }
 
         private void EditarLinha(string chave)
@@ -434,11 +330,26 @@ namespace Setup.Financas
             prev.ShowDialog();
         }
 
+        private void ExcluirLinha(string chave)
+        {
+            if (chave == null || chave == "")
+                return;
+
+            COD.Pergunta("Excluir previsão. Confirma?");
+            if (!COD.Resposta)
+                return;
+
+            string sql = "DELETE FROM PREVISAO WHERE CHAVE = '" + chave + "'";
+            BD.ExecutarSQL(sql);
+
+            CarregarPrevisao();
+        }
+
         private void lista_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0 || e.ColumnIndex == 1)
                 lista.Cursor = Cursors.Hand;
-            else if (e.ColumnIndex == 3 || e.ColumnIndex == 4 || e.ColumnIndex == 9)
+            else if (e.ColumnIndex == 4 || e.ColumnIndex == 5 || e.ColumnIndex == 10)
                 lista.Cursor = Cursors.IBeam;
             else
                 lista.Cursor = Cursors.Default;
@@ -450,7 +361,7 @@ namespace Setup.Financas
                 return;
             try
             {
-                string chave = lista.SelectedRows[0].Cells[10].Value.ToString();
+                string chave = lista.SelectedRows[0].Cells[11].Value.ToString();
                 EditarLinha(chave);
             }
             catch
@@ -465,18 +376,18 @@ namespace Setup.Financas
             {
                 string ord, tipo;
 
-                ord = lista.Rows[i].Cells[8].Value.ToString();
-                tipo = lista.Rows[i].Cells[2].Value.ToString();
+                ord = lista.Rows[i].Cells[9].Value.ToString();
+                tipo = lista.Rows[i].Cells[3].Value.ToString();
 
                 if (tipo.Contains("Despesa"))
                 {
-                    lista.Rows[i].Cells[1].Style.ForeColor = Color.Tomato;
                     lista.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
+                    lista.Rows[i].Cells[3].Style.ForeColor = Color.Tomato;
                 }
                 else if (tipo.Contains("Receita"))
                 {
-                    lista.Rows[i].Cells[1].Style.ForeColor = Color.LimeGreen;
                     lista.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
+                    lista.Rows[i].Cells[3].Style.ForeColor = Color.LimeGreen;
                 }
 
                 if (ord == "A")
@@ -489,24 +400,39 @@ namespace Setup.Financas
 
         private void lista_DataSourceChanged(object sender, EventArgs e)
         {
-            string tipo;
-            double receita = 0, despesa = 0, desvio = 0;
+            string tipo, msg;
+            double receita = 0, despesa = 0, restante = 0, desvio = 0, saldo = 0, valor = 0;
+
+            status.Items["receita"].Text = "";
+            status.Items["despesa"].Text = "";
+            status.Items["restante"].Text = "";
+            status.Items["saldo"].Text = "";
+            status.Items["msg"].Text = "";
 
             if (lista.RowCount == 0)
                 return;
 
             for (int i = 0; i < lista.RowCount; i++)
             {
-                tipo = lista.Rows[i].Cells[2].Value.ToString();
+                tipo = lista.Rows[i].Cells[3].Value.ToString();
 
                 if (tipo.Contains("Receita"))
                 {
-                    receita += Double.Parse(lista.Rows[i].Cells[6].Value.ToString());
+                    valor = Double.Parse(lista.Rows[i].Cells[5].Value.ToString());
+                    receita += Math.Abs(valor);
                 }
                 else if (tipo.Contains("Despesa"))
                 {
                     despesa += Double.Parse(lista.Rows[i].Cells[6].Value.ToString());
                 }
+
+                valor = Double.Parse(lista.Rows[i].Cells[7].Value.ToString());
+                if (valor > 0)
+                {
+                    restante += Double.Parse(lista.Rows[i].Cells[7].Value.ToString());
+                }
+
+                desvio += Double.Parse(lista.Rows[i].Cells[7].Value.ToString());
             }
 
             receita = Math.Abs(receita);
@@ -515,12 +441,170 @@ namespace Setup.Financas
             despesa = Math.Abs(despesa);
             status.Items["despesa"].Text = despesa.ToString("C");
 
+            status.Items["restante"].Text = restante.ToString("C");
+
+            saldo = Classes.Conta.SaldoTotal();
+            status.Items["saldo"].Text = saldo.ToString("C");
+
+            desvio = desvio * -1;
+
+            int[] mes = new int[2];
+            mes[0] = DateTime.Today.Month;
+            mes[1] = ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1;
+
+            if(mes[0].ToString() == mes[1].ToString())
+            {
+                desvio = desvio + saldo;
+            }
+
+            if (desvio >= 0)
+            {
+                msg = "Receita maior que despesa: Desvio: " + desvio.ToString("C");
+                status.Items["msg"].Text = msg;
+                status.Items["msg"].ForeColor = Color.LimeGreen;
+            }
+            else
+            {
+                msg = "Despesa maior que receita: Desvio: " + desvio.ToString("C");
+                status.Items["msg"].Text = msg;
+                status.Items["msg"].ForeColor = Color.Tomato;
+            }
+
             ColorirLinhas();
         }
 
         private void lista_Sorted(object sender, EventArgs e)
         {
             ColorirLinhas();
+        }
+
+        private void lista_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            string sql; int dia;
+            string chave = lista.Rows[e.RowIndex].Cells[11].Value.ToString();
+
+            bool sc = int.TryParse(lista.Rows[e.RowIndex].Cells[4].Value.ToString(), out dia);
+            string valor = lista.Rows[e.RowIndex].Cells[5].Value.ToString().Trim();
+            string obs = lista.Rows[e.RowIndex].Cells[10].Value.ToString().Trim();
+
+            try
+            {
+                valor = BD.CvNum(valor);
+            }
+            catch
+            {
+                valor = "";
+            }
+
+            sql = "SELECT CHAVE FROM PREVISAO WHERE CHAVE = '" + chave + "'";
+            if (BD.Buscar(sql).Rows.Count == 0)
+            {
+                SalvarPrevisao(chave:chave, valor:valor, obs:obs);
+            }
+            else
+            {
+                sql = "UPDATE PREVISAO SET OBS = '" + obs + "'";
+                if (dia > 0 && dia < 31)
+                {
+                    sql += ", DIA = " + dia + " ";
+                }
+
+                if (valor != "")
+                {
+                    sql += ", VALOR = " + valor + " ";
+                }    
+
+                sql += "WHERE CHAVE = '" + chave + "'";
+                BD.ExecutarSQL(sql);
+            }
+
+            try
+            {
+                CarregarPrevisao();
+            }
+            catch 
+            {
+                
+            }
+            
+        }
+
+        private void SalvarPrevisao(string chave, string valor = "", string obs = "")
+        {
+            string[] cv = chave.Split(".");
+
+            string dia = cv[0];
+            string mes = cv[1];
+            string ano = cv[2];
+            string classe = cv[3];
+
+            string[] c = new string[8];
+            string[] v = new string[8];
+
+            c[0] = "chave";
+            v[0] = chave;
+
+            c[1] = "dia";
+            v[1] = dia;
+
+            c[2] = "mes";
+            v[2] = mes;
+
+            c[3] = "ano";
+            v[3] = ano;
+
+            c[4] = "classe";
+            v[4] = classe;
+
+            c[5] = "valor";
+            v[5] = valor;
+
+            c[6] = "status";
+            v[6] = "0";
+
+            c[7] = "obs";
+            v[7] = obs;
+
+            try
+            {
+                BD.Salvar("PREVISAO", c, v);
+            }
+            catch
+            {
+                
+            }
+        }
+
+        private void lista_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+        }
+
+        private void lista_KeyDown(object sender, KeyEventArgs e)
+        {
+            string chave;
+
+            if (lista.Rows.Count == 0)
+                return;
+
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            if(e.KeyCode == Keys.Delete)
+            {
+                ExcluirLinha(chave:chave);
+            }
+
+            if (e.KeyCode == Keys.F2)
+            {
+                EditarLinha(chave: chave);
+            }
         }
     }
 }
