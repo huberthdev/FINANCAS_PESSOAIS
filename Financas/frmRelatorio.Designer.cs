@@ -409,7 +409,7 @@ namespace Setup.Financas
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
             this.lista.GridColor = System.Drawing.Color.DimGray;
-            this.lista.Location = new System.Drawing.Point(4, 106);
+            this.lista.Location = new System.Drawing.Point(4, 104);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
@@ -436,7 +436,7 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(1040, 311);
+            this.lista.Size = new System.Drawing.Size(1040, 313);
             this.lista.TabIndex = 1;
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
@@ -693,7 +693,7 @@ namespace Setup.Financas
             this.lblDown.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblDown.Location = new System.Drawing.Point(4, 102);
             this.lblDown.Name = "lblDown";
-            this.lblDown.Size = new System.Drawing.Size(1040, 4);
+            this.lblDown.Size = new System.Drawing.Size(1040, 2);
             this.lblDown.TabIndex = 14;
             // 
             // pnFiltro

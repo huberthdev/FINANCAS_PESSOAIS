@@ -16,6 +16,9 @@ namespace Setup.Financas
         private void frmMenu_Load(object sender, EventArgs e)
         {
             CarregarCbClassesContas();
+            CarregarListaSaldoContas();
+            CarregarListaGastoClasseMesAtual();
+
             txtData.Text = DateTime.Today.ToShortDateString();
         }
 
@@ -274,17 +277,6 @@ namespace Setup.Financas
             cad.ShowDialog();
         }
 
-        private void frmMenu_Activated(object sender, EventArgs e)
-        {
-            this.CarregarListaSaldoContas();
-            this.CarregarListaGastoClasseMesAtual();
-        }
-
-        private void menu_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void listaSaldo_Contas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             double valor, total = 0;
@@ -305,7 +297,6 @@ namespace Setup.Financas
             }
 
             listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
-
         }
     }
 }

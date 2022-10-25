@@ -396,7 +396,7 @@ namespace Setup.Financas
 
         private void LimparFiltro(bool receita = false, bool despesa = false)
         {
-            COD.LimparCampos(this);
+            COD.LimparCampos(pnFiltro);
             DatasPadrao();
             ckReceita.Checked = receita;
             ckDespesa.Checked = despesa;

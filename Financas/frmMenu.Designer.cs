@@ -185,7 +185,6 @@ namespace Setup.Financas
             this.menu.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.menu.Size = new System.Drawing.Size(66, 20);
             this.menu.Text = "Menu";
-            this.menu.Click += new System.EventHandler(this.menu_Click);
             // 
             // novoLancamento
             // 
@@ -1013,7 +1012,6 @@ namespace Setup.Financas
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Activated += new System.EventHandler(this.frmMenu_Activated);
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMenu_KeyDown);
             this.menuStrip1.ResumeLayout(false);
