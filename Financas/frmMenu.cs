@@ -65,25 +65,36 @@ namespace Setup.Financas
 
             mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(mesAtual).ToUpper();
 
-            string sql = "select CLASSE_ID, CLASSE, VALOR from(select b.CLASSE_ID, b.CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
-            sql += "a inner join classe b on a.CLASSE = b.CLASSE_ID where a.VALOR < '0' and ";
-            sql += "extract(month from a.DATA) = " + mesAtual + " and extract(year from a.DATA) = " + anoAtual + "";
-            sql += "group by b.CLASSE_ID, b.CLASSE ";
+            string sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
+            sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < '0' AND EXTRACT(MONTH FROM A.DATA) = " + mesAtual + " AND ";
+            sql += "EXTRACT(YEAR FROM A.DATA) = " + anoAtual + " GROUP BY B.CLASSE_ID, B.CLASSE ";
+            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
+            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID  WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mesAtual + " ";
+            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + anoAtual + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
 
+            /*
             sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
             sql += "a inner join classe b on a.CLASSE = b.CLASSE_ID where a.VALOR < '0' and ";
             sql += "extract(month from a.DATA) = " + mesAtual + " and extract(year from a.DATA) = " + anoAtual + " ";
             sql += ") order by classe";
+            */
 
-            lista_Gastos_Classe.DataSource = BD.Buscar(sql);
+            try
+            {
+                lista_Gastos_Classe.DataSource = BD.Buscar(sql);
+            }
+            catch
+            {
+                return;
+            }
 
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
             {
-                total += double.Parse(BD.Resultado.Rows[i][2].ToString());
+                total += double.Parse(BD.Resultado.Rows[i][1].ToString());
             }
 
-            lista_Gastos_Classe.Columns[1].HeaderText = "Gasto: " + mesNome;
-            //lista_Gastos_Classe.Columns[2].HeaderText = total.ToString("C");
+            lista_Gastos_Classe.Columns[0].HeaderText = "Gasto: " + mesNome;
+            lista_Gastos_Classe.Columns[1].HeaderText = total.ToString("C");
         }
 
         private void CarregarCbClassesContas(string tabela = "")
@@ -161,7 +172,7 @@ namespace Setup.Financas
         {
             string classe, conta, valor;
 
-            if (!COD.ValidarCampos(pnSalvar, errorProvider1))
+            if (!COD.ValidarCampos(pnSalvarIn, errorProvider1))
                 return;
 
             classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
@@ -205,7 +216,7 @@ namespace Setup.Financas
 
         private void limpar_Click(object sender, EventArgs e)
         {
-            COD.LimparCampos(pnSalvar, txtData, cbClasse);
+            COD.LimparCampos(pnSalvarIn, txtData, cbClasse);
         }
 
         private void comprasCredito_Click(object sender, EventArgs e)
@@ -251,13 +262,21 @@ namespace Setup.Financas
             if (lista_Gastos_Classe.Rows.Count == 0)
                 return;
 
-            classe = lista_Gastos_Classe.SelectedRows[0].Cells[1].Value.ToString();
+            try
+            {
+                classe = lista_Gastos_Classe.SelectedRows[0].Cells[0].Value.ToString();
 
-            frmRelatorio rel = new frmRelatorio();
-            rel.ckDespesa.Checked = true;
-            rel.CarregarCbClassesContas("classe");
-            rel.cbClasse.Text = classe;
-            rel.ShowDialog();
+                frmRelatorio rel = new frmRelatorio();
+                rel.ckDespesa.Checked = true;
+                rel.CarregarCbClassesContas("classe");
+                rel.cbClasse.Text = classe;
+                rel.ShowDialog();
+            }
+            catch
+            {
+                return;                
+            }
+
         }
 
         private void ToolVisaoGeral_Click(object sender, EventArgs e)
