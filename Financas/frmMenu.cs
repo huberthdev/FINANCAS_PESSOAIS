@@ -298,5 +298,11 @@ namespace Setup.Financas
 
             listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
         }
+
+        private void cads_Click(object sender, EventArgs e)
+        {
+            frmCadastro cad = new frmCadastro();
+            cad.ShowDialog();
+        }
     }
 }

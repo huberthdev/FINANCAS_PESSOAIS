@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -8,6 +9,11 @@ namespace Setup.Financas
         public frmCadastro()
         {
             InitializeComponent();
+        }
+
+        private void frmCadastro_Load(object sender, EventArgs e)
+        {
+            CarregarListasClasseConta();
         }
 
         private void txtClasse_TextChanged(object sender, EventArgs e)
@@ -76,24 +82,9 @@ namespace Setup.Financas
             }
         }
 
-        private void btnExcluirClasse_Click(object sender, EventArgs e)
+        private void SalvarClasse()
         {
-            if (listaClasse.RowCount == 0) return;
-
-            string id = listaClasse.CurrentRow.Cells[0].Value.ToString();
-            string classe = listaClasse.CurrentRow.Cells[1].Value.ToString();
-
-            COD.Pergunta("Excluir Classe: " + classe);
-            if (COD.Resposta == false)
-                return;
-
-            if (BD.Delete("CLASSE", id).Item1)
-                CarregarListasClasseConta();
-        }
-
-        private void btnSalvarClasse_Click(object sender, EventArgs e)
-        {
-            if (COD.ValidarCampos(gpClasse) == false)
+            if (COD.ValidarCampos(pnClasse) == false)
                 return;
 
             int tp = Convert.ToInt32(optReceita.Checked);
@@ -119,11 +110,28 @@ namespace Setup.Financas
             txtClasse.Text = "";
 
             CarregarListasClasseConta();
+
         }
 
-        private void btnSalvarConta_Click(object sender, EventArgs e)
+        private void ExcluirClasse()
         {
-            if (COD.ValidarCampos(gpConta) == false)
+            if (listaClasse.RowCount == 0) return;
+
+            string id = listaClasse.CurrentRow.Cells[0].Value.ToString();
+            string classe = listaClasse.CurrentRow.Cells[1].Value.ToString();
+
+            COD.Pergunta("Excluir Classe: " + classe);
+            if (COD.Resposta == false)
+                return;
+
+            if (BD.Delete("CLASSE", id).Item1)
+                CarregarListasClasseConta();
+
+        }
+
+        private void SalvarConta()
+        {
+            if (COD.ValidarCampos(pnConta) == false)
                 return;
 
             //PEGAR O VALOR DO SALDO INICIAL DA NOVA CONTA VIA FORMULÁRIO
@@ -153,9 +161,10 @@ namespace Setup.Financas
             txtConta.Text = "";
 
             CarregarListasClasseConta();
+
         }
 
-        private void btnExcluirConta_Click(object sender, EventArgs e)
+        private void ExcluirConta()
         {
             if (listaConta.RowCount == 0)
                 return;
@@ -169,11 +178,64 @@ namespace Setup.Financas
 
             if (BD.Delete("CONTA", id).Item1)
                 CarregarListasClasseConta();
+
         }
 
-        private void btnSalvarClasse_Click_1(object sender, EventArgs e)
+        private void btnSalvarConta_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnExcluirConta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sair_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void optConta_Click(object sender, EventArgs e)
+        {
+            pnConta.Location = new Point(8, 27);
+            pnClasse.Location = new Point(471, 27);
+        }
+
+        private void optClasse_Click(object sender, EventArgs e)
+        {
+            pnClasse.Location = new Point(8, 27);
+            pnConta.Location = new Point(471, 27);
+        }
+
+        private void salvar_Click(object sender, EventArgs e)
+        {
+            if (optConta.Checked)
+            {
+                SalvarConta();
+            }
+            else
+            {
+                SalvarClasse();
+            }
+        }
+
+        private void excluir_Click(object sender, EventArgs e)
+        {
+            if (optConta.Checked)
+            {
+                ExcluirConta();
+            }
+            else
+            {
+                ExcluirClasse();
+            }
+        }
+
+        private void optConta_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
