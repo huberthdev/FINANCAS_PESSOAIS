@@ -127,11 +127,8 @@ namespace Setup.Financas
             this.limpar = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastro = new System.Windows.Forms.ToolStripMenuItem();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.label7 = new System.Windows.Forms.Label();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblLeft = new System.Windows.Forms.Label();
-            this.lblRight = new System.Windows.Forms.Label();
             this.pnListaClasse = new System.Windows.Forms.Panel();
             this.lnLeft = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -163,10 +160,10 @@ namespace Setup.Financas
             this.ToolVisaoGeral,
             this.ToolPrevisao,
             this.ToolCalculadora});
-            this.menuStrip1.Location = new System.Drawing.Point(5, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(4, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1095, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1097, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -489,8 +486,9 @@ namespace Setup.Financas
             this.listaSaldo_Contas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.listaSaldo_Contas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaSaldo_Contas.ShowEditingIcon = false;
-            this.listaSaldo_Contas.Size = new System.Drawing.Size(348, 175);
+            this.listaSaldo_Contas.Size = new System.Drawing.Size(348, 179);
             this.listaSaldo_Contas.TabIndex = 1;
+            this.listaSaldo_Contas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaSaldo_Contas_DataBindingComplete);
             // 
             // CONTA_ID
             // 
@@ -594,7 +592,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
-            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 397);
+            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 401);
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
             // 
@@ -634,9 +632,9 @@ namespace Setup.Financas
             this.pnSalvar.Controls.Add(this.listaSaldo_Contas);
             this.pnSalvar.Controls.Add(this.stSalvar);
             this.pnSalvar.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnSalvar.Location = new System.Drawing.Point(5, 26);
+            this.pnSalvar.Location = new System.Drawing.Point(4, 26);
             this.pnSalvar.Name = "pnSalvar";
-            this.pnSalvar.Size = new System.Drawing.Size(363, 397);
+            this.pnSalvar.Size = new System.Drawing.Size(363, 401);
             this.pnSalvar.TabIndex = 0;
             // 
             // pnSalvarIn
@@ -897,24 +895,15 @@ namespace Setup.Financas
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label7.Location = new System.Drawing.Point(1, 453);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(1104, 4);
-            this.label7.TabIndex = 1;
-            // 
             // statusStrip
             // 
             this.statusStrip.AutoSize = false;
             this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(5, 427);
+            this.statusStrip.Location = new System.Drawing.Point(4, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1095, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1097, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 21;
@@ -926,94 +915,76 @@ namespace Setup.Financas
             this.statusLabel.Size = new System.Drawing.Size(23, 17);
             this.statusLabel.Text = ">>";
             // 
-            // lblLeft
-            // 
-            this.lblLeft.BackColor = System.Drawing.Color.White;
-            this.lblLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblLeft.Location = new System.Drawing.Point(0, 0);
-            this.lblLeft.Name = "lblLeft";
-            this.lblLeft.Size = new System.Drawing.Size(1, 457);
-            this.lblLeft.TabIndex = 22;
-            // 
-            // lblRight
-            // 
-            this.lblRight.BackColor = System.Drawing.Color.White;
-            this.lblRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblRight.Location = new System.Drawing.Point(1104, 0);
-            this.lblRight.Name = "lblRight";
-            this.lblRight.Size = new System.Drawing.Size(1, 449);
-            this.lblRight.TabIndex = 22;
-            // 
             // pnListaClasse
             // 
             this.pnListaClasse.Controls.Add(this.lista_Gastos_Classe);
             this.pnListaClasse.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnListaClasse.Location = new System.Drawing.Point(372, 26);
+            this.pnListaClasse.Location = new System.Drawing.Point(371, 26);
             this.pnListaClasse.Name = "pnListaClasse";
-            this.pnListaClasse.Size = new System.Drawing.Size(352, 397);
+            this.pnListaClasse.Size = new System.Drawing.Size(352, 401);
             this.pnListaClasse.TabIndex = 23;
             // 
             // lnLeft
             // 
             this.lnLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lnLeft.Location = new System.Drawing.Point(724, 26);
+            this.lnLeft.Location = new System.Drawing.Point(723, 26);
             this.lnLeft.Name = "lnLeft";
-            this.lnLeft.Size = new System.Drawing.Size(4, 397);
+            this.lnLeft.Size = new System.Drawing.Size(4, 401);
             this.lnLeft.TabIndex = 24;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(5, 423);
+            this.label1.Location = new System.Drawing.Point(4, 427);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1095, 4);
+            this.label1.Size = new System.Drawing.Size(1097, 4);
             this.label1.TabIndex = 24;
             // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label9.Location = new System.Drawing.Point(1, 0);
+            this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(4, 449);
+            this.label9.Size = new System.Drawing.Size(4, 453);
             this.label9.TabIndex = 24;
             // 
             // label10
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label10.Location = new System.Drawing.Point(368, 26);
+            this.label10.Location = new System.Drawing.Point(367, 26);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(4, 397);
+            this.label10.Size = new System.Drawing.Size(4, 401);
             this.label10.TabIndex = 24;
             // 
             // label12
             // 
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label12.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label12.Location = new System.Drawing.Point(5, 24);
+            this.label12.Location = new System.Drawing.Point(4, 24);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(1095, 2);
+            this.label12.Size = new System.Drawing.Size(1097, 2);
             this.label12.TabIndex = 24;
             // 
             // lnRight
             // 
             this.lnRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lnRight.Location = new System.Drawing.Point(1100, 0);
+            this.lnRight.Location = new System.Drawing.Point(1101, 0);
             this.lnRight.Name = "lnRight";
-            this.lnRight.Size = new System.Drawing.Size(4, 449);
+            this.lnRight.Size = new System.Drawing.Size(4, 453);
             this.lnRight.TabIndex = 25;
             // 
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label13.Location = new System.Drawing.Point(1, 449);
+            this.label13.Location = new System.Drawing.Point(0, 453);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(1104, 4);
+            this.label13.Size = new System.Drawing.Size(1105, 4);
             this.label13.TabIndex = 26;
             // 
             // frmMenu
@@ -1031,11 +1002,8 @@ namespace Setup.Financas
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.lnRight);
-            this.Controls.Add(this.lblRight);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.lblLeft);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1115,11 +1083,8 @@ namespace Setup.Financas
         private Controles.Cabecalho ToolPrevisao;
         private Controles.Cabecalho compraCredito;
         private Controles.Cabecalho transf;
-        private Label label7;
         private StatusStrip statusStrip;
         private ToolStripStatusLabel statusLabel;
-        private Label lblRight;
-        private Label lblLeft;
         private Panel pnSalvar;
         private DataGridViewTextBoxColumn CLASSE_ID;
         private DataGridViewTextBoxColumn CLASSE;

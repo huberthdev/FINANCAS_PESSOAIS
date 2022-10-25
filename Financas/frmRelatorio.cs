@@ -170,10 +170,7 @@ namespace Setup.Financas
 
             //PREENCHE A BARRA DE STATUS A QUANTIDADE DE LINHAS DA LISTA
             status.Items["totalLn"].Text = "LINHAS: " + lista.RowCount;
-
-            //Thread.Sleep(5000);
-            Formatacao_Condicional();
-            SomarColunaValor();
+            
         }
 
         public void CarregarCbClassesContas(string campo = "")
@@ -274,8 +271,6 @@ namespace Setup.Financas
                         lista.Rows[i].Cells[c].Style.ForeColor = Color.DodgerBlue;
                     }
                 }
-
-                //lista.Rows[i].Cells[4].Style.Font = new Font(this.Font, FontStyle.Bold);
             }
 
         }
@@ -420,11 +415,6 @@ namespace Setup.Financas
             CarregarCbClassesContas("classe");
         }
 
-        private void frmRelatorio_Activated(object sender, EventArgs e)
-        {
-            Formatacao_Condicional();
-        }
-
         private void txtDescricao_TextChanged(object sender, EventArgs e)
         {
             CarregarLista();
@@ -486,11 +476,6 @@ namespace Setup.Financas
             }
         }
 
-        private void lista_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
-
         private void lg2_Click(object sender, EventArgs e)
         {
             LimparFiltro(despesa:true);
@@ -499,6 +484,12 @@ namespace Setup.Financas
         private void lg1_Click(object sender, EventArgs e)
         {
             LimparFiltro(receita:true);
+        }
+
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            Formatacao_Condicional();
+            SomarColunaValor();
         }
     }
 }

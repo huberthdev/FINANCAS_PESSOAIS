@@ -46,29 +46,10 @@ namespace Setup.Financas
         //TODAS AS FUNÇÕES DA ABA LANÇAMENTO DE RECEITAS E DESPESAS
         private void CarregarListaSaldoContas()
         {
-            double valor, total = 0;
-
             string sql = "SELECT CONTA_ID, CONTA, SALDO FROM CONTA ";
             sql += "WHERE SALDO <> 0 ORDER BY SALDO DESC";
 
             listaSaldo_Contas.DataSource = BD.Buscar(sql);
-
-            for (int i = 0; i < listaSaldo_Contas.RowCount; i++)
-            {
-                valor = double.Parse(listaSaldo_Contas.Rows[i].Cells[2].Value.ToString());
-                total += valor;
-
-                if (valor < 0)
-                {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
-                }
-                else
-                {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
-                }
-            }
-
-            listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
         }
 
         private void CarregarListaGastoClasseMesAtual()
@@ -301,6 +282,29 @@ namespace Setup.Financas
 
         private void menu_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void listaSaldo_Contas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            double valor, total = 0;
+
+            for (int i = 0; i < listaSaldo_Contas.RowCount; i++)
+            {
+                valor = double.Parse(listaSaldo_Contas.Rows[i].Cells[2].Value.ToString());
+                total += valor;
+
+                if (valor < 0)
+                {
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
+                }
+                else
+                {
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
+                }
+            }
+
+            listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
 
         }
     }
