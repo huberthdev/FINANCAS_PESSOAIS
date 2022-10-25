@@ -414,5 +414,10 @@ namespace Setup.Financas
 
             Classes.Geral.AbrirDetalheTransacao(id, "C");
         }
+
+        private void frmCredito_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

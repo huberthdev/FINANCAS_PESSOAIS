@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -22,6 +23,18 @@ namespace Setup.Financas
             base.Dispose(disposing);
         }
 
+        protected override void OnCreateControl()
+        {
+            this.lista.BorderStyle = BorderStyle.None;
+            this.lista.GridColor = Color.FromArgb(25, 25, 26);
+            this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
+            base.OnCreateControl();
+        }
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -31,15 +44,15 @@ namespace Setup.Financas
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCredito));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.salvar = new Setup.Controles.Cabecalho();
             this.excluir = new Setup.Controles.Cabecalho();
@@ -68,13 +81,20 @@ namespace Setup.Financas
             this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeFaturas = new System.Windows.Forms.TreeView();
-            this.status = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.cbFCartao = new Setup.Controles.cbCombo();
             this.lblPeriodo = new System.Windows.Forms.Label();
             this.btnPagarFatura = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.status = new System.Windows.Forms.StatusStrip();
+            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.lnRight = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblFaturas = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
@@ -82,7 +102,7 @@ namespace Setup.Financas
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salvar,
             this.excluir,
@@ -90,7 +110,7 @@ namespace Setup.Financas
             this.limpar});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(974, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(970, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,6 +152,7 @@ namespace Setup.Financas
             // 
             // txtDesc
             // 
+            this.txtDesc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
@@ -140,11 +161,12 @@ namespace Setup.Financas
             this.txtDesc.Location = new System.Drawing.Point(493, 64);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Size = new System.Drawing.Size(237, 23);
+            this.txtDesc.Size = new System.Drawing.Size(233, 23);
             this.txtDesc.TabIndex = 30;
             // 
             // txtQtdeParc
             // 
+            this.txtQtdeParc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtQtdeParc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtQtdeParc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQtdeParc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -159,6 +181,7 @@ namespace Setup.Financas
             // 
             // txtValor
             // 
+            this.txtValor.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtValor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -172,6 +195,7 @@ namespace Setup.Financas
             // 
             // txtData
             // 
+            this.txtData.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtData.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -187,6 +211,7 @@ namespace Setup.Financas
             // cbClasse
             // 
             this.cbClasse.AllowDrop = true;
+            this.cbClasse.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbClasse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cbClasse.DropDownHeight = 136;
             this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -197,12 +222,13 @@ namespace Setup.Financas
             this.cbClasse.Location = new System.Drawing.Point(421, 32);
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
-            this.cbClasse.Size = new System.Drawing.Size(309, 23);
+            this.cbClasse.Size = new System.Drawing.Size(305, 23);
             this.cbClasse.TabIndex = 25;
             this.cbClasse.Tag = "\'Classe\'";
             // 
             // cbCartao
             // 
+            this.cbCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbCartao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cbCartao.DropDownHeight = 136;
             this.cbCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -219,6 +245,7 @@ namespace Setup.Financas
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(375, 40);
             this.label2.Name = "label2";
@@ -228,6 +255,7 @@ namespace Setup.Financas
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(429, 72);
             this.label6.Name = "label6";
@@ -237,6 +265,7 @@ namespace Setup.Financas
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(293, 72);
             this.label5.Name = "label5";
@@ -246,6 +275,7 @@ namespace Setup.Financas
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(156, 72);
             this.label4.Name = "label4";
@@ -255,6 +285,7 @@ namespace Setup.Financas
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 72);
             this.label3.Name = "label3";
@@ -264,6 +295,7 @@ namespace Setup.Financas
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 40);
             this.label1.Name = "label1";
@@ -275,24 +307,27 @@ namespace Setup.Financas
             // 
             this.lista.AllowUserToAddRows = false;
             this.lista.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.lista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CHAVE,
@@ -304,45 +339,45 @@ namespace Setup.Financas
             this.DATA_PGMTO,
             this.DESCRICAO,
             this.dataGridViewTextBoxColumn1});
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lista.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle7;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
             this.lista.GridColor = System.Drawing.Color.DimGray;
-            this.lista.Location = new System.Drawing.Point(12, 130);
+            this.lista.Location = new System.Drawing.Point(9, 131);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.Height = 25;
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(718, 275);
+            this.lista.Size = new System.Drawing.Size(719, 271);
             this.lista.TabIndex = 1;
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
@@ -370,10 +405,10 @@ namespace Setup.Financas
             // 
             this.DATA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DATA.DataPropertyName = "DATA";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Format = "d";
-            dataGridViewCellStyle12.NullValue = null;
-            this.DATA.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DATA.DefaultCellStyle = dataGridViewCellStyle3;
             this.DATA.HeaderText = "DATA";
             this.DATA.MinimumWidth = 80;
             this.DATA.Name = "DATA";
@@ -394,10 +429,10 @@ namespace Setup.Financas
             // 
             this.VALOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.VALOR.DataPropertyName = "VALOR";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Format = "N2";
-            dataGridViewCellStyle13.NullValue = "0,00";
-            this.VALOR.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0,00";
+            this.VALOR.DefaultCellStyle = dataGridViewCellStyle4;
             this.VALOR.HeaderText = "VALOR";
             this.VALOR.MinimumWidth = 80;
             this.VALOR.Name = "VALOR";
@@ -408,8 +443,8 @@ namespace Setup.Financas
             // 
             this.PARCELA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.PARCELA.DataPropertyName = "PARCELA";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.PARCELA.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PARCELA.DefaultCellStyle = dataGridViewCellStyle5;
             this.PARCELA.HeaderText = "PARCELA";
             this.PARCELA.MinimumWidth = 60;
             this.PARCELA.Name = "PARCELA";
@@ -420,10 +455,10 @@ namespace Setup.Financas
             // 
             this.DATA_PGMTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DATA_PGMTO.DataPropertyName = "DATA_PGMTO";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Format = "d";
-            dataGridViewCellStyle15.NullValue = null;
-            this.DATA_PGMTO.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.DATA_PGMTO.DefaultCellStyle = dataGridViewCellStyle6;
             this.DATA_PGMTO.HeaderText = "PAGAMENTO";
             this.DATA_PGMTO.MinimumWidth = 80;
             this.DATA_PGMTO.Name = "DATA_PGMTO";
@@ -432,13 +467,11 @@ namespace Setup.Financas
             // 
             // DESCRICAO
             // 
-            this.DESCRICAO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DESCRICAO.DataPropertyName = "DESCRICAO";
             this.DESCRICAO.HeaderText = "DESCRIÇÃO";
             this.DESCRICAO.MinimumWidth = 180;
             this.DESCRICAO.Name = "DESCRICAO";
             this.DESCRICAO.ReadOnly = true;
-            this.DESCRICAO.Width = 180;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -451,46 +484,30 @@ namespace Setup.Financas
             // 
             // treeFaturas
             // 
+            this.treeFaturas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeFaturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.treeFaturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.treeFaturas.ForeColor = System.Drawing.Color.White;
-            this.treeFaturas.Location = new System.Drawing.Point(740, 32);
+            this.treeFaturas.Location = new System.Drawing.Point(742, 63);
             this.treeFaturas.Name = "treeFaturas";
-            this.treeFaturas.Size = new System.Drawing.Size(222, 373);
+            this.treeFaturas.Size = new System.Drawing.Size(222, 338);
             this.treeFaturas.TabIndex = 32;
             this.treeFaturas.DoubleClick += new System.EventHandler(this.treeFaturas_DoubleClick);
             // 
-            // status
-            // 
-            this.status.AutoSize = false;
-            this.status.BackColor = System.Drawing.Color.Transparent;
-            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 414);
-            this.status.Name = "status";
-            this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.status.Size = new System.Drawing.Size(974, 22);
-            this.status.SizingGrip = false;
-            this.status.Stretch = false;
-            this.status.TabIndex = 33;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(23, 17);
-            this.statusLabel.Text = ">>";
-            // 
             // label7
             // 
-            this.label7.BackColor = System.Drawing.Color.Silver;
-            this.label7.Location = new System.Drawing.Point(12, 96);
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label7.Location = new System.Drawing.Point(14, 95);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(718, 1);
+            this.label7.Size = new System.Drawing.Size(711, 1);
             this.label7.TabIndex = 34;
             this.label7.Text = "label7";
             // 
             // label8
             // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(12, 110);
             this.label8.Name = "label8";
@@ -500,6 +517,7 @@ namespace Setup.Financas
             // 
             // cbFCartao
             // 
+            this.cbFCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbFCartao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cbFCartao.DropDownHeight = 136;
             this.cbFCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -518,6 +536,7 @@ namespace Setup.Financas
             // 
             // lblPeriodo
             // 
+            this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPeriodo.ForeColor = System.Drawing.Color.Silver;
@@ -530,6 +549,7 @@ namespace Setup.Financas
             // 
             // btnPagarFatura
             // 
+            this.btnPagarFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
             this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -542,17 +562,110 @@ namespace Setup.Financas
             this.btnPagarFatura.Text = "PAGAR";
             this.btnPagarFatura.UseVisualStyleBackColor = false;
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label9.Location = new System.Drawing.Point(4, 406);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(966, 4);
+            this.label9.TabIndex = 37;
+            // 
+            // status
+            // 
+            this.status.AutoSize = false;
+            this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.status.Location = new System.Drawing.Point(4, 410);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(966, 22);
+            this.status.SizingGrip = false;
+            this.status.Stretch = false;
+            this.status.TabIndex = 36;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(23, 17);
+            this.statusLabel.Text = ">>";
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label13.Location = new System.Drawing.Point(0, 432);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(970, 4);
+            this.label13.TabIndex = 38;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label10.Location = new System.Drawing.Point(0, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(4, 408);
+            this.label10.TabIndex = 39;
+            // 
+            // lnRight
+            // 
+            this.lnRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lnRight.Location = new System.Drawing.Point(970, 0);
+            this.lnRight.Name = "lnRight";
+            this.lnRight.Size = new System.Drawing.Size(4, 436);
+            this.lnRight.TabIndex = 40;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label11.Location = new System.Drawing.Point(732, 24);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(4, 382);
+            this.label11.TabIndex = 41;
+            // 
+            // lblFaturas
+            // 
+            this.lblFaturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFaturas.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblFaturas.ForeColor = System.Drawing.Color.Silver;
+            this.lblFaturas.Location = new System.Drawing.Point(742, 32);
+            this.lblFaturas.Name = "lblFaturas";
+            this.lblFaturas.Size = new System.Drawing.Size(222, 23);
+            this.lblFaturas.TabIndex = 42;
+            this.lblFaturas.Text = "Faturas";
+            this.lblFaturas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label12.Location = new System.Drawing.Point(742, 57);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(221, 1);
+            this.label12.TabIndex = 43;
+            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(974, 436);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblFaturas);
+            this.Controls.Add(this.lista);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.treeFaturas);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.btnPagarFatura);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.status);
-            this.Controls.Add(this.treeFaturas);
-            this.Controls.Add(this.lista);
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.txtQtdeParc);
             this.Controls.Add(this.txtValor);
@@ -569,16 +682,17 @@ namespace Setup.Financas
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.lnRight);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "frmCredito";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Activated += new System.EventHandler(this.frmCredito_Activated);
+            this.Load += new System.EventHandler(this.frmCredito_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCredito_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -607,17 +721,6 @@ namespace Setup.Financas
         private Label label1;
         private Controles.dgView lista;
         private TreeView treeFaturas;
-        private StatusStrip status;
-        private ToolStripStatusLabel statusLabel;
-        private DataGridViewTextBoxColumn CHAVE;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn DATA;
-        private DataGridViewTextBoxColumn CLASSE;
-        private DataGridViewTextBoxColumn VALOR;
-        private DataGridViewTextBoxColumn PARCELA;
-        private DataGridViewTextBoxColumn DATA_PGMTO;
-        private DataGridViewTextBoxColumn DESCRICAO;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private Label label7;
         private Label label8;
         private Controles.cbCombo cbFCartao;
@@ -627,5 +730,23 @@ namespace Setup.Financas
         private Controles.Cabecalho limpar;
         private Controles.Cabecalho cartoes;
         private Controles.Cabecalho excluir;
+        private DataGridViewTextBoxColumn CHAVE;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn DATA;
+        private DataGridViewTextBoxColumn CLASSE;
+        private DataGridViewTextBoxColumn VALOR;
+        private DataGridViewTextBoxColumn PARCELA;
+        private DataGridViewTextBoxColumn DATA_PGMTO;
+        private DataGridViewTextBoxColumn DESCRICAO;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private Label label9;
+        private StatusStrip status;
+        private ToolStripStatusLabel statusLabel;
+        private Label label13;
+        private Label label10;
+        private Label lnRight;
+        private Label label11;
+        private Label lblFaturas;
+        private Label label12;
     }
 }
