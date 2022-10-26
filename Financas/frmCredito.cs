@@ -134,7 +134,7 @@ namespace Setup.Financas
             if (data == "")
                 return;
 
-                //------------------------------------------------------------------------------------------------------------
+            //------------------------------------------------------------------------------------------------------------
 
             string[] c = new string[5];
             string[] vl = new string[5];
@@ -328,10 +328,17 @@ namespace Setup.Financas
         {
             string chave;
 
-            if (lista.RowCount == 0 || lista.SelectedRows.Count == 0)
+            if (lista.RowCount == 0)
                 return;
 
-            chave = lista.SelectedRows[0].Cells[1].Value.ToString();
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[1].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
 
             Classes.Geral.ExcluirCompraCredito(chave);
 
@@ -410,7 +417,7 @@ namespace Setup.Financas
             if (lista.RowCount == 0)
                 return;
 
-            id = lista.SelectedRows[0].Cells[2].Value.ToString();
+            id = lista.SelectedRows[0].Cells[1].Value.ToString();
 
             Classes.Geral.AbrirDetalheTransacao(id, "C");
         }

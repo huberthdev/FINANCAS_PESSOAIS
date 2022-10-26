@@ -97,23 +97,14 @@ namespace Setup.Classes
 
         public static void ExcluirCompraCredito(string chave)
         {
-            string sql, chv;
-
-            try
-            {
-                sql = "SELECT CHAVE FROM COMPRA_CREDITO WHERE COMPRA_CREDITO_ID = " + chave + "";
-                chv = BD.Buscar(sql).Rows[0][0].ToString();
-            }
-            catch (Exception)
-            {
-                return;
-            }
+            string sql;
 
             if (chave == "")
                 return;
 
-            sql = "SELECT SUM(STATUS) FROM COMPRA_CREDITO WHERE CHAVE = " + chv + "";
+            sql = "SELECT SUM(STATUS) FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
             BD.Buscar(sql);
+
             if (int.Parse(BD.Resultado.Rows[0][0].ToString()) > 0)
             {
                 COD.Erro("Exclusão não permitida!\r\n\r\nEsta compra já possui parcela paga!");
@@ -124,10 +115,10 @@ namespace Setup.Classes
             if (COD.Resposta == false)
                 return;
 
-            sql = "DELETE FROM COMPRA_CREDITO WHERE CHAVE = " + chv + "";
+            sql = "DELETE FROM COMPRA_CREDITO WHERE CHAVE = " + chave + "";
             BD.ExecutarSQL(sql);
 
-            sql = "DELETE FROM KEY_COMPRA_CREDITO WHERE CHAVE = " + chv + "";
+            sql = "DELETE FROM KEY_COMPRA_CREDITO WHERE CHAVE = " + chave + "";
             BD.ExecutarSQL(sql);
         }
 
@@ -137,31 +128,37 @@ namespace Setup.Classes
 
             if (tipo == "C")
             {
-                sql = "SELECT A.COMPRA_CREDITO_ID, B.CHAVE, C.CLASSE, E.CONTA, A.VALOR AS VALOR_PARCELA, A.PARCELA, A.DATA_PARCELA, A.STATUS, ";
+                sql = "SELECT B.CHAVE, C.CLASSE, E.CONTA, A.VALOR AS VALOR_PARCELA, A.PARCELA, A.DATA_PARCELA, A.STATUS, ";
                 sql += "B.VALOR AS VALOR_TOTAL, B.DATA_COMPRA, B.DESCRICAO, D.COR ";
                 sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
                 sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID ";
                 sql += "INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
                 sql += "INNER JOIN CONTA E ON D.CONTA = E.CONTA_ID ";
-                sql += "WHERE A.COMPRA_CREDITO_ID = " + id + "";
+                sql += "WHERE B.CHAVE = " + id + "";
 
-                BD.Buscar(sql);
+                try
+                {
+                    BD.Buscar(sql);
+                }
+                catch
+                {
+                    return;
+                }
 
-                string id_compra = "Código da Parcela: " + BD.Resultado.Rows[0][0].ToString();
-                string chave = "Compra Nº: " + BD.Resultado.Rows[0][1].ToString();
-                string classe = "Classe: " + BD.Resultado.Rows[0][2].ToString();
-                string cartao = "Cartão: " + BD.Resultado.Rows[0][3].ToString();
-                string v_parcela = "Valor da Parcela: " + double.Parse(BD.Resultado.Rows[0][4].ToString()).ToString("N");
-                string parcela = "Parcela: " + BD.Resultado.Rows[0][5].ToString();
-                string dt_parcela = "Data da Parcela: " + DateTime.Parse(BD.Resultado.Rows[0][6].ToString()).ToShortDateString();
-                string status = "Status: " + BD.Resultado.Rows[0][7].ToString();
-                string v_total = "Valor Total: " + double.Parse(BD.Resultado.Rows[0][8].ToString()).ToString("N");
-                string dt_compra = "Data: " + DateTime.Parse(BD.Resultado.Rows[0][9].ToString()).ToShortDateString();
-                string descricao = "Descrição: " + BD.Resultado.Rows[0][10].ToString();
-                string cor = BD.Resultado.Rows[0][11].ToString();
+                string chave = "Compra Nº: " + BD.Resultado.Rows[0][0].ToString();
+                string classe = "Classe: " + BD.Resultado.Rows[0][1].ToString();
+                string cartao = "Cartão: " + BD.Resultado.Rows[0][2].ToString();
+                string v_parcela = "Valor da Parcela: " + double.Parse(BD.Resultado.Rows[0][3].ToString()).ToString("N");
+                string parcela = "Parcela: " + BD.Resultado.Rows[0][4].ToString();
+                string dt_parcela = "Data da Parcela: " + DateTime.Parse(BD.Resultado.Rows[0][5].ToString()).ToShortDateString();
+                string status = "Status: " + BD.Resultado.Rows[0][6].ToString();
+                string v_total = "Valor Total: " + double.Parse(BD.Resultado.Rows[0][7].ToString()).ToString("N");
+                string dt_compra = "Data: " + DateTime.Parse(BD.Resultado.Rows[0][8].ToString()).ToShortDateString();
+                string descricao = "Descrição: " + BD.Resultado.Rows[0][9].ToString();
+                string cor = BD.Resultado.Rows[0][10].ToString();
 
                 texto = dt_compra + "\t" + v_total + "\r\n\r\n";
-                texto += id_compra + "\t" + chave + "\r\n\r\n" + classe + "\r\n\r\n" + cartao;
+                texto += chave + "\r\n\r\n" + classe + "\r\n\r\n" + cartao;
                 texto += "\r\n\r\n" + dt_parcela + "\t" + parcela;
                 texto += "\r\n\r\n" + v_parcela + "\t" + status;
                 texto += "\r\n\r\n" + descricao;
@@ -186,7 +183,6 @@ namespace Setup.Classes
             }
             
         }
-
     }
 
     public class Classe

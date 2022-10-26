@@ -8,6 +8,10 @@ namespace Setup.Financas
         public frmTransf()
         {
             InitializeComponent();
+        }
+
+        private void frmTransf_Load(object sender, EventArgs e)
+        {
             txtData.Text = DateTime.Today.ToShortDateString();
             CarregarContas();
             CarregarLista();
@@ -73,7 +77,7 @@ namespace Setup.Financas
         private void CarregarLista()
         {
             string sql = "SELECT A.TRANSFERENCIA_ID, A.DATA, B.CONTA, A.VALOR, A.DESCRICAO ";
-            sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ";
+            sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID";
 
             lista.DataSource = BD.Buscar(sql);
 
@@ -104,11 +108,6 @@ namespace Setup.Financas
             CarregarLista();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            CarregarLista();
-        }
-
         private void frmTransf_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -116,6 +115,11 @@ namespace Setup.Financas
                 SendKeys.Send("{TAB}");
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void atualizar_Click(object sender, EventArgs e)
+        {
+            CarregarLista();
         }
     }
 }

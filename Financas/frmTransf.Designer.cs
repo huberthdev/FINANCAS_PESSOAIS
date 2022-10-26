@@ -98,7 +98,6 @@ namespace Setup.Financas
             this.menuStrip1.Size = new System.Drawing.Size(623, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // salvar
             // 
@@ -141,6 +140,7 @@ namespace Setup.Financas
             this.atualizar.Size = new System.Drawing.Size(81, 20);
             this.atualizar.Text = "Atualizar";
             this.atualizar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.atualizar.Click += new System.EventHandler(this.atualizar_Click);
             // 
             // cbContaDebito
             // 
@@ -476,6 +476,7 @@ namespace Setup.Financas
             this.Name = "frmTransf";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmTransf_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTransf_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
