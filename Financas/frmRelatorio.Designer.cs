@@ -106,10 +106,12 @@ namespace Setup.Financas
             this.pnFiltro = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
             this.pnFiltro.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -179,6 +181,7 @@ namespace Setup.Financas
             this.exportar.Name = "exportar";
             this.exportar.Size = new System.Drawing.Size(79, 20);
             this.exportar.Text = "Exportar";
+            this.exportar.Click += new System.EventHandler(this.exportar_Click);
             // 
             // excel
             // 
@@ -186,6 +189,7 @@ namespace Setup.Financas
             this.excel.Name = "excel";
             this.excel.Size = new System.Drawing.Size(101, 22);
             this.excel.Text = "Excel";
+            this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
             // pdf
             // 
@@ -767,6 +771,7 @@ namespace Setup.Financas
             this.status.PerformLayout();
             this.pnFiltro.ResumeLayout(false);
             this.pnFiltro.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -825,5 +830,6 @@ namespace Setup.Financas
         private Panel pnFiltro;
         private Label label1;
         private Label label11;
+        private BindingSource bindingSource1;
     }
 }

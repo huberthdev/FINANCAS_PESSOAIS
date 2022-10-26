@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Setup.Financas
 {
@@ -490,6 +492,51 @@ namespace Setup.Financas
         {
             Formatacao_Condicional();
             SomarColunaValor();
+        }
+
+        private void exportar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void excel_Click(object sender, EventArgs e)
+        {
+            Excel.Application XcelApp = new Excel.Application();
+            Microsoft.Office.Interop.Excel.Range celulas;
+
+            if (lista.Rows.Count > 0)
+            {
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+
+                    for (int i = 1; i < lista.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i] = lista.Columns[i - 1].HeaderText;
+                    }
+                    //
+                    for (int i = 0; i < lista.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < lista.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j + 1] = lista.Rows[i].Cells[j].Value;
+                        }
+                    }
+                    //
+                    celulas = XcelApp.Range["A1", "A1"].CurrentRegion;
+                    celulas.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    celulas.Range["C1", "C" + celulas.Rows.Count].NumberFormat = "dd/MM/YYYY";
+                    celulas.Range["F1", "F" + celulas.Rows.Count].NumberFormat = "#,##0.00";
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    COD.Erro("Erro : " + ex.Message);
+                    XcelApp.Quit();
+                }
+            }
         }
     }
 }
