@@ -15,9 +15,9 @@ namespace Setup.Financas
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            CarregarCbClassesContas();
-            CarregarListaSaldoContas();
-            CarregarListaGastoClasseMesAtual();
+            //CarregarCbClassesContas();
+            //CarregarListaSaldoContas();
+            //CarregarListaGastoClasseMesAtual();
 
             txtData.Text = DateTime.Today.ToShortDateString();
         }
@@ -322,6 +322,18 @@ namespace Setup.Financas
         {
             frmCadastro cad = new frmCadastro();
             cad.ShowDialog();
+        }
+
+        private void menu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmMenu_Activated(object sender, EventArgs e)
+        {
+            CarregarCbClassesContas();
+            CarregarListaSaldoContas();
+            CarregarListaGastoClasseMesAtual();
         }
     }
 }

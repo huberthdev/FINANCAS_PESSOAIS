@@ -138,7 +138,7 @@ namespace Setup.Financas
                     sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
                     sql += "C.CLASSE, '' AS CONTA, (B.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
                     sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
-                    sql += "ON B.CLASSE = C.CLASSE_ID WHERE A.DATA_PARCELA BETWEEN ";
+                    sql += "ON B.CLASSE = C.CLASSE_ID WHERE B.DATA_COMPRA BETWEEN ";
                     sql += "CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
                     if (descricao != "")
                     {
