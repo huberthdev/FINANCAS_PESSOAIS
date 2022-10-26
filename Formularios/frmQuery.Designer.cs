@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Formularios
 {
@@ -21,6 +22,20 @@ namespace Setup.Formularios
             }
             base.Dispose(disposing);
         }
+
+        protected override void OnCreateControl()
+        {
+            this.lista.MultiSelect = true;
+            this.lista.BorderStyle = BorderStyle.None;
+            this.lista.GridColor = Color.FromArgb(25, 25, 26);
+            this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
+            base.OnCreateControl();
+        }
+
 
         #region Windows Form Designer generated code
 
@@ -47,16 +62,22 @@ namespace Setup.Formularios
             this.toolLimite = new System.Windows.Forms.ToolStripTextBox();
             this.treeTabelas = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lista = new Setup.Controles.dgView();
+            this.label9 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lista = new Setup.Controles.dgView();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lnRight = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
             // 
             // txtSQL
@@ -69,8 +90,9 @@ namespace Setup.Formularios
             this.txtSQL.Location = new System.Drawing.Point(0, 0);
             this.txtSQL.Margin = new System.Windows.Forms.Padding(1);
             this.txtSQL.Name = "txtSQL";
+            this.txtSQL.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.txtSQL.ShowSelectionMargin = true;
-            this.txtSQL.Size = new System.Drawing.Size(621, 79);
+            this.txtSQL.Size = new System.Drawing.Size(615, 79);
             this.txtSQL.TabIndex = 0;
             this.txtSQL.Text = "";
             // 
@@ -107,7 +129,7 @@ namespace Setup.Formularios
             this.toolLimite});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(797, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(793, 29);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -156,31 +178,70 @@ namespace Setup.Formularios
             this.treeTabelas.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.treeTabelas.ForeColor = System.Drawing.Color.White;
             this.treeTabelas.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeTabelas.Location = new System.Drawing.Point(0, 29);
+            this.treeTabelas.Location = new System.Drawing.Point(4, 29);
             this.treeTabelas.Name = "treeTabelas";
-            this.treeTabelas.Size = new System.Drawing.Size(174, 321);
+            this.treeTabelas.Size = new System.Drawing.Size(174, 324);
             this.treeTabelas.TabIndex = 4;
             // 
             // panel1
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.txtSQL);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(174, 29);
+            this.panel1.Location = new System.Drawing.Point(178, 29);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(623, 321);
+            this.panel1.Size = new System.Drawing.Size(615, 324);
             this.panel1.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 79);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(615, 4);
+            this.label2.TabIndex = 54;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.lista);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.status);
+            this.panel2.Controls.Add(this.lista);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 79);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(621, 240);
+            this.panel2.Size = new System.Drawing.Size(615, 245);
             this.panel2.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label9.Location = new System.Drawing.Point(0, 219);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(615, 4);
+            this.label9.TabIndex = 47;
+            // 
+            // status
+            // 
+            this.status.AutoSize = false;
+            this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.statusLabel});
+            this.status.Location = new System.Drawing.Point(0, 223);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(615, 22);
+            this.status.SizingGrip = false;
+            this.status.Stretch = false;
+            this.status.TabIndex = 46;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.ForeColor = System.Drawing.Color.White;
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(23, 17);
+            this.statusLabel.Text = ">>";
             // 
             // lista
             // 
@@ -193,7 +254,7 @@ namespace Setup.Formularios
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -238,44 +299,65 @@ namespace Setup.Formularios
             this.lista.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.Height = 25;
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(621, 218);
+            this.lista.Size = new System.Drawing.Size(615, 245);
             this.lista.TabIndex = 1;
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             // 
-            // status
+            // label13
             // 
-            this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 218);
-            this.status.Name = "status";
-            this.status.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.status.ShowItemToolTips = true;
-            this.status.Size = new System.Drawing.Size(621, 22);
-            this.status.SizingGrip = false;
-            this.status.TabIndex = 6;
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.label13.Location = new System.Drawing.Point(0, 353);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(793, 4);
+            this.label13.TabIndex = 49;
             // 
-            // statusLabel
+            // label1
             // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 17);
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(0, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(4, 324);
+            this.label1.TabIndex = 50;
+            // 
+            // lnRight
+            // 
+            this.lnRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lnRight.Location = new System.Drawing.Point(793, 0);
+            this.lnRight.Name = "lnRight";
+            this.lnRight.Size = new System.Drawing.Size(4, 357);
+            this.lnRight.TabIndex = 51;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label10.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label10.Location = new System.Drawing.Point(178, 29);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(4, 324);
+            this.label10.TabIndex = 52;
             // 
             // frmQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(797, 350);
+            this.ClientSize = new System.Drawing.Size(797, 357);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.treeTabelas);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.lnRight);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.Color.White;
             this.MainMenuStrip = this.menuStrip1;
@@ -290,10 +372,9 @@ namespace Setup.Formularios
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,8 +393,14 @@ namespace Setup.Formularios
         private Panel panel2;
         private ToolStripTextBox toolLimite;
         private ToolStripMenuItem atualizarToolStripMenuItem;
+        private Controles.dgView lista;
+        private Label label9;
         private StatusStrip status;
         private ToolStripStatusLabel statusLabel;
-        private Controles.dgView lista;
+        private Label label13;
+        private Label label1;
+        private Label lnRight;
+        private Label label10;
+        private Label label2;
     }
 }
