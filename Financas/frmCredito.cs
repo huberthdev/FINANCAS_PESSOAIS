@@ -40,6 +40,7 @@ namespace Setup.Financas
                 cbCartao.Items.Clear();
                 cbFCartao.Items.Clear();
                 cbFCartao.Items.Add("");
+                Classes.CartaoCredito.Ativo = 1;
                 foreach (Classes.CartaoCredito c in Classes.CartaoCredito.Lista())
                 {
                     cbCartao.Items.Add(c);

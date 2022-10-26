@@ -276,6 +276,15 @@ namespace Setup.Classes
         public int conta;
         public int cartao;
         public string nome;
+        private static byte cad = 0;
+
+        public static byte Ativo
+        {
+            set
+            {
+                cad = value;
+            }
+        }
 
         public override string ToString()
         {
@@ -290,6 +299,10 @@ namespace Setup.Classes
 
             sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA FROM CONTA A LEFT JOIN ";
             sql += "CARTAO_CREDITO B ON A.CONTA_ID = B.CONTA WHERE A.CARTAO_CREDITO = 1 ";
+            if (cad == 1)
+            {
+                sql += "AND B.CONTA > 0 ";
+            }
             sql += "ORDER BY A.CONTA";
 
             BD.Buscar(sql);

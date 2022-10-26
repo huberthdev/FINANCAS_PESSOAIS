@@ -1,6 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Setup
 {
@@ -26,7 +28,7 @@ namespace Setup
         }
 
         //Função para abrir o formulário de PERGUNTA mudando o texto de acordo com a chamada
-        public static void Pergunta(string Msg) 
+        public static void Pergunta(string Msg)
         {
             Formularios.frmPergunta pergunta = new Formularios.frmPergunta();
             pergunta.lblMsg.Text = Msg;
@@ -38,8 +40,8 @@ namespace Setup
         {
             foreach (var controle in Formulario.Controls)
             {
-                
-                if(controle != NaoLimpar)
+
+                if (controle != NaoLimpar)
                 {
                     if (controle is TextBox)
                     {
@@ -59,14 +61,14 @@ namespace Setup
 
             if (Foco != null)
                 Foco.Focus();
-                     
+
         }
 
         //Função para validar todos os campos vazios obrigatórios de um formulário
         public static bool ValidarCampos(Control Formulario, ErrorProvider erro = null)
         {
 
-            if(erro != null)
+            if (erro != null)
                 erro.Clear();
 
             foreach (Control controle in Formulario.Controls)
@@ -87,7 +89,7 @@ namespace Setup
                         }
                     }
                 }
-           
+
             }
 
             return true;
@@ -109,6 +111,5 @@ namespace Setup
 
             return sBuilder.ToString();
         }
-
     }
 }
