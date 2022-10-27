@@ -209,7 +209,7 @@ namespace Setup.Financas
             BD.Salvar("bd", c, v, 0, "Registro salvo com sucesso!");
             Classes.Geral.AtualizarSaldoConta(conta, valor);
 
-            COD.LimparCampos(pnSalvar, txtData, cbClasse);
+            COD.LimparCampos(pnSalvarIn, txtData, cbClasse);
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
         }

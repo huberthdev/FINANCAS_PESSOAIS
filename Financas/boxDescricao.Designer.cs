@@ -123,7 +123,7 @@ namespace Setup.Financas
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "boxDescricao";
-            this.Opacity = 0.9D;
+            this.Opacity = 0.95D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "boxDescricao";
             this.ResumeLayout(false);
