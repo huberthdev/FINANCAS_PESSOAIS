@@ -501,11 +501,15 @@ namespace Setup.Financas
 
         private void excel_Click(object sender, EventArgs e)
         {
+            decimal porc;
+
             Excel.Application XcelApp = new Excel.Application();
-            Microsoft.Office.Interop.Excel.Range celulas;
+            Excel.Range celulas;
 
             if (lista.Rows.Count > 0)
             {
+                int ln = lista.Rows.Count;
+
                 try
                 {
                     XcelApp.Application.Workbooks.Add(Type.Missing);
@@ -516,18 +520,25 @@ namespace Setup.Financas
                     }
                     //
 
+                    lblPorc.Visible = true;
                     progresso.Visible = true;
                     progresso.Value = 1;
                     progresso.Maximum = lista.Rows.Count;
 
                     for (int i = 0; i < lista.Rows.Count; i++)
                     {
+                        int p = i + 1;
+
                         try
                         {
+                            porc = Decimal.Divide(p, ln);
+                            lblPorc.Text = porc.ToString("P0");
+
                             progresso.Value++;
                         }
                         catch
                         {
+                            lblPorc.Visible = false;
                             progresso.Visible = false;
                         }
 

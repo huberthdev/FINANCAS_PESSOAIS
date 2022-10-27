@@ -106,14 +106,12 @@ namespace Setup.Financas
             this.pnFiltro = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.progresso = new System.Windows.Forms.ProgressBar();
+            this.lblPorc = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
             this.pnFiltro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -189,7 +187,7 @@ namespace Setup.Financas
             // 
             this.excel.Image = ((System.Drawing.Image)(resources.GetObject("excel.Image")));
             this.excel.Name = "excel";
-            this.excel.Size = new System.Drawing.Size(180, 22);
+            this.excel.Size = new System.Drawing.Size(101, 22);
             this.excel.Text = "Excel";
             this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
@@ -197,7 +195,7 @@ namespace Setup.Financas
             // 
             this.pdf.Image = ((System.Drawing.Image)(resources.GetObject("pdf.Image")));
             this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(180, 22);
+            this.pdf.Size = new System.Drawing.Size(101, 22);
             this.pdf.Text = "PDF";
             // 
             // label2
@@ -747,19 +745,33 @@ namespace Setup.Financas
             // progresso
             // 
             this.progresso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progresso.Location = new System.Drawing.Point(727, 423);
+            this.progresso.Location = new System.Drawing.Point(728, 421);
             this.progresso.Maximum = 40;
             this.progresso.Name = "progresso";
-            this.progresso.Size = new System.Drawing.Size(311, 10);
+            this.progresso.Size = new System.Drawing.Size(311, 14);
             this.progresso.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progresso.TabIndex = 19;
             this.progresso.Visible = false;
+            // 
+            // lblPorc
+            // 
+            this.lblPorc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPorc.BackColor = System.Drawing.Color.Transparent;
+            this.lblPorc.ForeColor = System.Drawing.Color.White;
+            this.lblPorc.Location = new System.Drawing.Point(675, 419);
+            this.lblPorc.Name = "lblPorc";
+            this.lblPorc.Size = new System.Drawing.Size(56, 19);
+            this.lblPorc.TabIndex = 11;
+            this.lblPorc.Text = "%";
+            this.lblPorc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPorc.Visible = false;
             // 
             // frmRelatorio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1048, 443);
+            this.Controls.Add(this.lblPorc);
             this.Controls.Add(this.progresso);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lista);
@@ -785,7 +797,6 @@ namespace Setup.Financas
             this.status.PerformLayout();
             this.pnFiltro.ResumeLayout(false);
             this.pnFiltro.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -844,8 +855,7 @@ namespace Setup.Financas
         private Panel pnFiltro;
         private Label label1;
         private Label label11;
-        private BindingSource bindingSource1;
-        private Timer timer1;
         private ProgressBar progresso;
+        private Label lblPorc;
     }
 }
