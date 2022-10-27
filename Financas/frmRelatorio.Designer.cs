@@ -107,6 +107,8 @@ namespace Setup.Financas
             this.label1 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.progresso = new System.Windows.Forms.ProgressBar();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
@@ -187,7 +189,7 @@ namespace Setup.Financas
             // 
             this.excel.Image = ((System.Drawing.Image)(resources.GetObject("excel.Image")));
             this.excel.Name = "excel";
-            this.excel.Size = new System.Drawing.Size(101, 22);
+            this.excel.Size = new System.Drawing.Size(180, 22);
             this.excel.Text = "Excel";
             this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
@@ -195,7 +197,7 @@ namespace Setup.Financas
             // 
             this.pdf.Image = ((System.Drawing.Image)(resources.GetObject("pdf.Image")));
             this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(101, 22);
+            this.pdf.Size = new System.Drawing.Size(180, 22);
             this.pdf.Text = "PDF";
             // 
             // label2
@@ -742,11 +744,23 @@ namespace Setup.Financas
             this.label11.Size = new System.Drawing.Size(1040, 4);
             this.label11.TabIndex = 18;
             // 
+            // progresso
+            // 
+            this.progresso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progresso.Location = new System.Drawing.Point(727, 423);
+            this.progresso.Maximum = 40;
+            this.progresso.Name = "progresso";
+            this.progresso.Size = new System.Drawing.Size(311, 10);
+            this.progresso.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progresso.TabIndex = 19;
+            this.progresso.Visible = false;
+            // 
             // frmRelatorio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1048, 443);
+            this.Controls.Add(this.progresso);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lista);
             this.Controls.Add(this.lblDown);
@@ -831,5 +845,7 @@ namespace Setup.Financas
         private Label label1;
         private Label label11;
         private BindingSource bindingSource1;
+        private Timer timer1;
+        private ProgressBar progresso;
     }
 }

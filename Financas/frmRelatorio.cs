@@ -515,8 +515,22 @@ namespace Setup.Financas
                         XcelApp.Cells[1, i] = lista.Columns[i - 1].HeaderText;
                     }
                     //
+
+                    progresso.Visible = true;
+                    progresso.Value = 1;
+                    progresso.Maximum = lista.Rows.Count;
+
                     for (int i = 0; i < lista.Rows.Count; i++)
                     {
+                        try
+                        {
+                            progresso.Value++;
+                        }
+                        catch
+                        {
+                            progresso.Visible = false;
+                        }
+
                         for (int j = 0; j < lista.Columns.Count; j++)
                         {
                             XcelApp.Cells[i + 2, j + 1] = lista.Rows[i].Cells[j].Value;
