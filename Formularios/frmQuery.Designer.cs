@@ -47,11 +47,11 @@ namespace Setup.Formularios
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuery));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSQL = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.selectFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,6 +72,9 @@ namespace Setup.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.lnRight = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lblPorc = new System.Windows.Forms.Label();
+            this.progresso = new System.Windows.Forms.ProgressBar();
+            this.exp_excel = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -126,10 +129,11 @@ namespace Setup.Formularios
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.executar,
             this.novo,
-            this.toolLimite});
+            this.toolLimite,
+            this.exp_excel});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(793, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(793, 27);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -140,7 +144,7 @@ namespace Setup.Formularios
             this.executar.Image = ((System.Drawing.Image)(resources.GetObject("executar.Image")));
             this.executar.Name = "executar";
             this.executar.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.executar.Size = new System.Drawing.Size(103, 25);
+            this.executar.Size = new System.Drawing.Size(103, 23);
             this.executar.Text = "Executar {F4}";
             this.executar.Click += new System.EventHandler(this.executarToolStripMenuItem_Click);
             // 
@@ -151,20 +155,20 @@ namespace Setup.Formularios
             this.novo.Image = ((System.Drawing.Image)(resources.GetObject("novo.Image")));
             this.novo.Name = "novo";
             this.novo.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.novo.Size = new System.Drawing.Size(87, 25);
+            this.novo.Size = new System.Drawing.Size(87, 23);
             this.novo.Text = "Novo {F5}";
             this.novo.Click += new System.EventHandler(this.novoToolStripMenuItem_Click);
             // 
             // toolLimite
             // 
             this.toolLimite.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolLimite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.toolLimite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.toolLimite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolLimite.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.toolLimite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolLimite.ForeColor = System.Drawing.Color.White;
             this.toolLimite.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.toolLimite.Name = "toolLimite";
-            this.toolLimite.Size = new System.Drawing.Size(100, 25);
+            this.toolLimite.Size = new System.Drawing.Size(100, 23);
             this.toolLimite.Text = "1000";
             this.toolLimite.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -178,9 +182,9 @@ namespace Setup.Formularios
             this.treeTabelas.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.treeTabelas.ForeColor = System.Drawing.Color.White;
             this.treeTabelas.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.treeTabelas.Location = new System.Drawing.Point(4, 29);
+            this.treeTabelas.Location = new System.Drawing.Point(4, 27);
             this.treeTabelas.Name = "treeTabelas";
-            this.treeTabelas.Size = new System.Drawing.Size(174, 324);
+            this.treeTabelas.Size = new System.Drawing.Size(174, 326);
             this.treeTabelas.TabIndex = 4;
             // 
             // panel1
@@ -189,9 +193,9 @@ namespace Setup.Formularios
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.txtSQL);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(178, 29);
+            this.panel1.Location = new System.Drawing.Point(178, 27);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(615, 324);
+            this.panel1.Size = new System.Drawing.Size(615, 326);
             this.panel1.TabIndex = 5;
             // 
             // label2
@@ -205,20 +209,22 @@ namespace Setup.Formularios
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.lblPorc);
             this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.progresso);
             this.panel2.Controls.Add(this.status);
             this.panel2.Controls.Add(this.lista);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 79);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(615, 245);
+            this.panel2.Size = new System.Drawing.Size(615, 247);
             this.panel2.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label9.Location = new System.Drawing.Point(0, 219);
+            this.label9.Location = new System.Drawing.Point(0, 221);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(615, 4);
             this.label9.TabIndex = 47;
@@ -227,9 +233,10 @@ namespace Setup.Formularios
             // 
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.status.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.status.Location = new System.Drawing.Point(0, 223);
+            this.status.Location = new System.Drawing.Point(0, 225);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(615, 22);
             this.status.SizingGrip = false;
@@ -247,33 +254,33 @@ namespace Setup.Formularios
             // 
             this.lista.AllowUserToAddRows = false;
             this.lista.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lista.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle8;
             this.lista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
@@ -283,20 +290,20 @@ namespace Setup.Formularios
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
@@ -305,7 +312,7 @@ namespace Setup.Formularios
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(615, 245);
+            this.lista.Size = new System.Drawing.Size(615, 247);
             this.lista.TabIndex = 1;
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             // 
@@ -322,9 +329,9 @@ namespace Setup.Formularios
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(0, 29);
+            this.label1.Location = new System.Drawing.Point(0, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(4, 324);
+            this.label1.Size = new System.Drawing.Size(4, 326);
             this.label1.TabIndex = 50;
             // 
             // lnRight
@@ -340,10 +347,45 @@ namespace Setup.Formularios
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label10.Location = new System.Drawing.Point(178, 29);
+            this.label10.Location = new System.Drawing.Point(178, 27);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(4, 324);
+            this.label10.Size = new System.Drawing.Size(4, 326);
             this.label10.TabIndex = 52;
+            // 
+            // lblPorc
+            // 
+            this.lblPorc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPorc.BackColor = System.Drawing.Color.Transparent;
+            this.lblPorc.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPorc.ForeColor = System.Drawing.Color.White;
+            this.lblPorc.Location = new System.Drawing.Point(243, 228);
+            this.lblPorc.Name = "lblPorc";
+            this.lblPorc.Size = new System.Drawing.Size(56, 19);
+            this.lblPorc.TabIndex = 53;
+            this.lblPorc.Text = "%";
+            this.lblPorc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPorc.Visible = false;
+            // 
+            // progresso
+            // 
+            this.progresso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progresso.Location = new System.Drawing.Point(296, 230);
+            this.progresso.Maximum = 40;
+            this.progresso.Name = "progresso";
+            this.progresso.Size = new System.Drawing.Size(311, 14);
+            this.progresso.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progresso.TabIndex = 54;
+            this.progresso.Visible = false;
+            // 
+            // exp_excel
+            // 
+            this.exp_excel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exp_excel.ForeColor = System.Drawing.Color.White;
+            this.exp_excel.Image = ((System.Drawing.Image)(resources.GetObject("exp_excel.Image")));
+            this.exp_excel.Name = "exp_excel";
+            this.exp_excel.Size = new System.Drawing.Size(62, 23);
+            this.exp_excel.Text = "Excel";
+            this.exp_excel.Click += new System.EventHandler(this.exp_excel_Click);
             // 
             // frmQuery
             // 
@@ -402,5 +444,8 @@ namespace Setup.Formularios
         private Label lnRight;
         private Label label10;
         private Label label2;
+        private Label lblPorc;
+        private ProgressBar progresso;
+        private ToolStripMenuItem exp_excel;
     }
 }

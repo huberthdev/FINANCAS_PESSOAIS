@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Setup.Formularios
 {
@@ -167,6 +168,70 @@ namespace Setup.Formularios
         private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             lista.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+        }
+
+        private void exp_excel_Click(object sender, EventArgs e)
+        {
+            decimal porc;
+
+            Excel.Application XcelApp = new Excel.Application();
+            Excel.Range celulas;
+
+            if (lista.Rows.Count > 0)
+            {
+                int ln = lista.Rows.Count;
+
+                try
+                {
+                    XcelApp.Application.Workbooks.Add(Type.Missing);
+
+                    for (int i = 1; i < lista.Columns.Count + 1; i++)
+                    {
+                        XcelApp.Cells[1, i] = lista.Columns[i - 1].HeaderText;
+                    }
+                    //
+
+                    lblPorc.Visible = true;
+                    progresso.Visible = true;
+                    progresso.Value = 1;
+                    progresso.Maximum = lista.Rows.Count;
+
+                    for (int i = 0; i < lista.Rows.Count; i++)
+                    {
+                        int p = i + 1;
+
+                        try
+                        {
+                            porc = Decimal.Divide(p, ln);
+                            lblPorc.Text = porc.ToString("P0");
+
+                            progresso.Value++;
+                        }
+                        catch
+                        {
+                            lblPorc.Visible = false;
+                            progresso.Visible = false;
+                        }
+
+                        for (int j = 0; j < lista.Columns.Count; j++)
+                        {
+                            XcelApp.Cells[i + 2, j + 1] = lista.Rows[i].Cells[j].Value;
+                        }
+                    }
+                    //
+                    celulas = XcelApp.Range["A1", "A1"].CurrentRegion;
+                    celulas.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    XcelApp.Columns.AutoFit();
+                    //
+                    XcelApp.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    COD.Erro("Erro : " + ex.Message);
+                    XcelApp.Quit();
+                }
+            }
+
         }
     }
 }
