@@ -314,7 +314,6 @@ namespace Setup.Formularios
             this.lista.ShowEditingIcon = false;
             this.lista.Size = new System.Drawing.Size(615, 247);
             this.lista.TabIndex = 1;
-            this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             // 
             // label13
             // 

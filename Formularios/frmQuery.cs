@@ -165,11 +165,6 @@ namespace Setup.Formularios
             
         }
 
-        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            lista.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-        }
-
         private void exp_excel_Click(object sender, EventArgs e)
         {
             decimal porc;
