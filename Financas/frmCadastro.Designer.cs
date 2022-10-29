@@ -375,7 +375,7 @@ namespace Setup.Financas
             this.pnCad.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnCad.Location = new System.Drawing.Point(0, 0);
             this.pnCad.Name = "pnCad";
-            this.pnCad.Size = new System.Drawing.Size(459, 417);
+            this.pnCad.Size = new System.Drawing.Size(459, 416);
             this.pnCad.TabIndex = 15;
             // 
             // label2
@@ -384,7 +384,7 @@ namespace Setup.Financas
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1, 393);
+            this.label2.Size = new System.Drawing.Size(2, 392);
             this.label2.TabIndex = 17;
             // 
             // optClasse
@@ -508,18 +508,18 @@ namespace Setup.Financas
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(0, 417);
+            this.label1.Location = new System.Drawing.Point(0, 416);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 1);
+            this.label1.Size = new System.Drawing.Size(457, 2);
             this.label1.TabIndex = 17;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Location = new System.Drawing.Point(456, 0);
+            this.label5.Location = new System.Drawing.Point(455, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1, 417);
+            this.label5.Size = new System.Drawing.Size(2, 416);
             this.label5.TabIndex = 17;
             // 
             // frmCadastro

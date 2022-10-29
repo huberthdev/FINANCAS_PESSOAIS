@@ -192,7 +192,7 @@ namespace Setup.Formularios
             this.label4.ForeColor = System.Drawing.Color.Cornsilk;
             this.label4.Location = new System.Drawing.Point(0, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1, 224);
+            this.label4.Size = new System.Drawing.Size(2, 224);
             this.label4.TabIndex = 5;
             // 
             // label5
@@ -200,9 +200,9 @@ namespace Setup.Formularios
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label5.ForeColor = System.Drawing.Color.Cornsilk;
-            this.label5.Location = new System.Drawing.Point(1, 276);
+            this.label5.Location = new System.Drawing.Point(2, 275);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(283, 1);
+            this.label5.Size = new System.Drawing.Size(282, 2);
             this.label5.TabIndex = 5;
             // 
             // label6
@@ -210,9 +210,9 @@ namespace Setup.Formularios
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label6.Dock = System.Windows.Forms.DockStyle.Right;
             this.label6.ForeColor = System.Drawing.Color.Cornsilk;
-            this.label6.Location = new System.Drawing.Point(283, 53);
+            this.label6.Location = new System.Drawing.Point(282, 53);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(1, 223);
+            this.label6.Size = new System.Drawing.Size(2, 222);
             this.label6.TabIndex = 5;
             // 
             // frmLogin

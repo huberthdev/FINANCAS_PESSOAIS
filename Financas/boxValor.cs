@@ -13,6 +13,19 @@ namespace Setup.Financas
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            SalvarSaldoInicial();
+        }
+
+        private void txtSaldo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                SalvarSaldoInicial();
+            }
+        }
+
+        private void SalvarSaldoInicial()
+        {
             string saldo = "0,00";
 
             if (txtSaldo.Text != "")
