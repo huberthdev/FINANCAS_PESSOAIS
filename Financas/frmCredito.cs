@@ -427,5 +427,14 @@ namespace Setup.Financas
         {
 
         }
+
+        private void btnPagarFatura_Click(object sender, EventArgs e)
+        {
+            boxPagFatura pagF = new boxPagFatura();
+
+            pagF.lista.DataSource = lista.DataSource;
+
+            pagF.ShowDialog();
+        }
     }
 }

@@ -561,6 +561,7 @@ namespace Setup.Financas
             this.btnPagarFatura.TabIndex = 35;
             this.btnPagarFatura.Text = "PAGAR";
             this.btnPagarFatura.UseVisualStyleBackColor = false;
+            this.btnPagarFatura.Click += new System.EventHandler(this.btnPagarFatura_Click);
             // 
             // label9
             // 

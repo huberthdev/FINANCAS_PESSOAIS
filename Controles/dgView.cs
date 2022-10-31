@@ -19,6 +19,13 @@ namespace Setup.Controles
 
             //this.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSlateGray;
 
+            //this.BorderStyle = BorderStyle.None;
+            //this.GridColor = Color.FromArgb(25, 25, 26);
+            this.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            this.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
+            this.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
             dataGridViewCellStyle1.BackColor = Color.DarkGray;
             dataGridViewCellStyle1.ForeColor = Color.FromArgb(37,37,38);
             dataGridViewCellStyle1.SelectionBackColor = Color.RoyalBlue;
@@ -26,7 +33,7 @@ namespace Setup.Controles
             this.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.BackgroundColor = Color.FromArgb(37,37,38);
-            this.BorderStyle = BorderStyle.Fixed3D;
+            this.BorderStyle = BorderStyle.None;
             this.ClipboardCopyMode = DataGridViewClipboardCopyMode.Disable;
             this.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
 
@@ -50,7 +57,7 @@ namespace Setup.Controles
             this.DefaultCellStyle = dataGridViewCellStyle3;
             this.EditMode = DataGridViewEditMode.EditOnEnter;
             this.EnableHeadersVisualStyles = false;
-            this.GridColor = Color.DimGray;
+            this.GridColor = Color.FromArgb(25, 25, 26);
             this.MultiSelect = false;
             this.ReadOnly = true;
             this.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
