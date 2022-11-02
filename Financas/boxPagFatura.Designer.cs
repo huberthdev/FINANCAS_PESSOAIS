@@ -41,8 +41,8 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.pagarFatura = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelar = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagarFatura = new Controles.Cabecalho();
+            this.cancelar = new Controles.Cabecalho();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPeriodo = new System.Windows.Forms.Label();
             this.lista = new Setup.Controles.dgView();
