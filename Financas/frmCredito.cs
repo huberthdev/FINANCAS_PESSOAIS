@@ -386,7 +386,7 @@ namespace Setup.Financas
             {
                 cbFCartao.Text = cartao;
             }
-            catch (Exception)
+            catch
             {
 
             }
@@ -430,9 +430,31 @@ namespace Setup.Financas
 
         private void btnPagarFatura_Click(object sender, EventArgs e)
         {
+            if (lista.RowCount == 0)
+            {
+                COD.Erro("A lista está vazia!");
+                return;
+            }
+
+            if (cbFCartao.Text == "")
+            {
+                COD.Erro("Selecione um Cartão!");
+                cbFCartao.Focus();
+                return;
+            }
+
             boxPagFatura pagF = new boxPagFatura();
 
             pagF.lista.DataSource = lista.DataSource;
+
+            try
+            {
+                pagF.cbConta.Text = cbFCartao.Text;
+            }
+            catch
+            {
+                
+            }
 
             pagF.ShowDialog();
         }

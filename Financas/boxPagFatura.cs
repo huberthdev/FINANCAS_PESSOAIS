@@ -62,11 +62,14 @@ namespace Setup.Financas
             }
         }
 
-        private void lista_DataSourceChanged(object sender, EventArgs e)
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             for (int i = 0; i < lista.RowCount; i++)
             {
+                DataGridViewCheckBoxCell ck = new DataGridViewCheckBoxCell();
 
+                ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
+                ck.Value = 1;
             }
         }
     }
