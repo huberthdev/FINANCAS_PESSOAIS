@@ -191,7 +191,14 @@ namespace Setup.Financas
                 cartao = ((Classes.CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
             }
 
-            periodo = lblPeriodo.Tag.ToString();
+            try
+            {
+                periodo = lblPeriodo.Tag.ToString().Split("/").GetValue(0).ToString();
+            }
+            catch
+            {
+                return;                
+            }
 
             string sql = "SELECT A.CHAVE, A.COMPRA_CREDITO_ID AS ID, B.DATA_COMPRA AS DATA, C.CLASSE, A.VALOR, A.PARCELA, ";
             sql += "A.DATA_PARCELA AS DATA_PGMTO, B.DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ";
@@ -364,9 +371,8 @@ namespace Setup.Financas
 
         private void treeFaturas_DoubleClick(object sender, EventArgs e)
         {
-            string chave;
-            string periodo;
-            string cartao = "";
+            string chave, periodo, cartao = "", valor = "";
+            string[] txt;
 
             if (treeFaturas.SelectedNode is null || treeFaturas.SelectedNode.Name == "ano")
             {
@@ -376,7 +382,18 @@ namespace Setup.Financas
             chave = treeFaturas.SelectedNode.Name;
             periodo = chave.Substring(chave.Length - 4, 4) + "/" + treeFaturas.SelectedNode.Text;
 
-            if(treeFaturas.SelectedNode.Level == 2)
+            try
+            {
+                txt = treeFaturas.SelectedNode.Text.Split(" • ");
+                valor = txt[1];
+                valor = valor.Replace("R$ ", "");
+            }
+            catch
+            {
+                
+            }
+
+            if (treeFaturas.SelectedNode.Level == 2)
             {
                 cartao = treeFaturas.SelectedNode.Text;
                 cartao = cartao.Substring(0, treeFaturas.SelectedNode.ImageIndex);
@@ -392,7 +409,7 @@ namespace Setup.Financas
             }
 
             lblPeriodo.Text = periodo;
-            lblPeriodo.Tag = chave;
+            lblPeriodo.Tag = chave + "/" + valor;
 
             CarregarLista();
         }
@@ -441,11 +458,12 @@ namespace Setup.Financas
             boxPagFatura pagF = new boxPagFatura();
 
             pagF.lista.DataSource = lista.DataSource;
-
             pagF.lblPeriodo.Text = lblPeriodo.Text;
 
             try
             {
+                pagF.lblPeriodo.Tag = lblPeriodo.Tag.ToString().Split("/").GetValue(1).ToString();
+
                 pagF.cbConta.Items.Clear();
                 foreach (Classes.Conta c in Classes.Conta.Lista())
                 {
@@ -456,7 +474,8 @@ namespace Setup.Financas
             }
             catch
             {
-                
+                COD.Erro("Não foi possível realizar esta operação!");
+                return;
             }
 
             pagF.ShowDialog();

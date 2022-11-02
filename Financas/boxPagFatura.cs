@@ -10,6 +10,8 @@ namespace Setup.Financas
 {
     public partial class boxPagFatura : Form
     {
+        static double valor = 0;
+
         public boxPagFatura()
         {
             InitializeComponent();
@@ -25,15 +27,7 @@ namespace Setup.Financas
             if (lista.RowCount == 0)
                 return;
 
-            string vetor = "";
-
-            for (int i = 1; i < lista.RowCount; i++)
-            {
-                if(lista.Rows[i].Cells[0].Value.ToString() != null)
-                {
-                    vetor += lista.Rows[i].Cells[1].Value.ToString() + ", ";
-                }
-            }
+            COD.OK(lblPeriodo.Tag.ToString());
         }
 
         private void lista_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -57,6 +51,40 @@ namespace Setup.Financas
                 ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
                 ck.Value = 1;
             }
+        }
+
+        private void lista_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != 0)
+                return;
+
+            if (lista.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() == "1")
+                lista.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 0;
+            else
+                lista.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 1;
+
+            ValorDaFatura();
+        }
+
+        private void ValorDaFatura()
+        {
+            valor = 0;
+            string[] txt = lblPeriodo.Text.Split(" • ");
+            string periodo = txt[0];
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                DataGridViewCheckBoxCell ck = new DataGridViewCheckBoxCell();
+                ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
+
+                if (ck.Value.ToString() == "1")
+                {
+                    valor += double.Parse(lista.Rows[i].Cells[6].Value.ToString());
+                }
+            }
+
+            lblPeriodo.Text = periodo + " • " + valor.ToString("N");
+            lblPeriodo.Tag = valor;
         }
     }
 }
