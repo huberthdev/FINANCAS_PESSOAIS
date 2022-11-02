@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\CursoCSharp\Setup\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Update="Controles\btnLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Cabecalho.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\cbCombo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Cpf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Data.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Decimal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\dgView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Inteiro.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Moeda.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Controles\Txt.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\boxAddPrev.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\boxCartaoCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\boxDescricao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\boxPagFatura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\boxValor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmCadastro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmNota.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmPrevisao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\frmTransf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\CkStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\Icon_Delete.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\Icon_Edit.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtClasse.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtDesvio.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtDia.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtObs.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtOrcado.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtReal.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Financas\Previsao\TxtTipo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmConfigBD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmErro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmImagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmOK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmPergunta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmQuery.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmTestes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\frnSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

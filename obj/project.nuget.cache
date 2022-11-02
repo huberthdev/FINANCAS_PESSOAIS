@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KXx00VbYipcAelfbFrpBmAAZmyx7of/XuX/YET4x+M4G875z4cBs4U4j27EL/dtsikmOQ3YmYkFGJUH4dhWqUw==",
+  "success": true,
+  "projectFilePath": "C:\\CursoCSharp\\Setup\\Setup.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\huber\\.nuget\\packages\\firebirdsql.data.firebirdclient\\9.0.2\\firebirdsql.data.firebirdclient.9.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

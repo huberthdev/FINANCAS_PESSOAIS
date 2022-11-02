@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Setup</id>
+    <version>1.0.0</version>
+    <authors>Setup</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="FirebirdSql.Data.FirebirdClient" version="9.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework=".NETCoreApp3.1">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WindowsForms" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.runtimeconfig.json" target="lib\netcoreapp3.1\Setup.runtimeconfig.json" />
+    <file src="C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.dll" target="lib\netcoreapp3.1\Setup.dll" />
+  </files>
+</package>

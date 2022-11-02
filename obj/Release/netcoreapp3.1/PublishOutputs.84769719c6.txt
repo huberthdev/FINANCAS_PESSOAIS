@@ -1,0 +1,8 @@
+C:\Users\huber\Desktop\Setup.exe
+C:\Users\huber\Desktop\Setup.dll
+C:\Users\huber\Desktop\Setup.deps.json
+C:\Users\huber\Desktop\Setup.runtimeconfig.json
+C:\Users\huber\Desktop\Setup.dll.config
+C:\Users\huber\Desktop\Setup.pdb
+C:\Users\huber\Desktop\Interop.ADODB.dll
+C:\Users\huber\Desktop\FirebirdSql.Data.FirebirdClient.dll
