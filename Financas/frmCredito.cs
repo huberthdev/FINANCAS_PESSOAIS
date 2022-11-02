@@ -423,11 +423,6 @@ namespace Setup.Financas
             Classes.Geral.AbrirDetalheTransacao(id, "C");
         }
 
-        private void frmCredito_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnPagarFatura_Click(object sender, EventArgs e)
         {
             if (lista.RowCount == 0)
@@ -447,8 +442,16 @@ namespace Setup.Financas
 
             pagF.lista.DataSource = lista.DataSource;
 
+            pagF.lblPeriodo.Text = lblPeriodo.Text;
+
             try
             {
+                pagF.cbConta.Items.Clear();
+                foreach (Classes.Conta c in Classes.Conta.Lista())
+                {
+                    pagF.cbConta.Items.Add(c);
+                }
+
                 pagF.cbConta.Text = cbFCartao.Text;
             }
             catch

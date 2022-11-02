@@ -317,7 +317,7 @@ namespace Setup.Financas
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -349,7 +349,7 @@ namespace Setup.Financas
             this.lista.DefaultCellStyle = dataGridViewCellStyle7;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
-            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.Location = new System.Drawing.Point(9, 131);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
@@ -544,7 +544,6 @@ namespace Setup.Financas
             this.lblPeriodo.Name = "lblPeriodo";
             this.lblPeriodo.Size = new System.Drawing.Size(274, 23);
             this.lblPeriodo.TabIndex = 24;
-            this.lblPeriodo.Text = "2022/JANEIRO";
             this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnPagarFatura
@@ -693,7 +692,6 @@ namespace Setup.Financas
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Activated += new System.EventHandler(this.frmCredito_Activated);
-            this.Load += new System.EventHandler(this.frmCredito_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCredito_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

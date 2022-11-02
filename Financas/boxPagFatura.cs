@@ -36,20 +36,6 @@ namespace Setup.Financas
             }
         }
 
-        private void boxPagFatura_Load(object sender, EventArgs e)
-        {
-            CarregarCB();
-        }
-
-        private void CarregarCB()
-        {
-            cbConta.Items.Clear();
-            foreach (Classes.Conta c in Classes.Conta.Lista())
-            {
-                cbConta.Items.Add(c);
-            }
-        }
-
         private void lista_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             lista.ReadOnly = false;
