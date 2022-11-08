@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
@@ -518,7 +517,6 @@ namespace Setup.Financas
                     {
                         XcelApp.Cells[1, i] = lista.Columns[i - 1].HeaderText;
                     }
-                    //
 
                     lblPorc.Visible = true;
                     progresso.Visible = true;

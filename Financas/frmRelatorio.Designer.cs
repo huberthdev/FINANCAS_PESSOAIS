@@ -187,7 +187,7 @@ namespace Setup.Financas
             // 
             this.excel.Image = ((System.Drawing.Image)(resources.GetObject("excel.Image")));
             this.excel.Name = "excel";
-            this.excel.Size = new System.Drawing.Size(101, 22);
+            this.excel.Size = new System.Drawing.Size(180, 22);
             this.excel.Text = "Excel";
             this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
@@ -195,7 +195,7 @@ namespace Setup.Financas
             // 
             this.pdf.Image = ((System.Drawing.Image)(resources.GetObject("pdf.Image")));
             this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(101, 22);
+            this.pdf.Size = new System.Drawing.Size(180, 22);
             this.pdf.Text = "PDF";
             // 
             // label2
@@ -381,7 +381,7 @@ namespace Setup.Financas
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -412,7 +412,7 @@ namespace Setup.Financas
             this.lista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
-            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.Location = new System.Drawing.Point(4, 104);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
