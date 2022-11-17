@@ -15,20 +15,26 @@ namespace Setup.Financas
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
-            //CarregarCbClassesContas();
-            //CarregarListaSaldoContas();
-            //CarregarListaGastoClasseMesAtual();
-
             txtData.Text = DateTime.Today.ToShortDateString();
+            gPeriodo.Tag = DateTime.Today.Month + "." + DateTime.Today.Year;
+            gPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month) + "." + DateTime.Today.Year;
         }
 
         private void CarregarListaGeral()
         {
-            int mes = DateTime.Today.Month;
-            int ano = DateTime.Today.Year;
-            string sql;
-
+            string mes, ano, sql;
             string rec = "R$ 0,00", desp = "R$ 0,00", transf = "R$ 0,00", credito = "R$ 0,00";
+
+            if(gPeriodo.Tag != null)
+            {
+                mes = gPeriodo.Tag.ToString().Split(".").GetValue(0).ToString();
+                ano = gPeriodo.Tag.ToString().Split(".").GetValue(1).ToString();
+            }
+            else
+            {
+                mes = DateTime.Today.Month.ToString();
+                ano = DateTime.Today.Year.ToString();
+            }
 
             sql = "SELECT TIPO, VALOR FROM (SELECT '1' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM BD WHERE VALOR > 0 AND EXTRACT(MONTH FROM DATA) = " + mes +" AND EXTRACT(YEAR FROM DATA) = "+ ano +" ";
             sql += "UNION SELECT '2' AS TIPO, IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " ";
@@ -48,11 +54,42 @@ namespace Setup.Financas
                 
             }
 
-            gReceitas.Text = "Receitas\r\n" + rec;
-            gDespesas.Text = "Despesas\r\n" + desp;
-            gTransferencias.Text = "Transferências\r\n" + transf;
-            gCredito.Text = "Cartão de crédito\r\n" + credito;
+            gReceitas.Text = rec;
+            gDespesas.Text = desp;
+            gTransferencias.Text = transf;
+            gCredito.Text = credito;
+        }
 
+        private void MudarPeriodo(int x = 0)
+        {
+            string data, mes, mesNome, ano, periodo;
+
+            if (x == 0)
+                x = -1;
+
+            try
+            {
+                mes = gPeriodo.Tag.ToString().Split(".").GetValue(0).ToString();
+                ano = gPeriodo.Tag.ToString().Split(".").GetValue(1).ToString();
+            }
+            catch
+            {
+                mes = DateTime.Today.Month.ToString();
+                ano = DateTime.Today.Year.ToString();
+            }
+
+            data = String.Concat("01/", mes, "/", ano);
+
+            data = DateTime.Parse(data).AddMonths(x).ToShortDateString();
+
+            mes = ((DateTime.Parse(data).Month)).ToString();
+            mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(int.Parse(mes));
+            ano = DateTime.Parse(data).Year.ToString();
+
+            periodo = mes + "." + ano;
+
+            gPeriodo.Text = mesNome + "." + ano;
+            gPeriodo.Tag = periodo;
         }
 
         //FUNÇÃO PARA ABRIA CALCULADORA NATIVA DO WINDOWS
@@ -90,20 +127,26 @@ namespace Setup.Financas
 
         private void CarregarListaGastoClasseMesAtual()
         {
-            string mesNome;
+            string mes, ano, sql;
             double total = 0;
 
-            int mesAtual = DateTime.Today.Month;
-            int anoAtual = DateTime.Today.Year;
+            if (gPeriodo.Tag != null)
+            {
+                mes = gPeriodo.Tag.ToString().Split(".").GetValue(0).ToString();
+                ano = gPeriodo.Tag.ToString().Split(".").GetValue(1).ToString();
+            }
+            else
+            {
+                mes = DateTime.Today.Month.ToString();
+                ano = DateTime.Today.Year.ToString();
+            }
 
-            mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(mesAtual).ToUpper();
-
-            string sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
-            sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < '0' AND EXTRACT(MONTH FROM A.DATA) = " + mesAtual + " AND ";
-            sql += "EXTRACT(YEAR FROM A.DATA) = " + anoAtual + " GROUP BY B.CLASSE_ID, B.CLASSE ";
+            sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
+            sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < '0' AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
+            sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE_ID, B.CLASSE ";
             sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
-            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID  WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mesAtual + " ";
-            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + anoAtual + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
+            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID  WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " ";
+            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
 
             /*
             sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
@@ -126,7 +169,7 @@ namespace Setup.Financas
                 total += double.Parse(BD.Resultado.Rows[i][1].ToString());
             }
 
-            lista_Gastos_Classe.Columns[0].HeaderText = "Gasto: " + mesNome;
+            lista_Gastos_Classe.Columns[0].HeaderText = "";
             lista_Gastos_Classe.Columns[1].HeaderText = total.ToString("C");
         }
 
@@ -369,6 +412,20 @@ namespace Setup.Financas
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
             CarregarListaGeral();
+        }
+
+        private void mesAnterior_Click(object sender, EventArgs e)
+        {
+            MudarPeriodo();
+            CarregarListaGeral();
+            CarregarListaGastoClasseMesAtual();
+        }
+
+        private void mesProximo_Click(object sender, EventArgs e)
+        {
+            MudarPeriodo(1);
+            CarregarListaGeral();
+            CarregarListaGastoClasseMesAtual();
         }
     }
 }

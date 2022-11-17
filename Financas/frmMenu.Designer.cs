@@ -128,10 +128,19 @@ namespace Setup.Financas
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnListaClasse = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.gPeriodo = new System.Windows.Forms.Label();
             this.gCredito = new System.Windows.Forms.Label();
+            this.lbl4 = new System.Windows.Forms.Label();
             this.gTransferencias = new System.Windows.Forms.Label();
+            this.lbl3 = new System.Windows.Forms.Label();
             this.gDespesas = new System.Windows.Forms.Label();
+            this.lbl2 = new System.Windows.Forms.Label();
             this.gReceitas = new System.Windows.Forms.Label();
+            this.lbl1 = new System.Windows.Forms.Label();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.mesAnterior = new System.Windows.Forms.ToolStripMenuItem();
+            this.mesProximo = new System.Windows.Forms.ToolStripMenuItem();
             this.lnLeft = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -149,6 +158,7 @@ namespace Setup.Financas
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.statusStrip.SuspendLayout();
             this.pnListaClasse.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -166,7 +176,7 @@ namespace Setup.Financas
             this.menuStrip1.Location = new System.Drawing.Point(4, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1097, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1003, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -558,7 +568,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista_Gastos_Classe.EnableHeadersVisualStyles = false;
             this.lista_Gastos_Classe.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.lista_Gastos_Classe.Location = new System.Drawing.Point(0, 0);
+            this.lista_Gastos_Classe.Location = new System.Drawing.Point(7, 24);
             this.lista_Gastos_Classe.MultiSelect = false;
             this.lista_Gastos_Classe.Name = "lista_Gastos_Classe";
             this.lista_Gastos_Classe.ReadOnly = true;
@@ -586,7 +596,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
-            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 216);
+            this.lista_Gastos_Classe.Size = new System.Drawing.Size(369, 178);
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
             // 
@@ -889,7 +899,7 @@ namespace Setup.Financas
             this.statusLabel});
             this.statusStrip.Location = new System.Drawing.Point(4, 431);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1097, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1003, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 21;
@@ -903,74 +913,181 @@ namespace Setup.Financas
             // 
             // pnListaClasse
             // 
+            this.pnListaClasse.Controls.Add(this.label7);
+            this.pnListaClasse.Controls.Add(this.gPeriodo);
             this.pnListaClasse.Controls.Add(this.gCredito);
+            this.pnListaClasse.Controls.Add(this.lbl4);
             this.pnListaClasse.Controls.Add(this.gTransferencias);
+            this.pnListaClasse.Controls.Add(this.lbl3);
             this.pnListaClasse.Controls.Add(this.gDespesas);
+            this.pnListaClasse.Controls.Add(this.lbl2);
             this.pnListaClasse.Controls.Add(this.gReceitas);
+            this.pnListaClasse.Controls.Add(this.lbl1);
             this.pnListaClasse.Controls.Add(this.lista_Gastos_Classe);
+            this.pnListaClasse.Controls.Add(this.menuStrip2);
             this.pnListaClasse.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnListaClasse.Location = new System.Drawing.Point(371, 26);
             this.pnListaClasse.Name = "pnListaClasse";
-            this.pnListaClasse.Size = new System.Drawing.Size(352, 401);
+            this.pnListaClasse.Size = new System.Drawing.Size(383, 401);
             this.pnListaClasse.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label7.Location = new System.Drawing.Point(0, 212);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(383, 4);
+            this.label7.TabIndex = 48;
+            // 
+            // gPeriodo
+            // 
+            this.gPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.gPeriodo.ForeColor = System.Drawing.Color.White;
+            this.gPeriodo.Location = new System.Drawing.Point(95, 3);
+            this.gPeriodo.Name = "gPeriodo";
+            this.gPeriodo.Size = new System.Drawing.Size(193, 17);
+            this.gPeriodo.TabIndex = 47;
+            this.gPeriodo.Text = "janeiro.2022";
+            this.gPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // gCredito
             // 
             this.gCredito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gCredito.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gCredito.ForeColor = System.Drawing.Color.White;
-            this.gCredito.Image = ((System.Drawing.Image)(resources.GetObject("gCredito.Image")));
             this.gCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gCredito.Location = new System.Drawing.Point(6, 354);
+            this.gCredito.Location = new System.Drawing.Point(211, 352);
             this.gCredito.Name = "gCredito";
-            this.gCredito.Size = new System.Drawing.Size(340, 43);
+            this.gCredito.Size = new System.Drawing.Size(156, 43);
             this.gCredito.TabIndex = 2;
-            this.gCredito.Text = "Cartões de crédito";
-            this.gCredito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gCredito.Text = "R$ 0,00";
+            this.gCredito.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl4
+            // 
+            this.lbl4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl4.ForeColor = System.Drawing.Color.White;
+            this.lbl4.Image = ((System.Drawing.Image)(resources.GetObject("lbl4.Image")));
+            this.lbl4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl4.Location = new System.Drawing.Point(15, 352);
+            this.lbl4.Name = "lbl4";
+            this.lbl4.Size = new System.Drawing.Size(184, 43);
+            this.lbl4.TabIndex = 2;
+            this.lbl4.Text = "       Cartões de crédito";
+            this.lbl4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gTransferencias
             // 
             this.gTransferencias.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gTransferencias.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gTransferencias.ForeColor = System.Drawing.Color.White;
-            this.gTransferencias.Image = ((System.Drawing.Image)(resources.GetObject("gTransferencias.Image")));
             this.gTransferencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gTransferencias.Location = new System.Drawing.Point(6, 310);
+            this.gTransferencias.Location = new System.Drawing.Point(211, 308);
             this.gTransferencias.Name = "gTransferencias";
-            this.gTransferencias.Size = new System.Drawing.Size(340, 43);
+            this.gTransferencias.Size = new System.Drawing.Size(156, 43);
             this.gTransferencias.TabIndex = 2;
-            this.gTransferencias.Text = "Transferências";
-            this.gTransferencias.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gTransferencias.Text = "R$ 0,00";
+            this.gTransferencias.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl3
+            // 
+            this.lbl3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl3.ForeColor = System.Drawing.Color.White;
+            this.lbl3.Image = ((System.Drawing.Image)(resources.GetObject("lbl3.Image")));
+            this.lbl3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl3.Location = new System.Drawing.Point(15, 306);
+            this.lbl3.Name = "lbl3";
+            this.lbl3.Size = new System.Drawing.Size(184, 43);
+            this.lbl3.TabIndex = 2;
+            this.lbl3.Text = "       Transferências";
+            this.lbl3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gDespesas
             // 
             this.gDespesas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gDespesas.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gDespesas.ForeColor = System.Drawing.Color.White;
-            this.gDespesas.Image = ((System.Drawing.Image)(resources.GetObject("gDespesas.Image")));
             this.gDespesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gDespesas.Location = new System.Drawing.Point(6, 266);
+            this.gDespesas.Location = new System.Drawing.Point(211, 264);
             this.gDespesas.Name = "gDespesas";
-            this.gDespesas.Size = new System.Drawing.Size(340, 43);
+            this.gDespesas.Size = new System.Drawing.Size(156, 43);
             this.gDespesas.TabIndex = 2;
-            this.gDespesas.Text = "Despesas";
-            this.gDespesas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gDespesas.Text = "R$ 0,00";
+            this.gDespesas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl2
+            // 
+            this.lbl2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl2.ForeColor = System.Drawing.Color.White;
+            this.lbl2.Image = ((System.Drawing.Image)(resources.GetObject("lbl2.Image")));
+            this.lbl2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl2.Location = new System.Drawing.Point(15, 263);
+            this.lbl2.Name = "lbl2";
+            this.lbl2.Size = new System.Drawing.Size(184, 43);
+            this.lbl2.TabIndex = 2;
+            this.lbl2.Text = "       Despesas";
+            this.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gReceitas
             // 
             this.gReceitas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gReceitas.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.gReceitas.ForeColor = System.Drawing.Color.White;
-            this.gReceitas.Image = ((System.Drawing.Image)(resources.GetObject("gReceitas.Image")));
             this.gReceitas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gReceitas.Location = new System.Drawing.Point(6, 222);
+            this.gReceitas.Location = new System.Drawing.Point(211, 220);
             this.gReceitas.Name = "gReceitas";
-            this.gReceitas.Size = new System.Drawing.Size(340, 43);
+            this.gReceitas.Size = new System.Drawing.Size(156, 43);
             this.gReceitas.TabIndex = 2;
-            this.gReceitas.Text = "Receitas";
-            this.gReceitas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.gReceitas.Text = "R$ 0,00";
+            this.gReceitas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lbl1
+            // 
+            this.lbl1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbl1.ForeColor = System.Drawing.Color.White;
+            this.lbl1.Image = ((System.Drawing.Image)(resources.GetObject("lbl1.Image")));
+            this.lbl1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl1.Location = new System.Drawing.Point(15, 220);
+            this.lbl1.Name = "lbl1";
+            this.lbl1.Size = new System.Drawing.Size(184, 43);
+            this.lbl1.TabIndex = 2;
+            this.lbl1.Text = "       Receitas";
+            this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mesAnterior,
+            this.mesProximo});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(383, 24);
+            this.menuStrip2.TabIndex = 3;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // mesAnterior
+            // 
+            this.mesAnterior.Image = ((System.Drawing.Image)(resources.GetObject("mesAnterior.Image")));
+            this.mesAnterior.Name = "mesAnterior";
+            this.mesAnterior.Size = new System.Drawing.Size(28, 20);
+            this.mesAnterior.Click += new System.EventHandler(this.mesAnterior_Click);
+            // 
+            // mesProximo
+            // 
+            this.mesProximo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mesProximo.Image = ((System.Drawing.Image)(resources.GetObject("mesProximo.Image")));
+            this.mesProximo.Name = "mesProximo";
+            this.mesProximo.Size = new System.Drawing.Size(28, 20);
+            this.mesProximo.Click += new System.EventHandler(this.mesProximo_Click);
             // 
             // lnLeft
             // 
             this.lnLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lnLeft.Location = new System.Drawing.Point(723, 26);
+            this.lnLeft.Location = new System.Drawing.Point(754, 26);
             this.lnLeft.Name = "lnLeft";
             this.lnLeft.Size = new System.Drawing.Size(4, 401);
             this.lnLeft.TabIndex = 24;
@@ -981,7 +1098,7 @@ namespace Setup.Financas
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Location = new System.Drawing.Point(4, 427);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1097, 4);
+            this.label1.Size = new System.Drawing.Size(1003, 4);
             this.label1.TabIndex = 24;
             // 
             // label9
@@ -1008,14 +1125,14 @@ namespace Setup.Financas
             this.label12.Dock = System.Windows.Forms.DockStyle.Top;
             this.label12.Location = new System.Drawing.Point(4, 24);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(1097, 2);
+            this.label12.Size = new System.Drawing.Size(1003, 2);
             this.label12.TabIndex = 24;
             // 
             // lnRight
             // 
             this.lnRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lnRight.Location = new System.Drawing.Point(1101, 0);
+            this.lnRight.Location = new System.Drawing.Point(1007, 0);
             this.lnRight.Name = "lnRight";
             this.lnRight.Size = new System.Drawing.Size(4, 453);
             this.lnRight.TabIndex = 25;
@@ -1026,7 +1143,7 @@ namespace Setup.Financas
             this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label13.Location = new System.Drawing.Point(0, 453);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(1105, 4);
+            this.label13.Size = new System.Drawing.Size(1011, 4);
             this.label13.TabIndex = 26;
             // 
             // imageList1
@@ -1044,7 +1161,7 @@ namespace Setup.Financas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(1105, 457);
+            this.ClientSize = new System.Drawing.Size(1011, 457);
             this.Controls.Add(this.lnLeft);
             this.Controls.Add(this.pnListaClasse);
             this.Controls.Add(this.label10);
@@ -1061,7 +1178,7 @@ namespace Setup.Financas
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(734, 496);
+            this.MinimumSize = new System.Drawing.Size(776, 496);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1082,6 +1199,9 @@ namespace Setup.Financas
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.pnListaClasse.ResumeLayout(false);
+            this.pnListaClasse.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1155,9 +1275,18 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn VALOR;
         private ImageList imageList1;
-        private Label gReceitas;
-        private Label gDespesas;
+        private Label lbl1;
+        private Label lbl2;
+        private Label lbl4;
+        private Label lbl3;
         private Label gCredito;
         private Label gTransferencias;
+        private Label gDespesas;
+        private Label gReceitas;
+        private MenuStrip menuStrip2;
+        private ToolStripMenuItem mesAnterior;
+        private ToolStripMenuItem mesProximo;
+        private Label gPeriodo;
+        private Label label7;
     }
 }
