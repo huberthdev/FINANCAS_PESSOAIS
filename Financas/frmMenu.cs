@@ -22,6 +22,39 @@ namespace Setup.Financas
             txtData.Text = DateTime.Today.ToShortDateString();
         }
 
+        private void CarregarListaGeral()
+        {
+            int mes = DateTime.Today.Month;
+            int ano = DateTime.Today.Year;
+            string sql;
+
+            string rec = "R$ 0,00", desp = "R$ 0,00", transf = "R$ 0,00", credito = "R$ 0,00";
+
+            sql = "SELECT TIPO, VALOR FROM (SELECT '1' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM BD WHERE VALOR > 0 AND EXTRACT(MONTH FROM DATA) = " + mes +" AND EXTRACT(YEAR FROM DATA) = "+ ano +" ";
+            sql += "UNION SELECT '2' AS TIPO, IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " ";
+            sql += "UNION SELECT '3' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM TRANSFERENCIA WHERE EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " ";
+            sql += "UNION SELECT '4' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM KEY_COMPRA_CREDITO WHERE EXTRACT(MONTH FROM DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM DATA_COMPRA) = " + ano + ") ORDER BY TIPO";
+            BD.Buscar(sql);
+
+            try
+            {
+                rec = Double.Parse(BD.Resultado.Rows[0][1].ToString()).ToString("C");
+                desp = Double.Parse(BD.Resultado.Rows[1][1].ToString()).ToString("C");
+                transf = Double.Parse(BD.Resultado.Rows[2][1].ToString()).ToString("C");
+                credito = Double.Parse(BD.Resultado.Rows[3][1].ToString()).ToString("C");
+            }
+            catch
+            {
+                
+            }
+
+            gReceitas.Text = "Receitas\r\n" + rec;
+            gDespesas.Text = "Despesas\r\n" + desp;
+            gTransferencias.Text = "Transferências\r\n" + transf;
+            gCredito.Text = "Cartão de crédito\r\n" + credito;
+
+        }
+
         //FUNÇÃO PARA ABRIA CALCULADORA NATIVA DO WINDOWS
         private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -212,6 +245,7 @@ namespace Setup.Financas
             COD.LimparCampos(pnSalvarIn, txtData, cbClasse);
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
+            CarregarListaGeral();
         }
 
         private void limpar_Click(object sender, EventArgs e)
@@ -334,6 +368,7 @@ namespace Setup.Financas
             CarregarCbClassesContas();
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
+            CarregarListaGeral();
         }
     }
 }

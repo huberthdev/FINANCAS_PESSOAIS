@@ -128,6 +128,10 @@ namespace Setup.Financas
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnListaClasse = new System.Windows.Forms.Panel();
+            this.gCredito = new System.Windows.Forms.Label();
+            this.gTransferencias = new System.Windows.Forms.Label();
+            this.gDespesas = new System.Windows.Forms.Label();
+            this.gReceitas = new System.Windows.Forms.Label();
             this.lnLeft = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -135,6 +139,7 @@ namespace Setup.Financas
             this.label12 = new System.Windows.Forms.Label();
             this.lnRight = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -421,7 +426,7 @@ namespace Setup.Financas
             this.listaSaldo_Contas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.listaSaldo_Contas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listaSaldo_Contas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.listaSaldo_Contas.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.listaSaldo_Contas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listaSaldo_Contas.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.listaSaldo_Contas.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -447,7 +452,7 @@ namespace Setup.Financas
             this.listaSaldo_Contas.DefaultCellStyle = dataGridViewCellStyle4;
             this.listaSaldo_Contas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaSaldo_Contas.EnableHeadersVisualStyles = false;
-            this.listaSaldo_Contas.GridColor = System.Drawing.Color.DimGray;
+            this.listaSaldo_Contas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.listaSaldo_Contas.Location = new System.Drawing.Point(7, 222);
             this.listaSaldo_Contas.MultiSelect = false;
             this.listaSaldo_Contas.Name = "listaSaldo_Contas";
@@ -524,9 +529,10 @@ namespace Setup.Financas
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
             this.lista_Gastos_Classe.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            this.lista_Gastos_Classe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lista_Gastos_Classe.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista_Gastos_Classe.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.lista_Gastos_Classe.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista_Gastos_Classe.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista_Gastos_Classe.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista_Gastos_Classe.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -549,10 +555,9 @@ namespace Setup.Financas
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.lista_Gastos_Classe.DefaultCellStyle = dataGridViewCellStyle10;
-            this.lista_Gastos_Classe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lista_Gastos_Classe.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista_Gastos_Classe.EnableHeadersVisualStyles = false;
-            this.lista_Gastos_Classe.GridColor = System.Drawing.Color.DimGray;
+            this.lista_Gastos_Classe.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista_Gastos_Classe.Location = new System.Drawing.Point(0, 0);
             this.lista_Gastos_Classe.MultiSelect = false;
             this.lista_Gastos_Classe.Name = "lista_Gastos_Classe";
@@ -581,7 +586,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
-            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 401);
+            this.lista_Gastos_Classe.Size = new System.Drawing.Size(352, 216);
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
             // 
@@ -898,12 +903,68 @@ namespace Setup.Financas
             // 
             // pnListaClasse
             // 
+            this.pnListaClasse.Controls.Add(this.gCredito);
+            this.pnListaClasse.Controls.Add(this.gTransferencias);
+            this.pnListaClasse.Controls.Add(this.gDespesas);
+            this.pnListaClasse.Controls.Add(this.gReceitas);
             this.pnListaClasse.Controls.Add(this.lista_Gastos_Classe);
             this.pnListaClasse.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnListaClasse.Location = new System.Drawing.Point(371, 26);
             this.pnListaClasse.Name = "pnListaClasse";
             this.pnListaClasse.Size = new System.Drawing.Size(352, 401);
             this.pnListaClasse.TabIndex = 23;
+            // 
+            // gCredito
+            // 
+            this.gCredito.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gCredito.ForeColor = System.Drawing.Color.White;
+            this.gCredito.Image = ((System.Drawing.Image)(resources.GetObject("gCredito.Image")));
+            this.gCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gCredito.Location = new System.Drawing.Point(6, 354);
+            this.gCredito.Name = "gCredito";
+            this.gCredito.Size = new System.Drawing.Size(340, 43);
+            this.gCredito.TabIndex = 2;
+            this.gCredito.Text = "Cartões de crédito";
+            this.gCredito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gTransferencias
+            // 
+            this.gTransferencias.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gTransferencias.ForeColor = System.Drawing.Color.White;
+            this.gTransferencias.Image = ((System.Drawing.Image)(resources.GetObject("gTransferencias.Image")));
+            this.gTransferencias.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gTransferencias.Location = new System.Drawing.Point(6, 310);
+            this.gTransferencias.Name = "gTransferencias";
+            this.gTransferencias.Size = new System.Drawing.Size(340, 43);
+            this.gTransferencias.TabIndex = 2;
+            this.gTransferencias.Text = "Transferências";
+            this.gTransferencias.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gDespesas
+            // 
+            this.gDespesas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gDespesas.ForeColor = System.Drawing.Color.White;
+            this.gDespesas.Image = ((System.Drawing.Image)(resources.GetObject("gDespesas.Image")));
+            this.gDespesas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gDespesas.Location = new System.Drawing.Point(6, 266);
+            this.gDespesas.Name = "gDespesas";
+            this.gDespesas.Size = new System.Drawing.Size(340, 43);
+            this.gDespesas.TabIndex = 2;
+            this.gDespesas.Text = "Despesas";
+            this.gDespesas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // gReceitas
+            // 
+            this.gReceitas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.gReceitas.ForeColor = System.Drawing.Color.White;
+            this.gReceitas.Image = ((System.Drawing.Image)(resources.GetObject("gReceitas.Image")));
+            this.gReceitas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gReceitas.Location = new System.Drawing.Point(6, 222);
+            this.gReceitas.Name = "gReceitas";
+            this.gReceitas.Size = new System.Drawing.Size(340, 43);
+            this.gReceitas.TabIndex = 2;
+            this.gReceitas.Text = "Receitas";
+            this.gReceitas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lnLeft
             // 
@@ -967,6 +1028,16 @@ namespace Setup.Financas
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(1105, 4);
             this.label13.TabIndex = 26;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "add.png");
+            this.imageList1.Images.SetKeyName(1, "menos.png");
+            this.imageList1.Images.SetKeyName(2, "transferencia.png");
+            this.imageList1.Images.SetKeyName(3, "cartao.png");
             // 
             // frmMenu
             // 
@@ -1083,5 +1154,10 @@ namespace Setup.Financas
         private Label label13;
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn VALOR;
+        private ImageList imageList1;
+        private Label gReceitas;
+        private Label gDespesas;
+        private Label gCredito;
+        private Label gTransferencias;
     }
 }
