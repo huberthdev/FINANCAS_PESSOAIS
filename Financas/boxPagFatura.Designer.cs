@@ -1,4 +1,6 @@
-﻿
+﻿using System.Drawing;
+using System.Windows.Forms;
+
 namespace Setup.Financas
 {
     partial class boxPagFatura
@@ -19,6 +21,18 @@ namespace Setup.Financas
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        protected override void OnCreateControl()
+        {
+            this.lista.BorderStyle = BorderStyle.None;
+            this.lista.GridColor = Color.FromArgb(25, 25, 26);
+            this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
+            base.OnCreateControl();
         }
 
         #region Windows Form Designer generated code

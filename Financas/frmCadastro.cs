@@ -231,11 +231,5 @@ namespace Setup.Financas
                 ExcluirClasse();
             }
         }
-
-        private void optConta_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

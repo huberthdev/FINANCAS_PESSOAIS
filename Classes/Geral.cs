@@ -6,6 +6,11 @@ namespace Setup.Classes
 {
     public static class Geral
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="conta">Informe o código da conta em formato string</param>
+        /// <param name="valor">Informe o valor em formato string que deve ser debitado na conta desejada</param>
         public static void AtualizarSaldoConta(string conta, string valor)
         {
             string sql = "update conta set saldo = saldo + " + valor + " ";

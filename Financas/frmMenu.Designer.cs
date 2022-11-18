@@ -80,9 +80,6 @@ namespace Setup.Financas
             this.cadastros = new System.Windows.Forms.ToolStripMenuItem();
             this.cads = new System.Windows.Forms.ToolStripMenuItem();
             this.cartaoDeCreditoAdd = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportar = new System.Windows.Forms.ToolStripMenuItem();
-            this.pDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.excelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.previsaoDeCustos = new System.Windows.Forms.ToolStripMenuItem();
             this.configuracoes = new System.Windows.Forms.ToolStripMenuItem();
             this.usuarioAdd = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,7 +183,6 @@ namespace Setup.Financas
             this.novoLancamento,
             this.relatorios,
             this.cadastros,
-            this.exportar,
             this.previsaoDeCustos,
             this.configuracoes,
             this.query,
@@ -273,30 +269,6 @@ namespace Setup.Financas
             this.cartaoDeCreditoAdd.Size = new System.Drawing.Size(203, 22);
             this.cartaoDeCreditoAdd.Text = "Cartão de Crédito";
             this.cartaoDeCreditoAdd.Click += new System.EventHandler(this.cartaoDeCreditoAdd_Click);
-            // 
-            // exportar
-            // 
-            this.exportar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pDFToolStripMenuItem,
-            this.excelToolStripMenuItem});
-            this.exportar.Image = ((System.Drawing.Image)(resources.GetObject("exportar.Image")));
-            this.exportar.Name = "exportar";
-            this.exportar.Size = new System.Drawing.Size(246, 22);
-            this.exportar.Text = "Exportar";
-            // 
-            // pDFToolStripMenuItem
-            // 
-            this.pDFToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("pDFToolStripMenuItem.Image")));
-            this.pDFToolStripMenuItem.Name = "pDFToolStripMenuItem";
-            this.pDFToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
-            this.pDFToolStripMenuItem.Text = "PDF";
-            // 
-            // excelToolStripMenuItem
-            // 
-            this.excelToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("excelToolStripMenuItem.Image")));
-            this.excelToolStripMenuItem.Name = "excelToolStripMenuItem";
-            this.excelToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
-            this.excelToolStripMenuItem.Text = "Excel";
             // 
             // previsaoDeCustos
             // 
@@ -1218,9 +1190,6 @@ namespace Setup.Financas
         private ToolStripMenuItem cadastros;
         private ToolStripMenuItem cads;
         private ToolStripMenuItem cartaoDeCreditoAdd;
-        private ToolStripMenuItem exportar;
-        private ToolStripMenuItem pDFToolStripMenuItem;
-        private ToolStripMenuItem excelToolStripMenuItem;
         private ToolStripMenuItem previsaoDeCustos;
         private ToolStripMenuItem query;
         private ToolStripMenuItem anotacoes;

@@ -32,20 +32,20 @@ namespace Setup.Formularios
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfigBD));
-            this.panel1 = new Panel();
-            this.label4 = new Label();
-            this.txtPorta = new TextBox();
-            this.label3 = new Label();
-            this.txtServidor = new TextBox();
-            this.label2 = new Label();
-            this.btnCaminhoBD = new Button();
-            this.txtBD = new TextBox();
-            this.btnSair = new Button();
-            this.btnSalvar = new Button();
-            this.pictureBox1 = new PictureBox();
-            this.label1 = new Label();
-            this.openFileDialog1 = new OpenFileDialog();
-            this.errorProvider1 = new ErrorProvider(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtPorta = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtServidor = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnCaminhoBD = new System.Windows.Forms.Button();
+            this.txtBD = new System.Windows.Forms.TextBox();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -53,7 +53,7 @@ namespace Setup.Formularios
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtPorta);
             this.panel1.Controls.Add(this.label3);
@@ -65,9 +65,9 @@ namespace Setup.Formularios
             this.panel1.Controls.Add(this.btnSalvar);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.ForeColor = System.Drawing.Color.White;
-            this.panel1.Location = new System.Drawing.Point(12, 58);
+            this.panel1.Location = new System.Drawing.Point(10, 56);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(466, 179);
+            this.panel1.Size = new System.Drawing.Size(470, 182);
             this.panel1.TabIndex = 4;
             // 
             // label4
@@ -81,7 +81,7 @@ namespace Setup.Formularios
             // 
             // txtPorta
             // 
-            this.txtPorta.BorderStyle = BorderStyle.FixedSingle;
+            this.txtPorta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPorta.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPorta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPorta.Location = new System.Drawing.Point(340, 83);
@@ -102,7 +102,7 @@ namespace Setup.Formularios
             // 
             // txtServidor
             // 
-            this.txtServidor.BorderStyle = BorderStyle.FixedSingle;
+            this.txtServidor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtServidor.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtServidor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtServidor.Location = new System.Drawing.Point(173, 83);
@@ -124,7 +124,7 @@ namespace Setup.Formularios
             // btnCaminhoBD
             // 
             this.btnCaminhoBD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnCaminhoBD.FlatStyle = FlatStyle.Flat;
+            this.btnCaminhoBD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCaminhoBD.ForeColor = System.Drawing.Color.White;
             this.btnCaminhoBD.Location = new System.Drawing.Point(428, 39);
             this.btnCaminhoBD.Name = "btnCaminhoBD";
@@ -137,7 +137,7 @@ namespace Setup.Formularios
             // txtBD
             // 
             this.txtBD.BackColor = System.Drawing.Color.White;
-            this.txtBD.BorderStyle = BorderStyle.FixedSingle;
+            this.txtBD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBD.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtBD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtBD.Location = new System.Drawing.Point(173, 39);
@@ -151,7 +151,7 @@ namespace Setup.Formularios
             // btnSair
             // 
             this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
-            this.btnSair.FlatStyle = FlatStyle.Flat;
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSair.ForeColor = System.Drawing.Color.White;
             this.btnSair.Location = new System.Drawing.Point(318, 131);
@@ -166,7 +166,7 @@ namespace Setup.Formularios
             // btnSalvar
             // 
             this.btnSalvar.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnSalvar.FlatStyle = FlatStyle.Flat;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnSalvar.ForeColor = System.Drawing.Color.White;
             this.btnSalvar.Location = new System.Drawing.Point(173, 131);
@@ -183,13 +183,13 @@ namespace Setup.Formularios
             this.pictureBox1.Location = new System.Drawing.Point(16, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(151, 138);
-            this.pictureBox1.SizeMode = PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
-            this.label1.Dock = DockStyle.Top;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
             this.label1.Font = new System.Drawing.Font("Consolas", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(0, 0);
@@ -210,14 +210,14 @@ namespace Setup.Formularios
             // frmConfigBD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.ClientSize = new System.Drawing.Size(490, 247);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConfigBD";
-            this.StartPosition = FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmConfigBD";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

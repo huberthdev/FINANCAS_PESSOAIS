@@ -110,7 +110,7 @@ namespace Setup.Financas
             this.listaClasse.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.listaClasse.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listaClasse.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.listaClasse.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.listaClasse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listaClasse.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.listaClasse.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -136,7 +136,7 @@ namespace Setup.Financas
             this.listaClasse.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listaClasse.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaClasse.EnableHeadersVisualStyles = false;
-            this.listaClasse.GridColor = System.Drawing.Color.DimGray;
+            this.listaClasse.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.listaClasse.Location = new System.Drawing.Point(0, 63);
             this.listaClasse.MultiSelect = false;
             this.listaClasse.Name = "listaClasse";
@@ -243,7 +243,7 @@ namespace Setup.Financas
             this.listaConta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.listaConta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listaConta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.listaConta.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.listaConta.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listaConta.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.listaConta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -270,7 +270,7 @@ namespace Setup.Financas
             this.listaConta.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listaConta.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaConta.EnableHeadersVisualStyles = false;
-            this.listaConta.GridColor = System.Drawing.Color.DimGray;
+            this.listaConta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.listaConta.Location = new System.Drawing.Point(0, 38);
             this.listaConta.MultiSelect = false;
             this.listaConta.Name = "listaConta";
@@ -375,7 +375,7 @@ namespace Setup.Financas
             this.pnCad.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnCad.Location = new System.Drawing.Point(0, 0);
             this.pnCad.Name = "pnCad";
-            this.pnCad.Size = new System.Drawing.Size(459, 416);
+            this.pnCad.Size = new System.Drawing.Size(459, 414);
             this.pnCad.TabIndex = 15;
             // 
             // label2
@@ -384,7 +384,7 @@ namespace Setup.Financas
             this.label2.Dock = System.Windows.Forms.DockStyle.Left;
             this.label2.Location = new System.Drawing.Point(0, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(2, 392);
+            this.label2.Size = new System.Drawing.Size(4, 390);
             this.label2.TabIndex = 17;
             // 
             // optClasse
@@ -413,7 +413,6 @@ namespace Setup.Financas
             this.optConta.TabStop = true;
             this.optConta.Text = "Conta";
             this.optConta.UseVisualStyleBackColor = false;
-            this.optConta.CheckedChanged += new System.EventHandler(this.optConta_CheckedChanged);
             this.optConta.Click += new System.EventHandler(this.optConta_Click);
             // 
             // pnConta
@@ -508,18 +507,18 @@ namespace Setup.Financas
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(0, 416);
+            this.label1.Location = new System.Drawing.Point(0, 414);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 2);
+            this.label1.Size = new System.Drawing.Size(457, 4);
             this.label1.TabIndex = 17;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Location = new System.Drawing.Point(455, 0);
+            this.label5.Location = new System.Drawing.Point(453, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(2, 416);
+            this.label5.Size = new System.Drawing.Size(4, 414);
             this.label5.TabIndex = 17;
             // 
             // frmCadastro

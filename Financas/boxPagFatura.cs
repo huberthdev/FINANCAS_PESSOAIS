@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Setup.Financas
 {
     public partial class boxPagFatura : Form
     {
+        
         static double valor = 0;
 
         public boxPagFatura()
@@ -24,10 +20,58 @@ namespace Setup.Financas
 
         private void pagarFatura_Click(object sender, EventArgs e)
         {
+            double valor = 0; int x = 0; string codigo; string sql; string cods = "";
+            string conta = cbConta.Text;
+            string[] ln = new string[lista.RowCount];
+
+            string nConta = ((Classes.Conta)cbConta.SelectedItem).id.ToString();
+
             if (lista.RowCount == 0)
                 return;
 
-            COD.OK(lblPeriodo.Tag.ToString());
+            try
+            {
+                valor = ValorDaFatura();
+
+                if(valor == 0)
+                    return;
+
+                COD.Pergunta("Debitar valor da fatura [" + valor.ToString("C") + "] na conta ["+ conta +"]");
+                if (!COD.Resposta)
+                    return;
+            }
+            catch
+            {
+
+            }
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                DataGridViewCheckBoxCell ck = new DataGridViewCheckBoxCell();
+                ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
+
+                if (ck.Value.ToString() == "1")
+                {
+                    ln[x++] = lista.Rows[i].Cells[3].Value.ToString();
+                }
+            }
+
+            for (int i = 0; i < ln.Length; i++)
+            {
+                codigo = ln[i];
+                if(codigo != null)
+                    cods += codigo + ", ";
+            }
+
+            cods = cods.Remove(cods.Length - 2);
+
+            sql = "UPDATE COMPRA_CREDITO SET STATUS = 1 WHERE COMPRA_CREDITO_ID IN(" + cods + ")";
+            BD.ExecutarSQL(sql, "Fatura paga!");
+
+            valor = valor * -1;
+            Classes.Geral.AtualizarSaldoConta(nConta, BD.CvNum(valor.ToString()));
+
+            this.Dispose();
         }
 
         private void lista_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
@@ -66,11 +110,11 @@ namespace Setup.Financas
             ValorDaFatura();
         }
 
-        private void ValorDaFatura()
+        private double ValorDaFatura()
         {
-            valor = 0;
             string[] txt = lblPeriodo.Text.Split(" • ");
             string periodo = txt[0];
+            valor = 0;
 
             for (int i = 0; i < lista.RowCount; i++)
             {
@@ -85,6 +129,7 @@ namespace Setup.Financas
 
             lblPeriodo.Text = periodo + " • " + valor.ToString("N");
             lblPeriodo.Tag = valor;
+            return valor;
         }
     }
 }
