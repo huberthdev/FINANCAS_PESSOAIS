@@ -52,16 +52,8 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string chave = "";
-            int dia_venc;
-            int dia_compra;
-            int melhor_dia_comp;
-            int x;
-            string parcela;
-            string vlParc;
-            string data = "";
-            int qtdParc;
-            string sql;
+            string chave = "", parcela, vlParc, data = "", sql;
+            int dia_venc, dia_compra, melhor_dia_comp, x, qtdParc;
 
             if (COD.ValidarCampos(this) == false)
             {
@@ -201,7 +193,7 @@ namespace Setup.Financas
             }
 
             string sql = "SELECT A.CHAVE, A.COMPRA_CREDITO_ID AS ID, B.DATA_COMPRA AS DATA, C.CLASSE, A.VALOR, A.PARCELA, ";
-            sql += "A.DATA_PARCELA AS DATA_PGMTO, B.DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ";
+            sql += "A.DATA_PARCELA AS DATA_PGMTO, B.DESCRICAO, A.STATUS FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ";
             sql += "ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID ";
             
             if(periodo != "")
@@ -222,6 +214,8 @@ namespace Setup.Financas
             {
 
             }
+
+
 
             status.Items[0].Text = "LINHAS: " + lista.RowCount;
         }
@@ -442,6 +436,8 @@ namespace Setup.Financas
 
         private void btnPagarFatura_Click(object sender, EventArgs e)
         {
+            int x = 0;
+
             if (lista.RowCount == 0)
             {
                 COD.Erro("A lista está vazia!");
@@ -452,6 +448,19 @@ namespace Setup.Financas
             {
                 COD.Erro("Selecione um Cartão!");
                 cbFCartao.Focus();
+                return;
+            }
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                if(lista.Rows[i].Cells[8].Value.ToString() == "1")
+                {
+                    x++;
+                }
+            }
+
+            if (x != 0)
+            {
                 return;
             }
 
@@ -479,6 +488,24 @@ namespace Setup.Financas
             }
 
             pagF.ShowDialog();
+        }
+
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                for (int c = 0; c < lista.ColumnCount; c++)
+                {
+                    if (lista.Rows[i].Cells[8].Value.ToString() == "1")
+                    {
+                        lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                    }
+                    else
+                    {
+                        lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                    }
+                }
+            }
         }
     }
 }

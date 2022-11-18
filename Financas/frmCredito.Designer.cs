@@ -379,6 +379,7 @@ namespace Setup.Financas
             this.lista.ShowEditingIcon = false;
             this.lista.Size = new System.Drawing.Size(719, 271);
             this.lista.TabIndex = 1;
+            this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // CHAVE
@@ -475,12 +476,11 @@ namespace Setup.Financas
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn1.DataPropertyName = "STATUS";
             this.dataGridViewTextBoxColumn1.HeaderText = "STATUS";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // treeFaturas
             // 
@@ -729,15 +729,6 @@ namespace Setup.Financas
         private Controles.Cabecalho limpar;
         private Controles.Cabecalho cartoes;
         private Controles.Cabecalho excluir;
-        private DataGridViewTextBoxColumn CHAVE;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn DATA;
-        private DataGridViewTextBoxColumn CLASSE;
-        private DataGridViewTextBoxColumn VALOR;
-        private DataGridViewTextBoxColumn PARCELA;
-        private DataGridViewTextBoxColumn DATA_PGMTO;
-        private DataGridViewTextBoxColumn DESCRICAO;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private Label label9;
         private StatusStrip status;
         private ToolStripStatusLabel statusLabel;
@@ -747,5 +738,14 @@ namespace Setup.Financas
         private Label label11;
         private Label lblFaturas;
         private Label label12;
+        private DataGridViewTextBoxColumn CHAVE;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn DATA;
+        private DataGridViewTextBoxColumn CLASSE;
+        private DataGridViewTextBoxColumn VALOR;
+        private DataGridViewTextBoxColumn PARCELA;
+        private DataGridViewTextBoxColumn DATA_PGMTO;
+        private DataGridViewTextBoxColumn DESCRICAO;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
