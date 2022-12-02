@@ -55,6 +55,9 @@
     <Compile Update="Financas\frmCredito.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Financas\frmGestao.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Financas\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -358,7 +358,8 @@ namespace Setup.Financas
 
         private void ToolVisaoGeral_Click(object sender, EventArgs e)
         {
-
+            frmGestao gest = new frmGestao();
+            gest.ShowDialog();
         }
 
         private void ToolPrevisao_Click(object sender, EventArgs e)

@@ -40,7 +40,7 @@ namespace Setup.Formularios
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(2, 378);
-            this.progressBar1.Maximum = 40;
+            this.progressBar1.Maximum = 20;
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(716, 12);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;

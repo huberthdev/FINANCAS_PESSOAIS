@@ -113,21 +113,18 @@
   </data>
   <data name="exp_excel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAH6SURBVDhPY6A6EAs0EJdOs3WXL3IuB+LlcoXOF6FS2IGIj66kfJFLG1DxNiB+BmT/A+L/MAw0
-        4LdYqFG3VLJVt3SaDTJuE/bQ4mcQ9dOzQ9aAjpWK3f4vXbPy/5kr5//fuHvr/7nrl/5fvnXt/8Jda/6L
-        +uraETQA6IL/ooEG/5UyHf/XLun7L5Nu+9+nNfX/4t3rUA0A2ZS7uBWsqXxl73+71jgwWwGIExvz/1ct
-        7P6/9tC2/5VAevKmhZgGgGzad+3k/+LlXf+vPb37X7HYFeIKoLhmnON/i/KQ/51rZvw3KQv8Hz+xFNMA
-        EA6alP//28/v/zMXNEE0A7FCocv/wPKk/xlTa/4v3rPuf9rU6v+tK6diN6BoWef/h2+e/e/aOhfFgKDy
-        5P+ZQAOWAA1In4bDANVSz/93Xj7679ie8P/Z+1f/9aoDIYYAvaAabfvfqNj/f/uqaf/1i33/R/cVYQnE
-        Erf/RnUhYE1evRn/zRsjIC4A4pi67P8lc9v+rzqw5X8xkO5fPxe7F7BhWDQqAqOxZnHvf2ACwh6NuDAo
-        epdBE9Klm1f/n79++f+FG1f+z9i6FGKAkLOGqFyBcxkwGS8D4mtATX+QDQAn5RCjaslY82qpBEskbFEm
-        6KDGDc0RCAA0kEsiwsRCNtchA2jgDKABh6BStAAMDACfOorSdDg/agAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfpJREFUOE9j
+        oDoQCzQQl06zdZcvci4H4uVyhc4XoVLYgYiPrqR8kUsbUPE2IH4GZP8D4v8wDDTgt1ioUbdUslW3dJoN
+        Mm4T9tDiZxD107ND1oCOlYrd/i9ds/L/mSvn/9+4e+v/ueuX/l++de3/wl1r/ov66toRNADogv+igQb/
+        lTId/9cu6fsvk27736c19f/i3etQDQDZlLu4FaypfGXvf7vWODBbAYgTG/P/Vy3s/r/20Lb/lUB68qaF
+        mAaAbNp37eT/4uVd/689vftfsdgV4gqguGac43+L8pD/nWtm/DcpC/wfP7EU0wAQDpqU///bz+//Mxc0
+        QTQDsUKhy//A8qT/GVNr/i/es+5/2tTq/60rp2I3oGhZ5/+Hb57979o6F8WAoPLk/5lAA5YADUifhsMA
+        1VLP/3dePvrv2J7w/9n7V//1qgMhhgC9oBpt+9+o2P9/+6pp//WLff9H9xVhCcQSt/9GdSFgTV69Gf/N
+        GyMgLgDimLrs/yVz2/6vOrDlfzGQ7l8/F7sXsGFYNCoCo7Fmce9/YALCHo24MCh6l0ET0qWbV/+fv375
+        /4UbV/7P2LoUYoCQs4aoXIFzGTAZLwPia0BNf5ANACflEKNqyVjzaqkESyRsUSbooMYNzREIADSQSyLC
+        xEI21yEDaOAMoAGHoFK0AAwMAJ86itJ0OD9qAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>262, 17</value>
-  </metadata>
   <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>262, 17</value>
   </metadata>

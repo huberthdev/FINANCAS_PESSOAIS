@@ -459,13 +459,13 @@ namespace Setup.Financas
 
             if (desvio >= 0)
             {
-                msg = "Receita maior que despesa: Desvio: " + desvio.ToString("C");
+                msg = "Desvio: " + desvio.ToString("C");
                 status.Items["msg"].Text = msg;
                 status.Items["msg"].ForeColor = Color.LimeGreen;
             }
             else
             {
-                msg = "Despesa maior que receita: Desvio: " + desvio.ToString("C");
+                msg = "Desvio: " + desvio.ToString("C");
                 status.Items["msg"].Text = msg;
                 status.Items["msg"].ForeColor = Color.Tomato;
             }

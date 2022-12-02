@@ -47,11 +47,11 @@ namespace Setup.Formularios
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQuery));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtSQL = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.selectFromToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,11 +60,14 @@ namespace Setup.Formularios
             this.executar = new System.Windows.Forms.ToolStripMenuItem();
             this.novo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolLimite = new System.Windows.Forms.ToolStripTextBox();
+            this.exp_excel = new System.Windows.Forms.ToolStripMenuItem();
             this.treeTabelas = new System.Windows.Forms.TreeView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblPorc = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.progresso = new System.Windows.Forms.ProgressBar();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.lista = new Setup.Controles.dgView();
@@ -72,9 +75,6 @@ namespace Setup.Formularios
             this.label1 = new System.Windows.Forms.Label();
             this.lnRight = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.lblPorc = new System.Windows.Forms.Label();
-            this.progresso = new System.Windows.Forms.ProgressBar();
-            this.exp_excel = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -164,13 +164,22 @@ namespace Setup.Formularios
             this.toolLimite.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolLimite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.toolLimite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.toolLimite.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolLimite.ForeColor = System.Drawing.Color.White;
             this.toolLimite.MergeAction = System.Windows.Forms.MergeAction.MatchOnly;
             this.toolLimite.Name = "toolLimite";
             this.toolLimite.Size = new System.Drawing.Size(100, 23);
             this.toolLimite.Text = "1000";
             this.toolLimite.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // exp_excel
+            // 
+            this.exp_excel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.exp_excel.ForeColor = System.Drawing.Color.White;
+            this.exp_excel.Image = ((System.Drawing.Image)(resources.GetObject("exp_excel.Image")));
+            this.exp_excel.Name = "exp_excel";
+            this.exp_excel.Size = new System.Drawing.Size(62, 23);
+            this.exp_excel.Text = "Excel";
+            this.exp_excel.Click += new System.EventHandler(this.exp_excel_Click);
             // 
             // treeTabelas
             // 
@@ -220,6 +229,20 @@ namespace Setup.Formularios
             this.panel2.Size = new System.Drawing.Size(615, 247);
             this.panel2.TabIndex = 4;
             // 
+            // lblPorc
+            // 
+            this.lblPorc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPorc.BackColor = System.Drawing.Color.Transparent;
+            this.lblPorc.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPorc.ForeColor = System.Drawing.Color.White;
+            this.lblPorc.Location = new System.Drawing.Point(243, 228);
+            this.lblPorc.Name = "lblPorc";
+            this.lblPorc.Size = new System.Drawing.Size(56, 19);
+            this.lblPorc.TabIndex = 53;
+            this.lblPorc.Text = "%";
+            this.lblPorc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPorc.Visible = false;
+            // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
@@ -228,6 +251,17 @@ namespace Setup.Formularios
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(615, 4);
             this.label9.TabIndex = 47;
+            // 
+            // progresso
+            // 
+            this.progresso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.progresso.Location = new System.Drawing.Point(296, 230);
+            this.progresso.Maximum = 40;
+            this.progresso.Name = "progresso";
+            this.progresso.Size = new System.Drawing.Size(311, 14);
+            this.progresso.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.progresso.TabIndex = 54;
+            this.progresso.Visible = false;
             // 
             // status
             // 
@@ -254,56 +288,56 @@ namespace Setup.Formularios
             // 
             this.lista.AllowUserToAddRows = false;
             this.lista.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.DarkGray;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkGray;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.lista.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.lista.DefaultCellStyle = dataGridViewCellStyle3;
             this.lista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
-            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.Location = new System.Drawing.Point(0, 0);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
             this.lista.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.lista.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.lista.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
+            this.lista.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
@@ -351,41 +385,6 @@ namespace Setup.Formularios
             this.label10.Size = new System.Drawing.Size(4, 326);
             this.label10.TabIndex = 52;
             // 
-            // lblPorc
-            // 
-            this.lblPorc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPorc.BackColor = System.Drawing.Color.Transparent;
-            this.lblPorc.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPorc.ForeColor = System.Drawing.Color.White;
-            this.lblPorc.Location = new System.Drawing.Point(243, 228);
-            this.lblPorc.Name = "lblPorc";
-            this.lblPorc.Size = new System.Drawing.Size(56, 19);
-            this.lblPorc.TabIndex = 53;
-            this.lblPorc.Text = "%";
-            this.lblPorc.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.lblPorc.Visible = false;
-            // 
-            // progresso
-            // 
-            this.progresso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.progresso.Location = new System.Drawing.Point(296, 230);
-            this.progresso.Maximum = 40;
-            this.progresso.Name = "progresso";
-            this.progresso.Size = new System.Drawing.Size(311, 14);
-            this.progresso.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-            this.progresso.TabIndex = 54;
-            this.progresso.Visible = false;
-            // 
-            // exp_excel
-            // 
-            this.exp_excel.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.exp_excel.ForeColor = System.Drawing.Color.White;
-            this.exp_excel.Image = ((System.Drawing.Image)(resources.GetObject("exp_excel.Image")));
-            this.exp_excel.Name = "exp_excel";
-            this.exp_excel.Size = new System.Drawing.Size(62, 23);
-            this.exp_excel.Text = "Excel";
-            this.exp_excel.Click += new System.EventHandler(this.exp_excel_Click);
-            // 
             // frmQuery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -407,6 +406,7 @@ namespace Setup.Formularios
             this.Name = "frmQuery";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmQuery_Activated);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
