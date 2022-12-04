@@ -215,8 +215,6 @@ namespace Setup.Financas
 
             }
 
-
-
             status.Items[0].Text = "LINHAS: " + lista.RowCount;
         }
 
@@ -429,9 +427,16 @@ namespace Setup.Financas
             if (lista.RowCount == 0)
                 return;
 
-            id = lista.SelectedRows[0].Cells[1].Value.ToString();
+            id = lista.SelectedRows[0].Cells[0].Value.ToString();
 
-            Classes.Geral.AbrirDetalheTransacao(id, "C");
+            try
+            {
+                Classes.Geral.AbrirDetalheTransacao(id, "C");
+            }
+            catch
+            {
+
+            }
         }
 
         private void btnPagarFatura_Click(object sender, EventArgs e)
@@ -498,11 +503,17 @@ namespace Setup.Financas
                 {
                     if (lista.Rows[i].Cells[8].Value.ToString() == "1")
                     {
-                        lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                        if (lista.Columns[c].Index == 4)
+                        {
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                        }
                     }
                     else
                     {
-                        lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                        if(lista.Columns[c].Index == 4)
+                        {
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                        }
                     }
                 }
             }

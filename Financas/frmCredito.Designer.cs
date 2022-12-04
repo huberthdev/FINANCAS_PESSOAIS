@@ -26,7 +26,7 @@ namespace Setup.Financas
         protected override void OnCreateControl()
         {
             this.lista.BorderStyle = BorderStyle.None;
-            this.lista.GridColor = Color.FromArgb(25, 25, 26);
+            //this.lista.GridColor = Color.FromArgb(25, 25, 26);
             this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
             this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
@@ -71,6 +71,15 @@ namespace Setup.Financas
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lista = new Setup.Controles.dgView();
+            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PARCELA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATA_PGMTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeFaturas = new System.Windows.Forms.TreeView();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -86,15 +95,6 @@ namespace Setup.Financas
             this.label11 = new System.Windows.Forms.Label();
             this.lblFaturas = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PARCELA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATA_PGMTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
@@ -382,6 +382,107 @@ namespace Setup.Financas
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
+            // CHAVE
+            // 
+            this.CHAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CHAVE.DataPropertyName = "CHAVE";
+            this.CHAVE.HeaderText = "CHAVE";
+            this.CHAVE.Name = "CHAVE";
+            this.CHAVE.ReadOnly = true;
+            this.CHAVE.Visible = false;
+            this.CHAVE.Width = 5;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 5;
+            // 
+            // DATA
+            // 
+            this.DATA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DATA.DataPropertyName = "DATA";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "d";
+            dataGridViewCellStyle3.NullValue = null;
+            this.DATA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DATA.HeaderText = "DATA";
+            this.DATA.MinimumWidth = 80;
+            this.DATA.Name = "DATA";
+            this.DATA.ReadOnly = true;
+            this.DATA.Width = 80;
+            // 
+            // CLASSE
+            // 
+            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CLASSE.DataPropertyName = "CLASSE";
+            this.CLASSE.HeaderText = "CLASSE";
+            this.CLASSE.MinimumWidth = 175;
+            this.CLASSE.Name = "CLASSE";
+            this.CLASSE.ReadOnly = true;
+            this.CLASSE.Width = 175;
+            // 
+            // VALOR
+            // 
+            this.VALOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.VALOR.DataPropertyName = "VALOR";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0,00";
+            this.VALOR.DefaultCellStyle = dataGridViewCellStyle4;
+            this.VALOR.HeaderText = "VALOR";
+            this.VALOR.MinimumWidth = 80;
+            this.VALOR.Name = "VALOR";
+            this.VALOR.ReadOnly = true;
+            this.VALOR.Width = 80;
+            // 
+            // PARCELA
+            // 
+            this.PARCELA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PARCELA.DataPropertyName = "PARCELA";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.PARCELA.DefaultCellStyle = dataGridViewCellStyle5;
+            this.PARCELA.HeaderText = "PARCELA";
+            this.PARCELA.MinimumWidth = 60;
+            this.PARCELA.Name = "PARCELA";
+            this.PARCELA.ReadOnly = true;
+            this.PARCELA.Width = 60;
+            // 
+            // DATA_PGMTO
+            // 
+            this.DATA_PGMTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DATA_PGMTO.DataPropertyName = "DATA_PGMTO";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.DATA_PGMTO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DATA_PGMTO.HeaderText = "PAGAMENTO";
+            this.DATA_PGMTO.MinimumWidth = 80;
+            this.DATA_PGMTO.Name = "DATA_PGMTO";
+            this.DATA_PGMTO.ReadOnly = true;
+            this.DATA_PGMTO.Width = 80;
+            // 
+            // DESCRICAO
+            // 
+            this.DESCRICAO.DataPropertyName = "DESCRICAO";
+            this.DESCRICAO.HeaderText = "DESCRIÇÃO";
+            this.DESCRICAO.MinimumWidth = 180;
+            this.DESCRICAO.Name = "DESCRICAO";
+            this.DESCRICAO.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "STATUS";
+            this.dataGridViewTextBoxColumn1.HeaderText = "STATUS";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
             // treeFaturas
             // 
             this.treeFaturas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -549,107 +650,6 @@ namespace Setup.Financas
             this.label12.Size = new System.Drawing.Size(221, 1);
             this.label12.TabIndex = 43;
             // 
-            // CHAVE
-            // 
-            this.CHAVE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CHAVE.DataPropertyName = "CHAVE";
-            this.CHAVE.HeaderText = "CHAVE";
-            this.CHAVE.Name = "CHAVE";
-            this.CHAVE.ReadOnly = true;
-            this.CHAVE.Visible = false;
-            this.CHAVE.Width = 5;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            this.ID.Width = 5;
-            // 
-            // DATA
-            // 
-            this.DATA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DATA.DataPropertyName = "DATA";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.DATA.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DATA.HeaderText = "DATA";
-            this.DATA.MinimumWidth = 80;
-            this.DATA.Name = "DATA";
-            this.DATA.ReadOnly = true;
-            this.DATA.Width = 80;
-            // 
-            // CLASSE
-            // 
-            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CLASSE.DataPropertyName = "CLASSE";
-            this.CLASSE.HeaderText = "CLASSE";
-            this.CLASSE.MinimumWidth = 175;
-            this.CLASSE.Name = "CLASSE";
-            this.CLASSE.ReadOnly = true;
-            this.CLASSE.Width = 175;
-            // 
-            // VALOR
-            // 
-            this.VALOR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.VALOR.DataPropertyName = "VALOR";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0,00";
-            this.VALOR.DefaultCellStyle = dataGridViewCellStyle4;
-            this.VALOR.HeaderText = "VALOR";
-            this.VALOR.MinimumWidth = 80;
-            this.VALOR.Name = "VALOR";
-            this.VALOR.ReadOnly = true;
-            this.VALOR.Width = 80;
-            // 
-            // PARCELA
-            // 
-            this.PARCELA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.PARCELA.DataPropertyName = "PARCELA";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.PARCELA.DefaultCellStyle = dataGridViewCellStyle5;
-            this.PARCELA.HeaderText = "PARCELA";
-            this.PARCELA.MinimumWidth = 60;
-            this.PARCELA.Name = "PARCELA";
-            this.PARCELA.ReadOnly = true;
-            this.PARCELA.Width = 60;
-            // 
-            // DATA_PGMTO
-            // 
-            this.DATA_PGMTO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DATA_PGMTO.DataPropertyName = "DATA_PGMTO";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.DATA_PGMTO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DATA_PGMTO.HeaderText = "PAGAMENTO";
-            this.DATA_PGMTO.MinimumWidth = 80;
-            this.DATA_PGMTO.Name = "DATA_PGMTO";
-            this.DATA_PGMTO.ReadOnly = true;
-            this.DATA_PGMTO.Width = 80;
-            // 
-            // DESCRICAO
-            // 
-            this.DESCRICAO.DataPropertyName = "DESCRICAO";
-            this.DESCRICAO.HeaderText = "DESCRIÇÃO";
-            this.DESCRICAO.MinimumWidth = 180;
-            this.DESCRICAO.Name = "DESCRICAO";
-            this.DESCRICAO.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "STATUS";
-            this.dataGridViewTextBoxColumn1.HeaderText = "STATUS";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 100;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -692,6 +692,7 @@ namespace Setup.Financas
             this.Name = "frmCredito";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmCredito_Activated);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCredito_KeyDown);
             this.menuStrip1.ResumeLayout(false);
