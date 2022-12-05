@@ -82,10 +82,6 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.treeFaturas = new System.Windows.Forms.TreeView();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbFCartao = new Setup.Controles.cbCombo();
-            this.lblPeriodo = new System.Windows.Forms.Label();
-            this.btnPagarFatura = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -95,9 +91,15 @@ namespace Setup.Financas
             this.label11 = new System.Windows.Forms.Label();
             this.lblFaturas = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPagarFatura = new System.Windows.Forms.Button();
+            this.cbFCartao = new Setup.Controles.cbCombo();
+            this.lblPeriodo = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.status.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -506,63 +508,6 @@ namespace Setup.Financas
             this.label7.TabIndex = 34;
             this.label7.Text = "label7";
             // 
-            // label8
-            // 
-            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 110);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 15);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Cartão";
-            // 
-            // cbFCartao
-            // 
-            this.cbFCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.cbFCartao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.cbFCartao.DropDownHeight = 136;
-            this.cbFCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cbFCartao.ForeColor = System.Drawing.Color.White;
-            this.cbFCartao.FormattingEnabled = true;
-            this.cbFCartao.IntegralHeight = false;
-            this.cbFCartao.Location = new System.Drawing.Point(60, 102);
-            this.cbFCartao.MaxDropDownItems = 10;
-            this.cbFCartao.Name = "cbFCartao";
-            this.cbFCartao.Size = new System.Drawing.Size(309, 23);
-            this.cbFCartao.TabIndex = 26;
-            this.cbFCartao.TabStop = false;
-            this.cbFCartao.SelectedIndexChanged += new System.EventHandler(this.cbFCartao_SelectedIndexChanged);
-            this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
-            // 
-            // lblPeriodo
-            // 
-            this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
-            this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPeriodo.ForeColor = System.Drawing.Color.Silver;
-            this.lblPeriodo.Location = new System.Drawing.Point(456, 102);
-            this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(274, 23);
-            this.lblPeriodo.TabIndex = 24;
-            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnPagarFatura
-            // 
-            this.btnPagarFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnPagarFatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnPagarFatura.Location = new System.Drawing.Point(375, 102);
-            this.btnPagarFatura.Name = "btnPagarFatura";
-            this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
-            this.btnPagarFatura.TabIndex = 35;
-            this.btnPagarFatura.Text = "PAGAR";
-            this.btnPagarFatura.UseVisualStyleBackColor = false;
-            this.btnPagarFatura.Click += new System.EventHandler(this.btnPagarFatura_Click);
-            // 
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
@@ -650,12 +595,82 @@ namespace Setup.Financas
             this.label12.Size = new System.Drawing.Size(221, 1);
             this.label12.TabIndex = 43;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnPagarFatura);
+            this.panel1.Controls.Add(this.cbFCartao);
+            this.panel1.Controls.Add(this.lblPeriodo);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Location = new System.Drawing.Point(4, 99);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(724, 30);
+            this.panel1.TabIndex = 44;
+            // 
+            // btnPagarFatura
+            // 
+            this.btnPagarFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnPagarFatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.btnPagarFatura.Location = new System.Drawing.Point(371, 3);
+            this.btnPagarFatura.Name = "btnPagarFatura";
+            this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
+            this.btnPagarFatura.TabIndex = 39;
+            this.btnPagarFatura.Text = "PAGAR";
+            this.btnPagarFatura.UseVisualStyleBackColor = false;
+            this.btnPagarFatura.Click += new System.EventHandler(this.btnPagarFatura_Click);
+            // 
+            // cbFCartao
+            // 
+            this.cbFCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.cbFCartao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.cbFCartao.DropDownHeight = 136;
+            this.cbFCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFCartao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbFCartao.ForeColor = System.Drawing.Color.White;
+            this.cbFCartao.FormattingEnabled = true;
+            this.cbFCartao.IntegralHeight = false;
+            this.cbFCartao.Location = new System.Drawing.Point(56, 3);
+            this.cbFCartao.MaxDropDownItems = 10;
+            this.cbFCartao.Name = "cbFCartao";
+            this.cbFCartao.Size = new System.Drawing.Size(309, 23);
+            this.cbFCartao.TabIndex = 38;
+            this.cbFCartao.TabStop = false;
+            this.cbFCartao.SelectedIndexChanged += new System.EventHandler(this.cbFCartao_SelectedIndexChanged);
+            // 
+            // lblPeriodo
+            // 
+            this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPeriodo.ForeColor = System.Drawing.Color.Silver;
+            this.lblPeriodo.Location = new System.Drawing.Point(452, 3);
+            this.lblPeriodo.Name = "lblPeriodo";
+            this.lblPeriodo.Size = new System.Drawing.Size(265, 23);
+            this.lblPeriodo.TabIndex = 36;
+            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 11);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 15);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Cartão";
+            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(974, 436);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblFaturas);
             this.Controls.Add(this.lista);
@@ -665,21 +680,17 @@ namespace Setup.Financas
             this.Controls.Add(this.status);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.btnPagarFatura);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.txtQtdeParc);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.txtData);
             this.Controls.Add(this.cbClasse);
-            this.Controls.Add(this.cbFCartao);
             this.Controls.Add(this.cbCartao);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.lblPeriodo);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -700,6 +711,8 @@ namespace Setup.Financas
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -723,10 +736,6 @@ namespace Setup.Financas
         private Controles.dgView lista;
         private TreeView treeFaturas;
         private Label label7;
-        private Label label8;
-        private Controles.cbCombo cbFCartao;
-        private Label lblPeriodo;
-        private Button btnPagarFatura;
         private Controles.Cabecalho salvar;
         private Controles.Cabecalho limpar;
         private Controles.Cabecalho cartoes;
@@ -749,5 +758,10 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn DATA_PGMTO;
         private DataGridViewTextBoxColumn DESCRICAO;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private Panel panel1;
+        private Button btnPagarFatura;
+        private Controles.cbCombo cbFCartao;
+        private Label lblPeriodo;
+        private Label label8;
     }
 }

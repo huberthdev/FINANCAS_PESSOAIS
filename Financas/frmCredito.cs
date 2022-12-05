@@ -333,7 +333,7 @@ namespace Setup.Financas
 
             try
             {
-                chave = lista.SelectedRows[0].Cells[1].Value.ToString();
+                chave = lista.SelectedRows[0].Cells[0].Value.ToString();
             }
             catch
             {
@@ -518,5 +518,6 @@ namespace Setup.Financas
                 }
             }
         }
+
     }
 }
