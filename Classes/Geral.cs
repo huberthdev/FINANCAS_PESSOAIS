@@ -4,6 +4,13 @@ using System.Drawing;
 
 namespace Setup.Classes
 {
+
+    public static class Filtros
+    {
+        public static string cCartao;
+        public static string fCartao;
+    }
+
     public static class Geral
     {
         /// <summary>

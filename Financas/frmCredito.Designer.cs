@@ -640,7 +640,7 @@ namespace Setup.Financas
             this.cbFCartao.Size = new System.Drawing.Size(309, 23);
             this.cbFCartao.TabIndex = 38;
             this.cbFCartao.TabStop = false;
-            this.cbFCartao.SelectedIndexChanged += new System.EventHandler(this.cbFCartao_SelectedIndexChanged);
+            this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
             // 
             // lblPeriodo
             // 

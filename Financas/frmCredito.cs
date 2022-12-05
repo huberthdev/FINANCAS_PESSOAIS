@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Setup.Classes;
+using System;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -37,6 +38,17 @@ namespace Setup.Financas
             //Preenche o combobox com os cartoes cadastrados no banco de dados
             if (campo == "cartao" || campo == "")
             {
+                try
+                {
+                    Filtros.cCartao = cbCartao.Text;
+                    Filtros.fCartao = cbFCartao.Text;
+                }
+                catch
+                {
+                    Filtros.cCartao = "";
+                    Filtros.fCartao = "";
+                }
+
                 cbCartao.Items.Clear();
                 cbFCartao.Items.Clear();
                 cbFCartao.Items.Add("");
@@ -47,6 +59,15 @@ namespace Setup.Financas
                     cbFCartao.Items.Add(c);
                 }
 
+                try
+                {
+                    cbCartao.Text = Filtros.cCartao;
+                    cbFCartao.Text = Filtros.fCartao;
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -404,11 +425,6 @@ namespace Setup.Financas
             lblPeriodo.Tag = chave + "/" + valor;
 
             CarregarLista();
-        }
-
-        private void cbFCartao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void frmCredito_KeyDown(object sender, KeyEventArgs e)
