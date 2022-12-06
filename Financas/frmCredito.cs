@@ -241,7 +241,7 @@ namespace Setup.Financas
 
         private void CarregarTreeFaturas()
         {
-            string sql, ano, mes, periodo, cartao, cor, mesNome, valor;
+            string sql, ano, mes, periodo, cartao, cor, mesNome, valor, s = "", status;
 
             treeFaturas.Nodes.Clear();
 
@@ -278,7 +278,7 @@ namespace Setup.Financas
             }
 
             //PREENCHE OS NODES COM OS CARTÕES E SEUS VALORES RESPECTIVOS DENTRO DE CADA MÊS
-            sql = "SELECT DISTINCT D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA) || EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR, SUM(A.VALOR) ";
+            sql = "SELECT DISTINCT D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA) || EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR, SUM(A.VALOR), SUM(A.STATUS) ";
             sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ";
             sql += "ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID GROUP BY ";
             sql += "D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA), EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR ORDER BY EXTRACT(YEAR FROM A.DATA_PARCELA)";
@@ -290,6 +290,7 @@ namespace Setup.Financas
                 periodo = BD.Resultado.Rows[i][1].ToString();
                 cor = BD.Resultado.Rows[i][2].ToString();
                 valor = BD.Resultado.Rows[i][3].ToString();
+                status = BD.Resultado.Rows[i][4].ToString();
 
                 if (cor == "")
                 {
@@ -302,8 +303,12 @@ namespace Setup.Financas
                     {
                         if (treeFaturas.Nodes[j].Nodes[k].Name == periodo)
                         {
-                            treeFaturas.Nodes[j].Nodes[k].Nodes.Add(periodo, cartao + " • "
-                                + double.Parse(valor).ToString("C"), cartao.Length).BackColor = Color.FromArgb(int.Parse(cor));
+                            if (status == "0")
+                                s = "Pendente";
+                            else
+                                s = "Pago";
+
+                            treeFaturas.Nodes[j].Nodes[k].Nodes.Add(periodo, cartao + " • " + double.Parse(valor).ToString("C") + " • " + s, cartao.Length).BackColor = Color.FromArgb(int.Parse(cor));
                         }
                     }
                 }
@@ -534,5 +539,9 @@ namespace Setup.Financas
             }
         }
 
+        private void frmCredito_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

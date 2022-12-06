@@ -112,7 +112,7 @@ namespace Setup.Financas
             this.limpar});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(970, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1046, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -160,7 +160,7 @@ namespace Setup.Financas
             this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDesc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDesc.ForeColor = System.Drawing.Color.White;
-            this.txtDesc.Location = new System.Drawing.Point(493, 64);
+            this.txtDesc.Location = new System.Drawing.Point(531, 63);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(233, 23);
@@ -173,7 +173,7 @@ namespace Setup.Financas
             this.txtQtdeParc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtQtdeParc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtQtdeParc.ForeColor = System.Drawing.Color.White;
-            this.txtQtdeParc.Location = new System.Drawing.Point(375, 64);
+            this.txtQtdeParc.Location = new System.Drawing.Point(413, 63);
             this.txtQtdeParc.MaxLength = 3;
             this.txtQtdeParc.Name = "txtQtdeParc";
             this.txtQtdeParc.Size = new System.Drawing.Size(48, 23);
@@ -188,7 +188,7 @@ namespace Setup.Financas
             this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor.ForeColor = System.Drawing.Color.White;
-            this.txtValor.Location = new System.Drawing.Point(195, 64);
+            this.txtValor.Location = new System.Drawing.Point(233, 63);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(90, 23);
             this.txtValor.TabIndex = 28;
@@ -202,7 +202,7 @@ namespace Setup.Financas
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtData.ForeColor = System.Drawing.Color.White;
-            this.txtData.Location = new System.Drawing.Point(60, 64);
+            this.txtData.Location = new System.Drawing.Point(98, 63);
             this.txtData.MaxLength = 10;
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(90, 23);
@@ -221,7 +221,7 @@ namespace Setup.Financas
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
             this.cbClasse.IntegralHeight = false;
-            this.cbClasse.Location = new System.Drawing.Point(421, 32);
+            this.cbClasse.Location = new System.Drawing.Point(459, 31);
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(305, 23);
@@ -238,7 +238,7 @@ namespace Setup.Financas
             this.cbCartao.ForeColor = System.Drawing.Color.White;
             this.cbCartao.FormattingEnabled = true;
             this.cbCartao.IntegralHeight = false;
-            this.cbCartao.Location = new System.Drawing.Point(60, 32);
+            this.cbCartao.Location = new System.Drawing.Point(98, 31);
             this.cbCartao.MaxDropDownItems = 10;
             this.cbCartao.Name = "cbCartao";
             this.cbCartao.Size = new System.Drawing.Size(309, 23);
@@ -249,7 +249,7 @@ namespace Setup.Financas
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(375, 40);
+            this.label2.Location = new System.Drawing.Point(413, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 15);
             this.label2.TabIndex = 19;
@@ -259,7 +259,7 @@ namespace Setup.Financas
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(429, 72);
+            this.label6.Location = new System.Drawing.Point(467, 71);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 15);
             this.label6.TabIndex = 20;
@@ -269,7 +269,7 @@ namespace Setup.Financas
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(293, 72);
+            this.label5.Location = new System.Drawing.Point(331, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 15);
             this.label5.TabIndex = 21;
@@ -279,7 +279,7 @@ namespace Setup.Financas
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(156, 72);
+            this.label4.Location = new System.Drawing.Point(194, 71);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 15);
             this.label4.TabIndex = 22;
@@ -289,7 +289,7 @@ namespace Setup.Financas
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 72);
+            this.label3.Location = new System.Drawing.Point(50, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 23;
@@ -299,7 +299,7 @@ namespace Setup.Financas
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 40);
+            this.label1.Location = new System.Drawing.Point(50, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 15);
             this.label1.TabIndex = 24;
@@ -379,7 +379,7 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(719, 271);
+            this.lista.Size = new System.Drawing.Size(778, 271);
             this.lista.TabIndex = 1;
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
@@ -491,22 +491,23 @@ namespace Setup.Financas
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeFaturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.treeFaturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeFaturas.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.treeFaturas.ForeColor = System.Drawing.Color.White;
-            this.treeFaturas.Location = new System.Drawing.Point(742, 63);
+            this.treeFaturas.Location = new System.Drawing.Point(803, 63);
             this.treeFaturas.Name = "treeFaturas";
-            this.treeFaturas.Size = new System.Drawing.Size(222, 338);
+            this.treeFaturas.Size = new System.Drawing.Size(237, 338);
             this.treeFaturas.TabIndex = 32;
             this.treeFaturas.DoubleClick += new System.EventHandler(this.treeFaturas_DoubleClick);
             // 
             // label7
             // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.label7.Location = new System.Drawing.Point(14, 95);
+            this.label7.Location = new System.Drawing.Point(4, 93);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(711, 1);
+            this.label7.Size = new System.Drawing.Size(789, 4);
             this.label7.TabIndex = 34;
-            this.label7.Text = "label7";
             // 
             // label9
             // 
@@ -514,7 +515,7 @@ namespace Setup.Financas
             this.label9.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label9.Location = new System.Drawing.Point(4, 406);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(966, 4);
+            this.label9.Size = new System.Drawing.Size(1042, 4);
             this.label9.TabIndex = 37;
             // 
             // status
@@ -525,7 +526,7 @@ namespace Setup.Financas
             this.statusLabel});
             this.status.Location = new System.Drawing.Point(4, 410);
             this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(966, 22);
+            this.status.Size = new System.Drawing.Size(1042, 22);
             this.status.SizingGrip = false;
             this.status.Stretch = false;
             this.status.TabIndex = 36;
@@ -543,7 +544,7 @@ namespace Setup.Financas
             this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label13.Location = new System.Drawing.Point(0, 432);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(970, 4);
+            this.label13.Size = new System.Drawing.Size(1046, 4);
             this.label13.TabIndex = 38;
             // 
             // label10
@@ -559,7 +560,7 @@ namespace Setup.Financas
             // 
             this.lnRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lnRight.Location = new System.Drawing.Point(970, 0);
+            this.lnRight.Location = new System.Drawing.Point(1046, 0);
             this.lnRight.Name = "lnRight";
             this.lnRight.Size = new System.Drawing.Size(4, 436);
             this.lnRight.TabIndex = 40;
@@ -569,7 +570,7 @@ namespace Setup.Financas
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.label11.Location = new System.Drawing.Point(732, 24);
+            this.label11.Location = new System.Drawing.Point(793, 24);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(4, 382);
             this.label11.TabIndex = 41;
@@ -579,9 +580,9 @@ namespace Setup.Financas
             this.lblFaturas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFaturas.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblFaturas.ForeColor = System.Drawing.Color.Silver;
-            this.lblFaturas.Location = new System.Drawing.Point(742, 32);
+            this.lblFaturas.Location = new System.Drawing.Point(803, 32);
             this.lblFaturas.Name = "lblFaturas";
-            this.lblFaturas.Size = new System.Drawing.Size(222, 23);
+            this.lblFaturas.Size = new System.Drawing.Size(237, 23);
             this.lblFaturas.TabIndex = 42;
             this.lblFaturas.Text = "Faturas";
             this.lblFaturas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -590,9 +591,9 @@ namespace Setup.Financas
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.label12.Location = new System.Drawing.Point(742, 57);
+            this.label12.Location = new System.Drawing.Point(804, 57);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(221, 1);
+            this.label12.Size = new System.Drawing.Size(234, 1);
             this.label12.TabIndex = 43;
             // 
             // panel1
@@ -605,7 +606,7 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(4, 99);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(724, 30);
+            this.panel1.Size = new System.Drawing.Size(783, 30);
             this.panel1.TabIndex = 44;
             // 
             // btnPagarFatura
@@ -616,7 +617,7 @@ namespace Setup.Financas
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPagarFatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnPagarFatura.Location = new System.Drawing.Point(371, 3);
+            this.btnPagarFatura.Location = new System.Drawing.Point(400, 3);
             this.btnPagarFatura.Name = "btnPagarFatura";
             this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
             this.btnPagarFatura.TabIndex = 39;
@@ -634,7 +635,7 @@ namespace Setup.Financas
             this.cbFCartao.ForeColor = System.Drawing.Color.White;
             this.cbFCartao.FormattingEnabled = true;
             this.cbFCartao.IntegralHeight = false;
-            this.cbFCartao.Location = new System.Drawing.Point(56, 3);
+            this.cbFCartao.Location = new System.Drawing.Point(85, 3);
             this.cbFCartao.MaxDropDownItems = 10;
             this.cbFCartao.Name = "cbFCartao";
             this.cbFCartao.Size = new System.Drawing.Size(309, 23);
@@ -648,9 +649,9 @@ namespace Setup.Financas
             this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPeriodo.ForeColor = System.Drawing.Color.Silver;
-            this.lblPeriodo.Location = new System.Drawing.Point(452, 3);
+            this.lblPeriodo.Location = new System.Drawing.Point(481, 3);
             this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(265, 23);
+            this.lblPeriodo.Size = new System.Drawing.Size(299, 23);
             this.lblPeriodo.TabIndex = 36;
             this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -658,7 +659,7 @@ namespace Setup.Financas
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 11);
+            this.label8.Location = new System.Drawing.Point(37, 11);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 15);
             this.label8.TabIndex = 37;
@@ -669,7 +670,7 @@ namespace Setup.Financas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(974, 436);
+            this.ClientSize = new System.Drawing.Size(1050, 436);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblFaturas);
@@ -705,6 +706,7 @@ namespace Setup.Financas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmCredito_Activated);
+            this.Load += new System.EventHandler(this.frmCredito_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCredito_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
