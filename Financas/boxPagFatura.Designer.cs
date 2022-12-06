@@ -55,8 +55,8 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.pagarFatura = new Controles.Cabecalho();
-            this.cancelar = new Controles.Cabecalho();
+            this.pagarFatura = new Setup.Controles.Cabecalho();
+            this.cancelar = new Setup.Controles.Cabecalho();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPeriodo = new System.Windows.Forms.Label();
             this.lista = new Setup.Controles.dgView();
@@ -117,7 +117,7 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(4, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(765, 299);
+            this.panel1.Size = new System.Drawing.Size(765, 309);
             this.panel1.TabIndex = 46;
             // 
             // lblPeriodo
@@ -178,7 +178,7 @@ namespace Setup.Financas
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
             this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.lista.Location = new System.Drawing.Point(8, 34);
+            this.lista.Location = new System.Drawing.Point(8, 39);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
@@ -358,7 +358,7 @@ namespace Setup.Financas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(773, 329);
+            this.ClientSize = new System.Drawing.Size(773, 337);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -377,8 +377,6 @@ namespace Setup.Financas
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem pagarFatura;
-        private System.Windows.Forms.ToolStripMenuItem cancelar;
         private System.Windows.Forms.Panel panel1;
         public Controles.dgView lista;
         public Controles.cbCombo cbConta;
@@ -394,5 +392,7 @@ namespace Setup.Financas
         private System.Windows.Forms.DataGridViewTextBoxColumn DESCRICAO;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         public System.Windows.Forms.Label lblPeriodo;
+        private Controles.Cabecalho pagarFatura;
+        private Controles.Cabecalho cancelar;
     }
 }

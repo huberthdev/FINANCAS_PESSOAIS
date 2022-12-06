@@ -36,7 +36,7 @@ namespace Setup.Financas
                 if(valor == 0)
                     return;
 
-                COD.Pergunta("Debitar valor da fatura: \r\n Valor: [" + valor.ToString("C") + "] \r\n Conta: ["+ conta +"]");
+                COD.Pergunta("Debitar valor da fatura: \r\n\r\nValor: [" + valor.ToString("C") + "] \r\nConta: ["+ conta +"]");
                 if (!COD.Resposta)
                     return;
             }
@@ -52,7 +52,7 @@ namespace Setup.Financas
 
                 if (ck.Value.ToString() == "1")
                 {
-                    ln[x++] = lista.Rows[i].Cells[3].Value.ToString();
+                    ln[x++] = lista.Rows[i].Cells[2].Value.ToString();
                 }
             }
 

@@ -241,14 +241,7 @@ namespace Setup.Financas
 
         private void CarregarTreeFaturas()
         {
-            string sql;
-            string ano;
-            string mes;
-            string periodo;
-            string cartao;
-            string cor;
-            string mesNome;
-            string valor;
+            string sql, ano, mes, periodo, cartao, cor, mesNome, valor;
 
             treeFaturas.Nodes.Clear();
 
@@ -322,6 +315,11 @@ namespace Setup.Financas
                 {
                     treeFaturas.Nodes[i].Expand();
                 }
+
+                if(DateTime.Today.Month == 12 && treeFaturas.Nodes[i].Text == (DateTime.Today.Year + 1).ToString())
+                {
+                    treeFaturas.Nodes[i].Expand();
+                }
             }
 
             //VERIFICA SE A FATURA DO MES ESTÁ PAGA E MUDA A COR PARA VERMELHO[NÃO PAGO] E VERDE[PAGO]
@@ -361,7 +359,8 @@ namespace Setup.Financas
                 return;
             }
 
-            Classes.Geral.ExcluirCompraCredito(chave);
+            if(!Geral.ExcluirCompraCredito(chave))
+                return;
 
             CarregarLista();
             CarregarTreeFaturas();
