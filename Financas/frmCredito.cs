@@ -451,7 +451,7 @@ namespace Setup.Financas
 
             try
             {
-                Classes.Geral.AbrirDetalheTransacao(id, "C");
+                Geral.AbrirDetalheTransacao(id, "C");
             }
             catch
             {
