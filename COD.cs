@@ -93,7 +93,6 @@ namespace Setup
             }
 
             return true;
-
         }
 
         public static string CriptografiaMd5(string texto)

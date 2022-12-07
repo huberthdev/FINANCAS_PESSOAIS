@@ -63,6 +63,7 @@ namespace Setup.Financas
             this.salvar.Name = "salvar";
             this.salvar.Size = new System.Drawing.Size(66, 20);
             this.salvar.Text = "Salvar";
+            this.salvar.Click += new System.EventHandler(this.salvar_Click);
             // 
             // cancelar
             // 
