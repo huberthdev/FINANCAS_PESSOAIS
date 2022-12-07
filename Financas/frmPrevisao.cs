@@ -392,7 +392,7 @@ namespace Setup.Financas
 
                 if (ord == "A")
                 {
-                    lista.SelectedRows[i].ReadOnly = true;
+                    lista.Rows[i].ReadOnly = true;
                 }
             }
 
