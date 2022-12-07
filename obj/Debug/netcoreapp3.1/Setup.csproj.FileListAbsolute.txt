@@ -54,3 +54,4 @@ C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Core.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxPagFatura.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.frmGestao.resources
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxAlterarCompra.resources

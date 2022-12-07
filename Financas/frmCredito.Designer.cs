@@ -43,6 +43,7 @@ namespace Setup.Financas
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCredito));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -80,6 +81,8 @@ namespace Setup.Financas
             this.DATA_PGMTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESCRICAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editar = new System.Windows.Forms.ToolStripMenuItem();
             this.treeFaturas = new System.Windows.Forms.TreeView();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -98,6 +101,7 @@ namespace Setup.Financas
             this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -341,6 +345,7 @@ namespace Setup.Financas
             this.DATA_PGMTO,
             this.DESCRICAO,
             this.dataGridViewTextBoxColumn1});
+            this.lista.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -484,6 +489,22 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editar});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 26);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // editar
+            // 
+            this.editar.Image = ((System.Drawing.Image)(resources.GetObject("editar.Image")));
+            this.editar.Name = "editar";
+            this.editar.Size = new System.Drawing.Size(172, 22);
+            this.editar.Text = "Alterar Compra Nº";
+            this.editar.Click += new System.EventHandler(this.editar_Click);
             // 
             // treeFaturas
             // 
@@ -711,6 +732,7 @@ namespace Setup.Financas
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -765,5 +787,7 @@ namespace Setup.Financas
         private Controles.cbCombo cbFCartao;
         private Label lblPeriodo;
         private Label label8;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem editar;
     }
 }

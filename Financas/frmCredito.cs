@@ -543,5 +543,55 @@ namespace Setup.Financas
         {
 
         }
+
+        private void editar_Click(object sender, EventArgs e)
+        {
+            string id, data, valor, desc;
+
+            try
+            {
+                id = lista.SelectedRows[0].Cells[1].Value.ToString();
+                valor = lista.SelectedRows[0].Cells[4].Value.ToString();
+                data = lista.SelectedRows[0].Cells[6].Value.ToString();
+                desc = lista.SelectedRows[0].Cells[7].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            boxAlterarCompra AltComp = new boxAlterarCompra();
+
+            AltComp.txtValor.Text = double.Parse(valor).ToString("N");
+            AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
+            AltComp.txtDesc.Text = desc;
+            AltComp.Tag = id;
+            AltComp.ShowDialog();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string id;
+
+            try
+            {
+                id = lista.SelectedRows[0].Cells[0].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            if (lista.RowCount == 0)
+            {
+                e.Cancel = true;
+            }
+            else if(lista.SelectedRows[0].Cells[8].Value.ToString() == "1")
+            {
+                e.Cancel = true;
+            }
+
+            contextMenuStrip1.Items["editar"].Text = "Alterar Compra Nº [" + id + "]";
+        }
     }
 }

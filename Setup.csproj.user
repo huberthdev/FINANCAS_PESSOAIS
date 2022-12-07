@@ -37,6 +37,9 @@
     <Compile Update="Financas\boxAddPrev.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Financas\boxAlterarCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Financas\boxCartaoCredito.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -292,8 +292,7 @@ namespace Setup.Financas
 
         private void excluir_Click(object sender, EventArgs e)
         {
-            string id;
-            string tipo;
+            string id, tipo;
 
             try
             {

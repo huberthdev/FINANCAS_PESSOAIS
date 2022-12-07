@@ -187,7 +187,7 @@ namespace Setup.Financas
             // 
             this.excel.Image = ((System.Drawing.Image)(resources.GetObject("excel.Image")));
             this.excel.Name = "excel";
-            this.excel.Size = new System.Drawing.Size(180, 22);
+            this.excel.Size = new System.Drawing.Size(101, 22);
             this.excel.Text = "Excel";
             this.excel.Click += new System.EventHandler(this.excel_Click);
             // 
@@ -195,7 +195,7 @@ namespace Setup.Financas
             // 
             this.pdf.Image = ((System.Drawing.Image)(resources.GetObject("pdf.Image")));
             this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(180, 22);
+            this.pdf.Size = new System.Drawing.Size(101, 22);
             this.pdf.Text = "PDF";
             // 
             // label2
