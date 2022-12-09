@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Threading;
 
 namespace Setup.Financas
 {
@@ -353,6 +354,16 @@ namespace Setup.Financas
                 lista.Cursor = Cursors.IBeam;
             else
                 lista.Cursor = Cursors.Default;
+
+            try
+            {
+                lista.Rows[e.RowIndex].Selected = true;
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void lista_DoubleClick(object sender, EventArgs e)
@@ -604,6 +615,46 @@ namespace Setup.Financas
             if (e.KeyCode == Keys.F2)
             {
                 EditarLinha(chave: chave);
+            }
+        }
+
+        private void detalhes_Click(object sender, EventArgs e)
+        {
+            string[] cv;
+            string chave, sql;
+            string classe, mes, ano;
+
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+
+                cv = chave.Split(".");
+                mes = cv[1];
+                ano = cv[2];
+                classe = cv[3];
+            }
+            catch
+            {
+                return;
+            }
+
+            //sql = "SELECT B.CLASSE, A.DATA, A.VALOR, A.DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE B.CLASSE_ID = " + classe + " AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + "";
+
+            sql = "SELECT CLASSE, DATA, VALOR, DESCRICAO FROM(SELECT B.CLASSE, A.DATA, A.VALOR, A.DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = "+ classe +" AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, A.VALOR, B.DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = "+ classe +" AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
+
+            if (BD.Buscar(sql).Rows.Count == 0)
+                return;
+
+            boxFlutuante flut = new boxFlutuante();
+            try
+            {
+                flut.lista.DataSource = BD.Buscar(sql);
+                flut.Show();
+                flut.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
+            }
+            catch
+            {
+
             }
         }
     }

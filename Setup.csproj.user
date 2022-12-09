@@ -46,6 +46,9 @@
     <Compile Update="Financas\boxDescricao.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Financas\boxFlutuante.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Financas\boxPagFatura.cs">
       <SubType>Form</SubType>
     </Compile>

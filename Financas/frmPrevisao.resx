@@ -182,6 +182,19 @@
         FQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>313, 17</value>
+  </metadata>
+  <data name="detalhes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAD9SURBVDhPYxgmwP5A+FGHAxGHQWyXI6FyDvvDlzgeCF+FDzvsDwsAawYBkGaHA+GHQGy7gxGy
+        JBsw8IBQGDjsj1gAdLKL285YbrAGdIAvDIByi4EGKDjsT+Bw3Bdm7bA/1Mb3jC8XWCOxAGiACdCC+0D8
+        H4LDHtsfCLWESuMHIJuhmje5HomQctobKg1kbwbiR5bHQjnBinCFgf2BCFuws4G2gjSCFQOBw/5oGZAY
+        SA4igCMMQAaA/IzLAKeDkU5QIdwAFGAgPwM1bAY7H6T5YNgWIP893AuEACjAgBoegWyF4vdA/M/xQEQe
+        VAlhALIN5GeQs8FsoGaHA+GXAT+hx64QVN2CAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="status.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>132, 17</value>
   </metadata>
@@ -223,7 +236,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAAGA0AAAJNU0Z0AUkBTAIBAQYB
-        AAFoAQIBaAECARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
+        AAGQAQIBkAECARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
         AAEIGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC

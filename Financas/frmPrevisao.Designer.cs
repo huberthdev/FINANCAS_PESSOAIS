@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using System;
 
 namespace Setup.Financas
 {
@@ -99,6 +100,8 @@ namespace Setup.Financas
             this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.detalhes = new System.Windows.Forms.ToolStripMenuItem();
             this.status = new System.Windows.Forms.StatusStrip();
             this.receita = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -116,6 +119,7 @@ namespace Setup.Financas
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -248,7 +252,7 @@ namespace Setup.Financas
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -273,6 +277,7 @@ namespace Setup.Financas
             this.CHAVE,
             this.EDITAR,
             this.dataGridViewImageColumn1});
+            this.lista.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -284,7 +289,7 @@ namespace Setup.Financas
             this.lista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
-            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.Location = new System.Drawing.Point(0, 0);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
@@ -453,6 +458,22 @@ namespace Setup.Financas
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn1.Width = 40;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detalhes});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 48);
+            // 
+            // detalhes
+            // 
+            this.detalhes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.detalhes.Image = ((System.Drawing.Image)(resources.GetObject("detalhes.Image")));
+            this.detalhes.Name = "detalhes";
+            this.detalhes.Size = new System.Drawing.Size(180, 22);
+            this.detalhes.Text = "Detalhes";
+            this.detalhes.Click += new System.EventHandler(this.detalhes_Click);
+            // 
             // status
             // 
             this.status.AutoSize = false;
@@ -605,6 +626,7 @@ namespace Setup.Financas
             this.menuStrip1.PerformLayout();
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
             this.ResumeLayout(false);
@@ -652,5 +674,7 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CHAVE;
         private DataGridViewImageColumn EDITAR;
         private DataGridViewImageColumn dataGridViewImageColumn1;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem detalhes;
     }
 }
