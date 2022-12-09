@@ -627,11 +627,11 @@ namespace Setup.Financas
             try
             {
                 chave = lista.SelectedRows[0].Cells[11].Value.ToString();
-
                 cv = chave.Split(".");
-                mes = cv[1];
-                ano = cv[2];
                 classe = cv[3];
+
+                mes = (((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1).ToString();
+                ano = menuStrip1.Items["ano"].Text;
             }
             catch
             {
@@ -640,7 +640,7 @@ namespace Setup.Financas
 
             //sql = "SELECT B.CLASSE, A.DATA, A.VALOR, A.DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE B.CLASSE_ID = " + classe + " AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + "";
 
-            sql = "SELECT CLASSE, DATA, VALOR, DESCRICAO FROM(SELECT B.CLASSE, A.DATA, A.VALOR, A.DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = "+ classe +" AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, A.VALOR, B.DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = "+ classe +" AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
+            sql = "SELECT CLASSE, DATA, VALOR, DESCRICAO FROM(SELECT B.CLASSE, A.DATA, ABS(A.VALOR), A.DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = "+ classe +" AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, A.VALOR, B.DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = "+ classe +" AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
 
             if (BD.Buscar(sql).Rows.Count == 0)
                 return;
