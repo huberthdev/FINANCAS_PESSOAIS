@@ -354,16 +354,6 @@ namespace Setup.Financas
                 lista.Cursor = Cursors.IBeam;
             else
                 lista.Cursor = Cursors.Default;
-
-            try
-            {
-                lista.Rows[e.RowIndex].Selected = true;
-            }
-            catch
-            {
-
-            }
-            
         }
 
         private void lista_DoubleClick(object sender, EventArgs e)

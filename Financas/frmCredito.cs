@@ -593,5 +593,6 @@ namespace Setup.Financas
 
             contextMenuStrip1.Items["editar"].Text = "Alterar Compra Nº [" + id + "]";
         }
+
     }
 }
