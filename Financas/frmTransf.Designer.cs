@@ -25,7 +25,6 @@ namespace Setup.Financas
 
         protected override void OnCreateControl()
         {
-            this.lista.MultiSelect = true;
             this.lista.BorderStyle = BorderStyle.None;
             this.lista.GridColor = Color.FromArgb(25, 25, 26);
             this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);

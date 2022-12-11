@@ -6,6 +6,8 @@ namespace Setup.Financas
 {
     partial class frmMenu
     {
+        public delegate void MouseEventHandler(object sender, MouseEventArgs e);
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>

@@ -6,7 +6,6 @@ namespace Setup.Controles
 {
     public class dgView : DataGridView
     {
-
         protected override void OnCreateControl()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
@@ -95,7 +94,10 @@ namespace Setup.Controles
         {
             try
             {
-                this.Rows[e.RowIndex].Selected = true;
+                if(!this.MultiSelect)
+                {
+                    this.Rows[e.RowIndex].Selected = true;
+                }
             }
             catch
             {
