@@ -314,11 +314,20 @@ namespace Setup.Financas
                 }
             }
 
+            periodo = DateTime.Today.ToString("Myyyy");
             for (int i = 0; i < treeFaturas.Nodes.Count; i++)
             {
                 if(treeFaturas.Nodes[i].Text == DateTime.Today.Year.ToString())
                 {
                     treeFaturas.Nodes[i].Expand();
+
+                    for (int x = 0; x < treeFaturas.Nodes[i].Nodes.Count; x++)
+                    {
+                        if(treeFaturas.Nodes[i].Nodes[x].Name == periodo)
+                        {
+                            treeFaturas.Nodes[i].Nodes[x].Expand();
+                        }
+                    }
                 }
 
                 if(DateTime.Today.Month == 12 && treeFaturas.Nodes[i].Text == (DateTime.Today.Year + 1).ToString())
@@ -328,7 +337,6 @@ namespace Setup.Financas
             }
 
             //VERIFICA SE A FATURA DO MES ESTÁ PAGA E MUDA A COR PARA VERMELHO[NÃO PAGO] E VERDE[PAGO]
-
 
             if (treeFaturas.Nodes.Count == 0)
             {
