@@ -88,6 +88,10 @@ namespace Setup.Financas
             this.label9 = new System.Windows.Forms.Label();
             this.status = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.valorFatura = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.periodo = new System.Windows.Forms.ToolStripStatusLabel();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lnRight = new System.Windows.Forms.Label();
@@ -97,7 +101,6 @@ namespace Setup.Financas
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPagarFatura = new System.Windows.Forms.Button();
             this.cbFCartao = new Setup.Controles.cbCombo();
-            this.lblPeriodo = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -544,7 +547,11 @@ namespace Setup.Financas
             this.status.AutoSize = false;
             this.status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
+            this.statusLabel,
+            this.sp1,
+            this.valorFatura,
+            this.sp2,
+            this.periodo});
             this.status.Location = new System.Drawing.Point(4, 410);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1042, 22);
@@ -558,6 +565,31 @@ namespace Setup.Financas
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(23, 17);
             this.statusLabel.Text = ">>";
+            // 
+            // sp1
+            // 
+            this.sp1.Name = "sp1";
+            this.sp1.Size = new System.Drawing.Size(10, 17);
+            this.sp1.Text = "|";
+            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // valorFatura
+            // 
+            this.valorFatura.Name = "valorFatura";
+            this.valorFatura.Size = new System.Drawing.Size(28, 17);
+            this.valorFatura.Text = "R$ -";
+            // 
+            // sp2
+            // 
+            this.sp2.Name = "sp2";
+            this.sp2.Size = new System.Drawing.Size(10, 17);
+            this.sp2.Text = "|";
+            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // periodo
+            // 
+            this.periodo.Name = "periodo";
+            this.periodo.Size = new System.Drawing.Size(0, 17);
             // 
             // label13
             // 
@@ -623,7 +655,6 @@ namespace Setup.Financas
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.btnPagarFatura);
             this.panel1.Controls.Add(this.cbFCartao);
-            this.panel1.Controls.Add(this.lblPeriodo);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Location = new System.Drawing.Point(4, 99);
             this.panel1.Name = "panel1";
@@ -663,19 +694,6 @@ namespace Setup.Financas
             this.cbFCartao.TabIndex = 38;
             this.cbFCartao.TabStop = false;
             this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
-            // 
-            // lblPeriodo
-            // 
-            this.lblPeriodo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
-            this.lblPeriodo.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPeriodo.ForeColor = System.Drawing.Color.Silver;
-            this.lblPeriodo.Location = new System.Drawing.Point(450, 3);
-            this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(270, 23);
-            this.lblPeriodo.TabIndex = 36;
-            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label8
             // 
@@ -786,9 +804,12 @@ namespace Setup.Financas
         private Panel panel1;
         private Button btnPagarFatura;
         private Controles.cbCombo cbFCartao;
-        private Label lblPeriodo;
         private Label label8;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem editar;
+        private ToolStripStatusLabel valorFatura;
+        private ToolStripStatusLabel sp1;
+        private ToolStripStatusLabel sp2;
+        private ToolStripStatusLabel periodo;
     }
 }

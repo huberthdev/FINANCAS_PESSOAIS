@@ -13,8 +13,8 @@ namespace Setup.Financas
             InitializeComponent();
 
             txtData.Text = DateTime.Today.ToShortDateString();
-            lblPeriodo.Tag = ((byte)DateTime.Today.Month) + "" + ((int)DateTime.Today.Year);
-            lblPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper() + " • " + DateTime.Today.Year;
+            status.Items["periodo"].Text = "[" + DateTime.Today.Month + "." + DateTime.Today.Year + "]";
+            //lblPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper() + " • " + DateTime.Today.Year;
 
             CarregarCbClassesCartoes();
             CarregarLista();
@@ -81,8 +81,8 @@ namespace Setup.Financas
                 return;
             }
 
-            string cartao = ((Classes.CartaoCredito)cbCartao.SelectedItem).cartao.ToString();
-            string classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
+            string cartao = ((CartaoCredito)cbCartao.SelectedItem).cartao.ToString();
+            string classe = ((Classe)cbClasse.SelectedItem).id.ToString();
 
             string[] v = new string[6];
 
@@ -196,21 +196,28 @@ namespace Setup.Financas
 
         private void CarregarLista()
         {
-            string periodo;
-            string cartao = "";
+            string periodo, cartao = "";
+            double valorFatura = 0;
 
             if (cbFCartao.Text != "")
             {
-                cartao = ((Classes.CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
+                cartao = ((CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
             }
 
             try
             {
-                periodo = lblPeriodo.Tag.ToString().Split("/").GetValue(0).ToString();
+                periodo = status.Items["periodo"].Text.Replace(".", "");
+                periodo = periodo.Replace("[", "");
+                periodo = periodo.Replace("]", "");
             }
             catch
             {
                 return;                
+            }
+
+            if(periodo == "")
+            {
+                periodo = DateTime.Today.ToString("MMyyyy");
             }
 
             string sql = "SELECT A.CHAVE, A.COMPRA_CREDITO_ID AS ID, B.DATA_COMPRA AS DATA, C.CLASSE, A.VALOR, A.PARCELA, ";
@@ -236,7 +243,14 @@ namespace Setup.Financas
 
             }
 
-            status.Items[0].Text = "LINHAS: " + lista.RowCount;
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                valorFatura +=  double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+            }
+
+            status.Items["statusLabel"].Text = "LINHAS: " + lista.RowCount;
+            status.Items["valorFatura"].Text = valorFatura.ToString("C");
+
         }
 
         private void CarregarTreeFaturas()
@@ -335,13 +349,6 @@ namespace Setup.Financas
                     treeFaturas.Nodes[i].Expand();
                 }
             }
-
-            //VERIFICA SE A FATURA DO MES ESTÁ PAGA E MUDA A COR PARA VERMELHO[NÃO PAGO] E VERDE[PAGO]
-
-            if (treeFaturas.Nodes.Count == 0)
-            {
-                lblPeriodo.Text = "";
-            }
         }
 
         private void cartoes_Click(object sender, EventArgs e)
@@ -396,8 +403,7 @@ namespace Setup.Financas
 
         private void treeFaturas_DoubleClick(object sender, EventArgs e)
         {
-            string chave, periodo, cartao = "", valor = "";
-            string[] txt;
+            string chave, periodo, cartao = "";
 
             if (treeFaturas.SelectedNode is null || treeFaturas.SelectedNode.Name == "ano")
             {
@@ -405,18 +411,7 @@ namespace Setup.Financas
             }
 
             chave = treeFaturas.SelectedNode.Name;
-            periodo = chave.Substring(chave.Length - 4, 4) + "/" + treeFaturas.SelectedNode.Text;
-
-            try
-            {
-                txt = treeFaturas.SelectedNode.Text.Split(" • ");
-                valor = txt[1];
-                valor = valor.Replace("R$ ", "");
-            }
-            catch
-            {
-                
-            }
+            periodo = chave.Substring(0, chave.Length - 4) + "." + chave.Substring(chave.Length - 4, 4);
 
             if (treeFaturas.SelectedNode.Level == 2)
             {
@@ -427,14 +422,12 @@ namespace Setup.Financas
             try
             {
                 cbFCartao.Text = cartao;
+                status.Items["periodo"].Text = "[" + periodo + "]";
             }
             catch
             {
 
             }
-
-            lblPeriodo.Text = periodo;
-            lblPeriodo.Tag = chave + "/" + valor;
 
             CarregarLista();
         }
@@ -500,14 +493,14 @@ namespace Setup.Financas
             boxPagFatura pagF = new boxPagFatura();
 
             pagF.lista.DataSource = lista.DataSource;
-            pagF.lblPeriodo.Text = lblPeriodo.Text;
+            pagF.lblPeriodo.Text = status.Items["periodo"].Text + " • " + status.Items["valorFatura"].Text;
 
             try
             {
-                pagF.lblPeriodo.Tag = lblPeriodo.Tag.ToString().Split("/").GetValue(1).ToString();
+                pagF.lblPeriodo.Tag = status.Items["periodo"].Text.Replace(".", "");
 
                 pagF.cbConta.Items.Clear();
-                foreach (Classes.Conta c in Classes.Conta.Lista())
+                foreach (Conta c in Conta.Lista())
                 {
                     pagF.cbConta.Items.Add(c);
                 }
@@ -601,6 +594,5 @@ namespace Setup.Financas
 
             contextMenuStrip1.Items["editar"].Text = "Alterar Compra Nº [" + id + "]";
         }
-
     }
 }

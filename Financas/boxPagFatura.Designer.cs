@@ -31,6 +31,7 @@ namespace Setup.Financas
             this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
             this.lista.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            this.lista.AllowUserToOrderColumns = false;
 
             base.OnCreateControl();
         }
@@ -117,7 +118,7 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.label3);
             this.panel1.Location = new System.Drawing.Point(4, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(765, 309);
+            this.panel1.Size = new System.Drawing.Size(765, 329);
             this.panel1.TabIndex = 46;
             // 
             // lblPeriodo
@@ -141,7 +142,6 @@ namespace Setup.Financas
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.lista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -175,10 +175,11 @@ namespace Setup.Financas
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.lista.DefaultCellStyle = dataGridViewCellStyle8;
+            this.lista.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
             this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.lista.Location = new System.Drawing.Point(8, 39);
+            this.lista.Location = new System.Drawing.Point(0, 36);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
             this.lista.ReadOnly = true;
@@ -205,7 +206,7 @@ namespace Setup.Financas
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(747, 259);
+            this.lista.Size = new System.Drawing.Size(765, 293);
             this.lista.TabIndex = 1;
             this.lista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellContentClick);
             this.lista.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellMouseEnter);
@@ -358,7 +359,7 @@ namespace Setup.Financas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(773, 337);
+            this.ClientSize = new System.Drawing.Size(773, 359);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
