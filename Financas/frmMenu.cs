@@ -144,7 +144,7 @@ namespace Setup.Financas
             sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
             sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < '0' AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
             sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE_ID, B.CLASSE ";
-            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
+            sql += "UNION SELECT C.CLASSE, SUM(B.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID  WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " ";
             sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
 
@@ -335,9 +335,22 @@ namespace Setup.Financas
         private void lista_Gastos_Classe_DoubleClick(object sender, EventArgs e)
         {
             string classe;
+            int mes = DateTime.Today.Month, ano = DateTime.Today.Year;
+            int ultDia = DateTime.DaysInMonth(ano, mes);
 
             if (lista_Gastos_Classe.Rows.Count == 0)
                 return;
+
+            try
+            {
+                mes = int.Parse(gPeriodo.Tag.ToString().Split(".").GetValue(0).ToString());
+                ano = int.Parse(gPeriodo.Tag.ToString().Split(".").GetValue(1).ToString());
+                ultDia = DateTime.DaysInMonth(ano, mes);
+            }
+            catch
+            {
+
+            }
 
             try
             {
@@ -347,6 +360,10 @@ namespace Setup.Financas
                 rel.ckDespesa.Checked = true;
                 rel.CarregarCbClassesContas("classe");
                 rel.cbClasse.Text = classe;
+                rel.txtDataInicio.Value = new DateTime(ano, mes, 01);
+                rel.txtDataInicio.Checked = true;
+                rel.txtDataFim.Value = new DateTime(ano, mes, ultDia);
+                rel.txtDataFim.Checked = true;
                 rel.ShowDialog();
             }
             catch
