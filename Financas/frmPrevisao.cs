@@ -639,7 +639,7 @@ namespace Setup.Financas
             try
             {
                 flut.lista.DataSource = BD.Buscar(sql);
-                flut.Show();
+                flut.ShowDialog();
                 flut.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
             }
             catch

@@ -5,7 +5,6 @@ namespace Setup.Financas
 {
     public partial class boxPagFatura : Form
     {
-        
         static double valor = 0;
 
         public boxPagFatura()
