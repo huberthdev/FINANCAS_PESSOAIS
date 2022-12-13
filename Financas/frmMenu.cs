@@ -430,6 +430,7 @@ namespace Setup.Financas
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
             CarregarListaGeral();
+            CarregarListaCompromissos();
         }
 
         private void mesAnterior_Click(object sender, EventArgs e)
@@ -444,6 +445,20 @@ namespace Setup.Financas
             MudarPeriodo(1);
             CarregarListaGeral();
             CarregarListaGastoClasseMesAtual();
+        }
+
+        private void CarregarListaCompromissos()
+        {
+            string sql = "SELECT TIPO, COMPROMISSO, DIA, VALOR FROM(SELECT 'CARTÃO DE CRÉDITO' AS TIPO, D.CONTA AS COMPROMISSO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = 12 AND EXTRACT(YEAR FROM A.DATA_PARCELA) = 2022 AND A.STATUS = 0 GROUP BY D.CONTA, EXTRACT(DAY FROM A.DATA_PARCELA) UNION SELECT 'PREVISÃO' AS TIPO, B.CLASSE AS COMPROMISSO, A.DIA, A.VALOR FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.MES = 12 AND A.ANO = 2022 AND B.TIPO = 0 AND A.STATUS = 0) ORDER BY DIA";
+
+            try
+            {
+                listaCompromissos.DataSource = BD.Buscar(sql);
+            }
+            catch
+            {
+                
+            }
         }
     }
 }
