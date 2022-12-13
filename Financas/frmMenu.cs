@@ -449,7 +449,19 @@ namespace Setup.Financas
 
         private void CarregarListaCompromissos()
         {
-            string sql = "SELECT TIPO, COMPROMISSO, DIA, VALOR FROM(SELECT 'CARTÃO DE CRÉDITO' AS TIPO, D.CONTA AS COMPROMISSO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = 12 AND EXTRACT(YEAR FROM A.DATA_PARCELA) = 2022 AND A.STATUS = 0 GROUP BY D.CONTA, EXTRACT(DAY FROM A.DATA_PARCELA) UNION SELECT 'PREVISÃO' AS TIPO, B.CLASSE AS COMPROMISSO, A.DIA, A.VALOR FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.MES = 12 AND A.ANO = 2022 AND B.TIPO = 0 AND A.STATUS = 0) ORDER BY DIA";
+            int mes = DateTime.Today.Month;
+            int ano = DateTime.Today.Year;
+
+            string sql = "SELECT TIPO, COMPROMISSO, DIA, VALOR FROM(SELECT 'CARTÃO DE CRÉDITO' AS TIPO, D.CONTA AS COMPROMISSO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.STATUS = 0 GROUP BY D.CONTA, EXTRACT(DAY FROM A.DATA_PARCELA) UNION SELECT 'PREVISÃO' AS TIPO, B.CLASSE AS COMPROMISSO, A.DIA, A.VALOR FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.MES = " + mes + " AND A.ANO = " + ano + " AND B.TIPO = 0 AND A.STATUS = 0 ";
+
+            sql += "AND A.PREVISAO_ID IN(SELECT PV.PREVISAO_ID FROM PREVISAO PV INNER JOIN CLASSE CL ON ";
+            sql += "PV.CLASSE = CL.CLASSE_ID WHERE MES = " + mes + " AND ANO = " + ano + " AND PREVISAO_ID NOT IN(";
+            sql += "SELECT A.PREVISAO_ID FROM PREVISAO A LEFT JOIN BD B ON A.CLASSE = B.CLASSE INNER JOIN CLASSE C ON A.CLASSE = C.CLASSE_ID ";
+            sql += "AND EXTRACT(MONTH FROM B.DATA) = A.MES AND EXTRACT(YEAR FROM B.DATA) = A.ANO WHERE C.TIPO = 0 AND A.MES = " + mes + " ";
+            sql += "AND A.ANO = " + ano + " UNION SELECT A.PREVISAO_ID FROM PREVISAO A LEFT JOIN KEY_COMPRA_CREDITO B ON A.CLASSE = B.CLASSE ";
+            sql += "INNER JOIN CLASSE C ON A.CLASSE = C.CLASSE_ID AND EXTRACT(MONTH FROM B.DATA_COMPRA) = A.MES AND EXTRACT(YEAR FROM B.DATA_COMPRA) = A.ANO WHERE C.TIPO = 0 AND A.MES = " + mes + " AND A.ANO = " + ano + "))";
+            
+            sql += ") ORDER BY DIA";
 
             try
             {
@@ -457,7 +469,33 @@ namespace Setup.Financas
             }
             catch
             {
-                
+                return;
+            }
+        }
+
+        private void listaCompromissos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+
+            if (listaCompromissos.RowCount == 0)
+                return;
+
+            for (int i = 0; i < listaCompromissos.RowCount; i++)
+            {
+                if (listaCompromissos.Rows[i].Cells[2].Value.ToString() == DateTime.Today.Day.ToString())
+                {
+                    for (int c = 0; c < listaCompromissos.ColumnCount; c++)
+                    {
+                        listaCompromissos.Rows[i].Cells[c].Style.BackColor = Color.FromArgb(255, 165, 0);
+                        listaCompromissos.Rows[i].Cells[c].Style.ForeColor = Color.FromArgb(25, 25, 26);
+                    }
+                }
+                else if(int.Parse(listaCompromissos.Rows[i].Cells[2].Value.ToString()) < DateTime.Today.Day)
+                {
+                    for (int c = 0; c < listaCompromissos.ColumnCount; c++)
+                    {
+                        listaCompromissos.Rows[i].Cells[c].Style.BackColor = Color.Tomato;
+                    }
+                }
             }
         }
     }

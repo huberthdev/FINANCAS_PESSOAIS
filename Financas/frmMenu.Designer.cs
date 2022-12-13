@@ -48,11 +48,11 @@ namespace Setup.Financas
             this.listaSaldo_Contas.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             this.listaCompromissos.BorderStyle = BorderStyle.None;
-            this.listaCompromissos.GridColor = Color.FromArgb(37, 37, 38);
             this.listaCompromissos.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
             this.listaCompromissos.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             this.listaCompromissos.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
             this.listaCompromissos.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+            this.listaCompromissos.Enabled = false;
 
             base.OnCreateControl();
         }
@@ -166,6 +166,7 @@ namespace Setup.Financas
             this.COMPROMISSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label14 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -1191,7 +1192,7 @@ namespace Setup.Financas
             this.listaCompromissos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaCompromissos.EnableHeadersVisualStyles = false;
             this.listaCompromissos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.listaCompromissos.Location = new System.Drawing.Point(760, 29);
+            this.listaCompromissos.Location = new System.Drawing.Point(760, 50);
             this.listaCompromissos.MultiSelect = false;
             this.listaCompromissos.Name = "listaCompromissos";
             this.listaCompromissos.ReadOnly = true;
@@ -1219,8 +1220,9 @@ namespace Setup.Financas
             this.listaCompromissos.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.listaCompromissos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaCompromissos.ShowEditingIcon = false;
-            this.listaCompromissos.Size = new System.Drawing.Size(321, 392);
-            this.listaCompromissos.TabIndex = 27;
+            this.listaCompromissos.Size = new System.Drawing.Size(321, 371);
+            this.listaCompromissos.TabIndex = 1;
+            this.listaCompromissos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaCompromissos_DataBindingComplete);
             // 
             // TIPO
             // 
@@ -1257,6 +1259,18 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(760, 29);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(321, 17);
+            this.label14.TabIndex = 47;
+            this.label14.Text = "Próximos Compromissos";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1264,6 +1278,7 @@ namespace Setup.Financas
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1085, 457);
             this.Controls.Add(this.listaCompromissos);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.lnLeft);
             this.Controls.Add(this.pnListaClasse);
             this.Controls.Add(this.label10);
@@ -1280,6 +1295,7 @@ namespace Setup.Financas
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(776, 496);
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1393,5 +1409,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn COMPROMISSO;
         private DataGridViewTextBoxColumn DIA;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private Label label14;
     }
 }
