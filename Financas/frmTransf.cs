@@ -63,8 +63,8 @@ namespace Setup.Financas
             v[4] = txtDescricao.Text;
 
             //ATUALIZA O SALDO DAS CONTAS DÉBITO E CRÉDITO
-            Classes.Geral.AtualizarSaldoConta(contaD, vD);
-            Classes.Geral.AtualizarSaldoConta(contaC, vC);
+            Classes.Conta.AtualizarSaldoConta(contaD, vD);
+            Classes.Conta.AtualizarSaldoConta(contaC, vC);
 
             //SALVA A MOVIMENTAÇÃO NO BANCO DE DADOS
             BD.Salvar("TRANSFERENCIA", c, v, 0, "Transferência realizada com sucesso!");

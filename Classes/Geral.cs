@@ -4,7 +4,6 @@ using System.Drawing;
 
 namespace Setup.Classes
 {
-
     public static class Filtros
     {
         public static string cCartao;
@@ -13,26 +12,9 @@ namespace Setup.Classes
 
     public static class Geral
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="conta">Informe o código da conta em formato string</param>
-        /// <param name="valor">Informe o valor em formato string que deve ser debitado na conta desejada</param>
-        public static void AtualizarSaldoConta(string conta, string valor)
-        {
-            string sql = "update conta set saldo = saldo + " + valor + " ";
-            sql += "where conta_id = '" + conta + "'";
-            BD.ExecutarSQL(sql);
-        }
-
         public static void ExcluirTransferencia(string id, bool msg = true)
         {
-            string sql;
-            string valor;
-            string contaC;
-            string vC;
-            string contaD;
-            string vD;
+            string sql, valor, contaC, vC, contaD, vD;
 
             COD.Pergunta("Excluir transação selecionada?");
             if (COD.Resposta == false)
@@ -49,8 +31,8 @@ namespace Setup.Classes
             vC = BD.CvNum((decimal.Parse(valor)).ToString());
 
             //ATUALIZA O SALDO DAS CONTAS DÉBITO E CRÉDITO
-            AtualizarSaldoConta(contaC, vC);
-            AtualizarSaldoConta(contaD, vD);
+            Conta.AtualizarSaldoConta(contaC, vC);
+            Conta.AtualizarSaldoConta(contaD, vD);
 
             //EXCLUI A MOVIMENTAÇÃO ND BANCO DE DADOS
 
@@ -72,11 +54,12 @@ namespace Setup.Classes
 
         public static void ExcluirLancamento(string id, bool msg = true)
         {
-            string sql;
-            string conta;
-            string valor;
+            string sql, conta, valor, classe;
 
-            COD.Pergunta("Excluir lançamento selecionado?");
+            classe = id.Split(".").GetValue(1).ToString();
+            id = id.Split(".").GetValue(0).ToString();
+
+            COD.Pergunta("Excluir lançamento selecionado?\r\n\r\nClasse: "+classe);
             if (COD.Resposta == false)
                 return;
 
@@ -89,7 +72,7 @@ namespace Setup.Classes
             valor = BD.CvNum((decimal.Parse(valor) * -1).ToString());
 
             //ATUALIZA O SALDO DA CONTA
-            AtualizarSaldoConta(conta, valor);
+            Conta.AtualizarSaldoConta(conta, valor);
 
             //EXCLUI A MOVIMENTAÇÃO ND BANCO DE DADOS
             try
@@ -109,7 +92,10 @@ namespace Setup.Classes
 
         public static bool ExcluirCompraCredito(string chave)
         {
-            string sql;
+            string sql, classe;
+
+            classe = chave.Split(".").GetValue(1).ToString();
+            chave = chave.Split(".").GetValue(0).ToString();
 
             if (chave == "")
                 return false;
@@ -123,7 +109,7 @@ namespace Setup.Classes
                 return false;
             }
 
-            COD.Pergunta("Excluir Compra. Confirma?");
+            COD.Pergunta("Excluir Compra. Confirma?\r\n\r\nClasse: "+classe);
             if (COD.Resposta == false)
             {
                 return false;
@@ -246,6 +232,18 @@ namespace Setup.Classes
     {
         public int id;
         public string nome;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="conta">Informe o código da conta em formato string</param>
+        /// <param name="valor">Informe o valor em formato string que deve ser debitado na conta desejada</param>
+        public static void AtualizarSaldoConta(string conta, string valor)
+        {
+            string sql = "update conta set saldo = saldo + " + valor + " ";
+            sql += "where conta_id = '" + conta + "'";
+            BD.ExecutarSQL(sql);
+        }
 
         public override string ToString()
         {

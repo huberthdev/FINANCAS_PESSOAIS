@@ -292,12 +292,13 @@ namespace Setup.Financas
 
         private void excluir_Click(object sender, EventArgs e)
         {
-            string id, tipo;
+            string id, tipo, classe;
 
             try
             {
-                tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
                 id = lista.SelectedRows[0].Cells[0].Value.ToString();
+                tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
+                classe = lista.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch
             {
@@ -307,15 +308,15 @@ namespace Setup.Financas
 
             if (tipo == "T")
             {
-                Classes.Geral.ExcluirTransferencia(id);
+                Classes.Geral.ExcluirTransferencia(id + "." + classe);
             }
             else if(tipo == "D")
             {
-                Classes.Geral.ExcluirLancamento(id);
+                Classes.Geral.ExcluirLancamento(id + "." + classe);
             }
             else if (tipo == "C")
             {
-                Classes.Geral.ExcluirCompraCredito(id);
+                Classes.Geral.ExcluirCompraCredito(id + "." + classe);
             }
 
             CarregarLista();
@@ -589,6 +590,7 @@ namespace Setup.Financas
             else
                 AltComp.Tag = id + ".R";
 
+            AltComp.txtValor.Tag = valor.ToString();
             AltComp.txtValor.Text = Math.Abs(valor).ToString("N");
             AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
             AltComp.txtDesc.Text = desc;

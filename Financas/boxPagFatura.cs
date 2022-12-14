@@ -68,7 +68,7 @@ namespace Setup.Financas
             BD.ExecutarSQL(sql, "Fatura paga!");
 
             valor = valor * -1;
-            Classes.Geral.AtualizarSaldoConta(nConta, BD.CvNum(valor.ToString()));
+            Classes.Conta.AtualizarSaldoConta(nConta, BD.CvNum(valor.ToString()));
 
             this.Dispose();
         }

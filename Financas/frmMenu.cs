@@ -283,7 +283,7 @@ namespace Setup.Financas
             v[5] = "1";
 
             BD.Salvar("bd", c, v, 0, "Registro salvo com sucesso!");
-            Classes.Geral.AtualizarSaldoConta(conta, valor);
+            Classes.Conta.AtualizarSaldoConta(conta, valor);
 
             COD.LimparCampos(pnSalvarIn, txtData, cbClasse);
             CarregarListaSaldoContas();
