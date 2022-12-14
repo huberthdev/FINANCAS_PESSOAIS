@@ -17,13 +17,15 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string sql = "", id, tipo, data, valor, nValor, conta;
+            string sql = "", id, tipo, data, valor, nValor, conta = "";
 
             id = this.Tag.ToString().Split(".").GetValue(0).ToString();
             tipo = this.Tag.ToString().Split(".").GetValue(1).ToString();
-            conta = nConta(id);
+            
+            if(tipo != "C")
+                conta = nConta(id);
 
-            if (!COD.ValidarCampos(panel1) || id == "" || tipo == "" || conta == "")
+            if (!COD.ValidarCampos(panel1) || id == "" || tipo == "")
                 return;
 
             data = BD.CvData(txtData.Text);
@@ -46,10 +48,13 @@ namespace Setup.Financas
                     nValor = "-" + nValor;
                 }
 
-                Classes.Conta.AtualizarSaldoConta(conta, valor);
-                Classes.Conta.AtualizarSaldoConta(conta, nValor);
+                if(conta != "")
+                {
+                    Classes.Conta.AtualizarSaldoConta(conta, valor);
+                    Classes.Conta.AtualizarSaldoConta(conta, nValor);
 
-                sql = "UPDATE BD SET DATA = '" + data + "', VALOR = '" + valor + "', DESCRICAO = '"+ txtDesc.Text +"' WHERE BD_ID = " + id + "";
+                    sql = "UPDATE BD SET DATA = '" + data + "', VALOR = '" + valor + "', DESCRICAO = '" + txtDesc.Text + "' WHERE BD_ID = " + id + "";
+                }
             }
 
             try
