@@ -17,6 +17,7 @@ namespace Setup.Financas
             //lblPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper() + " • " + DateTime.Today.Year;
 
             CarregarCbClassesCartoes();
+            cbFCartao.Text = Cartao_Parcela_Mais_Proxima();
             CarregarLista();
             ConfigurarLista();
             CarregarTreeFaturas();
@@ -28,8 +29,8 @@ namespace Setup.Financas
             if (campo == "classe" || campo == "")
             {
                 cbClasse.Items.Clear();
-                Classes.Classe.Tipo = 0;
-                foreach (Classes.Classe c in Classes.Classe.Lista())
+                Classe.Tipo = 0;
+                foreach (Classe c in Classe.Lista())
                 {
                     cbClasse.Items.Add(c);
                 }
@@ -52,8 +53,8 @@ namespace Setup.Financas
                 cbCartao.Items.Clear();
                 cbFCartao.Items.Clear();
                 cbFCartao.Items.Add("");
-                Classes.CartaoCredito.Ativo = 1;
-                foreach (Classes.CartaoCredito c in Classes.CartaoCredito.Lista())
+                CartaoCredito.Ativo = 1;
+                foreach (CartaoCredito c in CartaoCredito.Lista())
                 {
                     cbCartao.Items.Add(c);
                     cbFCartao.Items.Add(c);
@@ -594,6 +595,33 @@ namespace Setup.Financas
             }
 
             contextMenuStrip1.Items["editar"].Text = "Alterar Compra Nº [" + id + "]";
+        }
+
+        private string Cartao_Parcela_Mais_Proxima()
+        {
+            int mes = DateTime.Today.Month;
+            int ano = DateTime.Today.Year;
+
+            string pData = DateTime.Parse("01/" + mes + "/" + ano).AddMonths(1).ToShortDateString();
+            string conta;
+
+            string sql = "SELECT FIRST 1 CONTA, DATA FROM (SELECT DISTINCT D.CONTA, A.DATA_PARCELA AS DATA FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.STATUS = 0 ";
+
+            mes = DateTime.Parse(pData).Month;
+            ano = DateTime.Parse(pData).Year;
+
+            sql += "UNION SELECT DISTINCT D.CONTA, A.DATA_PARCELA AS DATA FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.STATUS = 0) ORDER BY DATA";
+
+            try
+            {
+                conta = BD.Buscar(sql).Rows[0][0].ToString();
+            }
+            catch
+            {
+                conta = "";
+            }
+
+            return conta;
         }
     }
 }
