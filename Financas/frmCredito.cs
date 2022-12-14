@@ -547,12 +547,13 @@ namespace Setup.Financas
 
         private void editar_Click(object sender, EventArgs e)
         {
-            string id, data, valor, desc;
+            string id, data, desc;
+            double valor;
 
             try
             {
                 id = lista.SelectedRows[0].Cells[1].Value.ToString();
-                valor = lista.SelectedRows[0].Cells[4].Value.ToString();
+                valor = double.Parse(lista.SelectedRows[0].Cells[4].Value.ToString());
                 data = lista.SelectedRows[0].Cells[6].Value.ToString();
                 desc = lista.SelectedRows[0].Cells[7].Value.ToString();
             }
@@ -563,10 +564,10 @@ namespace Setup.Financas
 
             boxAlterarCompra AltComp = new boxAlterarCompra();
 
-            AltComp.txtValor.Text = double.Parse(valor).ToString("N");
+            AltComp.Tag = id + ".C";
+            AltComp.txtValor.Text = valor.ToString("N");
             AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
             AltComp.txtDesc.Text = desc;
-            AltComp.Tag = id;
             AltComp.ShowDialog();
         }
 

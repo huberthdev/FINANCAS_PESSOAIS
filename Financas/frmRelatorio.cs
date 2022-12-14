@@ -560,5 +560,44 @@ namespace Setup.Financas
                 }
             }
         }
+
+        private void alterarBD_Click(object sender, EventArgs e)
+        {
+            string tipo, id, data, desc;
+            double valor;
+
+            try
+            {
+                tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
+                id = lista.SelectedRows[0].Cells[0].Value.ToString();
+                valor = double.Parse(lista.SelectedRows[0].Cells[5].Value.ToString());
+                data = lista.SelectedRows[0].Cells[2].Value.ToString();
+                desc = lista.SelectedRows[0].Cells[6].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            if (tipo != "D")
+                return;
+
+            boxAlterarCompra AltComp = new boxAlterarCompra();
+
+            if(valor < 0)
+                AltComp.Tag = id + ".D";
+            else
+                AltComp.Tag = id + ".R";
+
+            AltComp.txtValor.Text = Math.Abs(valor).ToString("N");
+            AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
+            AltComp.txtDesc.Text = desc;
+            AltComp.ShowDialog();
+        }
+
+        private void frmRelatorio_Activated(object sender, EventArgs e)
+        {
+            CarregarLista();
+        }
     }
 }

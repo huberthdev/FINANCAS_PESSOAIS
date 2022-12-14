@@ -84,6 +84,8 @@ namespace Setup.Financas
             this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.alterarBD = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -110,6 +112,7 @@ namespace Setup.Financas
             this.lblPorc = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             this.pnFiltro.SuspendLayout();
             this.SuspendLayout();
@@ -401,6 +404,7 @@ namespace Setup.Financas
             this.CONTA,
             this.VALOR,
             this.DESC});
+            this.lista.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -520,6 +524,21 @@ namespace Setup.Financas
             this.DESC.MinimumWidth = 325;
             this.DESC.Name = "DESC";
             this.DESC.ReadOnly = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alterarBD});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 26);
+            // 
+            // alterarBD
+            // 
+            this.alterarBD.Image = ((System.Drawing.Image)(resources.GetObject("alterarBD.Image")));
+            this.alterarBD.Name = "alterarBD";
+            this.alterarBD.Size = new System.Drawing.Size(109, 22);
+            this.alterarBD.Text = "Alterar";
+            this.alterarBD.Click += new System.EventHandler(this.alterarBD_Click);
             // 
             // imageList1
             // 
@@ -789,10 +808,12 @@ namespace Setup.Financas
             this.Name = "frmRelatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Activated += new System.EventHandler(this.frmRelatorio_Activated);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRelatorio_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.status.ResumeLayout(false);
             this.status.PerformLayout();
             this.pnFiltro.ResumeLayout(false);
@@ -857,5 +878,7 @@ namespace Setup.Financas
         private Label label11;
         private ProgressBar progresso;
         private Label lblPorc;
+        private ContextMenuStrip contextMenuStrip1;
+        private ToolStripMenuItem alterarBD;
     }
 }
