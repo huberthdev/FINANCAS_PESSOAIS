@@ -13,7 +13,7 @@ namespace Setup.Financas
             InitializeComponent();
 
             txtData.Text = DateTime.Today.ToShortDateString();
-            status.Items["periodo"].Text = "[" + DateTime.Today.Month + "." + DateTime.Today.Year + "]";
+            status.Items["periodo"].Text = "[" + Geral.MesNome(DateTime.Today.Month.ToString(), true) + "." + DateTime.Today.Year + "]";
             //lblPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper() + " • " + DateTime.Today.Year;
 
             CarregarCbClassesCartoes();
@@ -197,7 +197,7 @@ namespace Setup.Financas
 
         private void CarregarLista()
         {
-            string periodo, cartao = "";
+            string mes, periodo, cartao = "";
             double valorFatura = 0;
 
             if (cbFCartao.Text != "")
@@ -207,13 +207,15 @@ namespace Setup.Financas
 
             try
             {
-                periodo = status.Items["periodo"].Text.Replace(".", "");
-                periodo = periodo.Replace("[", "");
+                periodo = status.Items["periodo"].Text.Replace("[", "");
                 periodo = periodo.Replace("]", "");
+                mes = periodo.Split(".").GetValue(0).ToString();
+                mes = Geral.MesNome(mes);
+                periodo = mes + periodo.Split(".").GetValue(1).ToString();
             }
             catch
             {
-                return;                
+                return;
             }
 
             if(periodo == "")
@@ -404,7 +406,7 @@ namespace Setup.Financas
 
         private void treeFaturas_DoubleClick(object sender, EventArgs e)
         {
-            string chave, periodo, cartao = "";
+            string mes, chave, periodo, cartao = "";
 
             if (treeFaturas.SelectedNode is null || treeFaturas.SelectedNode.Name == "ano")
             {
@@ -412,7 +414,9 @@ namespace Setup.Financas
             }
 
             chave = treeFaturas.SelectedNode.Name;
-            periodo = chave.Substring(0, chave.Length - 4) + "." + chave.Substring(chave.Length - 4, 4);
+            mes = chave.Substring(0, chave.Length - 4);
+            mes = Geral.MesNome(mes, true);
+            periodo =  mes + "." + chave.Substring(chave.Length - 4, 4);
 
             if (treeFaturas.SelectedNode.Level == 2)
             {

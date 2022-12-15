@@ -51,6 +51,7 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boxFlutuante));
             this.lista = new Setup.Controles.dgView();
             this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DATA = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -174,11 +175,11 @@ namespace Setup.Financas
             this.ClientSize = new System.Drawing.Size(658, 351);
             this.Controls.Add(this.lista);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "boxFlutuante";
             this.Opacity = 0.9D;
-            this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();
             this.ResumeLayout(false);
 

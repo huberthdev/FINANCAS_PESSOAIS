@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 
 namespace Setup.Classes
 {
@@ -11,7 +12,83 @@ namespace Setup.Classes
     }
 
     public static class Geral
-    {
+    {   
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numMes">Informe o número do mês</param>
+        /// <returns>É retornado o mês em formato de texto</returns>
+        public static string MesNome(string numMes, bool abv)
+        {
+            string mes;
+
+            try
+            {
+                mes = DateTimeFormatInfo.CurrentInfo.GetMonthName(int.Parse(numMes)).ToUpper();
+            }
+            catch
+            {
+                mes = "";
+            }
+
+            if (abv)
+                mes = mes.Substring(0, 3);
+
+            return mes;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nomMes">Informe o número do mês. Ex.: "JAN"</param>
+        /// <returns>É retornado o mês em formato numérico</returns>
+        public static string MesNome(string nomMes)
+        {
+            string mes = "";
+
+            switch (nomMes)
+            {
+                case "JAN":
+                    mes = "1";
+                    break;
+                case "FEV":
+                    mes = "2";
+                    break;
+                case "MAR":
+                    mes = "3";
+                    break;
+                case "ABR":
+                    mes = "4";
+                    break;
+                case "MAI":
+                    mes = "5";
+                    break;
+                case "JUN":
+                    mes = "6";
+                    break;
+                case "JUL":
+                    mes = "7";
+                    break;
+                case "AGO":
+                    mes = "8";
+                    break;
+                case "SET":
+                    mes = "9";
+                    break;
+                case "OUT":
+                    mes = "10";
+                    break;
+                case "NOV":
+                    mes = "11";
+                    break;
+                case "DEZ":
+                    mes = "12";
+                    break;
+            }
+
+            return mes;
+        }
+
         public static void ExcluirTransferencia(string id, bool msg = true)
         {
             string sql, valor, contaC, vC, contaD, vD;
