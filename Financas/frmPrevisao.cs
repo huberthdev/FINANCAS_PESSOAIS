@@ -647,5 +647,53 @@ namespace Setup.Financas
 
             }
         }
+
+        private void replicar__Click(object sender, EventArgs e)
+        {
+            string chave ="";
+
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            Classes.Geral.ReplicarPrevisao(chave);
+        }
+
+        private void alterar_Click(object sender, EventArgs e)
+        {
+            string chave = "";
+
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            EditarLinha(chave);
+        }
+
+        private void excluir__Click(object sender, EventArgs e)
+        {
+            string chave = "";
+
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            ExcluirLinha(chave);
+        }
     }
 }

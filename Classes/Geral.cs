@@ -264,6 +264,66 @@ namespace Setup.Classes
             }
             
         }
+
+        public static void ReplicarPrevisao(string chave)
+        {
+            int lin;
+            string dia, mes, ano, classe, data, sql, id;
+
+            dia = chave.Split(".").GetValue(0).ToString();
+            mes = chave.Split(".").GetValue(1).ToString();
+            ano = chave.Split(".").GetValue(2).ToString();
+            classe = chave.Split(".").GetValue(3).ToString();
+
+            sql = "SELECT PREVISAO_ID FROM PREVISAO WHERE MES = " + mes + " AND ANO = " + ano + " AND CLASSE = " + classe + "";
+            try
+            {
+                id = BD.Buscar(sql).Rows[0][0].ToString();
+            }
+            catch
+            {
+                return;
+            }
+
+            data = "01/" + mes + "/" + ano;
+            data = DateTime.Parse(data).AddMonths(1).ToShortDateString();
+            mes = DateTime.Parse(data).Month.ToString();
+
+            chave = dia + "." + mes + "." + ano + "." + classe;
+
+            sql = "SELECT CHAVE FROM PREVISAO WHERE CHAVE = '" + chave + "'";
+            try
+            {
+                lin = BD.Buscar(sql).Rows.Count;
+            }
+            catch
+            {
+                return;
+            }
+
+            if (lin != 0)
+            {
+                COD.Erro("Já existe o previsto desta classe para o próximo mês!");
+                return;
+            }
+
+            COD.Pergunta("Replicar esta previsão para o próximo mês?");
+            if (!COD.Resposta)
+                return;
+
+            sql = "INSERT INTO PREVISAO(CHAVE, DIA, MES, ANO, CLASSE, VALOR, STATUS, OBS) ";
+            sql += "SELECT '" + chave + "', '" + dia + "', '" + mes + "', '" + ano + "', '" + classe + "', VALOR, '0', OBS ";
+            sql += "FROM PREVISAO WHERE PREVISAO_ID = " + id + "";
+            try
+            {
+                BD.ExecutarSQL(sql);
+            }
+            catch
+            {
+                COD.Erro("Não foi possível replicar esta previsão!");
+            }
+        }
+
     }
 
     public class Classe

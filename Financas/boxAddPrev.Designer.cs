@@ -284,6 +284,7 @@ namespace Setup.Financas
             this.replicar.Name = "replicar";
             this.replicar.Size = new System.Drawing.Size(77, 20);
             this.replicar.Text = "Replicar";
+            this.replicar.Click += new System.EventHandler(this.replicar_Click);
             // 
             // sair
             // 

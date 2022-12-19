@@ -169,5 +169,20 @@ namespace Setup.Financas
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void replicar_Click(object sender, EventArgs e)
+        {
+            string dia, mes, ano, classe, chave;
+
+            dia = cbDia.Text;
+            mes = (cbMes.SelectedIndex + 1).ToString();
+            ano = cbAno.Text;
+            classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
+            chave = dia + "." + mes + "." + ano + "." + classe;
+
+            Classes.Geral.ReplicarPrevisao(chave);
+
+            this.Dispose();
+        }
     }
 }
