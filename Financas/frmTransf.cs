@@ -77,7 +77,7 @@ namespace Setup.Financas
         private void CarregarLista()
         {
             string sql = "SELECT A.TRANSFERENCIA_ID, A.DATA, B.CONTA, A.VALOR, A.DESCRICAO ";
-            sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID";
+            sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ORDER BY A.TRANSFERENCIA_ID DESC";
 
             lista.DataSource = BD.Buscar(sql);
 

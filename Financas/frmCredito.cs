@@ -234,8 +234,10 @@ namespace Setup.Financas
 
             if(cartao != "")
             {
-                sql += "AND B.CARTAO = " + cartao + "";
+                sql += "AND B.CARTAO = " + cartao + " ";
             }
+
+            sql += "ORDER BY A.COMPRA_CREDITO_ID DESC";
 
             try
             {
