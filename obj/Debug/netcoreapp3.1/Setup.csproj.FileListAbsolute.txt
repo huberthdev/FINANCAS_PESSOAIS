@@ -56,3 +56,4 @@ C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxPagFatura.resourc
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.frmGestao.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxAlterarCompra.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxFlutuante.resources
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Alerta.resources

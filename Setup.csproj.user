@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\CursoCSharp\Setup\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Alerta.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="Controles\btnLabel.cs">
       <SubType>Component</SubType>
     </Compile>

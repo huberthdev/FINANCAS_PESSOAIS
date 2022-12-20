@@ -18,6 +18,8 @@ namespace Setup.Financas
             txtData.Text = DateTime.Today.ToShortDateString();
             gPeriodo.Tag = DateTime.Today.Month + "." + DateTime.Today.Year;
             gPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month) + "." + DateTime.Today.Year;
+
+            
         }
 
         private void CarregarListaGeral()
@@ -144,9 +146,9 @@ namespace Setup.Financas
             sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
             sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < '0' AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
             sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE_ID, B.CLASSE ";
-            sql += "UNION SELECT C.CLASSE, SUM(B.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
-            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID  WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " ";
-            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
+            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
+            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID  WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " ";
+            sql += "AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
 
             /*
             sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
@@ -497,6 +499,11 @@ namespace Setup.Financas
                     }
                 }
             }
+        }
+
+        private void lbl1_Click(object sender, EventArgs e)
+        {
+            COD.MsgAlerta(this);
         }
     }
 }

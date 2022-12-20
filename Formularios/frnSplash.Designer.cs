@@ -46,7 +46,6 @@ namespace Setup.Formularios
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
             this.progressBar1.Visible = false;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // timer1
             // 
@@ -80,7 +79,6 @@ namespace Setup.Formularios
             this.Name = "frmSplash";
             this.Opacity = 0.8D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmSplash_Load);
             this.ResumeLayout(false);
 
         }

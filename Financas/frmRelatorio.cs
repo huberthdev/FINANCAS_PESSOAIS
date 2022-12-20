@@ -136,12 +136,12 @@ namespace Setup.Financas
                 //
                 if (!(!ckDespesa.Checked && ckReceita.Checked))
                 {
-                    sql += "UNION SELECT B.CHAVE AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
-                    sql += "C.CLASSE, E.CONTA, (B.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
+                    sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
+                    sql += "C.CLASSE, E.CONTA, (A.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
                     sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
                     sql += "ON B.CLASSE = C.CLASSE_ID INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
                     sql += "INNER JOIN CONTA E ON D.CONTA = E.CONTA_ID ";
-                    sql += "WHERE B.DATA_COMPRA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                    sql += "WHERE A.DATA_PARCELA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
                     if (descricao != "")
                     {
                         sql += "AND UPPER(B.DESCRICAO) LIKE '" + descricao + "' ";

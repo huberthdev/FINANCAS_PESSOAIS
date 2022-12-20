@@ -10,11 +10,6 @@ namespace Setup.Formularios
             InitializeComponent();
         }
 
-        private void frmSplash_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -26,11 +21,6 @@ namespace Setup.Formularios
                 timer1.Enabled = false;
                 this.Dispose();
             }
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

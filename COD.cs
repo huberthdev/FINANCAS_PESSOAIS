@@ -175,5 +175,10 @@ namespace Setup
 
             return accents;
         }
+
+        public static void MsgAlerta(Form frm, string msg = "")
+        {
+            
+        }
     }
 }

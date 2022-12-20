@@ -215,7 +215,7 @@ namespace Setup.Classes
                 sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID ";
                 sql += "INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
                 sql += "INNER JOIN CONTA E ON D.CONTA = E.CONTA_ID ";
-                sql += "WHERE B.CHAVE = " + id + "";
+                sql += "WHERE A.COMPRA_CREDITO_ID = " + id + "";
 
                 try
                 {

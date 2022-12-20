@@ -649,8 +649,8 @@ namespace Setup.Financas
             // 
             this.pnSalvar.Controls.Add(this.pnSalvarIn);
             this.pnSalvar.Controls.Add(this.label8);
-            this.pnSalvar.Controls.Add(this.listaSaldo_Contas);
             this.pnSalvar.Controls.Add(this.stSalvar);
+            this.pnSalvar.Controls.Add(this.listaSaldo_Contas);
             this.pnSalvar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnSalvar.Location = new System.Drawing.Point(4, 26);
             this.pnSalvar.Name = "pnSalvar";
@@ -921,9 +921,9 @@ namespace Setup.Financas
             this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel});
-            this.statusStrip.Location = new System.Drawing.Point(4, 456);
+            this.statusStrip.Location = new System.Drawing.Point(0, 456);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1257, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1265, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 21;
@@ -1079,6 +1079,7 @@ namespace Setup.Financas
             this.lbl1.TabIndex = 2;
             this.lbl1.Text = "       Receitas";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl1.Click += new System.EventHandler(this.lbl1_Click);
             // 
             // menuStrip2
             // 
@@ -1120,9 +1121,9 @@ namespace Setup.Financas
             // 
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Location = new System.Drawing.Point(4, 452);
+            this.label1.Location = new System.Drawing.Point(0, 478);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1257, 4);
+            this.label1.Size = new System.Drawing.Size(1265, 4);
             this.label1.TabIndex = 24;
             // 
             // label9
@@ -1131,7 +1132,7 @@ namespace Setup.Financas
             this.label9.Dock = System.Windows.Forms.DockStyle.Left;
             this.label9.Location = new System.Drawing.Point(0, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(4, 478);
+            this.label9.Size = new System.Drawing.Size(4, 452);
             this.label9.TabIndex = 24;
             // 
             // label10
@@ -1158,14 +1159,14 @@ namespace Setup.Financas
             this.lnRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.lnRight.Location = new System.Drawing.Point(1261, 0);
             this.lnRight.Name = "lnRight";
-            this.lnRight.Size = new System.Drawing.Size(4, 478);
+            this.lnRight.Size = new System.Drawing.Size(4, 452);
             this.lnRight.TabIndex = 25;
             // 
             // label13
             // 
             this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label13.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label13.Location = new System.Drawing.Point(0, 478);
+            this.label13.Location = new System.Drawing.Point(0, 452);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(1265, 4);
             this.label13.TabIndex = 26;
@@ -1315,11 +1316,11 @@ namespace Setup.Financas
             this.Controls.Add(this.pnSalvar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.lnRight);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.statusStrip);
+            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
