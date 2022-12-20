@@ -100,6 +100,7 @@ namespace Setup.Financas
             this.usuarioAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.connBD = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.definicoes = new System.Windows.Forms.ToolStripMenuItem();
             this.query = new System.Windows.Forms.ToolStripMenuItem();
             this.anotacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.sair = new System.Windows.Forms.ToolStripMenuItem();
@@ -168,7 +169,6 @@ namespace Setup.Financas
             this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label14 = new System.Windows.Forms.Label();
-            this.definicoes = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -347,6 +347,13 @@ namespace Setup.Financas
             this.toolStripSeparator1.BackColor = System.Drawing.SystemColors.Control;
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(206, 6);
+            // 
+            // definicoes
+            // 
+            this.definicoes.Image = ((System.Drawing.Image)(resources.GetObject("definicoes.Image")));
+            this.definicoes.Name = "definicoes";
+            this.definicoes.Size = new System.Drawing.Size(209, 22);
+            this.definicoes.Text = "Definições do sistema";
             // 
             // query
             // 
@@ -1294,13 +1301,6 @@ namespace Setup.Financas
             this.label14.Text = "Vencimentos";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // definicoes
-            // 
-            this.definicoes.Image = ((System.Drawing.Image)(resources.GetObject("definicoes.Image")));
-            this.definicoes.Name = "definicoes";
-            this.definicoes.Size = new System.Drawing.Size(209, 22);
-            this.definicoes.Text = "Definições do sistema";
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1374,8 +1374,6 @@ namespace Setup.Financas
         private Controles.dgView listaSaldo_Contas;
         public Controles.dgView lista_Gastos_Classe;
         private MenuStrip stSalvar;
-        private ToolStripMenuItem salvar;
-        private ToolStripMenuItem limpar;
         private Controles.cbCombo cbConta;
         private Controles.Data txtData;
         private Controles.Decimal txtValor;
@@ -1402,7 +1400,6 @@ namespace Setup.Financas
         private StatusStrip statusStrip;
         private ToolStripStatusLabel statusLabel;
         private Panel pnSalvar;
-        private ToolStripMenuItem cadastro;
         private Panel pnListaClasse;
         private Label label10;
         private Label label9;
@@ -1441,5 +1438,8 @@ namespace Setup.Financas
         private Label label14;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem definicoes;
+        private Controles.Cabecalho salvar;
+        private Controles.Cabecalho limpar;
+        private Controles.Cabecalho cadastro;
     }
 }
