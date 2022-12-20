@@ -564,6 +564,11 @@ namespace Setup.Financas
 
         private void alterarBD_Click(object sender, EventArgs e)
         {
+            Alterar();
+        }
+
+        private void Alterar()
+        {
             string tipo, id, data, desc;
             double valor;
 
@@ -585,7 +590,7 @@ namespace Setup.Financas
 
             boxAlterarCompra AltComp = new boxAlterarCompra();
 
-            if(valor < 0)
+            if (valor < 0)
                 AltComp.Tag = id + ".D";
             else
                 AltComp.Tag = id + ".R";
@@ -599,7 +604,12 @@ namespace Setup.Financas
 
         private void frmRelatorio_Activated(object sender, EventArgs e)
         {
-            CarregarLista();
+            //CarregarLista();
+        }
+
+        private void alterar_Click(object sender, EventArgs e)
+        {
+            Alterar();
         }
     }
 }

@@ -84,9 +84,9 @@ namespace Setup.Financas
             this.pnConta = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluir = new System.Windows.Forms.ToolStripMenuItem();
-            this.sair = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvar = new Setup.Controles.Cabecalho();
+            this.excluir = new Setup.Controles.Cabecalho();
+            this.sair = new Setup.Controles.Cabecalho();
             this.pnClasse = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();

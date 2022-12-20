@@ -161,6 +161,7 @@ namespace Setup.Financas
             this.alterar.ShortcutKeys = System.Windows.Forms.Keys.F2;
             this.alterar.Size = new System.Drawing.Size(93, 20);
             this.alterar.Text = "Alterar {F2}";
+            this.alterar.Click += new System.EventHandler(this.alterar_Click);
             // 
             // limparFiltro
             // 
