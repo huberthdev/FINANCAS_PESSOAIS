@@ -68,10 +68,10 @@ namespace Setup.Financas
 
             if (sql == "")
             {
-                sql = "SELECT ID, TIPO, DATA, CLASSE, CONTA, VALOR, DESC FROM( ";
+                sql = "SELECT ID, TIPO, DATA, CLASSE, CONTA, VALOR, DESC, STATUS FROM( ";
 
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA BD - RECEITAS E DESPESAS
-                sql += "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA AS DATA, B.CLASSE, C.CONTA, A.VALOR, A.DESCRICAO AS DESC FROM BD A ";
+                sql += "SELECT A.BD_ID AS ID, 'D' AS TIPO, A.DATA AS DATA, B.CLASSE, C.CONTA, A.VALOR, A.DESCRICAO AS DESC, A.STATUS AS STATUS FROM BD A ";
                 sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
                 sql += "INNER JOIN CONTA C ON A.CONTA = C.CONTA_ID ";
                 sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
@@ -128,7 +128,7 @@ namespace Setup.Financas
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA TRANSFERENCIA
                 //
                 sql += "UNION SELECT A.TRANSFERENCIA_ID AS ID, 'T' AS TIPO, A.DATA AS DATA, ";
-                sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA, A.VALOR, A.DESCRICAO AS DESC ";
+                sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA, A.VALOR, A.DESCRICAO AS DESC, '1' AS STATUS ";
                 sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ";
                 sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
                 //
@@ -137,7 +137,7 @@ namespace Setup.Financas
                 if (!(!ckDespesa.Checked && ckReceita.Checked))
                 {
                     sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
-                    sql += "C.CLASSE, E.CONTA, (A.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC FROM COMPRA_CREDITO A INNER JOIN ";
+                    sql += "C.CLASSE, E.CONTA, (A.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC, A.STATUS AS STATUS FROM COMPRA_CREDITO A INNER JOIN ";
                     sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
                     sql += "ON B.CLASSE = C.CLASSE_ID INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
                     sql += "INNER JOIN CONTA E ON D.CONTA = E.CONTA_ID ";
@@ -265,7 +265,7 @@ namespace Setup.Financas
                         lista.Rows[i].Cells[c].Style.ForeColor = Color.Fuchsia;
                     }
                 }
-                else if (lista.Rows[i].Cells[1].Value.ToString() == "C")
+                else if (lista.Rows[i].Cells[1].Value.ToString() == "C" && lista.Rows[i].Cells[7].Value.ToString() == "0")
                 {
                     for (int c = 0; c < lista.ColumnCount; c++)
                     {

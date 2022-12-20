@@ -84,6 +84,7 @@ namespace Setup.Financas
             this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alterarBD = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -404,7 +405,8 @@ namespace Setup.Financas
             this.CLASSE,
             this.CONTA,
             this.VALOR,
-            this.DESC});
+            this.DESC,
+            this.dataGridViewTextBoxColumn1});
             this.lista.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
@@ -525,6 +527,14 @@ namespace Setup.Financas
             this.DESC.MinimumWidth = 325;
             this.DESC.Name = "DESC";
             this.DESC.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "STATUS";
+            this.dataGridViewTextBoxColumn1.HeaderText = "STATUS";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
             // contextMenuStrip1
             // 
@@ -667,6 +677,7 @@ namespace Setup.Financas
             this.lg1.Name = "lg1";
             this.lg1.Size = new System.Drawing.Size(58, 17);
             this.lg1.Text = "■ Receita";
+            this.lg1.Click += new System.EventHandler(this.lg1_Click);
             // 
             // lg2
             // 
@@ -674,6 +685,7 @@ namespace Setup.Financas
             this.lg2.Name = "lg2";
             this.lg2.Size = new System.Drawing.Size(63, 17);
             this.lg2.Text = "■ Despesa";
+            this.lg2.Click += new System.EventHandler(this.lg2_Click);
             // 
             // lg3
             // 
@@ -867,13 +879,6 @@ namespace Setup.Financas
         private Cabecalho alterar;
         private Cabecalho limparFiltro;
         private Cabecalho exportar;
-        private DataGridViewTextBoxColumn ID;
-        private DataGridViewTextBoxColumn TIPO;
-        private DataGridViewTextBoxColumn DATA;
-        private DataGridViewTextBoxColumn CLASSE;
-        private DataGridViewTextBoxColumn CONTA;
-        private DataGridViewTextBoxColumn VALOR;
-        private DataGridViewTextBoxColumn DESC;
         private Panel pnFiltro;
         private Label label1;
         private Label label11;
@@ -881,5 +886,13 @@ namespace Setup.Financas
         private Label lblPorc;
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem alterarBD;
+        private DataGridViewTextBoxColumn ID;
+        private DataGridViewTextBoxColumn TIPO;
+        private DataGridViewTextBoxColumn DATA;
+        private DataGridViewTextBoxColumn CLASSE;
+        private DataGridViewTextBoxColumn CONTA;
+        private DataGridViewTextBoxColumn VALOR;
+        private DataGridViewTextBoxColumn DESC;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
