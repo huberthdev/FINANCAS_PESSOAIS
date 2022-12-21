@@ -171,8 +171,8 @@ namespace Setup.Classes
         {
             string sql, classe;
 
-            classe = chave.Split(".").GetValue(1).ToString();
-            chave = chave.Split(".").GetValue(0).ToString();
+            classe = chave.Split(".").GetValue(2).ToString();
+            chave = chave.Split(".").GetValue(1).ToString();
 
             if (chave == "")
                 return false;

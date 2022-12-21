@@ -13,7 +13,6 @@ namespace Setup.Financas
             InitializeComponent();
 
             txtData.Text = DateTime.Today.ToShortDateString();
-            status.Items["periodo"].Text = "[" + Geral.MesNome(DateTime.Today.Month.ToString(), true) + "." + DateTime.Today.Year + "]";
             //lblPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month).ToUpper() + " • " + DateTime.Today.Year;
 
             CarregarCbClassesCartoes();
@@ -260,9 +259,31 @@ namespace Setup.Financas
 
         private void CarregarTreeFaturas()
         {
-            string sql, ano, mes, periodo, cartao, cor, mesNome, valor, s = "", status;
+            string sql, data, periodo, cartao, cor, mesNome, valor, s = "", status;
+
+            string mes = DateTime.Today.Month.ToString();
+            string ano = DateTime.Today.Year.ToString();
+
+            bool FatMesTotPaga = false;
 
             treeFaturas.Nodes.Clear();
+
+            //VERIFICA SE TODAS AS FATURAS DO MÊS ATUAL FORAM PAGAS PARA PODER HABILITAR A ABERTUDA DO PRÓXIMO MÊS
+            data = String.Concat("01/", mes, "/", ano);
+            data = DateTime.Parse(data).AddMonths(1).ToShortDateString();
+            try
+            {
+                sql = "SELECT STATUS FROM COMPRA_CREDITO WHERE EXTRACT(MONTH FROM DATA_PARCELA) = " + mes + " ";
+                sql += "AND EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + " GROUP BY STATUS ORDER BY STATUS";
+                if(BD.Buscar(sql).Rows[0][0].ToString() != "0")
+                {
+                    FatMesTotPaga = true;
+                }
+            }
+            catch
+            {
+
+            }
 
             //PREENCHER OS NODES COM OS ANOS DISTINTOS
             sql = "SELECT DISTINCT EXTRACT(YEAR FROM DATA_PARCELA) FROM COMPRA_CREDITO";
@@ -297,10 +318,10 @@ namespace Setup.Financas
             }
 
             //PREENCHE OS NODES COM OS CARTÕES E SEUS VALORES RESPECTIVOS DENTRO DE CADA MÊS
-            sql = "SELECT DISTINCT D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA) || EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR, SUM(A.VALOR), SUM(A.STATUS) ";
+            sql = "SELECT DISTINCT D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA) || EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR, SUM(A.VALOR), SUM(A.STATUS), C.DIA_VENC ";
             sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ";
             sql += "ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID GROUP BY ";
-            sql += "D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA), EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR ORDER BY EXTRACT(YEAR FROM A.DATA_PARCELA)";
+            sql += "D.CONTA, EXTRACT(MONTH FROM A.DATA_PARCELA), EXTRACT(YEAR FROM A.DATA_PARCELA), C.COR, C.DIA_VENC ORDER BY EXTRACT(YEAR FROM A.DATA_PARCELA), C.DIA_VENC";
             BD.Buscar(sql);
 
             for (int i = 0; i < BD.Resultado.Rows.Count; i++)
@@ -333,10 +354,20 @@ namespace Setup.Financas
                 }
             }
 
-            periodo = DateTime.Today.ToString("Myyyy");
+            if (FatMesTotPaga)
+            {
+                periodo = DateTime.Parse(data).ToString("Myyyy");
+                ano = DateTime.Parse(data).ToString("yyyy");
+            }
+            else
+            {
+                periodo = DateTime.Today.ToString("Myyyy");
+                ano = DateTime.Today.Year.ToString();
+            }
+
             for (int i = 0; i < treeFaturas.Nodes.Count; i++)
             {
-                if(treeFaturas.Nodes[i].Text == DateTime.Today.Year.ToString())
+                if(treeFaturas.Nodes[i].Text == ano)
                 {
                     treeFaturas.Nodes[i].Expand();
 
@@ -370,7 +401,7 @@ namespace Setup.Financas
 
         private void excluir_Click(object sender, EventArgs e)
         {
-            string chave;
+            string chave, classe;
 
             if (lista.RowCount == 0)
                 return;
@@ -378,13 +409,14 @@ namespace Setup.Financas
             try
             {
                 chave = lista.SelectedRows[0].Cells[0].Value.ToString();
+                classe = lista.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch
             {
                 return;
             }
 
-            if(!Geral.ExcluirCompraCredito(chave))
+            if(!Geral.ExcluirCompraCredito("0." + chave + "." + classe))
                 return;
 
             CarregarLista();
@@ -625,6 +657,15 @@ namespace Setup.Financas
             catch
             {
                 conta = "";
+            }
+
+            try
+            {
+                status.Items["periodo"].Text = "[" + Geral.MesNome(mes.ToString(), true) + "." + ano + "]";
+            }
+            catch 
+            {
+                status.Items["periodo"].Text = "[" + Geral.MesNome(DateTime.Today.Month.ToString(), true) + "." + DateTime.Today.Year.ToString() + "]";
             }
 
             return conta;

@@ -136,7 +136,7 @@ namespace Setup.Financas
                 //
                 if (!(!ckDespesa.Checked && ckReceita.Checked))
                 {
-                    sql += "UNION SELECT A.COMPRA_CREDITO_ID AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
+                    sql += "UNION SELECT A.COMPRA_CREDITO_ID || '.' || A.CHAVE AS ID, 'C' AS TIPO, B.DATA_COMPRA AS DATA, ";
                     sql += "C.CLASSE, E.CONTA, (A.VALOR * -1) AS VALOR, B.DESCRICAO AS DESC, A.STATUS AS STATUS FROM COMPRA_CREDITO A INNER JOIN ";
                     sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
                     sql += "ON B.CLASSE = C.CLASSE_ID INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
