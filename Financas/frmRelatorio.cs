@@ -7,6 +7,8 @@ namespace Setup.Financas
 {
     public partial class frmRelatorio : Form
     {
+        public bool UpdList = true;
+
         public frmRelatorio()
         {
             InitializeComponent();
@@ -609,16 +611,40 @@ namespace Setup.Financas
             AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
             AltComp.txtDesc.Text = desc;
             AltComp.ShowDialog();
-        }
 
-        private void frmRelatorio_Activated(object sender, EventArgs e)
-        {
-            //CarregarLista();
+            if(AltComp.Tag.ToString() == "1")
+                CarregarLista();
         }
 
         private void alterar_Click(object sender, EventArgs e)
         {
             Alterar();
+        }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string tipo = "";
+
+            contextMenuStrip1.Items["alterarBD"].Visible = true;
+
+            try
+            {
+                tipo = lista.SelectedRows[0].Cells[1].Value.ToString();
+            }
+            catch 
+            {
+                e.Cancel = true;
+            }
+
+            if (lista.RowCount == 0)
+            {
+                e.Cancel = true;
+            }
+            else if (tipo != "D")
+            {
+                //e.Cancel = true;
+                contextMenuStrip1.Items["alterarBD"].Visible = false;
+            }
         }
     }
 }

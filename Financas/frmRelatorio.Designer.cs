@@ -87,6 +87,7 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.alterarBD = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluirBD = new System.Windows.Forms.ToolStripMenuItem();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.txtDataInicio = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -539,9 +540,11 @@ namespace Setup.Financas
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alterarBD});
+            this.alterarBD,
+            this.excluirBD});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(110, 48);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // alterarBD
             // 
@@ -550,6 +553,13 @@ namespace Setup.Financas
             this.alterarBD.Size = new System.Drawing.Size(109, 22);
             this.alterarBD.Text = "Alterar";
             this.alterarBD.Click += new System.EventHandler(this.alterarBD_Click);
+            // 
+            // excluirBD
+            // 
+            this.excluirBD.Image = ((System.Drawing.Image)(resources.GetObject("excluirBD.Image")));
+            this.excluirBD.Name = "excluirBD";
+            this.excluirBD.Size = new System.Drawing.Size(109, 22);
+            this.excluirBD.Text = "Excluir";
             // 
             // imageList1
             // 
@@ -821,7 +831,6 @@ namespace Setup.Financas
             this.Name = "frmRelatorio";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Activated += new System.EventHandler(this.frmRelatorio_Activated);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmRelatorio_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -894,5 +903,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn VALOR;
         private DataGridViewTextBoxColumn DESC;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private ToolStripMenuItem excluirBD;
     }
 }

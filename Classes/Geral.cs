@@ -97,6 +97,7 @@ namespace Setup.Classes
             if (COD.Resposta == false)
                 return;
 
+            id = id.Split(".").GetValue(0).ToString();
             sql = "SELECT CONTA_DEBITO, CONTA_CREDITO, VALOR FROM TRANSFERENCIA WHERE TRANSFERENCIA_ID = " + id + "";
             BD.Buscar(sql);
 

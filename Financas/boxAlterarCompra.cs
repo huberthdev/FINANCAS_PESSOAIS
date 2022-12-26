@@ -80,6 +80,8 @@ namespace Setup.Financas
                 return;
             }
 
+            this.Tag = "1";
+
             this.Dispose();
         }
 
