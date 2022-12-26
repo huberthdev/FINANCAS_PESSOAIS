@@ -487,7 +487,7 @@ namespace Setup.Financas
             if (lista.RowCount == 0)
                 return;
 
-            id = lista.SelectedRows[0].Cells[0].Value.ToString();
+            id = lista.SelectedRows[0].Cells[1].Value.ToString();
 
             try
             {
