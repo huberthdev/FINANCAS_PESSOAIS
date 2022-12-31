@@ -695,5 +695,23 @@ namespace Setup.Financas
 
             ExcluirLinha(chave);
         }
+
+        private void contextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string tipo = "";
+
+            try
+            {
+                tipo = lista.SelectedRows[0].Cells[9].Value.ToString();
+            }
+            catch
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            if (tipo == "A")
+                e.Cancel = true;
+        }
     }
 }

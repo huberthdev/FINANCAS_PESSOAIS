@@ -236,7 +236,7 @@ namespace Setup.Financas
                 sql += "AND B.CARTAO = " + cartao + " ";
             }
 
-            sql += "ORDER BY A.COMPRA_CREDITO_ID DESC";
+            sql += "ORDER BY B.DATA_COMPRA DESC, A.COMPRA_CREDITO_ID DESC";
 
             try
             {

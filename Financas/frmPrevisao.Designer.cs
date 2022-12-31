@@ -88,9 +88,23 @@ namespace Setup.Financas
             this.back = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.lista = new Setup.Controles.dgView();
+            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORCADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REALIZADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STATUSS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ORD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.detalhes = new System.Windows.Forms.ToolStripMenuItem();
             this.replicar_ = new System.Windows.Forms.ToolStripMenuItem();
+            this.alterar = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluir_ = new System.Windows.Forms.ToolStripMenuItem();
             this.status = new System.Windows.Forms.StatusStrip();
             this.receita = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -105,20 +119,6 @@ namespace Setup.Financas
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDown = new System.Windows.Forms.Label();
-            this.alterar = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluir_ = new System.Windows.Forms.ToolStripMenuItem();
-            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORCADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REALIZADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STATUSS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ORD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -331,175 +331,6 @@ namespace Setup.Financas
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             this.lista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lista_KeyDown);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.detalhes,
-            this.replicar_,
-            this.alterar,
-            this.excluir_});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
-            // 
-            // detalhes
-            // 
-            this.detalhes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.detalhes.Image = ((System.Drawing.Image)(resources.GetObject("detalhes.Image")));
-            this.detalhes.Name = "detalhes";
-            this.detalhes.Size = new System.Drawing.Size(180, 22);
-            this.detalhes.Text = "Detalhes";
-            this.detalhes.Click += new System.EventHandler(this.detalhes_Click);
-            // 
-            // replicar_
-            // 
-            this.replicar_.Image = ((System.Drawing.Image)(resources.GetObject("replicar_.Image")));
-            this.replicar_.Name = "replicar_";
-            this.replicar_.Size = new System.Drawing.Size(180, 22);
-            this.replicar_.Text = "Replicar";
-            this.replicar_.Click += new System.EventHandler(this.replicar__Click);
-            // 
-            // status
-            // 
-            this.status.AutoSize = false;
-            this.status.BackColor = System.Drawing.Color.Transparent;
-            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.receita,
-            this.sp1,
-            this.despesa,
-            this.sp2,
-            this.saldo,
-            this.sp3,
-            this.restante,
-            this.sp4,
-            this.msg});
-            this.status.Location = new System.Drawing.Point(0, 495);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(1050, 22);
-            this.status.SizingGrip = false;
-            this.status.Stretch = false;
-            this.status.TabIndex = 7;
-            // 
-            // receita
-            // 
-            this.receita.Image = ((System.Drawing.Image)(resources.GetObject("receita.Image")));
-            this.receita.Name = "receita";
-            this.receita.Size = new System.Drawing.Size(104, 17);
-            this.receita.Text = "Receita: R$ 0,00";
-            this.receita.ToolTipText = "Total Receita";
-            // 
-            // sp1
-            // 
-            this.sp1.Name = "sp1";
-            this.sp1.Size = new System.Drawing.Size(10, 17);
-            this.sp1.Text = "|";
-            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // despesa
-            // 
-            this.despesa.Image = ((System.Drawing.Image)(resources.GetObject("despesa.Image")));
-            this.despesa.Name = "despesa";
-            this.despesa.Size = new System.Drawing.Size(109, 17);
-            this.despesa.Text = "Despesa: R$ 0,00";
-            this.despesa.ToolTipText = "Total Despesa";
-            // 
-            // sp2
-            // 
-            this.sp2.Name = "sp2";
-            this.sp2.Size = new System.Drawing.Size(10, 17);
-            this.sp2.Text = "|";
-            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // saldo
-            // 
-            this.saldo.Image = ((System.Drawing.Image)(resources.GetObject("saldo.Image")));
-            this.saldo.Name = "saldo";
-            this.saldo.Size = new System.Drawing.Size(135, 17);
-            this.saldo.Text = "Saldo Contas: R$ 0,00";
-            this.saldo.ToolTipText = "Saldo das Contas";
-            // 
-            // sp3
-            // 
-            this.sp3.Name = "sp3";
-            this.sp3.Size = new System.Drawing.Size(10, 17);
-            this.sp3.Text = "|";
-            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // restante
-            // 
-            this.restante.Image = ((System.Drawing.Image)(resources.GetObject("restante.Image")));
-            this.restante.Name = "restante";
-            this.restante.Size = new System.Drawing.Size(111, 17);
-            this.restante.Text = "Restante: R$ 0,00";
-            this.restante.ToolTipText = "Saldo Restante";
-            // 
-            // sp4
-            // 
-            this.sp4.Name = "sp4";
-            this.sp4.Size = new System.Drawing.Size(10, 17);
-            this.sp4.Text = "|";
-            this.sp4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // msg
-            // 
-            this.msg.Name = "msg";
-            this.msg.Size = new System.Drawing.Size(85, 17);
-            this.msg.Text = "Desvio: R$ 0,00";
-            // 
-            // imagens
-            // 
-            this.imagens.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imagens.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imagens.ImageStream")));
-            this.imagens.TransparentColor = System.Drawing.Color.Transparent;
-            this.imagens.Images.SetKeyName(0, "add");
-            this.imagens.Images.SetKeyName(1, "clear");
-            this.imagens.Images.SetKeyName(2, "credit");
-            this.imagens.Images.SetKeyName(3, "edit");
-            this.imagens.Images.SetKeyName(4, "delete");
-            this.imagens.Images.SetKeyName(5, "list");
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label1.Location = new System.Drawing.Point(0, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1, 468);
-            this.label1.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Location = new System.Drawing.Point(1049, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1, 468);
-            this.label2.TabIndex = 8;
-            // 
-            // lblDown
-            // 
-            this.lblDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.lblDown.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lblDown.Location = new System.Drawing.Point(0, 517);
-            this.lblDown.Name = "lblDown";
-            this.lblDown.Size = new System.Drawing.Size(1050, 1);
-            this.lblDown.TabIndex = 8;
-            // 
-            // alterar
-            // 
-            this.alterar.Image = ((System.Drawing.Image)(resources.GetObject("alterar.Image")));
-            this.alterar.Name = "alterar";
-            this.alterar.Size = new System.Drawing.Size(180, 22);
-            this.alterar.Text = "Alterar";
-            this.alterar.Click += new System.EventHandler(this.alterar_Click);
-            // 
-            // excluir_
-            // 
-            this.excluir_.Image = ((System.Drawing.Image)(resources.GetObject("excluir_.Image")));
-            this.excluir_.Name = "excluir_";
-            this.excluir_.Size = new System.Drawing.Size(180, 22);
-            this.excluir_.Text = "Excluir";
-            this.excluir_.Click += new System.EventHandler(this.excluir__Click);
-            // 
             // CLASSE
             // 
             this.CLASSE.DataPropertyName = "CLASSE";
@@ -629,6 +460,176 @@ namespace Setup.Financas
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.dataGridViewImageColumn1.Width = 40;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.detalhes,
+            this.replicar_,
+            this.alterar,
+            this.excluir_});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // detalhes
+            // 
+            this.detalhes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.detalhes.Image = ((System.Drawing.Image)(resources.GetObject("detalhes.Image")));
+            this.detalhes.Name = "detalhes";
+            this.detalhes.Size = new System.Drawing.Size(180, 22);
+            this.detalhes.Text = "Detalhes";
+            this.detalhes.Click += new System.EventHandler(this.detalhes_Click);
+            // 
+            // replicar_
+            // 
+            this.replicar_.Image = ((System.Drawing.Image)(resources.GetObject("replicar_.Image")));
+            this.replicar_.Name = "replicar_";
+            this.replicar_.Size = new System.Drawing.Size(180, 22);
+            this.replicar_.Text = "Replicar";
+            this.replicar_.Click += new System.EventHandler(this.replicar__Click);
+            // 
+            // alterar
+            // 
+            this.alterar.Image = ((System.Drawing.Image)(resources.GetObject("alterar.Image")));
+            this.alterar.Name = "alterar";
+            this.alterar.Size = new System.Drawing.Size(180, 22);
+            this.alterar.Text = "Alterar";
+            this.alterar.Click += new System.EventHandler(this.alterar_Click);
+            // 
+            // excluir_
+            // 
+            this.excluir_.Image = ((System.Drawing.Image)(resources.GetObject("excluir_.Image")));
+            this.excluir_.Name = "excluir_";
+            this.excluir_.Size = new System.Drawing.Size(180, 22);
+            this.excluir_.Text = "Excluir";
+            this.excluir_.Click += new System.EventHandler(this.excluir__Click);
+            // 
+            // status
+            // 
+            this.status.AutoSize = false;
+            this.status.BackColor = System.Drawing.Color.Transparent;
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.receita,
+            this.sp1,
+            this.despesa,
+            this.sp2,
+            this.saldo,
+            this.sp3,
+            this.restante,
+            this.sp4,
+            this.msg});
+            this.status.Location = new System.Drawing.Point(0, 495);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(1050, 22);
+            this.status.SizingGrip = false;
+            this.status.Stretch = false;
+            this.status.TabIndex = 7;
+            // 
+            // receita
+            // 
+            this.receita.Image = ((System.Drawing.Image)(resources.GetObject("receita.Image")));
+            this.receita.Name = "receita";
+            this.receita.Size = new System.Drawing.Size(104, 17);
+            this.receita.Text = "Receita: R$ 0,00";
+            this.receita.ToolTipText = "Total Receita";
+            // 
+            // sp1
+            // 
+            this.sp1.Name = "sp1";
+            this.sp1.Size = new System.Drawing.Size(10, 17);
+            this.sp1.Text = "|";
+            this.sp1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // despesa
+            // 
+            this.despesa.Image = ((System.Drawing.Image)(resources.GetObject("despesa.Image")));
+            this.despesa.Name = "despesa";
+            this.despesa.Size = new System.Drawing.Size(109, 17);
+            this.despesa.Text = "Despesa: R$ 0,00";
+            this.despesa.ToolTipText = "Total Despesa";
+            // 
+            // sp2
+            // 
+            this.sp2.Name = "sp2";
+            this.sp2.Size = new System.Drawing.Size(10, 17);
+            this.sp2.Text = "|";
+            this.sp2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // saldo
+            // 
+            this.saldo.Image = ((System.Drawing.Image)(resources.GetObject("saldo.Image")));
+            this.saldo.Name = "saldo";
+            this.saldo.Size = new System.Drawing.Size(135, 17);
+            this.saldo.Text = "Saldo Contas: R$ 0,00";
+            this.saldo.ToolTipText = "Saldo das Contas";
+            // 
+            // sp3
+            // 
+            this.sp3.Name = "sp3";
+            this.sp3.Size = new System.Drawing.Size(10, 17);
+            this.sp3.Text = "|";
+            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // restante
+            // 
+            this.restante.Image = ((System.Drawing.Image)(resources.GetObject("restante.Image")));
+            this.restante.Name = "restante";
+            this.restante.Size = new System.Drawing.Size(111, 17);
+            this.restante.Text = "Restante: R$ 0,00";
+            this.restante.ToolTipText = "Saldo Restante";
+            // 
+            // sp4
+            // 
+            this.sp4.Name = "sp4";
+            this.sp4.Size = new System.Drawing.Size(10, 17);
+            this.sp4.Text = "|";
+            this.sp4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // msg
+            // 
+            this.msg.Name = "msg";
+            this.msg.Size = new System.Drawing.Size(85, 17);
+            this.msg.Text = "Desvio: R$ 0,00";
+            // 
+            // imagens
+            // 
+            this.imagens.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imagens.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imagens.ImageStream")));
+            this.imagens.TransparentColor = System.Drawing.Color.Transparent;
+            this.imagens.Images.SetKeyName(0, "add");
+            this.imagens.Images.SetKeyName(1, "clear");
+            this.imagens.Images.SetKeyName(2, "credit");
+            this.imagens.Images.SetKeyName(3, "edit");
+            this.imagens.Images.SetKeyName(4, "delete");
+            this.imagens.Images.SetKeyName(5, "list");
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Location = new System.Drawing.Point(0, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1, 468);
+            this.label1.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Location = new System.Drawing.Point(1049, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(1, 468);
+            this.label2.TabIndex = 8;
+            // 
+            // lblDown
+            // 
+            this.lblDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.lblDown.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lblDown.Location = new System.Drawing.Point(0, 517);
+            this.lblDown.Name = "lblDown";
+            this.lblDown.Size = new System.Drawing.Size(1050, 1);
+            this.lblDown.TabIndex = 8;
             // 
             // frmPrevisao
             // 
