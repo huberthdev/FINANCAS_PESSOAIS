@@ -451,10 +451,33 @@ namespace Setup.Financas
 
         private void CarregarListaCompromissos()
         {
-            int mes = DateTime.Today.Month;
-            int ano = DateTime.Today.Year;
+            string sql, mes_ano;
+            int mes, ano;
 
-            string sql = "SELECT TIPO, COMPROMISSO, DIA, VALOR FROM(SELECT 'CARTÃO DE CRÉDITO' AS TIPO, D.CONTA AS COMPROMISSO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.STATUS = 0 GROUP BY D.CONTA, EXTRACT(DAY FROM A.DATA_PARCELA) UNION SELECT 'PREVISÃO' AS TIPO, B.CLASSE AS COMPROMISSO, A.DIA, A.VALOR FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.MES = " + mes + " AND A.ANO = " + ano + " AND B.TIPO = 0 AND A.STATUS = 0 ";
+            for (int i = 0; i < 2; i++)
+            {
+                mes = DateTime.Today.AddMonths(i).Month;
+                ano = DateTime.Today.AddMonths(i).Year;
+                mes_ano = mes.ToString() + "." + ano.ToString();
+
+                listaCompromissos.Tag = mes_ano;
+                sql = SQLListaCompromissos(mes_ano);
+
+                if(sql != "")
+                {
+                    listaCompromissos.DataSource = BD.Buscar(sql);
+                    return;
+                }
+            }
+        }
+
+        private string SQLListaCompromissos(string mes_ano)
+        {
+            string sql;
+            string mes = mes_ano.Split(".").GetValue(0).ToString();
+            string ano = mes_ano.Split(".").GetValue(1).ToString();
+
+            sql = "SELECT TIPO, COMPROMISSO, DIA, VALOR FROM(SELECT 'CARTÃO DE CRÉDITO' AS TIPO, D.CONTA AS COMPROMISSO, EXTRACT(DAY FROM A.DATA_PARCELA) AS DIA, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CARTAO_CREDITO C ON B.CARTAO = C.CARTAO_CREDITO_ID INNER JOIN CONTA D ON C.CONTA = D.CONTA_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.STATUS = 0 GROUP BY D.CONTA, EXTRACT(DAY FROM A.DATA_PARCELA) UNION SELECT 'PREVISÃO' AS TIPO, B.CLASSE AS COMPROMISSO, A.DIA, A.VALOR FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.MES = " + mes + " AND A.ANO = " + ano + " AND B.TIPO = 0 AND A.STATUS = 0 ";
 
             sql += "AND A.PREVISAO_ID IN(SELECT PV.PREVISAO_ID FROM PREVISAO PV INNER JOIN CLASSE CL ON ";
             sql += "PV.CLASSE = CL.CLASSE_ID WHERE MES = " + mes + " AND ANO = " + ano + " AND PREVISAO_ID NOT IN(";
@@ -467,18 +490,27 @@ namespace Setup.Financas
 
             try
             {
-                listaCompromissos.DataSource = BD.Buscar(sql);
+                if(BD.Buscar(sql).Rows.Count > 0)
+                {
+                    return sql;
+                }
+
+                return "";
             }
             catch
             {
-                return;
+                return "";
             }
         }
 
         private void listaCompromissos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            string mes_ano = DateTime.Today.Month.ToString() + "." + DateTime.Today.Year.ToString();
 
             if (listaCompromissos.RowCount == 0)
+                return;
+
+            if (listaCompromissos.Tag.ToString() != mes_ano)
                 return;
 
             for (int i = 0; i < listaCompromissos.RowCount; i++)
