@@ -317,6 +317,7 @@ namespace Setup.Financas
             this.txtDescricao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtDescricao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtDescricao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescricao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDescricao.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDescricao.ForeColor = System.Drawing.Color.White;
             this.txtDescricao.Location = new System.Drawing.Point(182, 42);
@@ -560,6 +561,7 @@ namespace Setup.Financas
             this.excluirBD.Name = "excluirBD";
             this.excluirBD.Size = new System.Drawing.Size(109, 22);
             this.excluirBD.Text = "Excluir";
+            this.excluirBD.Click += new System.EventHandler(this.excluirBD_Click);
             // 
             // imageList1
             // 

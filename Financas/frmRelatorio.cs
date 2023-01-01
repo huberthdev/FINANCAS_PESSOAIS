@@ -32,7 +32,7 @@ namespace Setup.Financas
 
         private void CarregarLista(string sql = "")
         {
-            string classe, conta, descricao = "";
+            string classe, conta = "", descricao = "";
             string data1 = "", data2 = "";
 
             if (txtDataInicio.Checked)
@@ -129,10 +129,23 @@ namespace Setup.Financas
                 //
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA TRANSFERENCIA
                 //
-                sql += "UNION SELECT A.TRANSFERENCIA_ID AS ID, 'T' AS TIPO, A.DATA AS DATA, ";
-                sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA, A.VALOR, A.DESCRICAO AS DESC, '1' AS STATUS ";
-                sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ";
-                sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                if(ckDespesa.Checked && ckReceita.Checked || !ckDespesa.Checked && !ckReceita.Checked)
+                {
+                    sql += "UNION SELECT A.TRANSFERENCIA_ID AS ID, 'T' AS TIPO, A.DATA AS DATA, ";
+                    sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA, A.VALOR, A.DESCRICAO AS DESC, '1' AS STATUS ";
+                    sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ";
+                    sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                    //FILTRO CONTA
+                    if (cbConta.Text != "")
+                    {
+                        sql += "AND B.CONTA_ID = " + conta + " ";
+                    }
+                    //FILTRO DESCRIÇÃO
+                    if (descricao != "")
+                    {
+                        sql += "AND UPPER(A.DESCRICAO) LIKE '" + descricao + "' ";
+                    }
+                }
                 //
                 //MONTAGEM DO SQL COM TODAS AS CONDIÇÕES DE FILTRO NA TABELA COMPRA_CREDITO
                 //
@@ -153,6 +166,11 @@ namespace Setup.Financas
                     {
                         classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
                         sql += "AND C.CLASSE_ID = " + classe + " ";
+                    }
+                    //FILTRO CONTA
+                    if(cbConta.Text != "")
+                    {
+                        sql += "AND E.CONTA_ID = " + conta + " ";
                     }
                 }
 
@@ -294,6 +312,11 @@ namespace Setup.Financas
 
         private void excluir_Click(object sender, EventArgs e)
         {
+            ExcluirLancamento();
+        }
+        
+        private void ExcluirLancamento()
+        {
             string id, tipo, classe;
 
             try
@@ -312,7 +335,7 @@ namespace Setup.Financas
             {
                 Classes.Geral.ExcluirTransferencia(id + "." + classe);
             }
-            else if(tipo == "D")
+            else if (tipo == "D")
             {
                 Classes.Geral.ExcluirLancamento(id + "." + classe);
             }
@@ -322,6 +345,7 @@ namespace Setup.Financas
             }
 
             CarregarLista();
+
         }
 
         private void lista_SelectionChanged(object sender, EventArgs e)
@@ -645,6 +669,11 @@ namespace Setup.Financas
                 //e.Cancel = true;
                 contextMenuStrip1.Items["alterarBD"].Visible = false;
             }
+        }
+
+        private void excluirBD_Click(object sender, EventArgs e)
+        {
+            ExcluirLancamento();
         }
     }
 }
