@@ -652,7 +652,6 @@ namespace Setup.Financas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmPrevisao_Load);
-            this.SizeChanged += new System.EventHandler(this.frmPrevisao_SizeChanged);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel.ResumeLayout(false);

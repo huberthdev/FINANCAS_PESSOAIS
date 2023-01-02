@@ -24,7 +24,10 @@ namespace Setup.Financas
             int cor = Previsao.Prev.cor;
 
             int mes = ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1;
+            if (mes == 0)
+                mes = DateTime.Today.Month;
             int ano = int.Parse(menuStrip1.Items["ano"].Text);
+            string periodo = "01." + mes + "." + ano;
 
             //panel.Controls.Clear();
 
@@ -97,6 +100,8 @@ namespace Setup.Financas
             sql += "LEFT OUTER JOIN PREVISAO D ON B.CLASSE = D.CLASSE AND EXTRACT(MONTH FROM B.DATA_COMPRA) || EXTRACT(YEAR FROM B.DATA_COMPRA) = D.MES || D.ANO ";
             sql += "WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " AND A.STATUS = 0 ";
             sql += "GROUP BY C.CLASSE, ORCADO, DIA, D.STATUS, D.OBS, CV) GROUP BY CLS, TIPO, DIA, ORCADO, ST, ORD, OB, CV ";
+            
+            //sql += "UNION SELECT 'Desvio Saldo Acumulado' AS CLS, '-' AS TIPO, '0' AS DIA, '0' AS ORCADO, '0' AS REALIZADO, IIF((SALDO * -1) IS NULL, 0, (SALDO * -1)) AS DESVIO, '1' AS ST, 'F' AS ORD, '' AS OB, '' AS CV FROM SALDO_PREV ";
             //
             sql += ") ORDER BY ORD, DIA";
             //
@@ -239,26 +244,6 @@ namespace Setup.Financas
             CarregarPrevisao();
         }
 
-        private void frmPrevisao_SizeChanged(object sender, EventArgs e)
-        {
-            //int xPnI = 1050, xPnF, xPn, xCtrl, vl;
-
-            //xPn = this.panel.Size.Width;
-
-            //foreach (Control c in panel.Controls)
-            //{
-            //    if (c.GetType().Name == "Panel")
-            //    {
-            //        xCtrl = c.Location.X;
-            //        xPnF = this.Size.Width;
-
-            //        vl = xPnF -xPnI ;
-
-            //        c.Location = new Point(vl, c.Location.Y);
-            //    }
-            //}
-        }
-
         private void lista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (lista.RowCount == 0 || e.ColumnIndex > 1)
@@ -391,7 +376,7 @@ namespace Setup.Financas
                     lista.Rows[i].Cells[3].Style.ForeColor = Color.LimeGreen;
                 }
 
-                if (ord == "A")
+                if (ord == "A" || ord == "F")
                 {
                     lista.Rows[i].ReadOnly = true;
                 }
@@ -403,6 +388,7 @@ namespace Setup.Financas
         {
             string tipo, msg;
             double receita = 0, despesa = 0, restante = 0, desvio = 0, saldo = 0, valor = 0;
+            int[] mes = new int[2]; string mesSel, anoSel;
 
             status.Items["receita"].Text = "";
             status.Items["despesa"].Text = "";
@@ -422,7 +408,7 @@ namespace Setup.Financas
                     valor = Double.Parse(lista.Rows[i].Cells[5].Value.ToString());
                     receita += Math.Abs(valor);
                 }
-                else if (tipo.Contains("Despesa"))
+                else if (tipo.Contains("Despesa") || tipo.Contains("-"))
                 {
                     despesa += Double.Parse(lista.Rows[i].Cells[6].Value.ToString());
                 }
@@ -449,9 +435,11 @@ namespace Setup.Financas
 
             desvio = desvio * -1;
 
-            int[] mes = new int[2];
             mes[0] = DateTime.Today.Month;
             mes[1] = ((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1;
+            
+            mesSel = mes[1].ToString();
+            anoSel = menuStrip1.Items["ano"].Text;
 
             if(mes[0].ToString() == mes[1].ToString())
             {
@@ -469,6 +457,15 @@ namespace Setup.Financas
                 msg = "Desvio: " + desvio.ToString("C");
                 status.Items["msg"].Text = msg;
                 status.Items["msg"].ForeColor = Color.Tomato;
+            }
+
+            try
+            {
+                SalvarSaldoPrevPeriodo(BD.CvNum(desvio.ToString()));
+            }
+            catch
+            {
+
             }
 
             ColorirLinhas();
@@ -712,6 +709,44 @@ namespace Setup.Financas
 
             if (tipo == "A")
                 e.Cancel = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chave">PASSAR CHAVE NO FORMATO "01." + MES E ANO</param>
+        /// <param name="desvio"></param>
+        private void SalvarSaldoPrevPeriodo(string desvio)
+        {
+            string sql; int lin;
+
+            sql = "SELECT * FROM SALDO_PREV";
+            try
+            {
+                lin = BD.Buscar(sql).Rows.Count;
+            }
+            catch
+            {
+                return;
+            }
+
+            if(lin > 0)
+            {
+                sql = "UPDATE SALDO_PREV SET SALDO = SALDO + '"+ desvio +"'";
+            }
+            else
+            {
+                sql = "INSERT INTO SALDO_PREV(SALDO) VALUES('"+ desvio +"')";
+            }
+
+            try
+            {
+                BD.ExecutarSQL(sql);
+            }
+            catch
+            {
+
+            }
         }
     }
 }

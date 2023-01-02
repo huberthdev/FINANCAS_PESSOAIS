@@ -518,13 +518,13 @@ namespace Setup.Financas
 
             for (int i = 0; i < lista.RowCount; i++)
             {
-                if(lista.Rows[i].Cells[8].Value.ToString() == "1")
+                if(lista.Rows[i].Cells[8].Value.ToString() == "0")
                 {
                     x++;
                 }
             }
 
-            if (x != 0)
+            if (x == 0)
             {
                 return;
             }
