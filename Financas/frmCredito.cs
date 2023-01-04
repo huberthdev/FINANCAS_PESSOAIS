@@ -653,11 +653,15 @@ namespace Setup.Financas
             try
             {
                 conta = BD.Buscar(sql).Rows[0][0].ToString();
+                pData = BD.Buscar(sql).Rows[0][1].ToString();
             }
             catch
             {
                 conta = "";
             }
+
+            mes = DateTime.Parse(pData).Month;
+            ano = DateTime.Parse(pData).Year;
 
             try
             {
