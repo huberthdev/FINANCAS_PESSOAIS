@@ -170,6 +170,7 @@ namespace Setup.Financas
             this.replicar.Name = "replicar";
             this.replicar.Size = new System.Drawing.Size(77, 23);
             this.replicar.Text = "Replicar";
+            this.replicar.Click += new System.EventHandler(this.replicar_Click);
             // 
             // atualizar
             // 
@@ -469,7 +470,7 @@ namespace Setup.Financas
             this.alterar,
             this.excluir_});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 114);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(120, 92);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // detalhes
@@ -477,7 +478,7 @@ namespace Setup.Financas
             this.detalhes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.detalhes.Image = ((System.Drawing.Image)(resources.GetObject("detalhes.Image")));
             this.detalhes.Name = "detalhes";
-            this.detalhes.Size = new System.Drawing.Size(180, 22);
+            this.detalhes.Size = new System.Drawing.Size(119, 22);
             this.detalhes.Text = "Detalhes";
             this.detalhes.Click += new System.EventHandler(this.detalhes_Click);
             // 
@@ -485,7 +486,7 @@ namespace Setup.Financas
             // 
             this.replicar_.Image = ((System.Drawing.Image)(resources.GetObject("replicar_.Image")));
             this.replicar_.Name = "replicar_";
-            this.replicar_.Size = new System.Drawing.Size(180, 22);
+            this.replicar_.Size = new System.Drawing.Size(119, 22);
             this.replicar_.Text = "Replicar";
             this.replicar_.Click += new System.EventHandler(this.replicar__Click);
             // 
@@ -493,7 +494,7 @@ namespace Setup.Financas
             // 
             this.alterar.Image = ((System.Drawing.Image)(resources.GetObject("alterar.Image")));
             this.alterar.Name = "alterar";
-            this.alterar.Size = new System.Drawing.Size(180, 22);
+            this.alterar.Size = new System.Drawing.Size(119, 22);
             this.alterar.Text = "Alterar";
             this.alterar.Click += new System.EventHandler(this.alterar_Click);
             // 
@@ -501,7 +502,7 @@ namespace Setup.Financas
             // 
             this.excluir_.Image = ((System.Drawing.Image)(resources.GetObject("excluir_.Image")));
             this.excluir_.Name = "excluir_";
-            this.excluir_.Size = new System.Drawing.Size(180, 22);
+            this.excluir_.Size = new System.Drawing.Size(119, 22);
             this.excluir_.Text = "Excluir";
             this.excluir_.Click += new System.EventHandler(this.excluir__Click);
             // 

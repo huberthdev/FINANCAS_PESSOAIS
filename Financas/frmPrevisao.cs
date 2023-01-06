@@ -749,5 +749,48 @@ namespace Setup.Financas
 
             }
         }
+
+        private void replicar_Click(object sender, EventArgs e)
+        {
+            string mesAtual, proxMes, sql;
+
+            string[] mes = new string[2];
+            string[] ano = new string[2];
+
+            try
+            {
+                mes[0] = menuStrip1.Items["mes"].Text.ToString().Substring(0,3);
+                mes[0] = Classes.Geral.MesNome(nomMes: mes[0]);
+                ano[0] = menuStrip1.Items["ano"].Text;
+                mesAtual = "01/" + mes[0] + "/" + ano[0];
+                proxMes = DateTime.Parse(mesAtual).AddMonths(1).ToShortDateString();
+            }
+            catch 
+            {
+                COD.Erro("Não foi possível replicar a previsão deste mês!");
+                return;
+            }
+
+            mes[1] = DateTime.Parse(proxMes).Month.ToString();
+            ano[1] = DateTime.Parse(proxMes).Year.ToString();
+
+            sql = "INSERT INTO PREVISAO(CHAVE, DIA, MES, ANO, CLASSE, VALOR, STATUS, OBS) ";
+            sql += "SELECT DIA || '.' || '"+ mes[1] +"' || '.' || '"+ ano[1] +"' || '.' || CLASSE, ";
+            sql += "DIA, "+ mes[1] +", "+ ano[1] +", CLASSE, VALOR, STATUS, OBS ";
+            sql += "FROM PREVISAO WHERE MES = "+ mes[0] +" AND ANO = "+ ano[0] +" ";
+            sql += "AND CLASSE NOT IN(SELECT CLASSE FROM PREVISAO WHERE MES = " + mes[1] + " AND ANO = " + ano[1] + ")";
+
+            try
+            {
+                BD.ExecutarSQL(sql);
+            }
+            catch
+            {
+                COD.Erro("Não foi possível replicar a previsão deste mês!");
+                return;
+            }
+
+            COD.OK("Previsão replicada para o próximo mês!");
+        }
     }
 }
