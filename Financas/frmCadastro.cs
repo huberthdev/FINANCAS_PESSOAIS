@@ -70,8 +70,15 @@ namespace Setup.Financas
 
             if (tabela == "" || tabela == "classe")
             {
-                listaClasse.DataSource = BD.Buscar("SELECT CLASSE_ID, CLASSE FROM CLASSE WHERE TIPO = " + tipo + " " +
-                    "AND UPPER(CLASSE) LIKE '" + classe + "'");
+                try
+                {
+                    listaClasse.DataSource = BD.Buscar("SELECT CLASSE_ID, CLASSE, ATIVO FROM CLASSE WHERE TIPO = " + tipo + " " +
+                        "AND UPPER(CLASSE) LIKE '" + classe + "'");
+                }
+                catch
+                {
+
+                }
             }
 
             if (tabela == "" || tabela == "conta")
@@ -230,6 +237,61 @@ namespace Setup.Financas
             {
                 ExcluirClasse();
             }
+        }
+
+        private void ckAtivoClasse_Click(object sender, EventArgs e)
+        {
+            string id; int status;
+
+            status = Convert.ToInt32(ckAtivoClasse.Checked);
+
+            try
+            {
+                id = listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[2].Value = status;
+            }
+            catch 
+            {
+                return;
+            }
+
+            string sql = "UPDATE CLASSE SET ATIVO = " + status + " WHERE CLASSE_ID = "+ id +"";
+            BD.ExecutarSQL(sql);
+
+            FormatacaoCondicional();
+
+        }
+
+        private void listaClasse_SelectionChanged(object sender, EventArgs e)
+        {
+            bool status;
+
+            try
+            {
+                status = Convert.ToBoolean(listaClasse.SelectedRows[0].Cells[2].Value);
+            }
+            catch
+            {
+                return;
+            }
+
+            ckAtivoClasse.Checked = status;
+        }
+
+        private void FormatacaoCondicional()
+        {
+            for (int i = 0; i < listaClasse.RowCount; i++)
+            {
+                if(listaClasse.Rows[i].Cells[2].Value.ToString() == "0")
+                    listaClasse.Rows[i].Cells[1].Style.ForeColor = Color.Tomato;
+                else
+                    listaClasse.Rows[i].Cells[1].Style.ForeColor = Color.White;
+            }
+        }
+
+        private void listaClasse_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            FormatacaoCondicional();
         }
     }
 }

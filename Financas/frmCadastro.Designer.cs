@@ -67,6 +67,7 @@ namespace Setup.Financas
             this.listaClasse = new Setup.Controles.dgView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CLASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ATIVO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ckAtivoClasse = new System.Windows.Forms.CheckBox();
             this.optDespesa = new System.Windows.Forms.RadioButton();
             this.optReceita = new System.Windows.Forms.RadioButton();
@@ -124,7 +125,8 @@ namespace Setup.Financas
             this.listaClasse.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listaClasse.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
-            this.CLASS});
+            this.CLASS,
+            this.ATIVO});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -166,6 +168,8 @@ namespace Setup.Financas
             this.listaClasse.ShowEditingIcon = false;
             this.listaClasse.Size = new System.Drawing.Size(443, 320);
             this.listaClasse.TabIndex = 1;
+            this.listaClasse.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaClasse_DataBindingComplete);
+            this.listaClasse.SelectionChanged += new System.EventHandler(this.listaClasse_SelectionChanged);
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -182,6 +186,14 @@ namespace Setup.Financas
             this.CLASS.Name = "CLASS";
             this.CLASS.ReadOnly = true;
             // 
+            // ATIVO
+            // 
+            this.ATIVO.DataPropertyName = "ATIVO";
+            this.ATIVO.HeaderText = "ATIVO";
+            this.ATIVO.Name = "ATIVO";
+            this.ATIVO.ReadOnly = true;
+            this.ATIVO.Visible = false;
+            // 
             // ckAtivoClasse
             // 
             this.ckAtivoClasse.AutoSize = true;
@@ -194,6 +206,7 @@ namespace Setup.Financas
             this.ckAtivoClasse.TabStop = false;
             this.ckAtivoClasse.Text = "Ativo";
             this.ckAtivoClasse.UseVisualStyleBackColor = true;
+            this.ckAtivoClasse.Click += new System.EventHandler(this.ckAtivoClasse_Click);
             // 
             // optDespesa
             // 
@@ -552,8 +565,6 @@ namespace Setup.Financas
 
         #endregion
         private Controles.dgView listaClasse;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CLASS;
         private System.Windows.Forms.CheckBox ckAtivoClasse;
         private System.Windows.Forms.RadioButton optDespesa;
         private System.Windows.Forms.RadioButton optReceita;
@@ -566,9 +577,6 @@ namespace Setup.Financas
         private Controles.Txt txtConta;
         private System.Windows.Forms.Panel pnCad;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem salvar;
-        private System.Windows.Forms.ToolStripMenuItem excluir;
-        private System.Windows.Forms.ToolStripMenuItem sair;
         private System.Windows.Forms.Panel pnConta;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton optConta;
@@ -578,5 +586,11 @@ namespace Setup.Financas
         private Label label2;
         private Label label1;
         private Label label5;
+        private Controles.Cabecalho salvar;
+        private Controles.Cabecalho excluir;
+        private Controles.Cabecalho sair;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn CLASS;
+        private DataGridViewTextBoxColumn ATIVO;
     }
 }
