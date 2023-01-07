@@ -350,7 +350,7 @@ namespace Setup.Classes
             var lista = new List<Classe>();
             var c1 = new Classe();
 
-            string sql = "SELECT CLASSE_ID, CLASSE FROM CLASSE WHERE TIPO = "+ opt +" ORDER BY CLASSE";
+            string sql = "SELECT CLASSE_ID, CLASSE FROM CLASSE WHERE TIPO = "+ opt + " AND ATIVO = 1 ORDER BY CLASSE";
             
             BD.Buscar(sql);
 
