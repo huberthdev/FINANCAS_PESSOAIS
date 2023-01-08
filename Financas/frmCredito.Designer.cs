@@ -103,11 +103,15 @@ namespace Setup.Financas
             this.cbFCartao = new Setup.Controles.cbCombo();
             this.label8 = new System.Windows.Forms.Label();
             this.lblPeriodo = new System.Windows.Forms.Label();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.mesAnterior = new System.Windows.Forms.ToolStripMenuItem();
+            this.mesProximo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -118,9 +122,9 @@ namespace Setup.Financas
             this.excluir,
             this.cartoes,
             this.limpar});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(4, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1046, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1042, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -391,6 +395,8 @@ namespace Setup.Financas
             this.lista.Size = new System.Drawing.Size(720, 271);
             this.lista.TabIndex = 1;
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
+            this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
+            this.lista.Click += new System.EventHandler(this.lista_Click);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // CHAVE
@@ -606,9 +612,9 @@ namespace Setup.Financas
             // 
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label10.Dock = System.Windows.Forms.DockStyle.Left;
-            this.label10.Location = new System.Drawing.Point(0, 24);
+            this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(4, 408);
+            this.label10.Size = new System.Drawing.Size(4, 432);
             this.label10.TabIndex = 39;
             // 
             // lnRight
@@ -659,6 +665,7 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.cbFCartao);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblPeriodo);
+            this.panel1.Controls.Add(this.menuStrip2);
             this.panel1.Location = new System.Drawing.Point(4, 99);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(725, 30);
@@ -667,7 +674,7 @@ namespace Setup.Financas
             // btnPagarFatura
             // 
             this.btnPagarFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnPagarFatura.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnPagarFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(192)))), ((int)(((byte)(87)))));
             this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -710,14 +717,44 @@ namespace Setup.Financas
             // 
             // lblPeriodo
             // 
-            this.lblPeriodo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPeriodo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPeriodo.ForeColor = System.Drawing.Color.LimeGreen;
-            this.lblPeriodo.Location = new System.Drawing.Point(557, 3);
+            this.lblPeriodo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(192)))), ((int)(((byte)(87)))));
+            this.lblPeriodo.Location = new System.Drawing.Point(585, 2);
             this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(165, 23);
+            this.lblPeriodo.Size = new System.Drawing.Size(102, 23);
             this.lblPeriodo.TabIndex = 20;
-            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.menuStrip2.AutoSize = false;
+            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mesAnterior,
+            this.mesProximo});
+            this.menuStrip2.Location = new System.Drawing.Point(541, 3);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.Size = new System.Drawing.Size(182, 24);
+            this.menuStrip2.TabIndex = 40;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // mesAnterior
+            // 
+            this.mesAnterior.Image = ((System.Drawing.Image)(resources.GetObject("mesAnterior.Image")));
+            this.mesAnterior.Name = "mesAnterior";
+            this.mesAnterior.Size = new System.Drawing.Size(28, 20);
+            this.mesAnterior.Click += new System.EventHandler(this.mesAnterior_Click);
+            // 
+            // mesProximo
+            // 
+            this.mesProximo.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mesProximo.Image = ((System.Drawing.Image)(resources.GetObject("mesProximo.Image")));
+            this.mesProximo.Name = "mesProximo";
+            this.mesProximo.Size = new System.Drawing.Size(28, 20);
+            this.mesProximo.Click += new System.EventHandler(this.mesProximo_Click);
             // 
             // frmCredito
             // 
@@ -759,7 +796,6 @@ namespace Setup.Financas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmCredito_Activated);
-            this.Load += new System.EventHandler(this.frmCredito_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCredito_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -769,6 +805,8 @@ namespace Setup.Financas
             this.status.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -825,5 +863,8 @@ namespace Setup.Financas
         private ToolStripStatusLabel sp2;
         private ToolStripStatusLabel periodo;
         private Label lblPeriodo;
+        private MenuStrip menuStrip2;
+        private ToolStripMenuItem mesAnterior;
+        private ToolStripMenuItem mesProximo;
     }
 }

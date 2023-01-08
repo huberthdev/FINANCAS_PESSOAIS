@@ -407,8 +407,8 @@ namespace Setup.Financas
 
             try
             {
-                chave = lista.SelectedRows[0].Cells[0].Value.ToString();
-                classe = lista.SelectedRows[0].Cells[3].Value.ToString();
+                chave = lista.CurrentRow.Cells[0].Value.ToString();
+                classe = lista.CurrentRow.Cells[3].Value.ToString();
             }
             catch
             {
@@ -461,10 +461,11 @@ namespace Setup.Financas
             {
                 cbFCartao.Text = cartao;
                 status.Items["periodo"].Text = "[" + periodo + "]";
+                status.Items["periodo"].Tag = chave;
             }
             catch
             {
-
+                return;
             }
 
             CarregarLista();
@@ -578,11 +579,6 @@ namespace Setup.Financas
             }
         }
 
-        private void frmCredito_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void editar_Click(object sender, EventArgs e)
         {
             string id, data, desc;
@@ -665,10 +661,12 @@ namespace Setup.Financas
             try
             {
                 status.Items["periodo"].Text = "[" + Geral.MesNome(mes.ToString(), true) + "." + ano + "]";
+                status.Items["periodo"].Tag = mes + "" + ano;
             }
             catch 
             {
                 status.Items["periodo"].Text = "[" + Geral.MesNome(DateTime.Today.Month.ToString(), true) + "." + DateTime.Today.Year.ToString() + "]";
+                status.Items["periodo"].Tag = DateTime.Today.Month + "" + ano;
             }
 
             return conta;
@@ -677,6 +675,70 @@ namespace Setup.Financas
         private void periodo_TextChanged(object sender, EventArgs e)
         {
             lblPeriodo.Text = status.Items["periodo"].Text;
+        }
+
+        private void mesAnterior_Click(object sender, EventArgs e)
+        {
+            Mudar_Periodo(0);
+        }
+
+        private void mesProximo_Click(object sender, EventArgs e)
+        {
+            Mudar_Periodo(1);
+        }
+
+        private void Mudar_Periodo(int x)
+        {
+            string mes, ano, chave, periodo;
+
+            chave = status.Items["periodo"].Tag.ToString();
+            mes = chave.Substring(0, chave.Length - 4);
+            ano = chave.Substring(chave.Length - 4, 4);
+
+            if (x == 1)
+            {
+                ano = DateTime.Parse("01/" + mes + "/" + ano).AddMonths(1).Year.ToString();
+                mes = DateTime.Parse("01/" + mes + "/" + ano).AddMonths(1).Month.ToString();
+            }
+            else
+            {
+                ano = DateTime.Parse("01/" + mes + "/" + ano).AddMonths(-1).Year.ToString();
+                mes = DateTime.Parse("01/" + mes + "/" + ano).AddMonths(-1).Month.ToString();
+            }
+
+            try
+            {
+                chave = mes + "" + ano;
+                mes = Geral.MesNome(mes, true);
+                periodo = mes + "." + ano;
+
+                status.Items["periodo"].Text = "[" + periodo + "]";
+                status.Items["periodo"].Tag = chave;
+            }
+            catch
+            {
+                return;
+            }
+
+            CarregarLista();
+        }
+
+        private void lista_SelectionChanged(object sender, EventArgs e)
+        {
+            Ativar_Exclusao();
+        }
+
+        private void lista_Click(object sender, EventArgs e)
+        {
+            Ativar_Exclusao();
+        }
+
+        private void Ativar_Exclusao()
+        {
+            if (lista.CurrentRow.Cells[8].Value.ToString() == "1")
+                menuStrip1.Items["excluir"].Enabled = false;
+            else
+                menuStrip1.Items["excluir"].Enabled = true;
         }
     }
 }
