@@ -102,6 +102,7 @@ namespace Setup.Financas
             this.btnPagarFatura = new System.Windows.Forms.Button();
             this.cbFCartao = new Setup.Controles.cbCombo();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblPeriodo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -590,6 +591,7 @@ namespace Setup.Financas
             // 
             this.periodo.Name = "periodo";
             this.periodo.Size = new System.Drawing.Size(0, 17);
+            this.periodo.TextChanged += new System.EventHandler(this.periodo_TextChanged);
             // 
             // label13
             // 
@@ -656,6 +658,7 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.btnPagarFatura);
             this.panel1.Controls.Add(this.cbFCartao);
             this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.lblPeriodo);
             this.panel1.Location = new System.Drawing.Point(4, 99);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(725, 30);
@@ -705,12 +708,30 @@ namespace Setup.Financas
             this.label8.TabIndex = 37;
             this.label8.Text = "Cartão";
             // 
+            // lblPeriodo
+            // 
+            this.lblPeriodo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPeriodo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblPeriodo.ForeColor = System.Drawing.Color.LimeGreen;
+            this.lblPeriodo.Location = new System.Drawing.Point(557, 3);
+            this.lblPeriodo.Name = "lblPeriodo";
+            this.lblPeriodo.Size = new System.Drawing.Size(165, 23);
+            this.lblPeriodo.TabIndex = 20;
+            this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1050, 436);
+            this.Controls.Add(this.cbCartao);
+            this.Controls.Add(this.cbClasse);
+            this.Controls.Add(this.txtData);
+            this.Controls.Add(this.txtValor);
+            this.Controls.Add(this.txtQtdeParc);
+            this.Controls.Add(this.txtDesc);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblFaturas);
@@ -722,19 +743,12 @@ namespace Setup.Financas
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtDesc);
-            this.Controls.Add(this.txtQtdeParc);
-            this.Controls.Add(this.txtValor);
-            this.Controls.Add(this.txtData);
-            this.Controls.Add(this.cbClasse);
-            this.Controls.Add(this.cbCartao);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.lnRight);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -810,5 +824,6 @@ namespace Setup.Financas
         private ToolStripStatusLabel sp1;
         private ToolStripStatusLabel sp2;
         private ToolStripStatusLabel periodo;
+        private Label lblPeriodo;
     }
 }

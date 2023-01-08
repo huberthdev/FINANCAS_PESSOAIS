@@ -104,7 +104,6 @@ namespace Setup.Financas
             this.query = new System.Windows.Forms.ToolStripMenuItem();
             this.anotacoes = new System.Windows.Forms.ToolStripMenuItem();
             this.sair = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolLancamento = new Setup.Controles.Cabecalho();
             this.compraCredito = new Setup.Controles.Cabecalho();
             this.transf = new Setup.Controles.Cabecalho();
             this.ToolRelatorio = new Setup.Controles.Cabecalho();
@@ -187,7 +186,6 @@ namespace Setup.Financas
             this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu,
-            this.ToolLancamento,
             this.compraCredito,
             this.transf,
             this.ToolRelatorio,
@@ -381,15 +379,6 @@ namespace Setup.Financas
             this.sair.Size = new System.Drawing.Size(246, 22);
             this.sair.Text = "Sair";
             this.sair.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
-            // 
-            // ToolLancamento
-            // 
-            this.ToolLancamento.ForeColor = System.Drawing.Color.White;
-            this.ToolLancamento.Image = ((System.Drawing.Image)(resources.GetObject("ToolLancamento.Image")));
-            this.ToolLancamento.Name = "ToolLancamento";
-            this.ToolLancamento.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.ToolLancamento.Size = new System.Drawing.Size(137, 20);
-            this.ToolLancamento.Text = "Receitas • Despesas";
             // 
             // compraCredito
             // 
@@ -1393,7 +1382,6 @@ namespace Setup.Financas
         private Controles.Cabecalho menu;
         private Controles.Cabecalho ToolRelatorio;
         private Controles.Cabecalho ToolVisaoGeral;
-        private Controles.Cabecalho ToolLancamento;
         private Controles.Cabecalho ToolCalculadora;
         private Controles.Cabecalho ToolPrevisao;
         private Controles.Cabecalho compraCredito;

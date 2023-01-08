@@ -259,7 +259,8 @@ namespace Setup.Financas
 
         private void CarregarTreeFaturas()
         {
-            string sql, data, periodo, cartao, cor, mesNome, valor, s = "", status;
+            string sql, data, periodo = "", cartao, cor, mesNome, valor, s = "", status;
+            string proxPeriodo, proxAno;
 
             string mes = DateTime.Today.Month.ToString();
             string ano = DateTime.Today.Year.ToString();
@@ -354,26 +355,24 @@ namespace Setup.Financas
                 }
             }
 
-            if (FatMesTotPaga)
-            {
-                periodo = DateTime.Parse(data).ToString("Myyyy");
-                ano = DateTime.Parse(data).ToString("yyyy");
-            }
-            else
+            if (!FatMesTotPaga)
             {
                 periodo = DateTime.Today.ToString("Myyyy");
                 ano = DateTime.Today.Year.ToString();
             }
 
+            proxPeriodo = DateTime.Parse(data).ToString("Myyyy");
+            proxAno = DateTime.Parse(data).ToString("yyyy");
+
             for (int i = 0; i < treeFaturas.Nodes.Count; i++)
             {
-                if(treeFaturas.Nodes[i].Text == ano)
+                if(treeFaturas.Nodes[i].Text == ano || treeFaturas.Nodes[i].Text == proxAno)
                 {
                     treeFaturas.Nodes[i].Expand();
 
                     for (int x = 0; x < treeFaturas.Nodes[i].Nodes.Count; x++)
                     {
-                        if(treeFaturas.Nodes[i].Nodes[x].Name == periodo)
+                        if(treeFaturas.Nodes[i].Nodes[x].Name == periodo || treeFaturas.Nodes[i].Nodes[x].Name == proxPeriodo)
                         {
                             treeFaturas.Nodes[i].Nodes[x].Expand();
                         }
@@ -673,6 +672,11 @@ namespace Setup.Financas
             }
 
             return conta;
+        }
+
+        private void periodo_TextChanged(object sender, EventArgs e)
+        {
+            lblPeriodo.Text = status.Items["periodo"].Text;
         }
     }
 }
