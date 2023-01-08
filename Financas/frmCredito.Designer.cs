@@ -106,6 +106,7 @@ namespace Setup.Financas
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.mesAnterior = new System.Windows.Forms.ToolStripMenuItem();
             this.mesProximo = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluir_ = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -125,7 +126,7 @@ namespace Setup.Financas
             this.menuStrip1.Location = new System.Drawing.Point(4, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1042, 24);
-            this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // salvar
@@ -176,7 +177,7 @@ namespace Setup.Financas
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(233, 23);
-            this.txtDesc.TabIndex = 30;
+            this.txtDesc.TabIndex = 5;
             // 
             // txtQtdeParc
             // 
@@ -189,7 +190,7 @@ namespace Setup.Financas
             this.txtQtdeParc.MaxLength = 3;
             this.txtQtdeParc.Name = "txtQtdeParc";
             this.txtQtdeParc.Size = new System.Drawing.Size(48, 23);
-            this.txtQtdeParc.TabIndex = 29;
+            this.txtQtdeParc.TabIndex = 4;
             this.txtQtdeParc.Tag = "\'Qtd. Parcelas\'";
             this.txtQtdeParc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -203,7 +204,7 @@ namespace Setup.Financas
             this.txtValor.Location = new System.Drawing.Point(196, 63);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(90, 23);
-            this.txtValor.TabIndex = 28;
+            this.txtValor.TabIndex = 3;
             this.txtValor.Tag = "\'Valor\'";
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -218,7 +219,7 @@ namespace Setup.Financas
             this.txtData.MaxLength = 10;
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(90, 23);
-            this.txtData.TabIndex = 27;
+            this.txtData.TabIndex = 2;
             this.txtData.Tag = "\'Data\'";
             this.txtData.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -237,7 +238,7 @@ namespace Setup.Financas
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
             this.cbClasse.Size = new System.Drawing.Size(305, 23);
-            this.cbClasse.TabIndex = 25;
+            this.cbClasse.TabIndex = 1;
             this.cbClasse.Tag = "\'Classe\'";
             // 
             // cbCartao
@@ -254,7 +255,7 @@ namespace Setup.Financas
             this.cbCartao.MaxDropDownItems = 10;
             this.cbCartao.Name = "cbCartao";
             this.cbCartao.Size = new System.Drawing.Size(309, 23);
-            this.cbCartao.TabIndex = 26;
+            this.cbCartao.TabIndex = 0;
             this.cbCartao.Tag = "\'Cartão\'";
             // 
             // label2
@@ -503,16 +504,17 @@ namespace Setup.Financas
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editar});
+            this.editar,
+            this.excluir_});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // editar
             // 
             this.editar.Image = ((System.Drawing.Image)(resources.GetObject("editar.Image")));
             this.editar.Name = "editar";
-            this.editar.Size = new System.Drawing.Size(172, 22);
+            this.editar.Size = new System.Drawing.Size(180, 22);
             this.editar.Text = "Alterar Compra Nº";
             this.editar.Click += new System.EventHandler(this.editar_Click);
             // 
@@ -682,7 +684,7 @@ namespace Setup.Financas
             this.btnPagarFatura.Location = new System.Drawing.Point(371, 3);
             this.btnPagarFatura.Name = "btnPagarFatura";
             this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
-            this.btnPagarFatura.TabIndex = 39;
+            this.btnPagarFatura.TabIndex = 9;
             this.btnPagarFatura.Text = "PAGAR";
             this.btnPagarFatura.UseVisualStyleBackColor = false;
             this.btnPagarFatura.Click += new System.EventHandler(this.btnPagarFatura_Click);
@@ -701,7 +703,7 @@ namespace Setup.Financas
             this.cbFCartao.MaxDropDownItems = 10;
             this.cbFCartao.Name = "cbFCartao";
             this.cbFCartao.Size = new System.Drawing.Size(309, 23);
-            this.cbFCartao.TabIndex = 38;
+            this.cbFCartao.TabIndex = 8;
             this.cbFCartao.TabStop = false;
             this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
             // 
@@ -755,6 +757,14 @@ namespace Setup.Financas
             this.mesProximo.Name = "mesProximo";
             this.mesProximo.Size = new System.Drawing.Size(28, 20);
             this.mesProximo.Click += new System.EventHandler(this.mesProximo_Click);
+            // 
+            // excluir_
+            // 
+            this.excluir_.Image = ((System.Drawing.Image)(resources.GetObject("excluir_.Image")));
+            this.excluir_.Name = "excluir_";
+            this.excluir_.Size = new System.Drawing.Size(180, 22);
+            this.excluir_.Text = "Excluir";
+            this.excluir_.Click += new System.EventHandler(this.excluir__Click);
             // 
             // frmCredito
             // 
@@ -866,5 +876,6 @@ namespace Setup.Financas
         private MenuStrip menuStrip2;
         private ToolStripMenuItem mesAnterior;
         private ToolStripMenuItem mesProximo;
+        private ToolStripMenuItem excluir_;
     }
 }

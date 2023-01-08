@@ -398,7 +398,7 @@ namespace Setup.Financas
             CarregarTreeFaturas();
         }
 
-        private void excluir_Click(object sender, EventArgs e)
+        private void Excluir_Compra()
         {
             string chave, classe;
 
@@ -407,19 +407,25 @@ namespace Setup.Financas
 
             try
             {
-                chave = lista.CurrentRow.Cells[0].Value.ToString();
-                classe = lista.CurrentRow.Cells[3].Value.ToString();
+                chave = lista.SelectedRows[0].Cells[0].Value.ToString();
+                classe = lista.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch
             {
                 return;
             }
 
-            if(!Geral.ExcluirCompraCredito("0." + chave + "." + classe))
+            if (!Geral.ExcluirCompraCredito("0." + chave + "." + classe))
                 return;
 
             CarregarLista();
             CarregarTreeFaturas();
+
+        }
+
+        private void excluir_Click(object sender, EventArgs e)
+        {
+            Excluir_Compra();
         }
 
         private void NovoLancamento()
@@ -736,9 +742,18 @@ namespace Setup.Financas
         private void Ativar_Exclusao()
         {
             if (lista.CurrentRow.Cells[8].Value.ToString() == "1")
+            {
                 menuStrip1.Items["excluir"].Enabled = false;
+            }
             else
+            {
                 menuStrip1.Items["excluir"].Enabled = true;
+            }
+        }
+
+        private void excluir__Click(object sender, EventArgs e)
+        {
+            Excluir_Compra();
         }
     }
 }
