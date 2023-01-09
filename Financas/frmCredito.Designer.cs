@@ -83,6 +83,7 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editar = new System.Windows.Forms.ToolStripMenuItem();
+            this.excluir_ = new System.Windows.Forms.ToolStripMenuItem();
             this.treeFaturas = new System.Windows.Forms.TreeView();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -106,7 +107,6 @@ namespace Setup.Financas
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.mesAnterior = new System.Windows.Forms.ToolStripMenuItem();
             this.mesProximo = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluir_ = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -507,16 +507,24 @@ namespace Setup.Financas
             this.editar,
             this.excluir_});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 48);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // editar
             // 
             this.editar.Image = ((System.Drawing.Image)(resources.GetObject("editar.Image")));
             this.editar.Name = "editar";
-            this.editar.Size = new System.Drawing.Size(180, 22);
+            this.editar.Size = new System.Drawing.Size(172, 22);
             this.editar.Text = "Alterar Compra Nº";
             this.editar.Click += new System.EventHandler(this.editar_Click);
+            // 
+            // excluir_
+            // 
+            this.excluir_.Image = ((System.Drawing.Image)(resources.GetObject("excluir_.Image")));
+            this.excluir_.Name = "excluir_";
+            this.excluir_.Size = new System.Drawing.Size(172, 22);
+            this.excluir_.Text = "Excluir";
+            this.excluir_.Click += new System.EventHandler(this.excluir__Click);
             // 
             // treeFaturas
             // 
@@ -599,7 +607,6 @@ namespace Setup.Financas
             // 
             this.periodo.Name = "periodo";
             this.periodo.Size = new System.Drawing.Size(0, 17);
-            this.periodo.TextChanged += new System.EventHandler(this.periodo_TextChanged);
             // 
             // label13
             // 
@@ -681,7 +688,7 @@ namespace Setup.Financas
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnPagarFatura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.btnPagarFatura.Location = new System.Drawing.Point(371, 3);
+            this.btnPagarFatura.Location = new System.Drawing.Point(302, 3);
             this.btnPagarFatura.Name = "btnPagarFatura";
             this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
             this.btnPagarFatura.TabIndex = 9;
@@ -702,7 +709,7 @@ namespace Setup.Financas
             this.cbFCartao.Location = new System.Drawing.Point(56, 3);
             this.cbFCartao.MaxDropDownItems = 10;
             this.cbFCartao.Name = "cbFCartao";
-            this.cbFCartao.Size = new System.Drawing.Size(309, 23);
+            this.cbFCartao.Size = new System.Drawing.Size(241, 23);
             this.cbFCartao.TabIndex = 8;
             this.cbFCartao.TabStop = false;
             this.cbFCartao.SelectedValueChanged += new System.EventHandler(this.cbFCartao_SelectedValueChanged);
@@ -720,11 +727,12 @@ namespace Setup.Financas
             // lblPeriodo
             // 
             this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.lblPeriodo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lblPeriodo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(192)))), ((int)(((byte)(87)))));
-            this.lblPeriodo.Location = new System.Drawing.Point(585, 2);
+            this.lblPeriodo.Location = new System.Drawing.Point(412, 3);
             this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(102, 23);
+            this.lblPeriodo.Size = new System.Drawing.Size(282, 23);
             this.lblPeriodo.TabIndex = 20;
             this.lblPeriodo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -732,14 +740,14 @@ namespace Setup.Financas
             // 
             this.menuStrip2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.menuStrip2.AutoSize = false;
-            this.menuStrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.menuStrip2.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.None;
             this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mesAnterior,
             this.mesProximo});
-            this.menuStrip2.Location = new System.Drawing.Point(541, 3);
+            this.menuStrip2.Location = new System.Drawing.Point(382, 3);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(182, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(337, 24);
             this.menuStrip2.TabIndex = 40;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -757,14 +765,6 @@ namespace Setup.Financas
             this.mesProximo.Name = "mesProximo";
             this.mesProximo.Size = new System.Drawing.Size(28, 20);
             this.mesProximo.Click += new System.EventHandler(this.mesProximo_Click);
-            // 
-            // excluir_
-            // 
-            this.excluir_.Image = ((System.Drawing.Image)(resources.GetObject("excluir_.Image")));
-            this.excluir_.Name = "excluir_";
-            this.excluir_.Size = new System.Drawing.Size(180, 22);
-            this.excluir_.Text = "Excluir";
-            this.excluir_.Click += new System.EventHandler(this.excluir__Click);
             // 
             // frmCredito
             // 

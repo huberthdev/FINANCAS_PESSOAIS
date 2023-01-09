@@ -197,8 +197,7 @@ namespace Setup.Financas
         private void CarregarLista()
         {
             string mes, periodo, cartao = "";
-            double valorFatura = 0;
-
+            
             if (cbFCartao.Text != "")
             {
                 cartao = ((CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
@@ -246,15 +245,42 @@ namespace Setup.Financas
             {
 
             }
+        }
+
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            double valorFatura = 0;
 
             for (int i = 0; i < lista.RowCount; i++)
             {
-                valorFatura +=  double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                for (int c = 0; c < lista.ColumnCount; c++)
+                {
+                    if (lista.Rows[i].Cells[8].Value.ToString() == "1")
+                    {
+                        if (lista.Columns[c].Index == 4)
+                        {
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                        }
+                    }
+                    else
+                    {
+                        if (lista.Columns[c].Index == 4)
+                        {
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                        }
+                    }
+                }
+            }
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                valorFatura += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
             }
 
             status.Items["statusLabel"].Text = "LINHAS: " + lista.RowCount;
             status.Items["valorFatura"].Text = valorFatura.ToString("C");
 
+            lblPeriodo.Text = status.Items["periodo"].Text + "  " + status.Items["valorFatura"].Text;
         }
 
         private void CarregarTreeFaturas()
@@ -561,30 +587,6 @@ namespace Setup.Financas
             pagF.ShowDialog();
         }
 
-        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            for (int i = 0; i < lista.RowCount; i++)
-            {
-                for (int c = 0; c < lista.ColumnCount; c++)
-                {
-                    if (lista.Rows[i].Cells[8].Value.ToString() == "1")
-                    {
-                        if (lista.Columns[c].Index == 4)
-                        {
-                            lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
-                        }
-                    }
-                    else
-                    {
-                        if(lista.Columns[c].Index == 4)
-                        {
-                            lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
-                        }
-                    }
-                }
-            }
-        }
-
         private void editar_Click(object sender, EventArgs e)
         {
             string id, data, desc;
@@ -676,11 +678,6 @@ namespace Setup.Financas
             }
 
             return conta;
-        }
-
-        private void periodo_TextChanged(object sender, EventArgs e)
-        {
-            lblPeriodo.Text = status.Items["periodo"].Text;
         }
 
         private void mesAnterior_Click(object sender, EventArgs e)
