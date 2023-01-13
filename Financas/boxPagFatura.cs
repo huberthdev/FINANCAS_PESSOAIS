@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -87,13 +88,48 @@ namespace Setup.Financas
 
         private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            string status;
+
+            DataGridViewCheckBoxCell ck = new DataGridViewCheckBoxCell();
+
             for (int i = 0; i < lista.RowCount; i++)
             {
-                DataGridViewCheckBoxCell ck = new DataGridViewCheckBoxCell();
-
-                ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
-                ck.Value = 1;
+                for (int c = 0; c < lista.ColumnCount; c++)
+                {
+                    if (lista.Rows[i].Cells[9].Value.ToString() == "1")
+                    {
+                        if (lista.Columns[c].Name == "VALOR")
+                        {
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                        }
+                    }
+                    else
+                    {
+                        if (lista.Columns[c].Name == "VALOR")
+                        {
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                        }
+                    }
+                }
             }
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                status = lista.Rows[i].Cells[9].Value.ToString();
+
+                if(status == "1")
+                {
+                    ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
+                    ck.Value = 0;
+                }
+                else
+                {
+                    ck = ((DataGridViewCheckBoxCell)lista.Rows[i].Cells[0]);
+                    ck.Value = 1;
+                }
+            }
+
+            ValorDaFatura();
         }
 
         private void lista_CellContentClick(object sender, DataGridViewCellEventArgs e)
