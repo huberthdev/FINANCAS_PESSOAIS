@@ -58,7 +58,7 @@ namespace Setup.Financas
             sql += "EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " AND VALOR < 0) ";
             sql += "AND A.CLASSE NOT IN(SELECT DISTINCT B.CLASSE FROM COMPRA_CREDITO A ";
             sql += "INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " ";
-            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " AND A.STATUS = 0) ";
+            sql += "AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ") ";
             sql += "AND B.TIPO = 0 AND A.VALOR > 0 AND A.MES = "+ mes +" AND A.ANO = " + ano + " ";
             //
             //PEGA O VALOR DA RECEITA PREVISTA QUE AINDA NÃO TEVE O CRÉDITO REALIZADO NA CLASSE ESPECÍFICA
@@ -98,8 +98,8 @@ namespace Setup.Financas
             sql += "IIF(D.VALOR IS NULL, 0, D.VALOR) - SUM(A.VALOR) AS DESVIO, IIF(SUM(A.VALOR) >= IIF(D.VALOR IS NULL, 0, D.VALOR), 1, 0) AS ST, 'B' AS ORD, D.OBS AS OB, ";
             sql += "IIF(D.CHAVE IS NULL, EXTRACT(DAY FROM CURRENT_DATE) || '.' || EXTRACT(MONTH FROM CURRENT_DATE) || '.' || EXTRACT(YEAR FROM CURRENT_DATE) || '.' || C.CLASSE_ID, D.CHAVE) AS CV ";
             sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID ";
-            sql += "LEFT OUTER JOIN PREVISAO D ON B.CLASSE = D.CLASSE AND EXTRACT(MONTH FROM B.DATA_COMPRA) || EXTRACT(YEAR FROM B.DATA_COMPRA) = D.MES || D.ANO ";
-            sql += "WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " AND A.STATUS = 0 ";
+            sql += "LEFT JOIN PREVISAO D ON B.CLASSE = D.CLASSE AND EXTRACT(MONTH FROM B.DATA_COMPRA) || EXTRACT(YEAR FROM B.DATA_COMPRA) = D.MES || D.ANO ";
+            sql += "WHERE EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " ";
             sql += "GROUP BY C.CLASSE, ORCADO, DIA, D.STATUS, D.OBS, CV) GROUP BY CLS, TIPO, DIA, ORCADO, ST, ORD, OB, CV ";
             
             //sql += "UNION SELECT 'Desvio Saldo Acumulado' AS CLS, '-' AS TIPO, '0' AS DIA, '0' AS ORCADO, '0' AS REALIZADO, IIF((SALDO * -1) IS NULL, 0, (SALDO * -1)) AS DESVIO, '1' AS ST, 'F' AS ORD, '' AS OB, '' AS CV FROM SALDO_PREV ";
@@ -115,7 +115,6 @@ namespace Setup.Financas
             {
 
             }
-            
         }
 
         private void novo_Click(object sender, EventArgs e)
