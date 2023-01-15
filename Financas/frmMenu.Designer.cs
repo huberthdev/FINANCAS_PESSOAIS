@@ -167,7 +167,7 @@ namespace Setup.Financas
             this.COMPROMISSO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label14 = new System.Windows.Forms.Label();
+            this.lblVencimentos = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -256,7 +256,7 @@ namespace Setup.Financas
             this.transferencia.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
             this.transferencia.Size = new System.Drawing.Size(255, 22);
             this.transferencia.Text = "Transferências";
-            this.transferencia.Click += new System.EventHandler(this.transnferênciasToolStripMenuItem_Click);
+            this.transferencia.Click += new System.EventHandler(this.transferencia_Click);
             // 
             // relatorios
             // 
@@ -506,6 +506,7 @@ namespace Setup.Financas
             this.listaSaldo_Contas.ShowEditingIcon = false;
             this.listaSaldo_Contas.Size = new System.Drawing.Size(348, 204);
             this.listaSaldo_Contas.TabIndex = 1;
+            this.listaSaldo_Contas.TabStop = false;
             this.listaSaldo_Contas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaSaldo_Contas_DataBindingComplete);
             // 
             // CONTA_ID
@@ -611,6 +612,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ShowEditingIcon = false;
             this.lista_Gastos_Classe.Size = new System.Drawing.Size(369, 203);
             this.lista_Gastos_Classe.TabIndex = 1;
+            this.lista_Gastos_Classe.TabStop = false;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
             // 
             // CLASSE
@@ -1242,6 +1244,7 @@ namespace Setup.Financas
             this.listaCompromissos.ShowEditingIcon = false;
             this.listaCompromissos.Size = new System.Drawing.Size(501, 396);
             this.listaCompromissos.TabIndex = 1;
+            this.listaCompromissos.TabStop = false;
             this.listaCompromissos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaCompromissos_DataBindingComplete);
             // 
             // TIPO
@@ -1279,17 +1282,17 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
             // 
-            // label14
+            // lblVencimentos
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblVencimentos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(760, 29);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(501, 17);
-            this.label14.TabIndex = 47;
-            this.label14.Text = "Vencimentos";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVencimentos.ForeColor = System.Drawing.Color.White;
+            this.lblVencimentos.Location = new System.Drawing.Point(760, 29);
+            this.lblVencimentos.Name = "lblVencimentos";
+            this.lblVencimentos.Size = new System.Drawing.Size(501, 17);
+            this.lblVencimentos.TabIndex = 47;
+            this.lblVencimentos.Text = "Vencimentos";
+            this.lblVencimentos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmMenu
             // 
@@ -1298,7 +1301,7 @@ namespace Setup.Financas
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1265, 482);
             this.Controls.Add(this.listaCompromissos);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lblVencimentos);
             this.Controls.Add(this.lnLeft);
             this.Controls.Add(this.pnListaClasse);
             this.Controls.Add(this.label10);
@@ -1424,7 +1427,7 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn COMPROMISSO;
         private DataGridViewTextBoxColumn DIA;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private Label label14;
+        private Label lblVencimentos;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem definicoes;
         private Controles.Cabecalho salvar;

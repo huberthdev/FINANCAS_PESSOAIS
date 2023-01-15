@@ -231,12 +231,6 @@ namespace Setup.Financas
             Application.Exit();
         }
 
-        private void transnferênciasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmTransf transf = new frmTransf();
-            transf.ShowDialog();
-        }
-
         private void frmMenu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -509,6 +503,29 @@ namespace Setup.Financas
         private void listaCompromissos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             string mes_ano = DateTime.Today.Month.ToString() + "." + DateTime.Today.Year.ToString();
+            string periodo, mes, ano;
+
+            try
+            {
+                periodo = listaCompromissos.Tag.ToString();
+                mes = periodo.Split(".").GetValue(0).ToString();
+                ano = periodo.Split(".").GetValue(1).ToString();
+
+                if(ano == DateTime.Today.Year.ToString())
+                {
+                    mes = Classes.Geral.MesNome(mes, false);
+                    lblVencimentos.Text = "Vencimentos: " + mes;
+                }
+                else
+                {
+                    mes = Classes.Geral.MesNome(mes, true);
+                    lblVencimentos.Text = "Vencimentos: " + mes + "." + ano;
+                }
+            }
+            catch
+            {
+
+            }
 
             if (listaCompromissos.RowCount == 0)
                 return;
@@ -539,6 +556,12 @@ namespace Setup.Financas
         private void lbl1_Click(object sender, EventArgs e)
         {
             COD.MsgAlerta(this);
+        }
+
+        private void transferencia_Click(object sender, EventArgs e)
+        {
+            frmTransf transf = new frmTransf();
+            transf.ShowDialog();
         }
     }
 }

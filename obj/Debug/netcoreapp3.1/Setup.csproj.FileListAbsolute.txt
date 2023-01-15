@@ -24,7 +24,6 @@ C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Formularios.frmConfigBD.resou
 C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.dll.config
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.frmMenu.resources
 C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Interop.ADODB.dll
-C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.AssemblyReference.cache
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Interop.ADODB.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.ResolveComReference.cache
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.GeneratedMSBuildEditorConfig.editorconfig
@@ -57,3 +56,4 @@ C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.frmGestao.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxAlterarCompra.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxFlutuante.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Alerta.resources
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.AssemblyReference.cache
