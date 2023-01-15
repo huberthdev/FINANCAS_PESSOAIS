@@ -381,14 +381,19 @@ namespace Setup.Financas
                 }
             }
 
+            proxPeriodo = DateTime.Parse(data).ToString("Myyyy");
+            proxAno = DateTime.Parse(data).ToString("yyyy");
+
             if (!FatMesTotPaga)
             {
                 periodo = DateTime.Today.ToString("Myyyy");
                 ano = DateTime.Today.Year.ToString();
             }
-
-            proxPeriodo = DateTime.Parse(data).ToString("Myyyy");
-            proxAno = DateTime.Parse(data).ToString("yyyy");
+            else
+            {
+                periodo = proxPeriodo;
+                ano = proxAno;
+            }
 
             for (int i = 0; i < treeFaturas.Nodes.Count; i++)
             {
@@ -398,7 +403,8 @@ namespace Setup.Financas
 
                     for (int x = 0; x < treeFaturas.Nodes[i].Nodes.Count; x++)
                     {
-                        if(treeFaturas.Nodes[i].Nodes[x].Name == periodo || treeFaturas.Nodes[i].Nodes[x].Name == proxPeriodo)
+                        //treeFaturas.Nodes[i].Nodes[x].Name == periodo || 
+                        if (treeFaturas.Nodes[i].Nodes[x].Name == periodo || treeFaturas.Nodes[i].Nodes[x].Name == proxPeriodo)
                         {
                             treeFaturas.Nodes[i].Nodes[x].Expand();
                         }

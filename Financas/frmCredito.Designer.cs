@@ -126,7 +126,7 @@ namespace Setup.Financas
             this.menuStrip1.Location = new System.Drawing.Point(4, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1042, 24);
-            this.menuStrip1.TabIndex = 6;
+            this.menuStrip1.TabIndex = 14;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // salvar
@@ -395,6 +395,7 @@ namespace Setup.Financas
             this.lista.ShowEditingIcon = false;
             this.lista.Size = new System.Drawing.Size(720, 271);
             this.lista.TabIndex = 1;
+            this.lista.TabStop = false;
             this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             this.lista.SelectionChanged += new System.EventHandler(this.lista_SelectionChanged);
             this.lista.Click += new System.EventHandler(this.lista_Click);
@@ -538,6 +539,7 @@ namespace Setup.Financas
             this.treeFaturas.Name = "treeFaturas";
             this.treeFaturas.Size = new System.Drawing.Size(293, 338);
             this.treeFaturas.TabIndex = 32;
+            this.treeFaturas.TabStop = false;
             this.treeFaturas.DoubleClick += new System.EventHandler(this.treeFaturas_DoubleClick);
             // 
             // label7
@@ -692,6 +694,7 @@ namespace Setup.Financas
             this.btnPagarFatura.Name = "btnPagarFatura";
             this.btnPagarFatura.Size = new System.Drawing.Size(75, 23);
             this.btnPagarFatura.TabIndex = 9;
+            this.btnPagarFatura.TabStop = false;
             this.btnPagarFatura.Text = "PAGAR";
             this.btnPagarFatura.UseVisualStyleBackColor = false;
             this.btnPagarFatura.Click += new System.EventHandler(this.btnPagarFatura_Click);
