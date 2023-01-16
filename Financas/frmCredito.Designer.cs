@@ -732,7 +732,7 @@ namespace Setup.Financas
             this.lblPeriodo.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPeriodo.BackColor = System.Drawing.Color.Transparent;
             this.lblPeriodo.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblPeriodo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(192)))), ((int)(((byte)(87)))));
+            this.lblPeriodo.ForeColor = System.Drawing.Color.White;
             this.lblPeriodo.Location = new System.Drawing.Point(412, 3);
             this.lblPeriodo.Name = "lblPeriodo";
             this.lblPeriodo.Size = new System.Drawing.Size(282, 23);

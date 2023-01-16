@@ -88,18 +88,6 @@ namespace Setup.Financas
             this.back = new System.Windows.Forms.ToolStripMenuItem();
             this.panel = new System.Windows.Forms.Panel();
             this.lista = new Setup.Controles.dgView();
-            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORCADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.REALIZADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STATUSS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ORD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.detalhes = new System.Windows.Forms.ToolStripMenuItem();
             this.replicar_ = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,6 +107,18 @@ namespace Setup.Financas
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblDown = new System.Windows.Forms.Label();
+            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIPO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORCADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.REALIZADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STATUSS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ORD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OBS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CHAVE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EDITAR = new System.Windows.Forms.DataGridViewImageColumn();
+            this.EXCLUIRR = new System.Windows.Forms.DataGridViewImageColumn();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -280,7 +280,7 @@ namespace Setup.Financas
             this.OBS,
             this.CHAVE,
             this.EDITAR,
-            this.dataGridViewImageColumn1});
+            this.EXCLUIRR});
             this.lista.ContextMenuStrip = this.contextMenuStrip1;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
@@ -327,140 +327,11 @@ namespace Setup.Financas
             this.lista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellClick);
             this.lista.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellEndEdit);
             this.lista.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.lista_CellMouseEnter);
+            this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             this.lista.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.lista_DataError);
             this.lista.Sorted += new System.EventHandler(this.lista_Sorted);
             this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             this.lista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lista_KeyDown);
-            // 
-            // CLASSE
-            // 
-            this.CLASSE.DataPropertyName = "CLASSE";
-            this.CLASSE.HeaderText = "CLASSE";
-            this.CLASSE.Name = "CLASSE";
-            this.CLASSE.ReadOnly = true;
-            // 
-            // TIPO
-            // 
-            this.TIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TIPO.DataPropertyName = "TIPO";
-            this.TIPO.HeaderText = "TIPO";
-            this.TIPO.MinimumWidth = 150;
-            this.TIPO.Name = "TIPO";
-            this.TIPO.ReadOnly = true;
-            this.TIPO.Width = 150;
-            // 
-            // DIA
-            // 
-            this.DIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.DIA.DataPropertyName = "DIA";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.DIA.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DIA.HeaderText = "DIA";
-            this.DIA.Name = "DIA";
-            this.DIA.ReadOnly = true;
-            this.DIA.Width = 52;
-            // 
-            // ORCADO
-            // 
-            this.ORCADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ORCADO.DataPropertyName = "ORCADO";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.ORCADO.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ORCADO.HeaderText = "ORÇADO";
-            this.ORCADO.MinimumWidth = 100;
-            this.ORCADO.Name = "ORCADO";
-            this.ORCADO.ReadOnly = true;
-            // 
-            // REALIZADO
-            // 
-            this.REALIZADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.REALIZADO.DataPropertyName = "REALIZADO";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0";
-            this.REALIZADO.DefaultCellStyle = dataGridViewCellStyle5;
-            this.REALIZADO.HeaderText = "REALIZADO";
-            this.REALIZADO.MinimumWidth = 100;
-            this.REALIZADO.Name = "REALIZADO";
-            this.REALIZADO.ReadOnly = true;
-            // 
-            // DESVIO
-            // 
-            this.DESVIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DESVIO.DataPropertyName = "DESVIO";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = "0";
-            this.DESVIO.DefaultCellStyle = dataGridViewCellStyle6;
-            this.DESVIO.HeaderText = "RESTANTE";
-            this.DESVIO.MinimumWidth = 100;
-            this.DESVIO.Name = "DESVIO";
-            this.DESVIO.ReadOnly = true;
-            // 
-            // STATUSS
-            // 
-            this.STATUSS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.STATUSS.DataPropertyName = "STATUS";
-            this.STATUSS.FalseValue = "0";
-            this.STATUSS.HeaderText = "STATUS";
-            this.STATUSS.IndeterminateValue = "0";
-            this.STATUSS.Name = "STATUSS";
-            this.STATUSS.ReadOnly = true;
-            this.STATUSS.TrueValue = "1";
-            this.STATUSS.Width = 54;
-            // 
-            // ORD
-            // 
-            this.ORD.DataPropertyName = "ORD";
-            this.ORD.HeaderText = "ORD";
-            this.ORD.Name = "ORD";
-            this.ORD.ReadOnly = true;
-            this.ORD.Visible = false;
-            // 
-            // OBS
-            // 
-            this.OBS.DataPropertyName = "OBS";
-            this.OBS.HeaderText = "OBSERVAÇÃO";
-            this.OBS.Name = "OBS";
-            this.OBS.ReadOnly = true;
-            // 
-            // CHAVE
-            // 
-            this.CHAVE.DataPropertyName = "CHAVE";
-            this.CHAVE.HeaderText = "CHAVE";
-            this.CHAVE.Name = "CHAVE";
-            this.CHAVE.ReadOnly = true;
-            this.CHAVE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CHAVE.Visible = false;
-            // 
-            // EDITAR
-            // 
-            this.EDITAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.EDITAR.Description = "Editar";
-            this.EDITAR.HeaderText = "";
-            this.EDITAR.Image = ((System.Drawing.Image)(resources.GetObject("EDITAR.Image")));
-            this.EDITAR.MinimumWidth = 40;
-            this.EDITAR.Name = "EDITAR";
-            this.EDITAR.ReadOnly = true;
-            this.EDITAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EDITAR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EDITAR.Width = 40;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn1.Description = "Excluir";
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = ((System.Drawing.Image)(resources.GetObject("dataGridViewImageColumn1.Image")));
-            this.dataGridViewImageColumn1.MinimumWidth = 40;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dataGridViewImageColumn1.Width = 40;
             // 
             // contextMenuStrip1
             // 
@@ -632,6 +503,136 @@ namespace Setup.Financas
             this.lblDown.Size = new System.Drawing.Size(1050, 1);
             this.lblDown.TabIndex = 8;
             // 
+            // CLASSE
+            // 
+            this.CLASSE.DataPropertyName = "CLASSE";
+            this.CLASSE.HeaderText = "CLASSE";
+            this.CLASSE.Name = "CLASSE";
+            this.CLASSE.ReadOnly = true;
+            // 
+            // TIPO
+            // 
+            this.TIPO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TIPO.DataPropertyName = "TIPO";
+            this.TIPO.HeaderText = "TIPO";
+            this.TIPO.MinimumWidth = 150;
+            this.TIPO.Name = "TIPO";
+            this.TIPO.ReadOnly = true;
+            this.TIPO.Width = 150;
+            // 
+            // DIA
+            // 
+            this.DIA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.DIA.DataPropertyName = "DIA";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.DIA.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DIA.HeaderText = "DIA";
+            this.DIA.Name = "DIA";
+            this.DIA.ReadOnly = true;
+            this.DIA.Width = 52;
+            // 
+            // ORCADO
+            // 
+            this.ORCADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ORCADO.DataPropertyName = "ORCADO";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.ORCADO.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ORCADO.HeaderText = "ORÇADO";
+            this.ORCADO.MinimumWidth = 100;
+            this.ORCADO.Name = "ORCADO";
+            this.ORCADO.ReadOnly = true;
+            // 
+            // REALIZADO
+            // 
+            this.REALIZADO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.REALIZADO.DataPropertyName = "REALIZADO";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = "0";
+            this.REALIZADO.DefaultCellStyle = dataGridViewCellStyle5;
+            this.REALIZADO.HeaderText = "REALIZADO";
+            this.REALIZADO.MinimumWidth = 100;
+            this.REALIZADO.Name = "REALIZADO";
+            this.REALIZADO.ReadOnly = true;
+            // 
+            // DESVIO
+            // 
+            this.DESVIO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DESVIO.DataPropertyName = "DESVIO";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = "0";
+            this.DESVIO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.DESVIO.HeaderText = "RESTANTE";
+            this.DESVIO.MinimumWidth = 100;
+            this.DESVIO.Name = "DESVIO";
+            this.DESVIO.ReadOnly = true;
+            // 
+            // STATUSS
+            // 
+            this.STATUSS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.STATUSS.DataPropertyName = "STATUS";
+            this.STATUSS.FalseValue = "0";
+            this.STATUSS.HeaderText = "STATUS";
+            this.STATUSS.IndeterminateValue = "0";
+            this.STATUSS.Name = "STATUSS";
+            this.STATUSS.ReadOnly = true;
+            this.STATUSS.TrueValue = "1";
+            this.STATUSS.Width = 54;
+            // 
+            // ORD
+            // 
+            this.ORD.DataPropertyName = "ORD";
+            this.ORD.HeaderText = "ORD";
+            this.ORD.Name = "ORD";
+            this.ORD.ReadOnly = true;
+            this.ORD.Visible = false;
+            // 
+            // OBS
+            // 
+            this.OBS.DataPropertyName = "OBS";
+            this.OBS.HeaderText = "OBSERVAÇÃO";
+            this.OBS.Name = "OBS";
+            this.OBS.ReadOnly = true;
+            // 
+            // CHAVE
+            // 
+            this.CHAVE.DataPropertyName = "CHAVE";
+            this.CHAVE.HeaderText = "CHAVE";
+            this.CHAVE.Name = "CHAVE";
+            this.CHAVE.ReadOnly = true;
+            this.CHAVE.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CHAVE.Visible = false;
+            // 
+            // EDITAR
+            // 
+            this.EDITAR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.EDITAR.Description = "Editar";
+            this.EDITAR.HeaderText = "";
+            this.EDITAR.Image = ((System.Drawing.Image)(resources.GetObject("EDITAR.Image")));
+            this.EDITAR.MinimumWidth = 40;
+            this.EDITAR.Name = "EDITAR";
+            this.EDITAR.ReadOnly = true;
+            this.EDITAR.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EDITAR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EDITAR.Width = 40;
+            // 
+            // EXCLUIRR
+            // 
+            this.EXCLUIRR.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.EXCLUIRR.Description = "Excluir";
+            this.EXCLUIRR.HeaderText = "";
+            this.EXCLUIRR.Image = ((System.Drawing.Image)(resources.GetObject("EXCLUIRR.Image")));
+            this.EXCLUIRR.MinimumWidth = 40;
+            this.EXCLUIRR.Name = "EXCLUIRR";
+            this.EXCLUIRR.ReadOnly = true;
+            this.EXCLUIRR.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.EXCLUIRR.Width = 40;
+            // 
             // frmPrevisao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -695,6 +696,8 @@ namespace Setup.Financas
         private ContextMenuStrip contextMenuStrip1;
         private ToolStripMenuItem detalhes;
         private ToolStripMenuItem replicar_;
+        private ToolStripMenuItem alterar;
+        private ToolStripMenuItem excluir_;
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn TIPO;
         private DataGridViewTextBoxColumn DIA;
@@ -706,8 +709,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn OBS;
         private DataGridViewTextBoxColumn CHAVE;
         private DataGridViewImageColumn EDITAR;
-        private DataGridViewImageColumn dataGridViewImageColumn1;
-        private ToolStripMenuItem alterar;
-        private ToolStripMenuItem excluir_;
+        private DataGridViewImageColumn EXCLUIRR;
     }
 }

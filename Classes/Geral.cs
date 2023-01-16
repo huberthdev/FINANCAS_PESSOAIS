@@ -162,7 +162,7 @@ namespace Setup.Classes
                     COD.OK("Lançamento excluído com sucesso!");
                 }
             }
-            catch (Exception)
+            catch
             {
                 COD.Erro("Não foi possível excluir este lançamento!");
             }

@@ -35,6 +35,11 @@ namespace Setup.Financas.Previsao
         {
             string chave = this.Tag.ToString();
 
+            if (chave == "")
+            {
+                return;
+            }
+
             COD.Pergunta("Deseja realmente excluir este item?");
             if (!COD.Resposta)
                 return;

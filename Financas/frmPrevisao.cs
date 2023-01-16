@@ -321,6 +321,15 @@ namespace Setup.Financas
             if (chave == null || chave == "")
                 return;
 
+            try
+            {
+                string classe = chave.Split(".").GetValue(3).ToString();
+            }
+            catch 
+            {
+                return;
+            }
+
             COD.Pergunta("Excluir previsão. Confirma?");
             if (!COD.Resposta)
                 return;
@@ -790,6 +799,21 @@ namespace Setup.Financas
             }
 
             COD.OK("Previsão replicada para o próximo mês!");
+        }
+
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                if (lista.Rows[i].Cells["TIPO"].Value.ToString().Contains("Crédito"))
+                {
+                    lista.Rows[i].Cells["EDITAR"].Style.SelectionBackColor = Color.FromArgb(122, 122, 122);
+                    lista.Rows[i].Cells["EDITAR"].Tag = "C";
+
+                    lista.Rows[i].Cells["EXCLUIRR"].Style.SelectionBackColor = Color.FromArgb(122, 122, 122);
+                    lista.Rows[i].Cells["EXCLUIRR"].Tag = "C";
+                }
+            }
         }
     }
 }
