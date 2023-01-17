@@ -93,6 +93,8 @@ namespace Setup.Financas
             this.valorFatura = new System.Windows.Forms.ToolStripStatusLabel();
             this.sp2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.periodo = new System.Windows.Forms.ToolStripStatusLabel();
+            this.sp3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.utilizado = new System.Windows.Forms.ToolStripStatusLabel();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lnRight = new System.Windows.Forms.Label();
@@ -570,7 +572,9 @@ namespace Setup.Financas
             this.sp1,
             this.valorFatura,
             this.sp2,
-            this.periodo});
+            this.periodo,
+            this.sp3,
+            this.utilizado});
             this.status.Location = new System.Drawing.Point(4, 410);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(1042, 22);
@@ -609,6 +613,20 @@ namespace Setup.Financas
             // 
             this.periodo.Name = "periodo";
             this.periodo.Size = new System.Drawing.Size(0, 17);
+            // 
+            // sp3
+            // 
+            this.sp3.Name = "sp3";
+            this.sp3.Size = new System.Drawing.Size(10, 17);
+            this.sp3.Text = "|";
+            this.sp3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // utilizado
+            // 
+            this.utilizado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.utilizado.Name = "utilizado";
+            this.utilizado.Size = new System.Drawing.Size(28, 17);
+            this.utilizado.Text = "R$ -";
             // 
             // label13
             // 
@@ -880,5 +898,7 @@ namespace Setup.Financas
         private ToolStripMenuItem mesAnterior;
         private ToolStripMenuItem mesProximo;
         private ToolStripMenuItem excluir_;
+        private ToolStripStatusLabel sp3;
+        private ToolStripStatusLabel utilizado;
     }
 }

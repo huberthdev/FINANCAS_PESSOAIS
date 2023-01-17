@@ -281,6 +281,8 @@ namespace Setup.Financas
             status.Items["valorFatura"].Text = valorFatura.ToString("C");
 
             lblPeriodo.Text = status.Items["periodo"].Text + "  " + status.Items["valorFatura"].Text;
+
+            Atualizar_Limite_Utilizado();
         }
 
         private void CarregarTreeFaturas()
@@ -757,6 +759,49 @@ namespace Setup.Financas
         private void excluir__Click(object sender, EventArgs e)
         {
             Excluir_Compra();
+        }
+
+        private void Atualizar_Limite_Utilizado()
+        {
+            string sql, txt = ""; int cartao;
+
+            status.Items["utilizado"].Text = "";
+
+            try
+            {
+                cartao = ((CartaoCredito)cbFCartao.SelectedItem).cartao;
+            }
+            catch
+            {
+                return;
+            }
+
+            sql = "UPDATE CARTAO_CREDITO SET CARTAO_CREDITO.UTILIZADO = ";
+            sql += "(SELECT SUM(A.VALOR) FROM COMPRA_CREDITO A INNER JOIN ";
+            sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE B.CARTAO = "+ cartao +" ";
+            sql += "AND A.STATUS = 0) WHERE CARTAO_CREDITO.CARTAO_CREDITO_ID = "+ cartao +"";
+            BD.ExecutarSQL(sql);
+
+            sql = "SELECT IIF(LIMITE IS NULL, 0, LIMITE), IIF(UTILIZADO IS NULL, 0, UTILIZADO), ";
+            sql += "iif((LIMITE - UTILIZADO) < 0, 0, (LIMITE - UTILIZADO)) AS DISPONIVEL , MELHOR_DIA_COMPRA FROM ";
+            sql += "CARTAO_CREDITO WHERE CARTAO_CREDITO_ID = "+ cartao +"";
+
+            try
+            {
+                if (BD.Buscar(sql).Rows.Count > 0)
+                {
+                    txt = "[LIMITE: " + Double.Parse(BD.Resultado.Rows[0][0].ToString()).ToString("N") + "]  ";
+                    txt += "[UTILIZADO: " + Double.Parse(BD.Resultado.Rows[0][1].ToString()).ToString("N") + "]  ";
+                    txt += "[DISPONÍVEL: " + Double.Parse(BD.Resultado.Rows[0][2].ToString()).ToString("N") + "]  ";
+                    txt += "[FECHAMENTO DIA: " + BD.Resultado.Rows[0][3].ToString() + "]";
+                }
+            }
+            catch
+            {
+                return;
+            }
+
+            status.Items["utilizado"].Text = txt;
         }
     }
 }
