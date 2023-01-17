@@ -139,7 +139,7 @@ namespace Setup.Financas
             this.cadastro = new Setup.Controles.Cabecalho();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.usuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnListaClasse = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.gPeriodo = new System.Windows.Forms.Label();
@@ -911,7 +911,7 @@ namespace Setup.Financas
             this.statusStrip.AutoSize = false;
             this.statusStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
+            this.usuario});
             this.statusStrip.Location = new System.Drawing.Point(0, 456);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(1265, 22);
@@ -919,12 +919,12 @@ namespace Setup.Financas
             this.statusStrip.Stretch = false;
             this.statusStrip.TabIndex = 21;
             // 
-            // statusLabel
+            // usuario
             // 
-            this.statusLabel.ForeColor = System.Drawing.Color.White;
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(23, 17);
-            this.statusLabel.Text = ">>";
+            this.usuario.ForeColor = System.Drawing.Color.White;
+            this.usuario.Name = "usuario";
+            this.usuario.Size = new System.Drawing.Size(16, 17);
+            this.usuario.Text = "...";
             // 
             // pnListaClasse
             // 
@@ -1390,7 +1390,6 @@ namespace Setup.Financas
         private Controles.Cabecalho compraCredito;
         private Controles.Cabecalho transf;
         private StatusStrip statusStrip;
-        private ToolStripStatusLabel statusLabel;
         private Panel pnSalvar;
         private Panel pnListaClasse;
         private Label label10;
@@ -1433,5 +1432,6 @@ namespace Setup.Financas
         private Controles.Cabecalho salvar;
         private Controles.Cabecalho limpar;
         private Controles.Cabecalho cadastro;
+        private ToolStripStatusLabel usuario;
     }
 }

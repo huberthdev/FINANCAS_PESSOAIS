@@ -19,7 +19,7 @@ namespace Setup.Financas
             gPeriodo.Tag = DateTime.Today.Month + "." + DateTime.Today.Year;
             gPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month) + "." + DateTime.Today.Year;
 
-            
+            statusStrip.Items["usuario"].Text = "Usuário: " + BD.UsuarioLogado;
         }
 
         private void CarregarListaGeral()
