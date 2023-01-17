@@ -783,7 +783,7 @@ namespace Setup.Financas
             BD.ExecutarSQL(sql);
 
             sql = "SELECT IIF(LIMITE IS NULL, 0, LIMITE), IIF(UTILIZADO IS NULL, 0, UTILIZADO), ";
-            sql += "iif((LIMITE - UTILIZADO) < 0, 0, (LIMITE - UTILIZADO)) AS DISPONIVEL , MELHOR_DIA_COMPRA FROM ";
+            sql += "IIF((LIMITE - UTILIZADO) < 0, 0, (LIMITE - UTILIZADO)) AS DISPONIVEL , MELHOR_DIA_COMPRA FROM ";
             sql += "CARTAO_CREDITO WHERE CARTAO_CREDITO_ID = "+ cartao +"";
 
             try

@@ -52,10 +52,10 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluir = new System.Windows.Forms.ToolStripMenuItem();
-            this.limpar = new System.Windows.Forms.ToolStripMenuItem();
-            this.atualizar = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvar = new Setup.Controles.Cabecalho(); ;
+            this.excluir = new Setup.Controles.Cabecalho(); ;
+            this.limpar = new Setup.Controles.Cabecalho(); ;
+            this.atualizar = new Setup.Controles.Cabecalho(); ;
             this.cbContaDebito = new Setup.Controles.cbCombo();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();

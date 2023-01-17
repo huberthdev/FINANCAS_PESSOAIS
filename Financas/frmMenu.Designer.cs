@@ -305,6 +305,7 @@ namespace Setup.Financas
             | System.Windows.Forms.Keys.P)));
             this.previsaoDeCustos.Size = new System.Drawing.Size(246, 22);
             this.previsaoDeCustos.Text = "Previsão de Custos";
+            this.previsaoDeCustos.Click += new System.EventHandler(this.previsaoDeCustos_Click);
             // 
             // configuracoes
             // 
@@ -413,8 +414,8 @@ namespace Setup.Financas
             this.ToolVisaoGeral.ForeColor = System.Drawing.Color.White;
             this.ToolVisaoGeral.Image = ((System.Drawing.Image)(resources.GetObject("ToolVisaoGeral.Image")));
             this.ToolVisaoGeral.Name = "ToolVisaoGeral";
-            this.ToolVisaoGeral.Size = new System.Drawing.Size(93, 20);
-            this.ToolVisaoGeral.Text = "Visão Geral";
+            this.ToolVisaoGeral.Size = new System.Drawing.Size(97, 20);
+            this.ToolVisaoGeral.Text = "Visão Anual";
             this.ToolVisaoGeral.Click += new System.EventHandler(this.ToolVisaoGeral_Click);
             // 
             // ToolPrevisao
@@ -990,7 +991,7 @@ namespace Setup.Financas
             this.lbl4.Name = "lbl4";
             this.lbl4.Size = new System.Drawing.Size(184, 43);
             this.lbl4.TabIndex = 2;
-            this.lbl4.Text = "       Cartões de crédito";
+            this.lbl4.Text = "      Despesas no crédito";
             this.lbl4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gTransferencias
@@ -1016,7 +1017,7 @@ namespace Setup.Financas
             this.lbl3.Name = "lbl3";
             this.lbl3.Size = new System.Drawing.Size(184, 43);
             this.lbl3.TabIndex = 2;
-            this.lbl3.Text = "       Transferências";
+            this.lbl3.Text = "      Transferências";
             this.lbl3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gDespesas
@@ -1042,7 +1043,7 @@ namespace Setup.Financas
             this.lbl2.Name = "lbl2";
             this.lbl2.Size = new System.Drawing.Size(184, 43);
             this.lbl2.TabIndex = 2;
-            this.lbl2.Text = "       Despesas";
+            this.lbl2.Text = "      Despesas no débito";
             this.lbl2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // gReceitas
@@ -1068,7 +1069,7 @@ namespace Setup.Financas
             this.lbl1.Name = "lbl1";
             this.lbl1.Size = new System.Drawing.Size(184, 43);
             this.lbl1.TabIndex = 2;
-            this.lbl1.Text = "       Receitas";
+            this.lbl1.Text = "      Receitas";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lbl1.Click += new System.EventHandler(this.lbl1_Click);
             // 

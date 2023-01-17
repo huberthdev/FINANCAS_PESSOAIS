@@ -563,5 +563,11 @@ namespace Setup.Financas
             frmTransf transf = new frmTransf();
             transf.ShowDialog();
         }
+
+        private void previsaoDeCustos_Click(object sender, EventArgs e)
+        {
+            frmPrevisao prev = new frmPrevisao();
+            prev.ShowDialog();
+        }
     }
 }
