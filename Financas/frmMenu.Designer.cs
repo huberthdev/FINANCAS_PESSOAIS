@@ -168,6 +168,7 @@ namespace Setup.Financas
             this.DIA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblVencimentos = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -384,43 +385,52 @@ namespace Setup.Financas
             // 
             // compraCredito
             // 
+            this.compraCredito.AutoToolTip = true;
             this.compraCredito.ForeColor = System.Drawing.Color.White;
             this.compraCredito.Image = ((System.Drawing.Image)(resources.GetObject("compraCredito.Image")));
             this.compraCredito.Name = "compraCredito";
             this.compraCredito.Size = new System.Drawing.Size(142, 20);
             this.compraCredito.Text = "Compras no Crédito";
+            this.compraCredito.ToolTipText = "Lançamentos de Compras no Crédito";
             this.compraCredito.Click += new System.EventHandler(this.compraCredito_Click);
             // 
             // transf
             // 
+            this.transf.AutoToolTip = true;
             this.transf.ForeColor = System.Drawing.Color.White;
             this.transf.Image = ((System.Drawing.Image)(resources.GetObject("transf.Image")));
             this.transf.Name = "transf";
             this.transf.Size = new System.Drawing.Size(109, 20);
             this.transf.Text = "Transferências";
+            this.transf.ToolTipText = "Transferências entre contas";
             this.transf.Click += new System.EventHandler(this.transf_Click);
             // 
             // ToolRelatorio
             // 
+            this.ToolRelatorio.AutoToolTip = true;
             this.ToolRelatorio.ForeColor = System.Drawing.Color.White;
             this.ToolRelatorio.Image = ((System.Drawing.Image)(resources.GetObject("ToolRelatorio.Image")));
             this.ToolRelatorio.Name = "ToolRelatorio";
             this.ToolRelatorio.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
             this.ToolRelatorio.Size = new System.Drawing.Size(82, 20);
             this.ToolRelatorio.Text = "Relatório";
+            this.ToolRelatorio.ToolTipText = "Relatório Geral";
             this.ToolRelatorio.Click += new System.EventHandler(this.ToolRelatorio_Click);
             // 
             // ToolVisaoGeral
             // 
+            this.ToolVisaoGeral.AutoToolTip = true;
             this.ToolVisaoGeral.ForeColor = System.Drawing.Color.White;
             this.ToolVisaoGeral.Image = ((System.Drawing.Image)(resources.GetObject("ToolVisaoGeral.Image")));
             this.ToolVisaoGeral.Name = "ToolVisaoGeral";
             this.ToolVisaoGeral.Size = new System.Drawing.Size(97, 20);
             this.ToolVisaoGeral.Text = "Visão Anual";
+            this.ToolVisaoGeral.ToolTipText = "Visão Anual [Receitas x Despesas]";
             this.ToolVisaoGeral.Click += new System.EventHandler(this.ToolVisaoGeral_Click);
             // 
             // ToolPrevisao
             // 
+            this.ToolPrevisao.AutoToolTip = true;
             this.ToolPrevisao.ForeColor = System.Drawing.Color.White;
             this.ToolPrevisao.Image = ((System.Drawing.Image)(resources.GetObject("ToolPrevisao.Image")));
             this.ToolPrevisao.Name = "ToolPrevisao";
@@ -432,11 +442,13 @@ namespace Setup.Financas
             // 
             // ToolCalculadora
             // 
+            this.ToolCalculadora.AutoToolTip = true;
             this.ToolCalculadora.ForeColor = System.Drawing.Color.White;
             this.ToolCalculadora.Image = ((System.Drawing.Image)(resources.GetObject("ToolCalculadora.Image")));
             this.ToolCalculadora.Name = "ToolCalculadora";
             this.ToolCalculadora.Size = new System.Drawing.Size(98, 20);
             this.ToolCalculadora.Text = "Calculadora";
+            this.ToolCalculadora.ToolTipText = "Calculadora do Windows";
             this.ToolCalculadora.Click += new System.EventHandler(this.calculadoraToolStripMenuItem_Click);
             // 
             // listaSaldo_Contas
@@ -874,12 +886,14 @@ namespace Setup.Financas
             // 
             // salvar
             // 
+            this.salvar.AutoToolTip = true;
             this.salvar.BackColor = System.Drawing.Color.Transparent;
             this.salvar.ForeColor = System.Drawing.Color.White;
             this.salvar.Image = ((System.Drawing.Image)(resources.GetObject("salvar.Image")));
             this.salvar.Name = "salvar";
             this.salvar.Size = new System.Drawing.Size(66, 20);
             this.salvar.Text = "Salvar";
+            this.salvar.ToolTipText = "Salvar Receita/Despesa";
             this.salvar.Click += new System.EventHandler(this.salvar_Click);
             // 
             // limpar
@@ -897,11 +911,13 @@ namespace Setup.Financas
             // cadastro
             // 
             this.cadastro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.cadastro.AutoToolTip = true;
             this.cadastro.ForeColor = System.Drawing.Color.White;
             this.cadastro.Image = ((System.Drawing.Image)(resources.GetObject("cadastro.Image")));
             this.cadastro.Name = "cadastro";
             this.cadastro.Size = new System.Drawing.Size(121, 20);
             this.cadastro.Text = "Classes • Contas";
+            this.cadastro.ToolTipText = "Cadastrar Classes e contas";
             this.cadastro.Click += new System.EventHandler(this.cadastro_Click);
             // 
             // errorProvider1
@@ -1247,6 +1263,7 @@ namespace Setup.Financas
             this.listaCompromissos.Size = new System.Drawing.Size(501, 396);
             this.listaCompromissos.TabIndex = 1;
             this.listaCompromissos.TabStop = false;
+            this.toolTip1.SetToolTip(this.listaCompromissos, "Próximos vencimentos [Cartão de crédito, empréstimos e despesas fixas]");
             this.listaCompromissos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaCompromissos_DataBindingComplete);
             // 
             // TIPO
@@ -1435,5 +1452,6 @@ namespace Setup.Financas
         private Controles.Cabecalho limpar;
         private Controles.Cabecalho cadastro;
         private ToolStripStatusLabel usuario;
+        private ToolTip toolTip1;
     }
 }

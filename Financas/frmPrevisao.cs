@@ -396,13 +396,14 @@ namespace Setup.Financas
         private void lista_DataSourceChanged(object sender, EventArgs e)
         {
             string tipo, msg;
-            double receita = 0, despesa = 0, restante = 0, desvio = 0, saldo = 0, valor = 0;
+            double receita = 0, despesa = 0, restante = 0, desvio = 0, saldo = 0, valor = 0, soma_credito = 0;
             int[] mes = new int[2]; string mesSel, anoSel;
 
             status.Items["receita"].Text = "";
             status.Items["despesa"].Text = "";
             status.Items["restante"].Text = "";
             status.Items["saldo"].Text = "";
+            status.Items["soma_credito"].Text = "";
             status.Items["msg"].Text = "";
 
             if (lista.RowCount == 0)
@@ -411,6 +412,11 @@ namespace Setup.Financas
             for (int i = 0; i < lista.RowCount; i++)
             {
                 tipo = lista.Rows[i].Cells[3].Value.ToString();
+
+                if (tipo.Contains("Crédito"))
+                {
+                    soma_credito += Double.Parse(lista.Rows[i].Cells[6].Value.ToString());
+                }
 
                 if (tipo.Contains("Receita"))
                 {
@@ -441,6 +447,9 @@ namespace Setup.Financas
 
             saldo = Classes.Conta.SaldoTotal();
             status.Items["saldo"].Text = saldo.ToString("C");
+
+            soma_credito = Math.Abs(soma_credito);
+            status.Items["soma_credito"].Text = soma_credito.ToString("C");
 
             desvio = desvio * -1;
 
