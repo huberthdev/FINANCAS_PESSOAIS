@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Setup.Financas
 {
@@ -92,7 +93,16 @@ namespace Setup.Financas
             sql = "UPDATE VISAO_ANUAL SET DESVIO = RECEITA - DESPESA";
             BD.ExecutarSQL(sql);
 
-            sql = "SELECT * FROM VISAO_ANUAL";
+            sql = "SELECT MES, ";
+            sql += "CASE MES WHEN 1 THEN 'JANEIRO' WHEN 2 THEN 'FEVEREIRO' WHEN 3 THEN 'MARÇO' WHEN 4 THEN 'ABRIL' ";
+            sql += "WHEN 5 THEN 'MAIO' WHEN 6 THEN 'JUNHO' WHEN 7 THEN 'JULHO' WHEN 8 THEN 'AGOSTO' WHEN 9 THEN 'SETEMBRO' ";
+            sql += "WHEN 10 THEN 'OUTUBRO' WHEN 11 THEN 'NOVEMBRO' WHEN 12 THEN 'DEZEMBRO' END AS MES_NOME, ";
+            sql += "IIF(RECEITA = 0, NULL, RECEITA) AS RECEITA, IIF(DESPESA = 0, NULL, DESPESA) AS DESPESA, ";
+            sql += "IIF(DESVIO = 0, NULL, DESVIO) AS DESVIO FROM VISAO_ANUAL ";
+
+            sql += "UNION SELECT 13 AS MES, 'TOTAL "+ ano +"' AS MES_NOME, IIF(SUM(RECEITA) = 0, NULL, SUM(RECEITA)) AS RECEITA, ";
+            sql += "IIF(SUM(DESPESA) = 0, NULL, SUM(DESPESA)) AS DESPESA, IIF(SUM(DESVIO) = 0, NULL, SUM(DESVIO)) AS DESVIO ";
+            sql += "FROM VISAO_ANUAL";
             try
             {
                 lista.DataSource = BD.Buscar(sql);
@@ -101,6 +111,28 @@ namespace Setup.Financas
             {
 
             }
+        }
+
+        private void Formatar_Lista()
+        {
+            string valor;
+
+            for (int i = 0; i < lista.RowCount; i++)
+            {
+                lista.Rows[i].Cells["RECEITA"].Style.ForeColor = Color.FromArgb(64, 192, 87);
+                lista.Rows[i].Cells["DESPESA"].Style.ForeColor = Color.Tomato;
+
+                valor = lista.Rows[i].Cells["DESVIO"].Value.ToString();
+                if (valor.Contains("-"))
+                    lista.Rows[i].Cells["DESVIO"].Style.ForeColor = Color.Tomato;
+                else
+                    lista.Rows[i].Cells["DESVIO"].Style.ForeColor = Color.FromArgb(64, 192, 87);
+            }
+        }
+
+        private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            Formatar_Lista();
         }
     }
 }

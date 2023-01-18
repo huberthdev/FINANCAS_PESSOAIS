@@ -1,4 +1,6 @@
-﻿
+﻿using System.Drawing;
+using System.Windows.Forms;
+
 namespace Setup.Financas
 {
     partial class frmGestao
@@ -19,6 +21,19 @@ namespace Setup.Financas
                 components.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        protected override void OnCreateControl()
+        {
+            this.lista.MultiSelect = false;
+            this.lista.BorderStyle = BorderStyle.None;
+            this.lista.GridColor = Color.FromArgb(25, 25, 26);
+            this.lista.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            this.lista.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(37, 37, 38);
+            this.lista.ColumnHeadersDefaultCellStyle.Font = new Font(this.Font, FontStyle.Bold);
+
+            base.OnCreateControl();
         }
 
         #region Windows Form Designer generated code
@@ -44,6 +59,7 @@ namespace Setup.Financas
             this.ano = new System.Windows.Forms.ToolStripComboBox();
             this.lista = new Setup.Controles.dgView();
             this.MES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MES_NOME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RECEITA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESPESA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +86,7 @@ namespace Setup.Financas
             this.next.Image = ((System.Drawing.Image)(resources.GetObject("next.Image")));
             this.next.Name = "next";
             this.next.Size = new System.Drawing.Size(28, 23);
+            this.next.ToolTipText = "Próximo ano";
             this.next.Click += new System.EventHandler(this.next_Click);
             // 
             // back
@@ -80,6 +97,7 @@ namespace Setup.Financas
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(28, 23);
             this.back.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.back.ToolTipText = "Ano anterior";
             this.back.Click += new System.EventHandler(this.back_Click);
             // 
             // ano
@@ -119,6 +137,7 @@ namespace Setup.Financas
             this.lista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.lista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MES,
+            this.MES_NOME,
             this.RECEITA,
             this.DESPESA,
             this.DESVIO});
@@ -161,9 +180,10 @@ namespace Setup.Financas
             this.lista.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.lista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista.ShowEditingIcon = false;
-            this.lista.Size = new System.Drawing.Size(458, 360);
+            this.lista.Size = new System.Drawing.Size(458, 348);
             this.lista.TabIndex = 1;
             this.lista.TabStop = false;
+            this.lista.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.lista_DataBindingComplete);
             // 
             // MES
             // 
@@ -171,13 +191,20 @@ namespace Setup.Financas
             this.MES.HeaderText = "MÊS";
             this.MES.Name = "MES";
             this.MES.ReadOnly = true;
+            this.MES.Visible = false;
+            // 
+            // MES_NOME
+            // 
+            this.MES_NOME.DataPropertyName = "MES_NOME";
+            this.MES_NOME.HeaderText = "MÊS";
+            this.MES_NOME.Name = "MES_NOME";
+            this.MES_NOME.ReadOnly = true;
             // 
             // RECEITA
             // 
             this.RECEITA.DataPropertyName = "RECEITA";
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(192)))), ((int)(((byte)(87)))));
             dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
             this.RECEITA.DefaultCellStyle = dataGridViewCellStyle3;
             this.RECEITA.HeaderText = "RECEITA R$";
             this.RECEITA.Name = "RECEITA";
@@ -188,17 +215,16 @@ namespace Setup.Financas
             this.DESPESA.DataPropertyName = "DESPESA";
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Tomato;
             dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
             this.DESPESA.DefaultCellStyle = dataGridViewCellStyle4;
             this.DESPESA.HeaderText = "DESPESA R$";
             this.DESPESA.Name = "DESPESA";
             this.DESPESA.ReadOnly = true;
+            this.DESPESA.ToolTipText = "Soma de débito e crédito";
             // 
             // DESVIO
             // 
             this.DESVIO.DataPropertyName = "DESVIO";
             dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = "0";
             this.DESVIO.DefaultCellStyle = dataGridViewCellStyle5;
             this.DESVIO.HeaderText = "DESVIO R$";
             this.DESVIO.Name = "DESVIO";
@@ -209,7 +235,7 @@ namespace Setup.Financas
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(467, 402);
+            this.ClientSize = new System.Drawing.Size(467, 382);
             this.Controls.Add(this.lista);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -233,9 +259,10 @@ namespace Setup.Financas
         private System.Windows.Forms.ToolStripMenuItem back;
         public System.Windows.Forms.ToolStripComboBox ano;
         public Controles.dgView lista;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MES;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RECEITA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DESPESA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DESVIO;
+        private DataGridViewTextBoxColumn MES;
+        private DataGridViewTextBoxColumn MES_NOME;
+        private DataGridViewTextBoxColumn RECEITA;
+        private DataGridViewTextBoxColumn DESPESA;
+        private DataGridViewTextBoxColumn DESVIO;
     }
 }
