@@ -31,8 +31,8 @@ namespace Setup.Financas
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(boxAlterarCompra));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelar = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvar = new Setup.Controles.Cabecalho();
+            this.cancelar = new Setup.Controles.Cabecalho();
             this.txtValor = new Setup.Controles.Decimal();
             this.txtData = new Setup.Controles.Data();
             this.label4 = new System.Windows.Forms.Label();

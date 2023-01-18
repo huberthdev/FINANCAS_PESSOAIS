@@ -238,6 +238,7 @@ namespace Setup.Financas
             this.receitaDespesa.Name = "receitaDespesa";
             this.receitaDespesa.Size = new System.Drawing.Size(255, 22);
             this.receitaDespesa.Text = "Receitas • Despesas";
+            this.receitaDespesa.Click += new System.EventHandler(this.receitaDespesa_Click);
             // 
             // comprasCredito
             // 

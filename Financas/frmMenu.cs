@@ -372,7 +372,7 @@ namespace Setup.Financas
         private void ToolVisaoGeral_Click(object sender, EventArgs e)
         {
             frmGestao gest = new frmGestao();
-            gest.ShowDialog();
+            gest.Show();
         }
 
         private void ToolPrevisao_Click(object sender, EventArgs e)
@@ -568,6 +568,11 @@ namespace Setup.Financas
         {
             frmPrevisao prev = new frmPrevisao();
             prev.ShowDialog();
+        }
+
+        private void receitaDespesa_Click(object sender, EventArgs e)
+        {
+            cbClasse.Focus();
         }
     }
 }

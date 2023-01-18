@@ -110,6 +110,7 @@ namespace Setup.Financas
             this.ano.ForeColor = System.Drawing.Color.White;
             this.ano.Name = "ano";
             this.ano.Size = new System.Drawing.Size(121, 23);
+            this.ano.SelectedIndexChanged += new System.EventHandler(this.ano_SelectedIndexChanged);
             // 
             // lista
             // 

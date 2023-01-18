@@ -14,7 +14,6 @@ namespace Setup.Financas
         private void frmGestao_Load(object sender, EventArgs e)
         {
             CarregarCbMesAno();
-            Carregar_Lista();
         }
 
         private void back_Click(object sender, EventArgs e)
@@ -64,7 +63,6 @@ namespace Setup.Financas
             }
 
             menuStrip1.Items["ano"].Text = ano;
-            Carregar_Lista();
         }
 
         private void Carregar_Lista()
@@ -72,6 +70,9 @@ namespace Setup.Financas
             string sql, ano;
 
             ano = menuStrip1.Items["ano"].Text;
+
+            if (ano == "")
+                return;
 
             for (int i = 1; i < 13; i++)
             {
@@ -117,6 +118,9 @@ namespace Setup.Financas
         {
             string valor;
 
+            if (lista.RowCount == 0)
+                return;
+
             for (int i = 0; i < lista.RowCount; i++)
             {
                 lista.Rows[i].Cells["RECEITA"].Style.ForeColor = Color.FromArgb(64, 192, 87);
@@ -133,6 +137,12 @@ namespace Setup.Financas
         private void lista_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             Formatar_Lista();
+        }
+
+        private void ano_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lista.Focus();
+            Carregar_Lista();
         }
     }
 }
