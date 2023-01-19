@@ -73,7 +73,7 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string chave = "", parcela, vlParc, data = "", sql;
+            string chave = "", parcela, vlParc, data = "", sql, valor;
             int dia_venc, dia_compra, melhor_dia_comp, x, qtdParc;
 
             if (COD.ValidarCampos(this) == false)
@@ -84,12 +84,24 @@ namespace Setup.Financas
             string cartao = ((CartaoCredito)cbCartao.SelectedItem).cartao.ToString();
             string classe = ((Classe)cbClasse.SelectedItem).id.ToString();
 
+            valor = txtValor.Text;
+
+            if (ckEstorno.Checked)
+            {
+                valor = "-" + valor;
+                COD.Pergunta("Lançar como estorno. Confirma?");
+                if (!COD.Resposta)
+                    return;
+            }
+
+            valor = BD.CvNum(valor);
+
             string[] v = new string[6];
 
             v[0] = null;
             v[1] = classe;
             v[2] = cartao;
-            v[3] = BD.CvNum(txtValor.Text);
+            v[3] = valor;
             v[4] = BD.CvData(txtData.Text);
             v[5] = txtDesc.Text;
 
@@ -114,6 +126,11 @@ namespace Setup.Financas
 
             vlParc = (double.Parse(txtValor.Text) / qtdParc).ToString("C2");
             vlParc = BD.CvNum(vlParc);
+
+            if (ckEstorno.Checked)
+            {
+                vlParc = "-" + vlParc;
+            }
 
             sql = "SELECT DIA_VENC, MELHOR_DIA_COMPRA FROM CARTAO_CREDITO WHERE ";
             sql += "CARTAO_CREDITO_ID = "+ cartao +"";
@@ -255,18 +272,28 @@ namespace Setup.Financas
             {
                 for (int c = 0; c < lista.ColumnCount; c++)
                 {
-                    if (lista.Rows[i].Cells[8].Value.ToString() == "1")
+                    if (!lista.Rows[i].Cells[4].Value.ToString().Contains("-"))
                     {
-                        if (lista.Columns[c].Index == 4)
+                        if (lista.Rows[i].Cells[8].Value.ToString() == "1")
                         {
-                            lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                            if (lista.Columns[c].Index == 4)
+                            {
+                                lista.Rows[i].Cells[c].Style.ForeColor = Color.LimeGreen;
+                            }
+                        }
+                        else
+                        {
+                            if (lista.Columns[c].Index == 4)
+                            {
+                                lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                            }
                         }
                     }
                     else
                     {
                         if (lista.Columns[c].Index == 4)
                         {
-                            lista.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
+                            lista.Rows[i].Cells[c].Style.ForeColor = Color.FromArgb(0, 192, 192);
                         }
                     }
                 }
@@ -465,6 +492,7 @@ namespace Setup.Financas
         private void NovoLancamento()
         {
             COD.LimparCampos(this, txtData, cbCartao);
+            ckEstorno.Checked = false;
         }
 
         private void limpar_Click(object sender, EventArgs e)

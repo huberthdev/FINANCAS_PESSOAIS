@@ -109,6 +109,7 @@ namespace Setup.Financas
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.mesAnterior = new System.Windows.Forms.ToolStripMenuItem();
             this.mesProximo = new System.Windows.Forms.ToolStripMenuItem();
+            this.ckEstorno = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -236,10 +237,10 @@ namespace Setup.Financas
             this.cbClasse.ForeColor = System.Drawing.Color.White;
             this.cbClasse.FormattingEnabled = true;
             this.cbClasse.IntegralHeight = false;
-            this.cbClasse.Location = new System.Drawing.Point(422, 31);
+            this.cbClasse.Location = new System.Drawing.Point(387, 31);
             this.cbClasse.MaxDropDownItems = 10;
             this.cbClasse.Name = "cbClasse";
-            this.cbClasse.Size = new System.Drawing.Size(305, 23);
+            this.cbClasse.Size = new System.Drawing.Size(270, 23);
             this.cbClasse.TabIndex = 1;
             this.cbClasse.Tag = "\'Classe\'";
             // 
@@ -256,7 +257,7 @@ namespace Setup.Financas
             this.cbCartao.Location = new System.Drawing.Point(61, 31);
             this.cbCartao.MaxDropDownItems = 10;
             this.cbCartao.Name = "cbCartao";
-            this.cbCartao.Size = new System.Drawing.Size(309, 23);
+            this.cbCartao.Size = new System.Drawing.Size(270, 23);
             this.cbCartao.TabIndex = 0;
             this.cbCartao.Tag = "\'Cartão\'";
             // 
@@ -264,7 +265,7 @@ namespace Setup.Financas
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(376, 39);
+            this.label2.Location = new System.Drawing.Point(341, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 15);
             this.label2.TabIndex = 19;
@@ -787,12 +788,25 @@ namespace Setup.Financas
             this.mesProximo.Size = new System.Drawing.Size(28, 20);
             this.mesProximo.Click += new System.EventHandler(this.mesProximo_Click);
             // 
+            // ckEstorno
+            // 
+            this.ckEstorno.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ckEstorno.AutoSize = true;
+            this.ckEstorno.BackColor = System.Drawing.Color.Transparent;
+            this.ckEstorno.Location = new System.Drawing.Point(668, 35);
+            this.ckEstorno.Name = "ckEstorno";
+            this.ckEstorno.Size = new System.Drawing.Size(66, 19);
+            this.ckEstorno.TabIndex = 45;
+            this.ckEstorno.Text = "Estorno";
+            this.ckEstorno.UseVisualStyleBackColor = false;
+            // 
             // frmCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1050, 436);
+            this.Controls.Add(this.ckEstorno);
             this.Controls.Add(this.cbCartao);
             this.Controls.Add(this.cbClasse);
             this.Controls.Add(this.txtData);
@@ -900,5 +914,6 @@ namespace Setup.Financas
         private ToolStripMenuItem excluir_;
         private ToolStripStatusLabel sp3;
         private ToolStripStatusLabel utilizado;
+        private CheckBox ckEstorno;
     }
 }
