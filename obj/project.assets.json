@@ -46,7 +46,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\CursoCSharp\\Setup\\Setup.csproj",
-      "projectName": "Setup",
+      "projectName": "Finanças",
       "projectPath": "C:\\CursoCSharp\\Setup\\Setup.csproj",
       "packagesPath": "C:\\Users\\huber\\.nuget\\packages\\",
       "outputPath": "C:\\CursoCSharp\\Setup\\obj\\",

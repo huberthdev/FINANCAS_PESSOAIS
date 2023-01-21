@@ -169,6 +169,9 @@ namespace Setup.Financas
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblVencimentos = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.fechar = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -180,6 +183,7 @@ namespace Setup.Financas
             this.pnListaClasse.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaCompromissos)).BeginInit();
+            this.contextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -1313,6 +1317,28 @@ namespace Setup.Financas
             this.lblVencimentos.Text = "Vencimentos";
             this.lblVencimentos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.notifyIcon1.ContextMenuStrip = this.contextMenu;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Visible = true;
+            // 
+            // contextMenu
+            // 
+            this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fechar});
+            this.contextMenu.Name = "contextMenu";
+            this.contextMenu.Size = new System.Drawing.Size(181, 48);
+            // 
+            // fechar
+            // 
+            this.fechar.Image = ((System.Drawing.Image)(resources.GetObject("fechar.Image")));
+            this.fechar.Name = "fechar";
+            this.fechar.Size = new System.Drawing.Size(180, 22);
+            this.fechar.Text = "Sair";
+            this.fechar.Click += new System.EventHandler(this.fechar_Click_1);
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1362,6 +1388,7 @@ namespace Setup.Financas
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaCompromissos)).EndInit();
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1453,5 +1480,8 @@ namespace Setup.Financas
         private Controles.Cabecalho cadastro;
         private ToolStripStatusLabel usuario;
         private ToolTip toolTip1;
+        public NotifyIcon notifyIcon1;
+        public ContextMenuStrip contextMenu;
+        private ToolStripMenuItem fechar;
     }
 }

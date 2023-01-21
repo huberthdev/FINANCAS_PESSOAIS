@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Setup/1.0.0": {
+      "Finanças/1.0.0": {
         "dependencies": {
           "FirebirdSql.Data.FirebirdClient": "9.0.2",
           "Interop.ADODB": "6.1.0.0",
@@ -17,7 +17,7 @@
           "Interop.Microsoft.Office.Interop.Excel": "1.9.0.0"
         },
         "runtime": {
-          "Setup.dll": {}
+          "Finanças.dll": {}
         }
       },
       "FirebirdSql.Data.FirebirdClient/9.0.2": {
@@ -79,7 +79,7 @@
     }
   },
   "libraries": {
-    "Setup/1.0.0": {
+    "Finanças/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,15 +1,7 @@
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.exe
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.deps.json
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.runtimeconfig.json
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.runtimeconfig.dev.json
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.dll
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.pdb
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.GenerateResource.cache
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.AssemblyInfoInputs.cache
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.AssemblyInfo.cs
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.CoreCompileInputs.cache
-C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.dll
-C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.pdb
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.genruntimeconfig.cache
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Formularios.frmSplash.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Properties.Resources.resources
@@ -21,7 +13,6 @@ C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.CopyComplete
 C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\FirebirdSql.Data.FirebirdClient.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Formularios.frmUsuario.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Formularios.frmConfigBD.resources
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Setup.dll.config
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.frmMenu.resources
 C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Interop.ADODB.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Interop.ADODB.dll
@@ -57,3 +48,12 @@ C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxAlterarCompra.res
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.boxFlutuante.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Alerta.resources
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.AssemblyReference.cache
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.exe
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.dll.config
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.deps.json
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.runtimeconfig.json
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.runtimeconfig.dev.json
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.dll
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.pdb
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Finanças.dll
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Finanças.pdb

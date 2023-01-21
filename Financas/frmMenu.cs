@@ -13,6 +13,11 @@ namespace Setup.Financas
             InitializeComponent();
         }
 
+        private void ShowNotification(string titulo, string mensagem)
+        {
+            notifyIcon1.ShowBalloonTip(10, titulo, mensagem, ToolTipIcon.Info);
+        }
+
         private void frmMenu_Load(object sender, EventArgs e)
         {
             txtData.Text = DateTime.Today.ToShortDateString();
@@ -20,6 +25,8 @@ namespace Setup.Financas
             gPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month) + "." + DateTime.Today.Year;
 
             statusStrip.Items["usuario"].Text = "Usuário: " + BD.UsuarioLogado;
+
+            ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!");
         }
 
         private void CarregarListaGeral()
@@ -555,7 +562,7 @@ namespace Setup.Financas
 
         private void lbl1_Click(object sender, EventArgs e)
         {
-            COD.MsgAlerta(this);
+            ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!");
         }
 
         private void transferencia_Click(object sender, EventArgs e)
@@ -573,6 +580,11 @@ namespace Setup.Financas
         private void receitaDespesa_Click(object sender, EventArgs e)
         {
             cbClasse.Focus();
+        }
+
+        private void fechar_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
