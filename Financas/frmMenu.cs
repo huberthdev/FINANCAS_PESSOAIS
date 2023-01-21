@@ -13,11 +13,6 @@ namespace Setup.Financas
             InitializeComponent();
         }
 
-        private void ShowNotification(string titulo, string mensagem)
-        {
-            notifyIcon1.ShowBalloonTip(10, titulo, mensagem, ToolTipIcon.Info);
-        }
-
         private void frmMenu_Load(object sender, EventArgs e)
         {
             txtData.Text = DateTime.Today.ToShortDateString();
@@ -25,8 +20,6 @@ namespace Setup.Financas
             gPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month) + "." + DateTime.Today.Year;
 
             statusStrip.Items["usuario"].Text = "Usuário: " + BD.UsuarioLogado;
-
-            ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!");
         }
 
         private void CarregarListaGeral()
@@ -429,6 +422,12 @@ namespace Setup.Financas
 
         private void frmMenu_Activated(object sender, EventArgs e)
         {
+            if (!COD.Alerta_Login)
+            {
+                COD.ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!", ToolTipIcon.None);
+                COD.Alerta_Login = true;
+            }
+
             CarregarCbClassesContas();
             CarregarListaSaldoContas();
             CarregarListaGastoClasseMesAtual();
@@ -510,7 +509,7 @@ namespace Setup.Financas
         private void listaCompromissos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             string mes_ano = DateTime.Today.Month.ToString() + "." + DateTime.Today.Year.ToString();
-            string periodo, mes, ano;
+            string periodo, mes, ano, txt_notif; int venc_hoje = 0, vencido = 0;
 
             try
             {
@@ -546,23 +545,43 @@ namespace Setup.Financas
                 {
                     for (int c = 0; c < listaCompromissos.ColumnCount; c++)
                     {
-                        listaCompromissos.Rows[i].Cells[c].Style.BackColor = Color.FromArgb(255, 165, 0);
-                        listaCompromissos.Rows[i].Cells[c].Style.ForeColor = Color.FromArgb(25, 25, 26);
+                        listaCompromissos.Rows[i].Cells[c].Style.ForeColor = Color.FromArgb(255, 165, 0);
                     }
+                    venc_hoje++;
                 }
                 else if(int.Parse(listaCompromissos.Rows[i].Cells[2].Value.ToString()) < DateTime.Today.Day)
                 {
                     for (int c = 0; c < listaCompromissos.ColumnCount; c++)
                     {
-                        listaCompromissos.Rows[i].Cells[c].Style.BackColor = Color.Tomato;
+                        listaCompromissos.Rows[i].Cells[c].Style.ForeColor = Color.Tomato;
                     }
+                    vencido++;
                 }
             }
-        }
 
-        private void lbl1_Click(object sender, EventArgs e)
-        {
-            ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!");
+            if (!COD.Alerta_Compromissos)
+            {
+                if (venc_hoje > 0)
+                {
+                    if(venc_hoje == 1)
+                        txt_notif = "Há " + venc_hoje + " compromisso vencendo hoje.";
+                    else
+                        txt_notif = "Há " + venc_hoje + " compromissos vencendo hoje.";
+
+                    COD.ShowNotification("Atenção:", txt_notif, ToolTipIcon.Info, 20);
+                }
+                if (vencido > 0)
+                {
+                    if (vencido == 1)
+                        txt_notif = "Há " + vencido + " compromisso vencido.";
+                    else
+                        txt_notif = "Há " + vencido + " compromissos vencidos.";
+
+                    COD.ShowNotification("Alerta:", txt_notif, ToolTipIcon.Warning, 20);
+                }
+
+                COD.Alerta_Compromissos = true;
+            }
         }
 
         private void transferencia_Click(object sender, EventArgs e)

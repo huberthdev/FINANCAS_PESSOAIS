@@ -10,6 +10,21 @@ namespace Setup
     {
         public static int NumTentativasLogin;
         public static bool Resposta;
+        public static bool Alerta_Compromissos;
+        public static bool Alerta_Login;
+
+        public static void ShowNotification(string titulo, string mensagem, ToolTipIcon icon, int tempo = 10)
+        {
+            try
+            {
+                Financas.frmMenu menu = new Financas.frmMenu();
+                menu.notifyIcon1.ShowBalloonTip(tempo, titulo, mensagem, icon);
+            }
+            catch
+            {
+
+            }
+        }
 
         //Função para abrir o formulário de ERRO mudando o texto de acordo com a chamada
         public static void Erro(string Msg)

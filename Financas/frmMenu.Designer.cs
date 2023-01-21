@@ -1092,7 +1092,6 @@ namespace Setup.Financas
             this.lbl1.TabIndex = 2;
             this.lbl1.Text = "      Receitas";
             this.lbl1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lbl1.Click += new System.EventHandler(this.lbl1_Click);
             // 
             // menuStrip2
             // 
