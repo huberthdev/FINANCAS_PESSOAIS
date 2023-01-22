@@ -83,11 +83,23 @@ namespace Setup.Financas
 
             for (int i = 1; i < 13; i++)
             {
-                sql = "UPDATE VISAO_ANUAL SET VISAO_ANUAL.DESPESA = (SELECT SUM(VALOR) FROM ";
-                sql += "(SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND ";
-                sql += "EXTRACT(YEAR FROM DATA) = "+ ano +" AND EXTRACT(MONTH FROM DATA) = "+ i +" ";
-                sql += "UNION SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM COMPRA_CREDITO WHERE ";
-                sql += "EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + " AND EXTRACT(MONTH FROM DATA_PARCELA) = " + i + ")) WHERE MES = " + i + "";
+                if (optDtParc.Checked)
+                {
+                    sql = "UPDATE VISAO_ANUAL SET VISAO_ANUAL.DESPESA = (SELECT SUM(VALOR) FROM ";
+                    sql += "(SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND ";
+                    sql += "EXTRACT(YEAR FROM DATA) = " + ano + " AND EXTRACT(MONTH FROM DATA) = " + i + " ";
+                    sql += "UNION SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM COMPRA_CREDITO WHERE ";
+                    sql += "EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + " AND EXTRACT(MONTH FROM DATA_PARCELA) = " + i + ")) WHERE MES = " + i + "";
+                }
+                else
+                {
+                    sql = "UPDATE VISAO_ANUAL SET VISAO_ANUAL.DESPESA = (SELECT SUM(VALOR) FROM ";
+                    sql += "(SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND ";
+                    sql += "EXTRACT(YEAR FROM DATA) = " + ano + " AND EXTRACT(MONTH FROM DATA) = " + i + " ";
+                    sql += "UNION SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM KEY_COMPRA_CREDITO WHERE ";
+                    sql += "EXTRACT(YEAR FROM DATA_COMPRA) = " + ano + " AND EXTRACT(MONTH FROM DATA_COMPRA) = " + i + ")) WHERE MES = " + i + "";
+                }
+
                 BD.ExecutarSQL(sql);
             }
 
@@ -110,7 +122,7 @@ namespace Setup.Financas
             }
             catch 
             {
-
+                
             }
         }
 
@@ -142,6 +154,16 @@ namespace Setup.Financas
         private void ano_SelectedIndexChanged(object sender, EventArgs e)
         {
             lista.Focus();
+            Carregar_Lista();
+        }
+
+        private void optDtParc_Click(object sender, EventArgs e)
+        {
+            Carregar_Lista();
+        }
+
+        private void optDtCompra_Click(object sender, EventArgs e)
+        {
             Carregar_Lista();
         }
     }

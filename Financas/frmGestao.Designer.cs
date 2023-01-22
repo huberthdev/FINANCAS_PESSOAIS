@@ -63,6 +63,8 @@ namespace Setup.Financas
             this.RECEITA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESPESA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DESVIO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.optDtParc = new System.Windows.Forms.RadioButton();
+            this.optDtCompra = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
             this.SuspendLayout();
@@ -231,12 +233,42 @@ namespace Setup.Financas
             this.DESVIO.Name = "DESVIO";
             this.DESVIO.ReadOnly = true;
             // 
+            // optDtParc
+            // 
+            this.optDtParc.AutoSize = true;
+            this.optDtParc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.optDtParc.Checked = true;
+            this.optDtParc.ForeColor = System.Drawing.Color.White;
+            this.optDtParc.Location = new System.Drawing.Point(5, 5);
+            this.optDtParc.Name = "optDtParc";
+            this.optDtParc.Size = new System.Drawing.Size(106, 19);
+            this.optDtParc.TabIndex = 2;
+            this.optDtParc.TabStop = true;
+            this.optDtParc.Text = "Data da parcela";
+            this.optDtParc.UseVisualStyleBackColor = false;
+            this.optDtParc.Click += new System.EventHandler(this.optDtParc_Click);
+            // 
+            // optDtCompra
+            // 
+            this.optDtCompra.AutoSize = true;
+            this.optDtCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.optDtCompra.ForeColor = System.Drawing.Color.White;
+            this.optDtCompra.Location = new System.Drawing.Point(117, 5);
+            this.optDtCompra.Name = "optDtCompra";
+            this.optDtCompra.Size = new System.Drawing.Size(109, 19);
+            this.optDtCompra.TabIndex = 3;
+            this.optDtCompra.Text = "Data da compra";
+            this.optDtCompra.UseVisualStyleBackColor = false;
+            this.optDtCompra.Click += new System.EventHandler(this.optDtCompra_Click);
+            // 
             // frmGestao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(467, 382);
+            this.Controls.Add(this.optDtCompra);
+            this.Controls.Add(this.optDtParc);
             this.Controls.Add(this.lista);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -265,5 +297,7 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn RECEITA;
         private DataGridViewTextBoxColumn DESPESA;
         private DataGridViewTextBoxColumn DESVIO;
+        private RadioButton optDtParc;
+        private RadioButton optDtCompra;
     }
 }
