@@ -496,20 +496,31 @@ namespace Setup.Financas
 
         private void lista_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            string sql; int dia;
-            string chave = lista.Rows[e.RowIndex].Cells[11].Value.ToString();
+            string sql, mes, ano; int dia; bool sc;
+            string chave, valor, obs;
 
-            bool sc = int.TryParse(lista.Rows[e.RowIndex].Cells[4].Value.ToString(), out dia);
-            string valor = lista.Rows[e.RowIndex].Cells[5].Value.ToString().Trim();
-            string obs = lista.Rows[e.RowIndex].Cells[10].Value.ToString().Trim();
+            try
+            {
+                chave = lista.Rows[e.RowIndex].Cells[11].Value.ToString();
+                sc = int.TryParse(lista.Rows[e.RowIndex].Cells[4].Value.ToString(), out dia);
+                valor = lista.Rows[e.RowIndex].Cells[5].Value.ToString().Trim();
+                obs = lista.Rows[e.RowIndex].Cells[10].Value.ToString().Trim();
+            }
+            catch 
+            {
+                return;
+            }
 
             try
             {
                 valor = BD.CvNum(valor);
+                mes = (((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1).ToString();
+                ano = menuStrip1.Items["ano"].Text;
+                chave = chave.Split(".").GetValue(0).ToString() + "." + mes + "." + ano + "." + chave.Split(".").GetValue(3).ToString();
             }
             catch
             {
-                valor = "";
+                return;
             }
 
             sql = "SELECT CHAVE FROM PREVISAO WHERE CHAVE = '" + chave + "'";

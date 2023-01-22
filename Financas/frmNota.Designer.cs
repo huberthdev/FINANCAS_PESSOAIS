@@ -59,6 +59,8 @@ namespace Setup.Financas
             // txtTexto
             // 
             this.txtTexto.AcceptsTab = true;
+            this.txtTexto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.txtTexto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTexto.Location = new System.Drawing.Point(12, 68);
             this.txtTexto.Name = "txtTexto";
@@ -116,6 +118,9 @@ namespace Setup.Financas
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.lista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
