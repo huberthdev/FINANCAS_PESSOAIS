@@ -422,10 +422,12 @@ namespace Setup.Financas
 
         private void frmMenu_Activated(object sender, EventArgs e)
         {
-            if (!COD.Alerta_Login)
+            COD.Definir_Config_Alertas();
+
+            if (!COD.AtivarNotifLogin)
             {
                 COD.ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!", ToolTipIcon.None);
-                COD.Alerta_Login = true;
+                COD.AtivarNotifLogin = true;
             }
 
             CarregarCbClassesContas();
@@ -559,7 +561,7 @@ namespace Setup.Financas
                 }
             }
 
-            if (!COD.Alerta_Compromissos)
+            if (!COD.AtivarNotifVencimentos)
             {
                 if (venc_hoje > 0)
                 {
@@ -580,7 +582,7 @@ namespace Setup.Financas
                     COD.ShowNotification("Alerta:", txt_notif, ToolTipIcon.Warning, 20);
                 }
 
-                COD.Alerta_Compromissos = true;
+                COD.AtivarNotifVencimentos = true;
             }
         }
 
@@ -604,6 +606,12 @@ namespace Setup.Financas
         private void fechar_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void definicoes_Click(object sender, EventArgs e)
+        {
+            Configuracoes config = new Configuracoes();
+            config.ShowDialog();
         }
     }
 }

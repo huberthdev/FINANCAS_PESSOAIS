@@ -359,6 +359,7 @@ namespace Setup.Financas
             this.definicoes.Name = "definicoes";
             this.definicoes.Size = new System.Drawing.Size(209, 22);
             this.definicoes.Text = "Definições do sistema";
+            this.definicoes.Click += new System.EventHandler(this.definicoes_Click);
             // 
             // query
             // 
@@ -1328,13 +1329,13 @@ namespace Setup.Financas
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fechar});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(181, 48);
+            this.contextMenu.Size = new System.Drawing.Size(94, 26);
             // 
             // fechar
             // 
             this.fechar.Image = ((System.Drawing.Image)(resources.GetObject("fechar.Image")));
             this.fechar.Name = "fechar";
-            this.fechar.Size = new System.Drawing.Size(180, 22);
+            this.fechar.Size = new System.Drawing.Size(93, 22);
             this.fechar.Text = "Sair";
             this.fechar.Click += new System.EventHandler(this.fechar_Click_1);
             // 

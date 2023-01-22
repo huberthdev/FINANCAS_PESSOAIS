@@ -1,8 +1,8 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
+using System.Configuration;
+using System;
 
 namespace Setup
 {
@@ -10,15 +10,66 @@ namespace Setup
     {
         public static int NumTentativasLogin;
         public static bool Resposta;
-        public static bool Alerta_Compromissos;
-        public static bool Alerta_Login;
+
+        //Variáveis de configuração de alertas/mensagens/notificações
+        public static bool All_True;
+        public static bool AtivarNotifVencimentos;
+        public static bool AtivarNotifLogin;
+
+        public static void Definir_Config_Alertas()
+        {
+            int ativado; string key;
+
+            ConfigurationManager.RefreshSection("appSettings");
+
+            foreach (var item in ConfigurationManager.AppSettings.AllKeys)
+            {
+                key = item.ToString();
+
+                try
+                {
+                    ativado = int.Parse(ConfigurationManager.AppSettings[key].ToString());
+                }
+                catch 
+                {
+                    ativado = 0;
+                }
+
+                switch (key)
+                {
+                    case "AtivarNotifLogin":
+                        AtivarNotifLogin = !Convert.ToBoolean(ativado);
+                        break;
+                    case "AtivarNotifVencimentos":
+                        AtivarNotifVencimentos = !Convert.ToBoolean(ativado);
+                        break;
+                }
+            }
+        }
+
+        public static void Configurar_Ativacoes(string key, string valor)
+        {
+            try
+            {
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings[key].Value = valor;
+                config.Save(ConfigurationSaveMode.Modified);
+            }
+            catch
+            {
+
+            }
+        }
 
         public static void ShowNotification(string titulo, string mensagem, ToolTipIcon icon, int tempo = 10)
         {
             try
             {
-                Financas.frmMenu menu = new Financas.frmMenu();
-                menu.notifyIcon1.ShowBalloonTip(tempo, titulo, mensagem, icon);
+                if (!All_True)
+                {
+                    Financas.frmMenu menu = new Financas.frmMenu();
+                    menu.notifyIcon1.ShowBalloonTip(tempo, titulo, mensagem, icon);
+                }
             }
             catch
             {

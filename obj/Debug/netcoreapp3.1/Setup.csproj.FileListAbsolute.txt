@@ -57,3 +57,4 @@ C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.dll
 C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.pdb
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Finanças.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Finanças.pdb
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.Configuracoes.resources
