@@ -656,5 +656,13 @@ namespace Setup.Financas
             }
 
         }
+
+        private void pnDefinicoes_DoubleClick(object sender, EventArgs e)
+        {
+            pnDefinicoes.Visible = false;
+            pnSalvar.Visible = true;
+            pnCompromissos.Size = new Size(636, 510);
+            lblLeft.Visible = true;
+        }
     }
 }
