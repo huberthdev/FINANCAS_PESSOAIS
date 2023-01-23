@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Globalization;
+using System.Configuration;
 
 namespace Setup.Financas
 {
@@ -15,11 +16,32 @@ namespace Setup.Financas
 
         private void frmMenu_Load(object sender, EventArgs e)
         {
+            pnCompromissos.Size = new Size(636, 510);
+            pnCompromissos.MinimumSize = new Size(636, 510);
+
             txtData.Text = DateTime.Today.ToShortDateString();
             gPeriodo.Tag = DateTime.Today.Month + "." + DateTime.Today.Year;
             gPeriodo.Text = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Today.Month) + "." + DateTime.Today.Year;
 
             statusStrip.Items["usuario"].Text = "Usuário: " + BD.UsuarioLogado;
+        }
+
+        private void frmMenu_Activated(object sender, EventArgs e)
+        {
+            Carregar_Controles_Definicoes();
+            COD.Definir_Config_Alertas();
+
+            if (!COD.AtivarNotifLogin)
+            {
+                COD.ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!", ToolTipIcon.None);
+                COD.AtivarNotifLogin = true;
+            }
+
+            CarregarCbClassesContas();
+            CarregarListaSaldoContas();
+            CarregarListaGastoClasseMesAtual();
+            CarregarListaGeral();
+            CarregarListaCompromissos();
         }
 
         private void CarregarListaGeral()
@@ -420,23 +442,6 @@ namespace Setup.Financas
 
         }
 
-        private void frmMenu_Activated(object sender, EventArgs e)
-        {
-            COD.Definir_Config_Alertas();
-
-            if (!COD.AtivarNotifLogin)
-            {
-                COD.ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!", ToolTipIcon.None);
-                COD.AtivarNotifLogin = true;
-            }
-
-            CarregarCbClassesContas();
-            CarregarListaSaldoContas();
-            CarregarListaGastoClasseMesAtual();
-            CarregarListaGeral();
-            CarregarListaCompromissos();
-        }
-
         private void mesAnterior_Click(object sender, EventArgs e)
         {
             MudarPeriodo();
@@ -610,8 +615,46 @@ namespace Setup.Financas
 
         private void definicoes_Click(object sender, EventArgs e)
         {
-            Configuracoes config = new Configuracoes();
-            config.ShowDialog();
+            pnDefinicoes.Visible = true;
+            pnSalvar.Visible = false;
+            lblLeft.Visible = false;
+        }
+
+        private void fechar__Click(object sender, EventArgs e)
+        {
+            pnDefinicoes.Visible = false;
+            pnSalvar.Visible = true;
+            pnCompromissos.Size = new Size(636, 510);
+            lblLeft.Visible = true;
+        }
+
+        private void Carregar_Controles_Definicoes()
+        {
+            string key, ativado;
+
+            ConfigurationManager.RefreshSection("appSettings");
+
+            foreach (var item in ConfigurationManager.AppSettings.AllKeys)
+            {
+                key = item.ToString();
+
+                foreach (Control act in pnDefinicoes.Controls)
+                {
+                    if (key == act.Name)
+                    {
+                        try
+                        {
+                            ativado = ConfigurationManager.AppSettings[key].ToString();
+                            act.TabIndex = int.Parse(ativado);
+                        }
+                        catch
+                        {
+
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

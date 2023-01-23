@@ -9,7 +9,6 @@ namespace Setup.Controles
         protected override void OnCreateControl()
         {
             this.FlatStyle = FlatStyle.Flat;
-            this.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             this.ForeColor = Color.White;
             this.ImageAlign = ContentAlignment.MiddleLeft;
             this.AutoSize = false;
