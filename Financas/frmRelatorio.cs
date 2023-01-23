@@ -583,11 +583,18 @@ namespace Setup.Financas
                     //
                     celulas = XcelApp.Range["A1", "A1"].CurrentRegion;
                     celulas.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    celulas.Range["A1", "A" + celulas.Rows.Count].NumberFormat = "0";
                     celulas.Range["C1", "C" + celulas.Rows.Count].NumberFormat = "dd/MM/YYYY";
                     celulas.Range["F1", "F" + celulas.Rows.Count].NumberFormat = "#,##0.00";
                     XcelApp.Columns.AutoFit();
+                    XcelApp.Range["A1", "H1"].Interior.Color = 5855577;
+                    XcelApp.Range["A1", "H1"].Font.Color = 16777215;
+                    XcelApp.Range["A2", "A2"].Activate();
+                    XcelApp.ActiveWindow.FreezePanes = true;
                     //
                     XcelApp.Visible = true;
+
+                    COD.ShowNotification("Sucesso:", "Relatório gerado com sucesso!", ToolTipIcon.Info);
                 }
                 catch (Exception ex)
                 {

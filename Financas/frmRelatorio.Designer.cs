@@ -62,7 +62,6 @@ namespace Setup.Financas
             this.limparFiltro = new Setup.Controles.Cabecalho();
             this.exportar = new Setup.Controles.Cabecalho();
             this.excel = new System.Windows.Forms.ToolStripMenuItem();
-            this.pdf = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.cbClasse = new Setup.Controles.cbCombo();
@@ -180,8 +179,7 @@ namespace Setup.Financas
             // 
             this.exportar.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exportar.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.excel,
-            this.pdf});
+            this.excel});
             this.exportar.ForeColor = System.Drawing.Color.White;
             this.exportar.Image = ((System.Drawing.Image)(resources.GetObject("exportar.Image")));
             this.exportar.Name = "exportar";
@@ -193,16 +191,9 @@ namespace Setup.Financas
             // 
             this.excel.Image = ((System.Drawing.Image)(resources.GetObject("excel.Image")));
             this.excel.Name = "excel";
-            this.excel.Size = new System.Drawing.Size(101, 22);
+            this.excel.Size = new System.Drawing.Size(180, 22);
             this.excel.Text = "Excel";
             this.excel.Click += new System.EventHandler(this.excel_Click);
-            // 
-            // pdf
-            // 
-            this.pdf.Image = ((System.Drawing.Image)(resources.GetObject("pdf.Image")));
-            this.pdf.Name = "pdf";
-            this.pdf.Size = new System.Drawing.Size(101, 22);
-            this.pdf.Text = "PDF";
             // 
             // label2
             // 
@@ -851,7 +842,6 @@ namespace Setup.Financas
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem excel;
-        private ToolStripMenuItem pdf;
         private Label label2;
         private Label label4;
         private Label label5;

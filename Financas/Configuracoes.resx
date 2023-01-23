@@ -89,6 +89,19 @@
         TkSuQmCC
 </value>
   </data>
+  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="fechar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAPNJREFUOE+1
+        ku8NgjAQxesEruKf71KMA6gRWnUWY9xFZ/CDiW3dAtBZ8A4ObKVgYvQlLxTufoU+jv1HOetNb2LEjdii
+        J0YO8RlVu8WVXAVaPLgW+Zuz0IgltfkF4MEDujbxntpd4Zu9gMeBlgvCSHA+KNzrJiWOcL3U97CGrztZ
+        96mTSXiNxlaxAGaXqM91fEaXa2fDvAi2UqDjtV0sXYKvjdw6MoR/twEcUxLOWPHP3YaPR+AqGhAOKkPM
+        qiIF1hoirJPGYOGQWEC3VTwnzBUOiRewDDOwo3a/cEigMW2CIml9c0OYCYQUGrkp/pAT2E/F2BPomD8n
+        ctC3cwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAKCgAAAEAIABoGgAAFgAAACgAAAAoAAAAUAAAAAEAIAAAAAAAABkAABMLAAATCwAAAAAAAAAA

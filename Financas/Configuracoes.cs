@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Configuration;
 using System.Windows.Forms;
-using System.Collections.Specialized;
 
 namespace Setup.Financas
 {
@@ -49,6 +48,11 @@ namespace Setup.Financas
         private void Configuracoes_FormClosed(object sender, FormClosedEventArgs e)
         {
             COD.All_True = true;
+        }
+
+        private void fechar_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
