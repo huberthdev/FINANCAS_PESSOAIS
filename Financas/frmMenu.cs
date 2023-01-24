@@ -30,9 +30,11 @@ namespace Setup.Financas
         {
             Carregar_Controles_Definicoes();
 
+            if(!COD.All_True)
+                COD.Definir_Config_Alertas();
+
             if (!COD.AtivarNotifLogin)
             {
-                COD.Definir_Config_Alertas();
                 COD.ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!", ToolTipIcon.None);
                 COD.AtivarNotifLogin = true;
             }
@@ -42,6 +44,8 @@ namespace Setup.Financas
             CarregarListaGastoClasseMesAtual();
             CarregarListaGeral();
             CarregarListaCompromissos();
+
+            COD.All_True = true;
         }
 
         private void CarregarListaGeral()
