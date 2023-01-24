@@ -626,6 +626,7 @@ namespace Setup.Financas
             pnSalvar.Visible = true;
             pnCompromissos.Size = new Size(636, 510);
             lblLeft.Visible = true;
+            COD.All_True = true;
         }
 
         private void Carregar_Controles_Definicoes()

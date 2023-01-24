@@ -1283,6 +1283,7 @@ namespace Setup.Financas
             this.listaCompromissos.TabIndex = 1;
             this.listaCompromissos.TabStop = false;
             this.toolTip1.SetToolTip(this.listaCompromissos, "Próximos vencimentos [Cartão de crédito, empréstimos e despesas fixas]");
+            this.listaCompromissos.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaCompromissos_DataBindingComplete);
             // 
             // TIPO
             // 
