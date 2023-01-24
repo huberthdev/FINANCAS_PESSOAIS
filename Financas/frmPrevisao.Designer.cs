@@ -81,7 +81,6 @@ namespace Setup.Financas
             this.excluir = new Setup.Controles.Cabecalho();
             this.replicar = new Setup.Controles.Cabecalho();
             this.atualizar = new Setup.Controles.Cabecalho();
-            this.definicoes = new Setup.Controles.Cabecalho();
             this.ano = new System.Windows.Forms.ToolStripComboBox();
             this.mes = new System.Windows.Forms.ToolStripComboBox();
             this.next = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +136,6 @@ namespace Setup.Financas
             this.excluir,
             this.replicar,
             this.atualizar,
-            this.definicoes,
             this.ano,
             this.mes,
             this.next,
@@ -190,14 +188,6 @@ namespace Setup.Financas
             this.atualizar.Size = new System.Drawing.Size(81, 23);
             this.atualizar.Text = "Atualizar";
             this.atualizar.Click += new System.EventHandler(this.atualizar_Click);
-            // 
-            // definicoes
-            // 
-            this.definicoes.ForeColor = System.Drawing.Color.White;
-            this.definicoes.Image = ((System.Drawing.Image)(resources.GetObject("definicoes.Image")));
-            this.definicoes.Name = "definicoes";
-            this.definicoes.Size = new System.Drawing.Size(90, 23);
-            this.definicoes.Text = "Definições";
             // 
             // ano
             // 
@@ -719,7 +709,6 @@ namespace Setup.Financas
         public ToolStripComboBox ano;
         public ToolStripComboBox mes;
         private Controles.Cabecalho atualizar;
-        private Controles.Cabecalho definicoes;
         private ToolStripMenuItem next;
         private ToolStripMenuItem back;
         private Label label1;

@@ -29,10 +29,10 @@ namespace Setup.Financas
         private void frmMenu_Activated(object sender, EventArgs e)
         {
             Carregar_Controles_Definicoes();
-            COD.Definir_Config_Alertas();
 
             if (!COD.AtivarNotifLogin)
             {
+                COD.Definir_Config_Alertas();
                 COD.ShowNotification("Login", "Seja bem vindo ao sistema de gestão financeira!", ToolTipIcon.None);
                 COD.AtivarNotifLogin = true;
             }

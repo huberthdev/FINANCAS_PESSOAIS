@@ -69,7 +69,7 @@ namespace Setup.Formularios
             {
                 lista.DataSource = BD.Buscar(sql);
             }
-            catch (Exception)
+            catch 
             {
                 
             }
@@ -109,14 +109,6 @@ namespace Setup.Formularios
 
         }
 
-        private void lista_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            lblID.Text = lista.CurrentRow.Cells[0].Value.ToString();
-            txtUsuario.Text = lista.CurrentRow.Cells[1].Value.ToString();
-            txtNome.Text = lista.CurrentRow.Cells[2].Value.ToString();
-            cbAcesso.Text = lista.CurrentRow.Cells[3].Value.ToString();
-        }
-
         private void lblID_TextChanged(object sender, EventArgs e)
         {
             if (lblID.Text != "")
@@ -130,6 +122,14 @@ namespace Setup.Formularios
                 txtSenha.Tag = "'Senha'";
             }
 
+        }
+
+        private void lista_DoubleClick(object sender, EventArgs e)
+        {
+            lblID.Text = lista.CurrentRow.Cells[0].Value.ToString();
+            txtUsuario.Text = lista.CurrentRow.Cells[1].Value.ToString();
+            txtNome.Text = lista.CurrentRow.Cells[2].Value.ToString();
+            cbAcesso.Text = lista.CurrentRow.Cells[3].Value.ToString();
         }
     }
 }

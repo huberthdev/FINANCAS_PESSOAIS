@@ -110,7 +110,7 @@ namespace Setup.Formularios
             this.lista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.lista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.lista.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lista.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.lista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -137,7 +137,7 @@ namespace Setup.Formularios
             this.lista.DefaultCellStyle = dataGridViewCellStyle3;
             this.lista.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista.EnableHeadersVisualStyles = false;
-            this.lista.GridColor = System.Drawing.Color.DimGray;
+            this.lista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.Location = new System.Drawing.Point(10, 90);
             this.lista.MultiSelect = false;
             this.lista.Name = "lista";
@@ -159,7 +159,7 @@ namespace Setup.Formularios
             this.lista.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.lista.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.lista.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            this.lista.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.lista.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.lista.RowTemplate.Height = 25;
             this.lista.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -167,6 +167,7 @@ namespace Setup.Formularios
             this.lista.ShowEditingIcon = false;
             this.lista.Size = new System.Drawing.Size(642, 162);
             this.lista.TabIndex = 1;
+            this.lista.DoubleClick += new System.EventHandler(this.lista_DoubleClick);
             // 
             // USUARIO_ID
             // 
