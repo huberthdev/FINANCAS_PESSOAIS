@@ -69,11 +69,11 @@ namespace Setup
             }
         }
 
-        public static void ShowNotification(string titulo, string mensagem, ToolTipIcon icon, int tempo = 10)
+        public static void ShowNotification(string titulo, string mensagem, ToolTipIcon icon, int tempo = 10, bool x = false)
         {
             try
             {
-                if (!All_True)
+                if (!All_True || x == true)
                 {
                     Financas.frmMenu menu = new Financas.frmMenu();
                     menu.notifyIcon1.ShowBalloonTip(tempo, titulo, mensagem, icon);

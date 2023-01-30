@@ -638,7 +638,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.lista_Gastos_Classe.RowTemplate.Height = 25;
             this.lista_Gastos_Classe.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
             this.lista_Gastos_Classe.Size = new System.Drawing.Size(385, 287);

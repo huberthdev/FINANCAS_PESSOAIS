@@ -594,7 +594,7 @@ namespace Setup.Financas
                     //
                     XcelApp.Visible = true;
 
-                    COD.ShowNotification("Sucesso:", "Relatório gerado com sucesso!", ToolTipIcon.Info);
+                    COD.ShowNotification("Sucesso:", "Relatório gerado com sucesso!", ToolTipIcon.Info, x:true);
                 }
                 catch (Exception ex)
                 {
