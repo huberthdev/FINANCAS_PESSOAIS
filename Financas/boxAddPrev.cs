@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Setup.Financas
 {
@@ -183,6 +183,12 @@ namespace Setup.Financas
             Classes.Geral.ReplicarPrevisao(chave);
 
             this.Dispose();
+        }
+
+        private void menuStrip1_MouseDown(object sender, MouseEventArgs e)
+        {
+            COD.ReleaseCapture();
+            COD.SendMessage(this.Handle, COD.WM_NCLBUTTONDOWN, COD.HT_CAPTION, 0);
         }
     }
 }

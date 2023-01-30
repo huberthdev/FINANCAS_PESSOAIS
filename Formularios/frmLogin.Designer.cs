@@ -184,6 +184,7 @@ namespace Setup.Formularios
             this.label1.TabIndex = 4;
             this.label1.Text = "Login";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             // 
             // label4
             // 

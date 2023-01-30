@@ -55,6 +55,7 @@ namespace Setup.Financas
             this.menuStrip1.Size = new System.Drawing.Size(368, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip1_MouseDown);
             // 
             // salvar
             // 
@@ -190,8 +191,6 @@ namespace Setup.Financas
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem salvar;
-        private System.Windows.Forms.ToolStripMenuItem cancelar;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
@@ -199,5 +198,7 @@ namespace Setup.Financas
         public Controles.Data txtData;
         public Controles.Txt txtDesc;
         private System.Windows.Forms.Panel panel1;
+        private Controles.Cabecalho salvar;
+        private Controles.Cabecalho cancelar;
     }
 }

@@ -396,7 +396,7 @@ namespace Setup.Financas
         {
             string tipo, msg;
             double receita = 0, despesa = 0, restante = 0, desvio = 0, saldo = 0, valor = 0, soma_credito = 0;
-            int[] mes = new int[2]; string mesSel, anoSel;
+            int[] mes = new int[2]; string mesSel, anoSel; int ultDia;
 
             status.Items["receita"].Text = "";
             status.Items["despesa"].Text = "";
@@ -458,7 +458,9 @@ namespace Setup.Financas
             mesSel = mes[1].ToString();
             anoSel = menuStrip1.Items["ano"].Text;
 
-            if(mes[0].ToString() == mes[1].ToString())
+            ultDia = DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month)-1;
+
+            if (mes[0].ToString() == mes[1].ToString())
             {
                 desvio = desvio + saldo;
             }

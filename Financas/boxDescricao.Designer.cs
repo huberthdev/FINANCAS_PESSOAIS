@@ -79,6 +79,7 @@ namespace Setup.Financas
             this.lnU.Name = "lnU";
             this.lnU.Size = new System.Drawing.Size(448, 15);
             this.lnU.TabIndex = 3;
+            this.lnU.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lnU_MouseDown);
             // 
             // lnR
             // 

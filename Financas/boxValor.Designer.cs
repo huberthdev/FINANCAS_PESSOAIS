@@ -50,6 +50,7 @@ namespace Setup.Financas
             this.label1.TabIndex = 6;
             this.label1.Text = " Saldo Inicial";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             // 
             // label2
             // 

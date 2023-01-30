@@ -14,5 +14,11 @@ namespace Setup.Financas
         {
             this.Dispose();
         }
+
+        private void lnU_MouseDown(object sender, MouseEventArgs e)
+        {
+            COD.ReleaseCapture();
+            COD.SendMessage(this.Handle, COD.WM_NCLBUTTONDOWN, COD.HT_CAPTION, 0);
+        }
     }
 }

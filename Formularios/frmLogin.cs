@@ -100,5 +100,11 @@ namespace Setup.Formularios
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void label1_MouseDown(object sender, MouseEventArgs e)
+        {
+            COD.ReleaseCapture();
+            COD.SendMessage(this.Handle, COD.WM_NCLBUTTONDOWN, COD.HT_CAPTION, 0);
+        }
     }
 }

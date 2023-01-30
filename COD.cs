@@ -3,6 +3,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Setup
 {
@@ -15,6 +16,13 @@ namespace Setup
         public static bool All_True;
         public static bool AtivarNotifVencimentos;
         public static bool AtivarNotifLogin;
+
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [DllImportAttribute("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [DllImportAttribute("user32.dll")]
+        public static extern bool ReleaseCapture();
 
         public static void Definir_Config_Alertas()
         {

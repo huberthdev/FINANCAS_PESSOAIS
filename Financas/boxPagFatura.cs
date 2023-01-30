@@ -166,5 +166,11 @@ namespace Setup.Financas
             lblPeriodo.Tag = valor;
             return valor;
         }
+
+        private void menuStrip1_MouseDown(object sender, MouseEventArgs e)
+        {
+            COD.ReleaseCapture();
+            COD.SendMessage(this.Handle, COD.WM_NCLBUTTONDOWN, COD.HT_CAPTION, 0);
+        }
     }
 }
