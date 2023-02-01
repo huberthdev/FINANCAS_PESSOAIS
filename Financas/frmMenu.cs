@@ -203,26 +203,31 @@ namespace Setup.Financas
 
         private void CarregarCbClassesContas(string tabela = "")
         {
+            string classe, conta;
+
             //Preenche o combobox com as classes cadastradas no banco de dados
             if(tabela=="classe" || tabela == "")
             {
+                classe = cbClasse.Text;
                 cbClasse.Items.Clear();
                 Classes.Classe.Tipo = Convert.ToByte(opReceita.Checked);
                 foreach (Classes.Classe c in Classes.Classe.Lista())
                 {
                     cbClasse.Items.Add(c);
                 }
+                cbClasse.Text = classe;
             }
 
             //Preenche o combobox com as contas cadastradas no banco de dados
             if (tabela == "conta" || tabela == "")
             {
+                conta = cbConta.Text;
                 cbConta.Items.Clear();
                 foreach (Classes.Conta c in Classes.Conta.Lista())
                 {
                     cbConta.Items.Add(c);
                 }
-
+                cbConta.Text = conta;
             }
         }
 

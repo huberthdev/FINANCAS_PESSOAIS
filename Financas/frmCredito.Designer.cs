@@ -103,6 +103,9 @@ namespace Setup.Financas
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPagarFatura = new System.Windows.Forms.Button();
+            this.cmsPagar = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.pagarValorTotal = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagarOutroValor = new System.Windows.Forms.ToolStripMenuItem();
             this.cbFCartao = new Setup.Controles.cbCombo();
             this.label8 = new System.Windows.Forms.Label();
             this.lblPeriodo = new System.Windows.Forms.Label();
@@ -115,6 +118,7 @@ namespace Setup.Financas
             this.contextMenuStrip1.SuspendLayout();
             this.status.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.cmsPagar.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -705,6 +709,7 @@ namespace Setup.Financas
             // 
             this.btnPagarFatura.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btnPagarFatura.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(192)))), ((int)(((byte)(87)))));
+            this.btnPagarFatura.ContextMenuStrip = this.cmsPagar;
             this.btnPagarFatura.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPagarFatura.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPagarFatura.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -717,6 +722,33 @@ namespace Setup.Financas
             this.btnPagarFatura.Text = "PAGAR";
             this.btnPagarFatura.UseVisualStyleBackColor = false;
             this.btnPagarFatura.Click += new System.EventHandler(this.btnPagarFatura_Click);
+            // 
+            // cmsPagar
+            // 
+            this.cmsPagar.BackColor = System.Drawing.Color.White;
+            this.cmsPagar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pagarValorTotal,
+            this.pagarOutroValor});
+            this.cmsPagar.Name = "cmsPagar";
+            this.cmsPagar.Size = new System.Drawing.Size(153, 48);
+            // 
+            // pagarValorTotal
+            // 
+            this.pagarValorTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.pagarValorTotal.Image = ((System.Drawing.Image)(resources.GetObject("pagarValorTotal.Image")));
+            this.pagarValorTotal.Name = "pagarValorTotal";
+            this.pagarValorTotal.Size = new System.Drawing.Size(152, 22);
+            this.pagarValorTotal.Text = "VALOR TOTAL";
+            this.pagarValorTotal.Click += new System.EventHandler(this.pagarValorTotal_Click);
+            // 
+            // pagarOutroValor
+            // 
+            this.pagarOutroValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.pagarOutroValor.Image = ((System.Drawing.Image)(resources.GetObject("pagarOutroValor.Image")));
+            this.pagarOutroValor.Name = "pagarOutroValor";
+            this.pagarOutroValor.Size = new System.Drawing.Size(152, 22);
+            this.pagarOutroValor.Text = "OUTRO VALOR";
+            this.pagarOutroValor.Click += new System.EventHandler(this.pagarOutroValor_Click);
             // 
             // cbFCartao
             // 
@@ -850,6 +882,7 @@ namespace Setup.Financas
             this.status.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.cmsPagar.ResumeLayout(false);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -915,5 +948,8 @@ namespace Setup.Financas
         private ToolStripStatusLabel sp3;
         private ToolStripStatusLabel utilizado;
         private CheckBox ckEstorno;
+        private ContextMenuStrip cmsPagar;
+        private ToolStripMenuItem pagarValorTotal;
+        private ToolStripMenuItem pagarOutroValor;
     }
 }

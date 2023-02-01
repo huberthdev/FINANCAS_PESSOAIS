@@ -20,6 +20,11 @@ namespace Setup.Financas
 
         private void pagarFatura_Click(object sender, EventArgs e)
         {
+            Pagar_Fatura();
+        }
+
+        private void Pagar_Fatura()
+        {
             double valor = 0; int x = 0; string codigo; string sql; string cods = "";
             string conta = cbConta.Text;
             string[] ln = new string[lista.RowCount];
@@ -31,18 +36,18 @@ namespace Setup.Financas
 
             try
             {
-                valor = ValorDaFatura();
+                valor = ValorDaFatura();  
 
-                if(valor == 0)
+                if (valor == 0)
                     return;
 
-                COD.Pergunta("Debitar valor da fatura: \r\n\r\nValor: [" + valor.ToString("C") + "] \r\nConta: ["+ conta +"]");
+                COD.Pergunta("Debitar valor da fatura: \r\n\r\nValor: [" + valor.ToString("C") + "] \r\nConta: [" + conta + "]");
                 if (!COD.Resposta)
                     return;
             }
             catch
             {
-
+                return;
             }
 
             for (int i = 0; i < lista.RowCount; i++)
@@ -59,7 +64,7 @@ namespace Setup.Financas
             for (int i = 0; i < ln.Length; i++)
             {
                 codigo = ln[i];
-                if(codigo != null)
+                if (codigo != null)
                     cods += codigo + ", ";
             }
 
@@ -171,6 +176,11 @@ namespace Setup.Financas
         {
             COD.ReleaseCapture();
             COD.SendMessage(this.Handle, COD.WM_NCLBUTTONDOWN, COD.HT_CAPTION, 0);
+        }
+
+        private void outroValor_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

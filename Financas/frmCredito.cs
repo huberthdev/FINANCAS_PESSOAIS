@@ -73,28 +73,58 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string chave = "", parcela, vlParc, data = "", sql, valor;
+            Salvar_Transacao();
+        }
+
+        private void Salvar_Transacao(string outro_valor = "")
+        {
+            string chave, parcela, vlParc, data, sql, valor;
             int dia_venc, dia_compra, melhor_dia_comp, x, qtdParc;
+            string cartao, classe, desc, conta;
 
-            if (COD.ValidarCampos(this) == false)
+            if (outro_valor == "")
             {
-                return;
-            }
-
-            string cartao = ((CartaoCredito)cbCartao.SelectedItem).cartao.ToString();
-            string classe = ((Classe)cbClasse.SelectedItem).id.ToString();
-
-            valor = txtValor.Text;
-
-            if (ckEstorno.Checked)
-            {
-                valor = "-" + valor;
-                COD.Pergunta("Lançar como estorno. Confirma?");
-                if (!COD.Resposta)
+                if (COD.ValidarCampos(this) == false)
                     return;
-            }
 
-            valor = BD.CvNum(valor);
+                cartao = ((CartaoCredito)cbCartao.SelectedItem).cartao.ToString();
+                classe = ((Classe)cbClasse.SelectedItem).id.ToString();
+                valor = txtValor.Text;
+                valor = BD.CvNum(valor);
+                data = BD.CvData(txtData.Text);
+                desc = txtDesc.Text;
+
+                if (ckEstorno.Checked)
+                {
+                    valor = "-" + valor;
+                    COD.Pergunta("Lançar como estorno. Confirma?");
+                    if (!COD.Resposta)
+                        return;
+                }
+            }
+            else
+            {
+                try
+                {
+                    COD.Pergunta("Debitar valor da fatura: \r\n\r\nValor: [" + outro_valor + "] \r\nConta: [" + cbFCartao.Text + "]");
+                    if (!COD.Resposta)
+                        return;
+
+                    cartao = ((CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
+                    classe = "154";
+                    valor = outro_valor;
+                    data = lista.Rows[1].Cells[6].Value.ToString();
+                    data = DateTime.Parse(data).ToShortDateString();
+                    data = "01/" + data.Substring(3);
+                    data = BD.CvData(data);
+                    desc = "Pag. Antecipado - " + DateTime.Today.ToShortDateString().Replace("/", ".");
+                }
+                catch
+                {
+                    COD.Erro("Não foi possível resgistrar este pagamento!");
+                    return;
+                }
+            }
 
             string[] v = new string[6];
 
@@ -102,8 +132,8 @@ namespace Setup.Financas
             v[1] = classe;
             v[2] = cartao;
             v[3] = valor;
-            v[4] = BD.CvData(txtData.Text);
-            v[5] = txtDesc.Text;
+            v[4] = data;
+            v[5] = desc;
 
             //TENTA GERAR A CHAVE DESTA TRANSAÇÃO VIA PROCEDURE NO BANCO DE DADOS
             try
@@ -122,48 +152,56 @@ namespace Setup.Financas
                 return;
             }
 
-            qtdParc = int.Parse(txtQtdeParc.Text);
-
-            vlParc = (double.Parse(txtValor.Text) / qtdParc).ToString("C2");
-            vlParc = BD.CvNum(vlParc);
-
-            if (ckEstorno.Checked)
+            if (outro_valor == "")
             {
-                vlParc = "-" + vlParc;
+                qtdParc = int.Parse(txtQtdeParc.Text);
+
+                vlParc = (double.Parse(txtValor.Text) / qtdParc).ToString("C2");
+                vlParc = BD.CvNum(vlParc);
+
+                if (ckEstorno.Checked)
+                {
+                    vlParc = "-" + vlParc;
+                }
+
+                sql = "SELECT DIA_VENC, MELHOR_DIA_COMPRA FROM CARTAO_CREDITO WHERE ";
+                sql += "CARTAO_CREDITO_ID = " + cartao + "";
+                BD.Buscar(sql);
+
+                //Configuração de parâmetros para distribuição das parcelas de acordo com a configuração do cartão selecionado
+
+                dia_venc = int.Parse(BD.Resultado.Rows[0][0].ToString());
+                melhor_dia_comp = int.Parse(BD.Resultado.Rows[0][1].ToString());
+                dia_compra = DateTime.Parse(txtData.Text).Day;
+
+                if (dia_venc < melhor_dia_comp && dia_compra < melhor_dia_comp)
+                {
+                    data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                    data = DateTime.Parse(data).AddMonths(1).ToString("d");
+                }
+                else if (dia_venc < melhor_dia_comp && dia_compra >= melhor_dia_comp)
+                {
+                    data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                    data = DateTime.Parse(data).AddMonths(2).ToString("d");
+                }
+                else if (dia_venc > melhor_dia_comp && dia_compra < melhor_dia_comp)
+                {
+                    data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                }
+                else if (dia_venc > melhor_dia_comp && dia_compra >= melhor_dia_comp)
+                {
+                    data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
+                    data = DateTime.Parse(data).AddMonths(1).ToString("d");
+                }
+
+                if (data == "")
+                    return;
             }
-
-            sql = "SELECT DIA_VENC, MELHOR_DIA_COMPRA FROM CARTAO_CREDITO WHERE ";
-            sql += "CARTAO_CREDITO_ID = "+ cartao +"";
-            BD.Buscar(sql);
-
-            //Configuração de parâmetros para distribuição das parcelas de acordo com a configuração do cartão selecionado
-
-            dia_venc = int.Parse(BD.Resultado.Rows[0][0].ToString());
-            melhor_dia_comp = int.Parse(BD.Resultado.Rows[0][1].ToString());
-            dia_compra = DateTime.Parse(txtData.Text).Day;
-
-            if(dia_venc < melhor_dia_comp && dia_compra < melhor_dia_comp)
+            else
             {
-                data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
-                data = DateTime.Parse(data).AddMonths(1).ToString("d");
+                qtdParc = 1;
+                vlParc = "-" + valor;
             }
-            else if (dia_venc < melhor_dia_comp && dia_compra >= melhor_dia_comp)
-            {
-                data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
-                data = DateTime.Parse(data).AddMonths(2).ToString("d");
-            }
-            else if (dia_venc > melhor_dia_comp && dia_compra < melhor_dia_comp)
-            {
-                data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
-            }
-            else if (dia_venc > melhor_dia_comp && dia_compra >= melhor_dia_comp)
-            {
-                data = dia_venc + DateTime.Parse(txtData.Text).ToString("/MM/yyyy");
-                data = DateTime.Parse(data).AddMonths(1).ToString("d");
-            }
-
-            if (data == "")
-                return;
 
             //------------------------------------------------------------------------------------------------------------
 
@@ -194,6 +232,12 @@ namespace Setup.Financas
                 BD.Salvar("COMPRA_CREDITO", c, vl);
 
                 data = DateTime.Parse(data).AddMonths(1).ToString("d");
+            }
+
+            if (outro_valor != "")
+            {
+                conta = ((CartaoCredito)cbFCartao.SelectedItem).conta.ToString();
+                Conta.AtualizarSaldoConta(conta, vlParc);
             }
 
             CarregarLista();
@@ -577,16 +621,9 @@ namespace Setup.Financas
                 return;
             }
 
-            if (cbFCartao.Text == "")
-            {
-                COD.Erro("Selecione um Cartão!");
-                cbFCartao.Focus();
-                return;
-            }
-
             for (int i = 0; i < lista.RowCount; i++)
             {
-                if(lista.Rows[i].Cells[8].Value.ToString() == "0")
+                if (lista.Rows[i].Cells[8].Value.ToString() == "0")
                 {
                     x++;
                 }
@@ -597,6 +634,28 @@ namespace Setup.Financas
                 return;
             }
 
+            if (cbFCartao.Text == "")
+            {
+                COD.Erro("Selecione um Cartão!");
+                cbFCartao.Focus();
+                return;
+            }
+
+            cmsPagar.Show(Cursor.Position);
+        }
+
+        private void pagarValorTotal_Click(object sender, EventArgs e)
+        {
+            Pagar_Fatura_Total();
+        }
+
+        private void pagarOutroValor_Click(object sender, EventArgs e)
+        {
+            Pagar_Fatura_Outro_Valor();
+        }
+
+        private void Pagar_Fatura_Total()
+        {
             boxPagFatura pagF = new boxPagFatura();
 
             pagF.lista.DataSource = lista.DataSource;
@@ -621,6 +680,20 @@ namespace Setup.Financas
             }
 
             pagF.ShowDialog();
+        }
+
+        private void Pagar_Fatura_Outro_Valor()
+        {
+            string valor;
+            boxValor vl = new boxValor();
+            vl.lblTitulo.Text = "Valor R$";
+            vl.ShowDialog();
+            valor = BD.SaldoInicial;
+
+            if (valor == "0.00")
+                return;
+
+            Salvar_Transacao(valor);
         }
 
         private void editar_Click(object sender, EventArgs e)
@@ -831,5 +904,6 @@ namespace Setup.Financas
 
             status.Items["utilizado"].Text = txt;
         }
+
     }
 }
