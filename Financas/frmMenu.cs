@@ -197,8 +197,8 @@ namespace Setup.Financas
                 total += double.Parse(BD.Resultado.Rows[i][1].ToString());
             }
 
-            lista_Gastos_Classe.Columns[0].HeaderText = "";
-            lista_Gastos_Classe.Columns[1].HeaderText = total.ToString("C");
+            lista_Gastos_Classe.Columns["CLASSE"].HeaderText = "";
+            lista_Gastos_Classe.Columns["VALOR"].HeaderText = total.ToString("C");
         }
 
         private void CarregarCbClassesContas(string tabela = "")
@@ -381,7 +381,7 @@ namespace Setup.Financas
 
             try
             {
-                classe = lista_Gastos_Classe.SelectedRows[0].Cells[0].Value.ToString();
+                classe = lista_Gastos_Classe.SelectedRows[0].Cells[1].Value.ToString();
 
                 frmRelatorio rel = new frmRelatorio();
                 rel.ckDespesa.Checked = true;
