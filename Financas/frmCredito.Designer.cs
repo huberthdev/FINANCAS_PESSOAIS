@@ -104,8 +104,8 @@ namespace Setup.Financas
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnPagarFatura = new System.Windows.Forms.Button();
             this.cmsPagar = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.pagarValorTotal = new System.Windows.Forms.ToolStripMenuItem();
-            this.pagarOutroValor = new System.Windows.Forms.ToolStripMenuItem();
+            this.pagarValorTotal = new Setup.Controles.Cabecalho();
+            this.pagarOutroValor = new Setup.Controles.Cabecalho();
             this.cbFCartao = new Setup.Controles.cbCombo();
             this.label8 = new System.Windows.Forms.Label();
             this.lblPeriodo = new System.Windows.Forms.Label();
@@ -725,16 +725,17 @@ namespace Setup.Financas
             // 
             // cmsPagar
             // 
-            this.cmsPagar.BackColor = System.Drawing.Color.White;
+            this.cmsPagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.cmsPagar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pagarValorTotal,
             this.pagarOutroValor});
             this.cmsPagar.Name = "cmsPagar";
+            this.cmsPagar.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.cmsPagar.Size = new System.Drawing.Size(153, 48);
             // 
             // pagarValorTotal
             // 
-            this.pagarValorTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.pagarValorTotal.ForeColor = System.Drawing.Color.White;
             this.pagarValorTotal.Image = ((System.Drawing.Image)(resources.GetObject("pagarValorTotal.Image")));
             this.pagarValorTotal.Name = "pagarValorTotal";
             this.pagarValorTotal.Size = new System.Drawing.Size(152, 22);
@@ -743,7 +744,7 @@ namespace Setup.Financas
             // 
             // pagarOutroValor
             // 
-            this.pagarOutroValor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.pagarOutroValor.ForeColor = System.Drawing.Color.White;
             this.pagarOutroValor.Image = ((System.Drawing.Image)(resources.GetObject("pagarOutroValor.Image")));
             this.pagarOutroValor.Name = "pagarOutroValor";
             this.pagarOutroValor.Size = new System.Drawing.Size(152, 22);

@@ -147,10 +147,42 @@ namespace Setup.Financas
         //TODAS AS FUNÇÕES DA ABA LANÇAMENTO DE RECEITAS E DESPESAS
         private void CarregarListaSaldoContas()
         {
-            string sql = "SELECT CONTA_ID, CONTA, SALDO FROM CONTA ";
+            string sql = "SELECT CONTA_ID, CONTA, SALDO, RESERVADO FROM CONTA ";
             sql += "WHERE SALDO <> 0 ORDER BY SALDO DESC";
 
             listaSaldo_Contas.DataSource = BD.Buscar(sql);
+        }
+
+        private void listaSaldo_Contas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            double valor, total = 0;
+            string reservado;
+
+            for (int i = 0; i < listaSaldo_Contas.RowCount; i++)
+            {
+                reservado = listaSaldo_Contas.Rows[i].Cells[3].Value.ToString();
+
+                valor = double.Parse(listaSaldo_Contas.Rows[i].Cells[2].Value.ToString());
+                if (reservado == "0")
+                {
+                    total += valor;
+                }
+
+                if (valor < 0 && reservado == "0")
+                {
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
+                }
+                else if(valor > 0 && reservado == "0")
+                {
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
+                }
+                else
+                {
+                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.DarkOrange;
+                }
+            }
+
+            listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
         }
 
         private void CarregarListaGastoClasseMesAtual()
@@ -416,28 +448,6 @@ namespace Setup.Financas
         {
             frmCadastro cad = new frmCadastro();
             cad.ShowDialog();
-        }
-
-        private void listaSaldo_Contas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            double valor, total = 0;
-
-            for (int i = 0; i < listaSaldo_Contas.RowCount; i++)
-            {
-                valor = double.Parse(listaSaldo_Contas.Rows[i].Cells[2].Value.ToString());
-                total += valor;
-
-                if (valor < 0)
-                {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.Tomato;
-                }
-                else
-                {
-                    listaSaldo_Contas.Rows[i].Cells[2].Style.ForeColor = Color.LimeGreen;
-                }
-            }
-
-            listaSaldo_Contas.Columns[2].HeaderText = "SALDO: " + total.ToString("C");
         }
 
         private void cads_Click(object sender, EventArgs e)

@@ -412,10 +412,10 @@ namespace Setup.Classes
 
         public static double SaldoTotal(string id = "", bool ativo = true)
         {
-            string sql = "SELECT SUM(SALDO) FROM CONTA";
+            string sql = "SELECT SUM(SALDO) FROM CONTA WHERE RESERVADO = 0 ";
             if (id != "")
             {
-                sql += "WHERE CONTA_ID = "+ id +"";
+                sql += "AND CONTA_ID = "+ id +"";
             }
 
             try
