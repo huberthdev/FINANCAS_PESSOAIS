@@ -62,8 +62,8 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastro));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.listaClasse = new Setup.Controles.dgView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CLASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,9 +73,6 @@ namespace Setup.Financas
             this.optReceita = new System.Windows.Forms.RadioButton();
             this.txtClasse = new Setup.Controles.Txt();
             this.listaConta = new Setup.Controles.dgView();
-            this.ID_CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CONT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CREDITO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ckAtivoConta = new System.Windows.Forms.CheckBox();
             this.txtConta = new Setup.Controles.Txt();
             this.pnCad = new System.Windows.Forms.Panel();
@@ -92,6 +89,10 @@ namespace Setup.Financas
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.ID_CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CREDITO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RESERVADO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.listaClasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaConta)).BeginInit();
             this.pnCad.SuspendLayout();
@@ -271,7 +272,8 @@ namespace Setup.Financas
             this.listaConta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_CONTA,
             this.CONT,
-            this.CREDITO});
+            this.CREDITO,
+            this.RESERVADO});
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -315,41 +317,6 @@ namespace Setup.Financas
             this.listaConta.TabIndex = 1;
             this.listaConta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaConta_CellContentClick);
             this.listaConta.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaConta_MouseEnter);
-            // 
-            // ID_CONTA
-            // 
-            this.ID_CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ID_CONTA.DataPropertyName = "CONTA_ID";
-            this.ID_CONTA.HeaderText = "CONTA_ID";
-            this.ID_CONTA.Name = "ID_CONTA";
-            this.ID_CONTA.ReadOnly = true;
-            this.ID_CONTA.Visible = false;
-            this.ID_CONTA.Width = 5;
-            // 
-            // CONT
-            // 
-            this.CONT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CONT.DataPropertyName = "CONTA";
-            this.CONT.HeaderText = "CONTA";
-            this.CONT.MinimumWidth = 220;
-            this.CONT.Name = "CONT";
-            this.CONT.ReadOnly = true;
-            this.CONT.Width = 220;
-            // 
-            // CREDITO
-            // 
-            this.CREDITO.DataPropertyName = "CREDITO";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = false;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CREDITO.DefaultCellStyle = dataGridViewCellStyle8;
-            this.CREDITO.FalseValue = "0";
-            this.CREDITO.HeaderText = "FUNÇÃO CRÉDITO?";
-            this.CREDITO.Name = "CREDITO";
-            this.CREDITO.ReadOnly = true;
-            this.CREDITO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CREDITO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CREDITO.TrueValue = "1";
             // 
             // ckAtivoConta
             // 
@@ -535,6 +502,52 @@ namespace Setup.Financas
             this.label5.Size = new System.Drawing.Size(4, 414);
             this.label5.TabIndex = 17;
             // 
+            // ID_CONTA
+            // 
+            this.ID_CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ID_CONTA.DataPropertyName = "CONTA_ID";
+            this.ID_CONTA.HeaderText = "CONTA_ID";
+            this.ID_CONTA.Name = "ID_CONTA";
+            this.ID_CONTA.ReadOnly = true;
+            this.ID_CONTA.Visible = false;
+            this.ID_CONTA.Width = 5;
+            // 
+            // CONT
+            // 
+            this.CONT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CONT.DataPropertyName = "CONTA";
+            this.CONT.HeaderText = "CONTA";
+            this.CONT.MinimumWidth = 220;
+            this.CONT.Name = "CONT";
+            this.CONT.ReadOnly = true;
+            this.CONT.Width = 220;
+            // 
+            // CREDITO
+            // 
+            this.CREDITO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CREDITO.DataPropertyName = "CREDITO";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.NullValue = false;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CREDITO.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CREDITO.FalseValue = "0";
+            this.CREDITO.HeaderText = "CRÉDITO?";
+            this.CREDITO.MinimumWidth = 80;
+            this.CREDITO.Name = "CREDITO";
+            this.CREDITO.ReadOnly = true;
+            this.CREDITO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CREDITO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CREDITO.TrueValue = "1";
+            this.CREDITO.Width = 80;
+            // 
+            // RESERVADO
+            // 
+            this.RESERVADO.DataPropertyName = "RESERVADO";
+            this.RESERVADO.HeaderText = "RESERVADO?";
+            this.RESERVADO.MinimumWidth = 80;
+            this.RESERVADO.Name = "RESERVADO";
+            this.RESERVADO.ReadOnly = true;
+            // 
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -571,9 +584,6 @@ namespace Setup.Financas
         private System.Windows.Forms.RadioButton optReceita;
         private Controles.Txt txtClasse;
         private Controles.dgView listaConta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID_CONTA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CONT;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CREDITO;
         private System.Windows.Forms.CheckBox ckAtivoConta;
         private Controles.Txt txtConta;
         private System.Windows.Forms.Panel pnCad;
@@ -593,5 +603,9 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn CLASS;
         private DataGridViewTextBoxColumn ATIVO;
+        private DataGridViewTextBoxColumn ID_CONTA;
+        private DataGridViewTextBoxColumn CONT;
+        private DataGridViewCheckBoxColumn CREDITO;
+        private DataGridViewCheckBoxColumn RESERVADO;
     }
 }

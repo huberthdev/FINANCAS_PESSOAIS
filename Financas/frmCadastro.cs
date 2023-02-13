@@ -60,6 +60,14 @@ namespace Setup.Financas
                 string sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
                 BD.ExecutarSQL(sql);
             }
+            else if(e.ColumnIndex == 3)
+            {
+                listaConta.EndEdit();
+                ck = listaConta.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+                string sql = "UPDATE CONTA SET RESERVADO = " + ck + " WHERE CONTA_ID = " + id + "";
+                BD.ExecutarSQL(sql);
+            }
         }
 
         private void CarregarListasClasseConta(string tabela = "")
@@ -83,8 +91,8 @@ namespace Setup.Financas
 
             if (tabela == "" || tabela == "conta")
             {
-                listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, CARTAO_CREDITO AS CREDITO FROM CONTA WHERE " +
-                    "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC");
+                listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, CARTAO_CREDITO AS CREDITO, RESERVADO FROM CONTA WHERE " +
+                    "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC, RESERVADO DESC");
                 listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
