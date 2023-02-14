@@ -115,7 +115,8 @@ namespace Setup.Financas
                     valor = outro_valor;
                     data = lista.Rows[1].Cells[6].Value.ToString();
                     data = DateTime.Parse(data).ToShortDateString();
-                    data = "01/" + data.Substring(3);
+                    dia_compra = ((CartaoCredito)cbFCartao.SelectedItem).vencimento;
+                    data = dia_compra + data.Substring(2);
                     data = BD.CvData(data);
                     desc = "Pag. Antecipado - " + DateTime.Today.ToShortDateString().Replace("/", ".");
                 }
@@ -904,6 +905,5 @@ namespace Setup.Financas
 
             status.Items["utilizado"].Text = txt;
         }
-
     }
 }

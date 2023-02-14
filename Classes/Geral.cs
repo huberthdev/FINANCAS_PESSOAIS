@@ -434,6 +434,7 @@ namespace Setup.Classes
         public int conta;
         public int cartao;
         public string nome;
+        public int vencimento;
         private static byte cad = 0;
 
         public static byte Ativo
@@ -455,7 +456,7 @@ namespace Setup.Classes
             var lista = new List<CartaoCredito>();
             var c1 = new CartaoCredito();
 
-            sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA FROM CONTA A LEFT JOIN ";
+            sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA, B.DIA_VENC FROM CONTA A LEFT JOIN ";
             sql += "CARTAO_CREDITO B ON A.CONTA_ID = B.CONTA WHERE A.CARTAO_CREDITO = 1 ";
             if (cad == 1)
             {
@@ -471,6 +472,7 @@ namespace Setup.Classes
                 c1.conta = int.Parse(BD.Resultado.Rows[i][0].ToString());
                 c1.cartao = int.Parse(BD.Resultado.Rows[i][1].ToString());
                 c1.nome = BD.Resultado.Rows[i][2].ToString();
+                c1.vencimento = int.Parse(BD.Resultado.Rows[i][3].ToString());
                 lista.Add(c1);
             }
 
