@@ -412,6 +412,7 @@ namespace Setup.Financas
             this.Name = "boxCartaoCredito";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.boxCartaoCredito_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).EndInit();

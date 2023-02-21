@@ -9,6 +9,10 @@ namespace Setup.Financas
         public boxCartaoCredito()
         {
             InitializeComponent();
+        }
+
+        private void boxCartaoCredito_Load(object sender, EventArgs e)
+        {
             CarregarCBs();
             CarregarLista();
             ConfigurarLista();
