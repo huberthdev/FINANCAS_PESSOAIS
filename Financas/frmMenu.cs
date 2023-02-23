@@ -358,7 +358,7 @@ namespace Setup.Financas
         private void comprasCredito_Click(object sender, EventArgs e)
         {
             frmCredito cred = new frmCredito();
-            cred.ShowDialog();
+            cred.Show();
         }
 
         private void cartaoDeCreditoAdd_Click(object sender, EventArgs e)
@@ -382,7 +382,7 @@ namespace Setup.Financas
         private void compraCredito_Click(object sender, EventArgs e)
         {
             frmCredito cred = new frmCredito();
-            cred.ShowDialog();
+            cred.Show();
         }
 
         private void transf_Click(object sender, EventArgs e)
