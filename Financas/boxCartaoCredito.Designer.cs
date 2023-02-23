@@ -45,10 +45,10 @@ namespace Setup.Financas
             this.cbVenc = new Setup.Controles.cbCombo();
             this.cbFecha = new Setup.Controles.cbCombo();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.novo = new System.Windows.Forms.ToolStripMenuItem();
-            this.excluir = new System.Windows.Forms.ToolStripMenuItem();
-            this.sair = new System.Windows.Forms.ToolStripMenuItem();
+            this.salvar = new Setup.Controles.Cabecalho();
+            this.novo = new Setup.Controles.Cabecalho();
+            this.excluir = new Setup.Controles.Cabecalho();
+            this.sair = new Setup.Controles.Cabecalho();
             this.lista = new Setup.Controles.dgView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CARTAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -361,9 +361,9 @@ namespace Setup.Financas
             // 
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label6.Location = new System.Drawing.Point(0, 437);
+            this.label6.Location = new System.Drawing.Point(0, 434);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(341, 1);
+            this.label6.Size = new System.Drawing.Size(341, 4);
             this.label6.TabIndex = 39;
             // 
             // label7
@@ -372,16 +372,16 @@ namespace Setup.Financas
             this.label7.Dock = System.Windows.Forms.DockStyle.Left;
             this.label7.Location = new System.Drawing.Point(0, 24);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(1, 413);
+            this.label7.Size = new System.Drawing.Size(4, 410);
             this.label7.TabIndex = 39;
             // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label8.Location = new System.Drawing.Point(340, 24);
+            this.label8.Location = new System.Drawing.Point(337, 24);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(1, 413);
+            this.label8.Size = new System.Drawing.Size(4, 410);
             this.label8.TabIndex = 39;
             // 
             // boxCartaoCredito
@@ -431,11 +431,7 @@ namespace Setup.Financas
         private Controles.cbCombo cbVenc;
         private Controles.cbCombo cbFecha;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem salvar;
-        private ToolStripMenuItem novo;
-        private ToolStripMenuItem excluir;
         private Controles.dgView lista;
-        private ToolStripMenuItem sair;
         private DataGridViewTextBoxColumn ID;
         private DataGridViewTextBoxColumn CARTAO;
         private DataGridViewCheckBoxColumn ATIVO;
@@ -447,5 +443,9 @@ namespace Setup.Financas
         private Label label6;
         private Label label7;
         private Label label8;
+        private Controles.Cabecalho salvar;
+        private Controles.Cabecalho novo;
+        private Controles.Cabecalho excluir;
+        private Controles.Cabecalho sair;
     }
 }
