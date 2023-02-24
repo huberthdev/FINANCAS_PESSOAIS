@@ -72,6 +72,7 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -84,7 +85,6 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new Setup.Controles.Cabecalho();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
@@ -111,6 +111,10 @@ namespace Setup.Financas
             this.ToolPrevisao = new Setup.Controles.Cabecalho();
             this.ToolCalculadora = new Setup.Controles.Cabecalho();
             this.listaSaldo_Contas = new Setup.Controles.dgView();
+            this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RESERVADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lista_Gastos_Classe = new Setup.Controles.dgView();
             this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -178,10 +182,6 @@ namespace Setup.Financas
             this.pnCompromissos = new System.Windows.Forms.Panel();
             this.lblVencimentos = new System.Windows.Forms.Label();
             this.lnLeft = new System.Windows.Forms.Label();
-            this.CONTA_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RESERVADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -542,6 +542,49 @@ namespace Setup.Financas
             this.listaSaldo_Contas.TabIndex = 1;
             this.listaSaldo_Contas.TabStop = false;
             this.listaSaldo_Contas.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaSaldo_Contas_DataBindingComplete);
+            // 
+            // CONTA_ID
+            // 
+            this.CONTA_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CONTA_ID.DataPropertyName = "CONTA_ID";
+            this.CONTA_ID.HeaderText = "ID";
+            this.CONTA_ID.Name = "CONTA_ID";
+            this.CONTA_ID.ReadOnly = true;
+            this.CONTA_ID.Visible = false;
+            this.CONTA_ID.Width = 5;
+            // 
+            // CONTA
+            // 
+            this.CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CONTA.DataPropertyName = "CONTA";
+            this.CONTA.HeaderText = "CONTA";
+            this.CONTA.MinimumWidth = 140;
+            this.CONTA.Name = "CONTA";
+            this.CONTA.ReadOnly = true;
+            this.CONTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CONTA.Width = 140;
+            // 
+            // SALDO
+            // 
+            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.SALDO.DataPropertyName = "SALDO";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0,00";
+            this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
+            this.SALDO.HeaderText = "SALDO";
+            this.SALDO.MinimumWidth = 150;
+            this.SALDO.Name = "SALDO";
+            this.SALDO.ReadOnly = true;
+            this.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.SALDO.Width = 150;
+            // 
+            // RESERVADO
+            // 
+            this.RESERVADO.DataPropertyName = "RESERVADO";
+            this.RESERVADO.HeaderText = "RESERVADO";
+            this.RESERVADO.Name = "RESERVADO";
+            this.RESERVADO.ReadOnly = true;
+            this.RESERVADO.Visible = false;
             // 
             // lista_Gastos_Classe
             // 
@@ -1308,6 +1351,7 @@ namespace Setup.Financas
             this.notifyIcon1.ContextMenuStrip = this.contextMenu;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Visible = true;
+            this.notifyIcon1.Click += new System.EventHandler(this.notifyIcon1_Click);
             // 
             // contextMenu
             // 
@@ -1429,49 +1473,6 @@ namespace Setup.Financas
             this.lnLeft.Size = new System.Drawing.Size(4, 510);
             this.lnLeft.TabIndex = 50;
             // 
-            // CONTA_ID
-            // 
-            this.CONTA_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CONTA_ID.DataPropertyName = "CONTA_ID";
-            this.CONTA_ID.HeaderText = "ID";
-            this.CONTA_ID.Name = "CONTA_ID";
-            this.CONTA_ID.ReadOnly = true;
-            this.CONTA_ID.Visible = false;
-            this.CONTA_ID.Width = 5;
-            // 
-            // CONTA
-            // 
-            this.CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CONTA.DataPropertyName = "CONTA";
-            this.CONTA.HeaderText = "CONTA";
-            this.CONTA.MinimumWidth = 140;
-            this.CONTA.Name = "CONTA";
-            this.CONTA.ReadOnly = true;
-            this.CONTA.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CONTA.Width = 140;
-            // 
-            // SALDO
-            // 
-            this.SALDO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.SALDO.DataPropertyName = "SALDO";
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0,00";
-            this.SALDO.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SALDO.HeaderText = "SALDO";
-            this.SALDO.MinimumWidth = 150;
-            this.SALDO.Name = "SALDO";
-            this.SALDO.ReadOnly = true;
-            this.SALDO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.SALDO.Width = 150;
-            // 
-            // RESERVADO
-            // 
-            this.RESERVADO.DataPropertyName = "RESERVADO";
-            this.RESERVADO.HeaderText = "RESERVADO";
-            this.RESERVADO.Name = "RESERVADO";
-            this.RESERVADO.ReadOnly = true;
-            this.RESERVADO.Visible = false;
-            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1498,6 +1499,7 @@ namespace Setup.Financas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Activated += new System.EventHandler(this.frmMenu_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMenu_FormClosing);
             this.Load += new System.EventHandler(this.frmMenu_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmMenu_KeyDown);
             this.menuStrip1.ResumeLayout(false);

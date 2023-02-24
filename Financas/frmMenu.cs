@@ -67,7 +67,7 @@ namespace Setup.Financas
             sql = "SELECT TIPO, VALOR FROM (SELECT '1' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM BD WHERE VALOR > 0 AND EXTRACT(MONTH FROM DATA) = " + mes +" AND EXTRACT(YEAR FROM DATA) = "+ ano +" ";
             sql += "UNION SELECT '2' AS TIPO, IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " ";
             sql += "UNION SELECT '3' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM TRANSFERENCIA WHERE EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " ";
-            sql += "UNION SELECT '4' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM KEY_COMPRA_CREDITO WHERE EXTRACT(MONTH FROM DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM DATA_COMPRA) = " + ano + ") ORDER BY TIPO";
+            sql += "UNION SELECT '4' AS TIPO, IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM COMPRA_CREDITO WHERE EXTRACT(MONTH FROM DATA_PARCELA) = " + mes + " AND EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + ") ORDER BY TIPO";
             BD.Buscar(sql);
 
             try
@@ -202,11 +202,11 @@ namespace Setup.Financas
             }
 
             sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
-            sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < '0' AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
-            sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE_ID, B.CLASSE ";
-            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
+            sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < 0 AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
+            sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE ";
+            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A LEFT OUTER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " ";
-            sql += "AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " GROUP BY A.COMPRA_CREDITO_ID, C.CLASSE) GROUP BY CLASSE ";
+            sql += "AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " GROUP BY C.CLASSE) GROUP BY CLASSE ";
 
             /*
             sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
@@ -291,6 +291,7 @@ namespace Setup.Financas
             if (COD.Resposta == false)
                 return;
 
+            notifyIcon1.Dispose();
             Application.Exit();
         }
 
@@ -629,6 +630,7 @@ namespace Setup.Financas
 
         private void fechar_Click_1(object sender, EventArgs e)
         {
+            notifyIcon1.Dispose();
             Application.Exit();
         }
 
@@ -683,6 +685,16 @@ namespace Setup.Financas
             pnSalvar.Visible = true;
             pnCompromissos.Size = new Size(636, 510);
             lblLeft.Visible = true;
+        }
+
+        private void frmMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            notifyIcon1.Dispose();
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

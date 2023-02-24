@@ -848,6 +848,20 @@ namespace Setup.Financas
 
         private void Ativar_Exclusao()
         {
+            int cont = 1;
+
+            try
+            {
+                cont = lista.SelectedCells.Count;
+            }
+            catch
+            {
+
+            }
+
+            if (cont == 0)
+                return;
+
             if (lista.CurrentRow.Cells[8].Value.ToString() == "1")
             {
                 menuStrip1.Items["excluir"].Enabled = false;
