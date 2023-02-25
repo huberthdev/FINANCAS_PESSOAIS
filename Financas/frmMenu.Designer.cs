@@ -627,7 +627,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.lista_Gastos_Classe.EnableHeadersVisualStyles = false;
             this.lista_Gastos_Classe.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.lista_Gastos_Classe.Location = new System.Drawing.Point(4, 28);
+            this.lista_Gastos_Classe.Location = new System.Drawing.Point(-17, 28);
             this.lista_Gastos_Classe.MultiSelect = false;
             this.lista_Gastos_Classe.Name = "lista_Gastos_Classe";
             this.lista_Gastos_Classe.ReadOnly = true;
@@ -655,7 +655,7 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.lista_Gastos_Classe.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.lista_Gastos_Classe.ShowEditingIcon = false;
-            this.lista_Gastos_Classe.Size = new System.Drawing.Size(405, 287);
+            this.lista_Gastos_Classe.Size = new System.Drawing.Size(423, 287);
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.TabStop = false;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
@@ -679,7 +679,7 @@ namespace Setup.Financas
             this.VALOR.DefaultCellStyle = dataGridViewCellStyle9;
             this.VALOR.FillWeight = 58.82353F;
             this.VALOR.HeaderText = "VALOR";
-            this.VALOR.MinimumWidth = 164;
+            this.VALOR.MinimumWidth = 170;
             this.VALOR.Name = "VALOR";
             this.VALOR.ReadOnly = true;
             // 
@@ -687,10 +687,10 @@ namespace Setup.Financas
             // 
             this.BORDA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.BORDA.FillWeight = 141.1765F;
-            this.BORDA.HeaderText = "#";
+            this.BORDA.HeaderText = "";
             this.BORDA.Name = "BORDA";
             this.BORDA.ReadOnly = true;
-            this.BORDA.Width = 20;
+            this.BORDA.Width = 40;
             // 
             // pnSalvar
             // 
@@ -990,12 +990,12 @@ namespace Setup.Financas
             // pnListaClasse
             // 
             this.pnListaClasse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(37)))));
-            this.pnListaClasse.Controls.Add(this.lista_Gastos_Classe);
             this.pnListaClasse.Controls.Add(this.panel1);
             this.pnListaClasse.Controls.Add(this.gPeriodo);
             this.pnListaClasse.Controls.Add(this.label7);
             this.pnListaClasse.Controls.Add(this.menuStrip2);
             this.pnListaClasse.Controls.Add(this.label10);
+            this.pnListaClasse.Controls.Add(this.lista_Gastos_Classe);
             this.pnListaClasse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnListaClasse.Location = new System.Drawing.Point(612, 26);
             this.pnListaClasse.MinimumSize = new System.Drawing.Size(375, 510);
@@ -1623,12 +1623,12 @@ namespace Setup.Financas
         private Label lblVencimentos;
         private Panel panel1;
         private Label label9;
-        private DataGridViewTextBoxColumn CLASSE;
-        private DataGridViewTextBoxColumn VALOR;
-        private DataGridViewTextBoxColumn BORDA;
         private DataGridViewTextBoxColumn CONTA_ID;
         private DataGridViewTextBoxColumn CONTA;
         private DataGridViewTextBoxColumn SALDO;
         private DataGridViewTextBoxColumn RESERVADO;
+        private DataGridViewTextBoxColumn CLASSE;
+        private DataGridViewTextBoxColumn VALOR;
+        private DataGridViewTextBoxColumn BORDA;
     }
 }
