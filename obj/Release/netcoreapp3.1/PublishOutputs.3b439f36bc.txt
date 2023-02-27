@@ -1,0 +1,13 @@
+C:\Users\huber\Desktop\fin\Finanças.exe
+C:\Users\huber\Desktop\fin\Finanças.dll
+C:\Users\huber\Desktop\fin\Finanças.deps.json
+C:\Users\huber\Desktop\fin\Finanças.runtimeconfig.json
+C:\Users\huber\Desktop\fin\Finanças.dll.config
+C:\Users\huber\Desktop\fin\Finanças.pdb
+C:\Users\huber\Desktop\fin\Interop.ADODB.dll
+C:\Users\huber\Desktop\fin\Interop.Microsoft.Office.Interop.Graph.dll
+C:\Users\huber\Desktop\fin\Interop.SHDocVw.dll
+C:\Users\huber\Desktop\fin\Interop.Scripting.dll
+C:\Users\huber\Desktop\fin\Interop.Microsoft.Office.Core.dll
+C:\Users\huber\Desktop\fin\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\huber\Desktop\fin\FirebirdSql.Data.FirebirdClient.dll

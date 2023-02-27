@@ -442,7 +442,7 @@ namespace Setup.Financas
         private void ToolPrevisao_Click(object sender, EventArgs e)
         {
             frmPrevisao prev = new frmPrevisao();
-            prev.ShowDialog();
+            prev.Show();
         }
 
         private void cadastro_Click(object sender, EventArgs e)
@@ -620,7 +620,7 @@ namespace Setup.Financas
         private void previsaoDeCustos_Click(object sender, EventArgs e)
         {
             frmPrevisao prev = new frmPrevisao();
-            prev.ShowDialog();
+            prev.Show();
         }
 
         private void receitaDespesa_Click(object sender, EventArgs e)

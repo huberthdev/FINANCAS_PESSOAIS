@@ -786,6 +786,10 @@ namespace Setup.Financas
             string[] mes = new string[2];
             string[] ano = new string[2];
 
+            COD.Pergunta("Replicar estas previsões para o próximo mês?");
+            if (!COD.Resposta)
+                return;
+
             try
             {
                 mes[0] = menuStrip1.Items["mes"].Text.ToString().Substring(0,3);
