@@ -89,7 +89,7 @@ namespace Setup.Financas
                     sql += "(SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND ";
                     sql += "EXTRACT(YEAR FROM DATA) = " + ano + " AND EXTRACT(MONTH FROM DATA) = " + i + " ";
                     sql += "UNION SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM COMPRA_CREDITO WHERE ";
-                    sql += "EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + " AND EXTRACT(MONTH FROM DATA_PARCELA) = " + i + ")) WHERE MES = " + i + "";
+                    sql += "VALOR > 0 AND EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + " AND EXTRACT(MONTH FROM DATA_PARCELA) = " + i + ")) WHERE MES = " + i + "";
                 }
                 else
                 {

@@ -206,7 +206,7 @@ namespace Setup.Financas
             sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE ";
             sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A LEFT OUTER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
             sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " ";
-            sql += "AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " GROUP BY C.CLASSE) GROUP BY CLASSE ";
+            sql += "AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.VALOR > 0 GROUP BY C.CLASSE) GROUP BY CLASSE ";
 
             /*
             sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";

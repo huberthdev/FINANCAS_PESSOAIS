@@ -156,7 +156,7 @@ namespace Setup.Financas
                     sql += "KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ";
                     sql += "ON B.CLASSE = C.CLASSE_ID INNER JOIN CARTAO_CREDITO D ON B.CARTAO = D.CARTAO_CREDITO_ID ";
                     sql += "INNER JOIN CONTA E ON D.CONTA = E.CONTA_ID ";
-                    sql += "WHERE A.DATA_PARCELA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
+                    sql += "WHERE A.VALOR > 0 AND A.DATA_PARCELA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
                     if (descricao != "")
                     {
                         sql += "AND UPPER(B.DESCRICAO) LIKE '" + descricao + "' ";
