@@ -76,12 +76,21 @@ namespace Setup.Financas
 
         private void CarregarLista()
         {
-            string sql = "SELECT A.TRANSFERENCIA_ID, A.DATA, B.CONTA, A.VALOR, A.DESCRICAO ";
-            sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ORDER BY A.TRANSFERENCIA_ID DESC";
+            string sql = "SELECT T1.TRANSFERENCIA_ID, T1.DATA, N1.CONTA AS DE, N2.CONTA AS PARA, T1.VALOR, T1.DESCRICAO ";
+            sql += "FROM TRANSFERENCIA T1 ";
+            sql += "INNER JOIN CONTA N1 ON T1.CONTA_DEBITO = N1.CONTA_ID ";
+            sql += "INNER JOIN CONTA N2 ON T1.CONTA_CREDITO = N2.CONTA_ID ";
+            sql += "ORDER BY T1.TRANSFERENCIA_ID DESC";
 
-            lista.DataSource = BD.Buscar(sql);
+            try
+            {
+                lista.DataSource = BD.Buscar(sql);
+                status.Items[0].Text = "LINHAS: " + lista.RowCount;
+            }
+            catch
+            {
 
-            status.Items[0].Text = "LINHAS: " + lista.RowCount;
+            }
         }
 
         private void limpar_Click(object sender, EventArgs e)
