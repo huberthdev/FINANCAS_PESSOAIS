@@ -233,7 +233,6 @@ namespace Setup.Formularios
             this.MaximizeBox = false;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -248,14 +247,14 @@ namespace Setup.Formularios
         private Button btnEntrar;
         private Label label3;
         private Label label2;
-        private Label lblMsg;
         private ErrorProvider errorProvider1;
-        private Controles.Txt txtSenha;
-        private Controles.Txt txtUsuario;
         private Label label1;
-        private CheckBox ckLembrar;
         private Label label6;
         private Label label5;
         private Label label4;
+        public Label lblMsg;
+        public Controles.Txt txtSenha;
+        public Controles.Txt txtUsuario;
+        public CheckBox ckLembrar;
     }
 }

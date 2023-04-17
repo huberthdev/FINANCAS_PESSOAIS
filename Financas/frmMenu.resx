@@ -445,6 +445,23 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>262, 17</value>
   </metadata>
+  <data name="LembrarLogin.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAJySURBVFhH7Za9TxRBGMa30EIb/BPwoyAgGmJzfnCze1KS
+        WOjMLCZApYm2SmWMsUEtAQs/EkMsoDRWCsfdzB4RQnIBbNQEG60MIAnaivq8uy8FuSw3ixYU+0s2t/Ps
+        vJ8zO3teTk7OviSIVFEY9VhYvSys+uYbtbGXK7a1esm3akwYeYHdpxNU9HEYlBF8C8Et7u8Io/v9SA7C
+        yT2M532jf+N+DQ6vYY7c9SJb8gFfsU+jprojeZTD7cSvqvOYuE6Ti1Z2stwAnBQwp47qPpdqsp3lppRq
+        4Sl0pUbJB5E+x3ICqjmBbL8j2xfCiAMsp1KYk4cw9xUlIcylIyw35Uz9+kHEGadCL85ePcYyEkhaVHEJ
+        vg0ngfXVkyw5ESfB8WIBNz0QfmVp5zZFq7vJNnVdU0DMk2QXRGHJQwXPIUzxs8wkXVAPeOgM7GizP6X2
+        f4KDW6xnBk4e4nrHQ2ewF24j7kfK5CfegMusZwaObmB3f+WhMyhcUmwP7/UPYcIrrGcGVdxEEl946Exg
+        pULnNv/DEuhHe1yCIXTuAy3BM9xMs54ZFLAMH8M8dAZnyAySeIJzPyzFr0Ql7OBnzvhVKcg262tIJy3Z
+        IQE/FrAPqlgGk+Ug6q33Hkbr36P6CZacoIMoOZJ1mSXPo2MRGa0jo3GawHIqHPw1nKz0lGULy02Jg1v1
+        EtdaQ9fQlrP0AE5ng4o6zXID9CHBHDqCV4Tpa2O5KUUbdtFmRbdX8VtgeSeUFTrxFhO2qE3oyN3AqgH6
+        HEO7j/ECAv+hRF0+x2RLPhJf8GnVG4xbOVw69OcBgUap0n/+Q2LUIoKPNHyCc3Jy9gee9xdb8Z7W29dm
+        sQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="AtivarNotifVencimentos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -568,7 +585,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
         LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
         SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAANgoAAAJNU0Z0AUkBTAIBAQQB
-        AAGoAQMBqAEDARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
+        AAHYAQMB2AEDARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMAAUADAAEgAwABAQEAAQgG
         AAEIGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEAAfABygGmAQABMwUAATMB
         AAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEAAYABfAH/AQACUAH/AQAB
         kwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFmAwABmQMAAcwCAAEzAwAC

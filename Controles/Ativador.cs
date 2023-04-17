@@ -12,7 +12,7 @@ namespace Setup.Controles
             this.ForeColor = Color.White;
             this.ImageAlign = ContentAlignment.MiddleLeft;
             this.AutoSize = false;
-            this.TextAlign = ContentAlignment.MiddleRight;
+            //this.TextAlign = ContentAlignment.MiddleRight;
             this.Cursor = Cursors.Hand;
             //this.Image = ((Image)Properties.Resources.ligado);
 

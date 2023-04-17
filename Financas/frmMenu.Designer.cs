@@ -174,6 +174,7 @@ namespace Setup.Financas
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.fechar = new System.Windows.Forms.ToolStripMenuItem();
             this.pnDefinicoes = new System.Windows.Forms.Panel();
+            this.LembrarLogin = new Setup.Controles.atv();
             this.label9 = new System.Windows.Forms.Label();
             this.AtivarNotifVencimentos = new Setup.Controles.atv();
             this.AtivarNotifLogin = new Setup.Controles.atv();
@@ -1370,6 +1371,7 @@ namespace Setup.Financas
             // 
             // pnDefinicoes
             // 
+            this.pnDefinicoes.Controls.Add(this.LembrarLogin);
             this.pnDefinicoes.Controls.Add(this.label9);
             this.pnDefinicoes.Controls.Add(this.AtivarNotifVencimentos);
             this.pnDefinicoes.Controls.Add(this.AtivarNotifLogin);
@@ -1381,6 +1383,20 @@ namespace Setup.Financas
             this.pnDefinicoes.TabIndex = 0;
             this.pnDefinicoes.Visible = false;
             this.pnDefinicoes.DoubleClick += new System.EventHandler(this.pnDefinicoes_DoubleClick);
+            // 
+            // LembrarLogin
+            // 
+            this.LembrarLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LembrarLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LembrarLogin.ForeColor = System.Drawing.Color.White;
+            this.LembrarLogin.Image = ((System.Drawing.Image)(resources.GetObject("LembrarLogin.Image")));
+            this.LembrarLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LembrarLogin.Location = new System.Drawing.Point(3, 97);
+            this.LembrarLogin.Name = "LembrarLogin";
+            this.LembrarLogin.Size = new System.Drawing.Size(231, 33);
+            this.LembrarLogin.TabIndex = 0;
+            this.LembrarLogin.Text = " Lembrar login e senha";
+            this.LembrarLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
             // 
@@ -1416,10 +1432,10 @@ namespace Setup.Financas
             this.AtivarNotifLogin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.AtivarNotifLogin.Location = new System.Drawing.Point(3, 29);
             this.AtivarNotifLogin.Name = "AtivarNotifLogin";
-            this.AtivarNotifLogin.Size = new System.Drawing.Size(189, 33);
+            this.AtivarNotifLogin.Size = new System.Drawing.Size(246, 33);
             this.AtivarNotifLogin.TabIndex = 0;
-            this.AtivarNotifLogin.Text = "Notificação de login";
-            this.AtivarNotifLogin.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AtivarNotifLogin.Text = "    Notificação de boas vindas";
+            this.AtivarNotifLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip3
             // 
@@ -1630,5 +1646,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn VALOR;
         private DataGridViewTextBoxColumn BORDA;
+        private Controles.atv LembrarLogin;
     }
 }
