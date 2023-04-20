@@ -456,11 +456,16 @@ namespace Setup.Classes
             var lista = new List<CartaoCredito>();
             var c1 = new CartaoCredito();
 
-            sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA, B.DIA_VENC FROM CONTA A LEFT JOIN ";
-            sql += "CARTAO_CREDITO B ON A.CONTA_ID = B.CONTA WHERE A.CARTAO_CREDITO = 1 AND B.STATUS = 1 ";
             if (cad == 1)
             {
+                sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA, B.DIA_VENC FROM CONTA A LEFT JOIN ";
+                sql += "CARTAO_CREDITO B ON A.CONTA_ID = B.CONTA WHERE A.CARTAO_CREDITO = 1 AND B.STATUS = 1 ";
                 sql += "AND B.CONTA > 0 ";
+            }
+            else
+            {
+                sql = "SELECT A.CONTA_ID, COALESCE(B.CARTAO_CREDITO_ID, 0), A.CONTA, COALESCE(B.DIA_VENC, 0) FROM CONTA A LEFT JOIN ";
+                sql += "CARTAO_CREDITO B ON A.CONTA_ID = B.CONTA WHERE A.CARTAO_CREDITO = 1 ";
             }
             sql += "ORDER BY A.CONTA";
 

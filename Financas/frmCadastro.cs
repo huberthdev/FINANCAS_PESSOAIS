@@ -42,34 +42,6 @@ namespace Setup.Financas
             listaConta.Columns[1].ReadOnly = true;
         }
 
-        private void listaConta_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string ck = "0";
-            string id;
-
-            if (listaConta.RowCount == 0)
-                return;
-
-            id = listaConta.SelectedRows[0].Cells[0].Value.ToString();
-
-            if (e.ColumnIndex == 2)
-            {
-                listaConta.EndEdit();
-                ck = listaConta.Rows[e.RowIndex].Cells[2].Value.ToString();
-
-                string sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
-                BD.ExecutarSQL(sql);
-            }
-            else if(e.ColumnIndex == 3)
-            {
-                listaConta.EndEdit();
-                ck = listaConta.Rows[e.RowIndex].Cells[3].Value.ToString();
-
-                string sql = "UPDATE CONTA SET RESERVADO = " + ck + " WHERE CONTA_ID = " + id + "";
-                BD.ExecutarSQL(sql);
-            }
-        }
-
         private void CarregarListasClasseConta(string tabela = "")
         {
             int tipo = Convert.ToInt32(optReceita.Checked);
@@ -306,6 +278,40 @@ namespace Setup.Financas
         {
             COD.ReleaseCapture();
             COD.SendMessage(this.Handle, COD.WM_NCLBUTTONDOWN, COD.HT_CAPTION, 0);
+        }
+
+        private void listaConta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string ck = "0";
+            string id;
+
+            if (listaConta.RowCount == 0)
+                return;
+
+            id = listaConta.SelectedRows[0].Cells[0].Value.ToString();
+
+            if (e.ColumnIndex == 2)
+            {
+                ck = listaConta.Rows[e.RowIndex].Cells[2].Value.ToString();
+                if (ck == "1")
+                    ck = "0";
+                else
+                    ck = "1";
+
+                string sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
+                BD.ExecutarSQL(sql);
+            }
+            else if (e.ColumnIndex == 3)
+            {
+                ck = listaConta.Rows[e.RowIndex].Cells[3].Value.ToString();
+                if (ck == "1")
+                    ck = "0";
+                else
+                    ck = "1";
+
+                string sql = "UPDATE CONTA SET RESERVADO = " + ck + " WHERE CONTA_ID = " + id + "";
+                BD.ExecutarSQL(sql);
+            }
         }
     }
 }
