@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "FPXv5fJm62ZwXOISnsFLJXeCIhz4HbsHAjrYav4HbkmBG4dQBqmkgj19zRbR5pmxeDNNL0uCqCs0dYatJNKfkg==",
+  "dgSpecHash": "rs7tlAYuUpnBgZvLEThy3PjCbjO+UNZ5O63eH1xxcWGGXL++p7X4COVzHI15AYnbCrpr8zGKwmpkP8ab4Zxwag==",
   "success": true,
   "projectFilePath": "C:\\CursoCSharp\\Setup\\Setup.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\huber\\.nuget\\packages\\firebirdsql.data.firebirdclient\\9.0.2\\firebirdsql.data.firebirdclient.9.0.2.nupkg.sha512"
+    "C:\\Users\\huber\\.nuget\\packages\\firebirdsql.data.firebirdclient\\9.0.2\\firebirdsql.data.firebirdclient.9.0.2.nupkg.sha512",
+    "C:\\Users\\huber\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
   ],
   "logs": []
 }

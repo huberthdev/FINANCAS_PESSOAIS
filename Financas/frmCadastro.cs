@@ -128,8 +128,8 @@ namespace Setup.Financas
 
             int at = Convert.ToInt32(ckAtivoConta.Checked);
 
-            string[] c = new string[4];
-            string[] v = new string[4];
+            string[] c = new string[5];
+            string[] v = new string[5];
 
             c[0] = "conta";
             v[0] = txtConta.Text.Trim();
@@ -143,12 +143,14 @@ namespace Setup.Financas
             c[3] = "cartao_credito";
             v[3] = "0";
 
+            c[4] = "reservado";
+            v[4] = "0";
+
             BD.Salvar("CONTA", c, v, 0, "Conta cadastrada com sucesso!");
 
             txtConta.Text = "";
 
             CarregarListasClasseConta();
-
         }
 
         private void ExcluirConta()

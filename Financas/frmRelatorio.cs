@@ -535,6 +535,18 @@ namespace Setup.Financas
 
         private void excel_Click(object sender, EventArgs e)
         {
+            try
+            {
+                gerar_excel();
+            }
+            catch
+            {
+                COD.Erro("Não foi possível gerar o relatório!");
+            }
+        }
+
+        private void gerar_excel()
+        {
             decimal porc;
 
             Excel.Application XcelApp = new Excel.Application();
@@ -594,7 +606,7 @@ namespace Setup.Financas
                     //
                     XcelApp.Visible = true;
 
-                    COD.ShowNotification("Sucesso:", "Relatório gerado com sucesso!", ToolTipIcon.Info, x:true);
+                    COD.ShowNotification("Sucesso:", "Relatório gerado com sucesso!", ToolTipIcon.Info, x: true);
                 }
                 catch (Exception ex)
                 {
