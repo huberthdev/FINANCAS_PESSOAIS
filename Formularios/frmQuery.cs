@@ -167,6 +167,18 @@ namespace Setup.Formularios
 
         private void exp_excel_Click(object sender, EventArgs e)
         {
+            try
+            {
+                gerar_excel_busca();
+            }
+            catch
+            {
+                COD.Erro("Não foi possível gerar o relatório!");
+            }
+        }
+
+        private void gerar_excel_busca()
+        {
             decimal porc;
 
             Excel.Application XcelApp = new Excel.Application();
@@ -226,7 +238,6 @@ namespace Setup.Formularios
                     XcelApp.Quit();
                 }
             }
-
         }
     }
 }
