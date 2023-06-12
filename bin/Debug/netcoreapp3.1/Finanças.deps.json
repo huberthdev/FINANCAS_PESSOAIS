@@ -9,9 +9,9 @@
       "Finanças/1.0.0": {
         "dependencies": {
           "FirebirdSql.Data.FirebirdClient": "9.0.2",
-          "Microsoft.Office.Interop.Excel": "15.0.4795.1001",
           "Interop.ADODB": "6.1.0.0",
-          "Interop.Scripting": "1.0.0.0"
+          "Interop.Scripting": "1.0.0.0",
+          "Interop.Microsoft.Office.Interop.Excel": "1.9.0.0"
         },
         "runtime": {
           "Finanças.dll": {}
@@ -22,14 +22,6 @@
           "lib/netstandard2.1/FirebirdSql.Data.FirebirdClient.dll": {
             "assemblyVersion": "9.0.2.0",
             "fileVersion": "9.0.2.0"
-          }
-        }
-      },
-      "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Office.Interop.Excel.dll": {
-            "assemblyVersion": "15.0.0.0",
-            "fileVersion": "15.0.4795.1000"
           }
         }
       },
@@ -48,6 +40,14 @@
             "fileVersion": "1.0.0.0"
           }
         }
+      },
+      "Interop.Microsoft.Office.Interop.Excel/1.9.0.0": {
+        "runtime": {
+          "Interop.Microsoft.Office.Interop.Excel.dll": {
+            "assemblyVersion": "1.9.0.0",
+            "fileVersion": "1.9.0.0"
+          }
+        }
       }
     }
   },
@@ -64,19 +64,17 @@
       "path": "firebirdsql.data.firebirdclient/9.0.2",
       "hashPath": "firebirdsql.data.firebirdclient.9.0.2.nupkg.sha512"
     },
-    "Microsoft.Office.Interop.Excel/15.0.4795.1001": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cuvqi/U5MYSM0gvR2l90q0m/urRgmg69EiwP5VWp1RcaJ0YT5G26Va5LaOZ3KJFc22FNihS5CUjeePUp2YpGQA==",
-      "path": "microsoft.office.interop.excel/15.0.4795.1001",
-      "hashPath": "microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512"
-    },
     "Interop.ADODB/6.1.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
     "Interop.Scripting/1.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Interop.Microsoft.Office.Interop.Excel/1.9.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

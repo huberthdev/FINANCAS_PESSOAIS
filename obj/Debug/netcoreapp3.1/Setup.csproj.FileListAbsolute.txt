@@ -49,5 +49,6 @@ C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Finanças.pdb
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Finanças.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Finanças.pdb
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.Financas.Configuracoes.resources
-C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Microsoft.Office.Interop.Excel.dll
 C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Setup.csproj.AssemblyReference.cache
+C:\CursoCSharp\Setup\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\CursoCSharp\Setup\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
