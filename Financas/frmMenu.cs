@@ -148,9 +148,17 @@ namespace Setup.Financas
         private void CarregarListaSaldoContas()
         {
             string sql = "SELECT CONTA_ID, CONTA, SALDO, RESERVADO FROM CONTA ";
-            sql += "WHERE SALDO <> 0 ORDER BY SALDO DESC";
+            sql += "WHERE SALDO <> 0 ORDER BY RESERVADO, SALDO DESC";
 
-            listaSaldo_Contas.DataSource = BD.Buscar(sql);
+            try
+            {
+                listaSaldo_Contas.DataSource = BD.Buscar(sql);
+            }
+            catch
+            {
+
+            }
+            
         }
 
         private void listaSaldo_Contas_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
