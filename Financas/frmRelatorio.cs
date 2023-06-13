@@ -132,13 +132,13 @@ namespace Setup.Financas
                 if(ckDespesa.Checked && ckReceita.Checked || !ckDespesa.Checked && !ckReceita.Checked)
                 {
                     sql += "UNION SELECT A.TRANSFERENCIA_ID AS ID, 'T' AS TIPO, A.DATA AS DATA, ";
-                    sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA, A.VALOR, A.DESCRICAO AS DESC, '1' AS STATUS ";
-                    sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID ";
+                    sql += "'TRANSF. ENTRE CONTAS' AS CLASSE, B.CONTA || ' >> ' || C.CONTA, A.VALOR, A.DESCRICAO AS DESC, '1' AS STATUS ";
+                    sql += "FROM TRANSFERENCIA A INNER JOIN CONTA B ON A.CONTA_DEBITO = B.CONTA_ID INNER JOIN CONTA C ON A.CONTA_CREDITO = C.CONTA_ID ";
                     sql += "WHERE A.DATA BETWEEN CAST('" + data1 + "' AS DATE) AND CAST('" + data2 + "' AS DATE) ";
                     //FILTRO CONTA
                     if (cbConta.Text != "")
                     {
-                        sql += "AND B.CONTA_ID = " + conta + " ";
+                        sql += "AND (B.CONTA_ID = " + conta + " OR C.CONTA_ID = " + conta + ") ";
                     }
                     //FILTRO DESCRIÇÃO
                     if (descricao != "")
@@ -174,7 +174,7 @@ namespace Setup.Financas
                     }
                 }
 
-                sql += ")ORDER BY DATA DESC ";
+                sql += ") ORDER BY DATA DESC ";
             }
 
             try
