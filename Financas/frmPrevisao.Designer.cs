@@ -121,6 +121,7 @@ namespace Setup.Financas
             this.label2 = new System.Windows.Forms.Label();
             this.lblDown = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ckDesvioAcumulado = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lista)).BeginInit();
@@ -665,12 +666,26 @@ namespace Setup.Financas
             this.toolTip1.IsBalloon = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // ckDesvioAcumulado
+            // 
+            this.ckDesvioAcumulado.AutoSize = true;
+            this.ckDesvioAcumulado.Checked = true;
+            this.ckDesvioAcumulado.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckDesvioAcumulado.Location = new System.Drawing.Point(298, 4);
+            this.ckDesvioAcumulado.Name = "ckDesvioAcumulado";
+            this.ckDesvioAcumulado.Size = new System.Drawing.Size(126, 19);
+            this.ckDesvioAcumulado.TabIndex = 2;
+            this.ckDesvioAcumulado.Text = "Desvio Acumulado";
+            this.ckDesvioAcumulado.UseVisualStyleBackColor = true;
+            this.ckDesvioAcumulado.Click += new System.EventHandler(this.ckDesvioAcumulado_Click);
+            // 
             // frmPrevisao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.ClientSize = new System.Drawing.Size(1050, 518);
+            this.Controls.Add(this.ckDesvioAcumulado);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel);
@@ -744,5 +759,6 @@ namespace Setup.Financas
         private ToolTip toolTip1;
         private ToolStripStatusLabel soma_credito;
         private ToolStripStatusLabel sp5;
+        private CheckBox ckDesvioAcumulado;
     }
 }

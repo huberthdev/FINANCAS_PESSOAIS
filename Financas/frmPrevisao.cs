@@ -51,7 +51,7 @@ namespace Setup.Financas
             //PEGA O VALOR DO GASTO PREVISTO QUE AINDA NÃO TIVERAM DÉBITO E CARTÃO DE CRÉDITO REALIZADO NA CLASSE ESPECÍFICA
             //
             sql += "UNION SELECT B.CLASSE, ' Despesa' AS TIPO, ";
-            sql += "A.DIA, A.VALOR AS ORCADO, 0 AS REALIZADO, A.VALOR AS DESVIO, A.STATUS, 'B' AS ORD, A.OBS, A.CHAVE ";
+            sql += "A.DIA, A.VALOR AS ORCADO, 0 AS REALIZADO, A.VALOR AS DESVIO, A.STATUS, 'C' AS ORD, A.OBS, A.CHAVE ";
             sql += "FROM PREVISAO A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID ";
             sql += "WHERE A.CLASSE NOT IN(SELECT DISTINCT CLASSE FROM BD WHERE ";
             sql += "EXTRACT(MONTH FROM DATA) = " + mes + " AND EXTRACT(YEAR FROM DATA) = " + ano + " AND VALOR < 0) ";
@@ -94,15 +94,18 @@ namespace Setup.Financas
 
             sql += "UNION SELECT C.CLASSE AS CLS, ' Despesa' AS TIPO, IIF(D.DIA IS NULL, EXTRACT(DAY FROM CURRENT_DATE), D.DIA) AS DIA, ";
             sql += "IIF(D.VALOR IS NULL, 0, D.VALOR) AS ORCADO, SUM(A.VALOR * -1) AS REALIZADO, ";
-            sql += "IIF(D.VALOR IS NULL, 0, D.VALOR) - SUM(A.VALOR) AS DESVIO, 0 AS ST, 'B' AS ORD, D.OBS AS OB, ";
+            sql += "IIF(D.VALOR IS NULL, 0, D.VALOR) - SUM(A.VALOR) AS DESVIO, 0 AS ST, 'C' AS ORD, D.OBS AS OB, ";
             sql += "IIF(D.CHAVE IS NULL, EXTRACT(DAY FROM CURRENT_DATE) || '.' || EXTRACT(MONTH FROM CURRENT_DATE) || '.' || EXTRACT(YEAR FROM CURRENT_DATE) || '.' || C.CLASSE_ID, D.CHAVE) AS CV ";
             sql += "FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID ";
             sql += "LEFT JOIN PREVISAO D ON B.CLASSE = D.CLASSE AND EXTRACT(MONTH FROM B.DATA_COMPRA) || EXTRACT(YEAR FROM B.DATA_COMPRA) = D.MES || D.ANO ";
             sql += "WHERE C.GRUPO <> 1 AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + " ";
             sql += "GROUP BY C.CLASSE, TIPO, ORCADO, DIA, D.STATUS, D.OBS, CV) GROUP BY CLS, TIPO, DIA, ORCADO, ST, ORD, OB, CV ";
-            
-            //sql += "UNION SELECT 'Desvio Saldo Acumulado' AS CLS, '-' AS TIPO, '0' AS DIA, '0' AS ORCADO, '0' AS REALIZADO, IIF((SALDO * -1) IS NULL, 0, (SALDO * -1)) AS DESVIO, '1' AS ST, 'F' AS ORD, '' AS OB, '' AS CV FROM SALDO_PREV ";
-            //
+
+            if (ckDesvioAcumulado.Checked)
+            {
+                sql += "UNION SELECT '[Desvio Saldo Acumulado]' AS CLS, ' -' AS TIPO, '0' AS DIA, '0' AS ORCADO, '0' AS REALIZADO, IIF((SUM(SALDO) * -1) IS NULL, 0, (SUM(SALDO) * -1)) AS DESVIO, '1' AS ST, 'F' AS ORD, '' AS OB, '' AS CV FROM SALDO_PREV WHERE PERIODO < '"+ periodo + "' GROUP BY CLS";
+            }
+
             sql += ") ORDER BY ORD, DIA";
             //
             //
@@ -480,7 +483,7 @@ namespace Setup.Financas
 
             try
             {
-                SalvarSaldoPrevPeriodo(BD.CvNum(desvio.ToString()));
+                SalvarSaldoPrevPeriodo(mesSel + '.' + anoSel, BD.CvNum(desvio.ToString()));
             }
             catch
             {
@@ -751,13 +754,28 @@ namespace Setup.Financas
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="chave">PASSAR CHAVE NO FORMATO "01." + MES E ANO</param>
+        /// <param name="periodo">PASSAR CHAVE NO FORMATO "01." + MES E ANO</param>
         /// <param name="desvio"></param>
-        private void SalvarSaldoPrevPeriodo(string desvio)
+        private void SalvarSaldoPrevPeriodo(string periodo, string desvio)
         {
             string sql; int lin;
+            string hoje, data, ultDia;
 
-            sql = "SELECT * FROM SALDO_PREV";
+            try
+            {
+                data = "01/" + periodo.Split(".").GetValue(0).ToString() + "/" + periodo.Split(".").GetValue(1).ToString();
+                ultDia = DateTime.DaysInMonth(DateTime.Parse(data).Year, DateTime.Parse(data).Month).ToString();
+                data = ultDia + "." + DateTime.Parse(data).Month.ToString() + "." + DateTime.Parse(data).Year.ToString();
+                data = DateTime.Parse(data).ToShortDateString();
+                data = BD.CvData(data);
+                hoje = BD.CvData(DateTime.Today.ToShortDateString());
+            }
+            catch
+            {
+                return;
+            }
+
+            sql = "SELECT PERIODO FROM SALDO_PREV WHERE PERIODO = '"+ data + "'";
             try
             {
                 lin = BD.Buscar(sql).Rows.Count;
@@ -769,11 +787,11 @@ namespace Setup.Financas
 
             if(lin > 0)
             {
-                sql = "UPDATE SALDO_PREV SET SALDO = SALDO + '"+ desvio +"'";
+                sql = "UPDATE SALDO_PREV SET SALDO = SALDO + '"+ desvio +"' WHERE PERIODO = '"+ data + "'";
             }
             else
             {
-                sql = "INSERT INTO SALDO_PREV(SALDO) VALUES('"+ desvio +"')";
+                sql = "INSERT INTO SALDO_PREV(PERIODO, SALDO) VALUES('"+ data +"', '"+ desvio +"')";
             }
 
             try
@@ -784,6 +802,10 @@ namespace Setup.Financas
             {
 
             }
+
+            sql = "DELETE FROM SALDO_PREV WHERE PERIODO < '" + hoje + "'";
+            BD.ExecutarSQL(sql);
+
         }
 
         private void replicar_Click(object sender, EventArgs e)
@@ -846,6 +868,11 @@ namespace Setup.Financas
                     lista.Rows[i].Cells["EXCLUIRR"].Tag = "C";
                 }
             }
+        }
+
+        private void ckDesvioAcumulado_Click(object sender, EventArgs e)
+        {
+            CarregarPrevisao();
         }
     }
 }
