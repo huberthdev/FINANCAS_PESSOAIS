@@ -27,6 +27,7 @@ namespace Setup.Financas
                 mes = DateTime.Today.Month;
             int ano = int.Parse(menuStrip1.Items["ano"].Text);
             string periodo = "01." + mes + "." + ano;
+            periodo = DateTime.Parse(periodo).AddMonths(-1).ToShortDateString().Replace("/", ".");
 
             //panel.Controls.Clear();
 
@@ -103,7 +104,7 @@ namespace Setup.Financas
 
             if (ckDesvioAcumulado.Checked)
             {
-                sql += "UNION SELECT '[Desvio Saldo Acumulado]' AS CLS, ' -' AS TIPO, '0' AS DIA, '0' AS ORCADO, '0' AS REALIZADO, IIF((SUM(SALDO) * -1) IS NULL, 0, (SUM(SALDO) * -1)) AS DESVIO, '1' AS ST, 'F' AS ORD, '' AS OB, '' AS CV FROM SALDO_PREV WHERE PERIODO < '"+ periodo + "' GROUP BY CLS";
+                sql += "UNION SELECT '[Desvio Saldo Acumulado]' AS CLS, ' -' AS TIPO, '0' AS DIA, '0' AS ORCADO, '0' AS REALIZADO, IIF((SUM(SALDO) * -1) IS NULL, 0, (SUM(SALDO) * -1)) AS DESVIO, '1' AS ST, 'F' AS ORD, '' AS OB, '' AS CV FROM SALDO_PREV WHERE EXTRACT(MONTH FROM PERIODO) = " + DateTime.Parse(periodo).Month + " AND EXTRACT(YEAR FROM PERIODO) = " + DateTime.Parse(periodo).Year + " GROUP BY CLS";
             }
 
             sql += ") ORDER BY ORD, DIA";
@@ -483,7 +484,10 @@ namespace Setup.Financas
 
             try
             {
-                SalvarSaldoPrevPeriodo(mesSel + '.' + anoSel, BD.CvNum(desvio.ToString()));
+                if(mesSel != "0" && desvio != 0)
+                {
+                    SalvarSaldoPrevPeriodo(mesSel + '.' + anoSel, BD.CvNum(desvio.ToString()));
+                }
             }
             catch
             {
@@ -787,7 +791,7 @@ namespace Setup.Financas
 
             if(lin > 0)
             {
-                sql = "UPDATE SALDO_PREV SET SALDO = SALDO + '"+ desvio +"' WHERE PERIODO = '"+ data + "'";
+                sql = "UPDATE SALDO_PREV SET SALDO = '"+ desvio +"' WHERE PERIODO = '"+ data + "'";
             }
             else
             {
