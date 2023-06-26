@@ -115,7 +115,7 @@ namespace Setup.Financas
 
                     cartao = ((CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
                     valor = outro_valor;
-                    data = lista.Rows[1].Cells[6].Value.ToString();
+                    data = lista.Rows[0].Cells[6].Value.ToString();
                     data = DateTime.Parse(data).ToShortDateString();
                     dia_compra = ((CartaoCredito)cbFCartao.SelectedItem).vencimento;
                     data = dia_compra + data.Substring(2);
