@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Globalization;
 
 namespace Setup.Financas
 {
@@ -547,7 +548,7 @@ namespace Setup.Financas
 
         private void gerar_excel()
         {
-            decimal porc;
+            decimal porc; int cont = 0; string data, mesNome;
 
             Excel.Application XcelApp = new Excel.Application();
             Excel.Range celulas;
@@ -563,7 +564,11 @@ namespace Setup.Financas
                     for (int i = 1; i < lista.Columns.Count + 1; i++)
                     {
                         XcelApp.Cells[1, i] = lista.Columns[i - 1].HeaderText;
+                        cont++;
                     }
+
+                    XcelApp.Cells[1, cont] = "MÊS";
+                    XcelApp.Cells[1, cont + 1] = "ANO";
 
                     lblPorc.Visible = true;
                     progresso.Visible = true;
@@ -591,6 +596,28 @@ namespace Setup.Financas
                         {
                             XcelApp.Cells[i + 2, j + 1] = lista.Rows[i].Cells[j].Value;
                         }
+
+                        //TIPO DE LANÇAMENTO
+                        if(Double.Parse(lista.Rows[i].Cells[5].Value.ToString()) < 0)
+                        {
+                            XcelApp.Cells[i + 2, 2] = "DESPESA";
+                        }
+                        else if(lista.Rows[i].Cells[1].Value.ToString() == "T")
+                        {
+                            XcelApp.Cells[i + 2, 2] = "TRANSF";
+                        }
+                        else
+                        {
+                            XcelApp.Cells[i + 2, 2] = "RECEITA";
+                        }
+
+                        //MÊS E ANO
+                        data = lista.Rows[i].Cells[2].Value.ToString();
+                        mesNome = DateTimeFormatInfo.CurrentInfo.GetMonthName(DateTime.Parse(data).Month).ToUpper();
+
+                        XcelApp.Cells[i + 2, 8] = mesNome;
+                        XcelApp.Cells[i + 2, 9] = DateTime.Parse(data).Year.ToString();
+
                     }
                     //
                     celulas = XcelApp.Range["A1", "A1"].CurrentRegion;
@@ -599,8 +626,8 @@ namespace Setup.Financas
                     celulas.Range["C1", "C" + celulas.Rows.Count].NumberFormat = "dd/MM/YYYY";
                     celulas.Range["F1", "F" + celulas.Rows.Count].NumberFormat = "#,##0.00";
                     XcelApp.Columns.AutoFit();
-                    XcelApp.Range["A1", "H1"].Interior.Color = 5855577;
-                    XcelApp.Range["A1", "H1"].Font.Color = 16777215;
+                    XcelApp.Range["A1", "I1"].Interior.Color = 5855577;
+                    XcelApp.Range["A1", "I1"].Font.Color = 16777215;
                     XcelApp.Range["A2", "A2"].Activate();
                     XcelApp.ActiveWindow.FreezePanes = true;
                     //
