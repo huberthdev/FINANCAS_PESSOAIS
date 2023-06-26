@@ -110,8 +110,10 @@ namespace Setup.Financas
                     if (!COD.Resposta)
                         return;
 
+                    sql = "SELECT CLASSE_ID FROM CLASSE WHERE CLASSE = 'Fatura' AND TIPO = 0";
+                    classe = BD.Buscar(sql).Rows[0][0].ToString();
+
                     cartao = ((CartaoCredito)cbFCartao.SelectedItem).cartao.ToString();
-                    classe = "154";
                     valor = outro_valor;
                     data = lista.Rows[1].Cells[6].Value.ToString();
                     data = DateTime.Parse(data).ToShortDateString();
