@@ -668,10 +668,11 @@ namespace Setup.Financas
             // 
             // ckDesvioAcumulado
             // 
+            this.ckDesvioAcumulado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ckDesvioAcumulado.AutoSize = true;
             this.ckDesvioAcumulado.Checked = true;
             this.ckDesvioAcumulado.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckDesvioAcumulado.Location = new System.Drawing.Point(298, 4);
+            this.ckDesvioAcumulado.Location = new System.Drawing.Point(924, 498);
             this.ckDesvioAcumulado.Name = "ckDesvioAcumulado";
             this.ckDesvioAcumulado.Size = new System.Drawing.Size(126, 19);
             this.ckDesvioAcumulado.TabIndex = 2;
