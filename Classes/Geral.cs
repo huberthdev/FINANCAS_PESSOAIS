@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Setup.Financas;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace Setup.Classes
 {
@@ -264,6 +266,51 @@ namespace Setup.Classes
                 desc.ShowDialog();
             }
             
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chave">Passar no formato: classe.mes.ano</param>
+        public static void DetalhesGastoClasse(string chave)
+        {
+            string[] cv; string sql, classe, mes, ano;
+
+            try
+            {
+                cv = chave.Split(".");
+                classe = cv[0];
+                mes = cv[1];
+                ano = cv[2];
+            }
+            catch
+            {
+                return;
+            }
+
+            sql = "SELECT CLASSE, DATA, VALOR, DESCRICAO FROM(SELECT B.CLASSE, A.DATA, ABS(A.VALOR) AS VALOR, TRIM(IIF(A.DESCRICAO IS NULL, '', A.DESCRICAO) || ' [DÉBITO]') AS DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = " + classe + " AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, B.VALOR, TRIM(IIF(B.DESCRICAO IS NULL, '', B.DESCRICAO) || ' [CRÉDITO]') AS DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = " + classe + " AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
+
+            try
+            {
+                if (BD.Buscar(sql).Rows.Count == 0)
+                    return;
+            }
+            catch
+            {
+                return;
+            }
+
+            boxFlutuante flut = new boxFlutuante();
+            try
+            {
+                flut.lista.DataSource = BD.Buscar(sql);
+                flut.ShowDialog();
+                flut.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
+            }
+            catch
+            {
+
+            }
         }
 
         public static void ReplicarPrevisao(string chave)

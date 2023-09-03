@@ -78,13 +78,13 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu = new Setup.Controles.Cabecalho();
             this.novoLancamento = new System.Windows.Forms.ToolStripMenuItem();
@@ -116,9 +116,6 @@ namespace Setup.Financas
             this.SALDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RESERVADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lista_Gastos_Classe = new Setup.Controles.dgView();
-            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BORDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnSalvar = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.pnSalvarIn = new System.Windows.Forms.Panel();
@@ -183,6 +180,10 @@ namespace Setup.Financas
             this.pnCompromissos = new System.Windows.Forms.Panel();
             this.lblVencimentos = new System.Windows.Forms.Label();
             this.lnLeft = new System.Windows.Forms.Label();
+            this.CLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VALOR = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BORDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NCLASSE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaSaldo_Contas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lista_Gastos_Classe)).BeginInit();
@@ -616,7 +617,8 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CLASSE,
             this.VALOR,
-            this.BORDA});
+            this.BORDA,
+            this.NCLASSE});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -660,38 +662,6 @@ namespace Setup.Financas
             this.lista_Gastos_Classe.TabIndex = 1;
             this.lista_Gastos_Classe.TabStop = false;
             this.lista_Gastos_Classe.DoubleClick += new System.EventHandler(this.lista_Gastos_Classe_DoubleClick);
-            // 
-            // CLASSE
-            // 
-            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CLASSE.DataPropertyName = "CLASSE";
-            this.CLASSE.HeaderText = "CLASSE";
-            this.CLASSE.MinimumWidth = 180;
-            this.CLASSE.Name = "CLASSE";
-            this.CLASSE.ReadOnly = true;
-            this.CLASSE.Width = 180;
-            // 
-            // VALOR
-            // 
-            this.VALOR.DataPropertyName = "VALOR";
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.NullValue = "0,00";
-            this.VALOR.DefaultCellStyle = dataGridViewCellStyle9;
-            this.VALOR.FillWeight = 58.82353F;
-            this.VALOR.HeaderText = "VALOR";
-            this.VALOR.MinimumWidth = 170;
-            this.VALOR.Name = "VALOR";
-            this.VALOR.ReadOnly = true;
-            // 
-            // BORDA
-            // 
-            this.BORDA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.BORDA.FillWeight = 141.1765F;
-            this.BORDA.HeaderText = "";
-            this.BORDA.Name = "BORDA";
-            this.BORDA.ReadOnly = true;
-            this.BORDA.Width = 40;
             // 
             // pnSalvar
             // 
@@ -1489,6 +1459,45 @@ namespace Setup.Financas
             this.lnLeft.Size = new System.Drawing.Size(4, 510);
             this.lnLeft.TabIndex = 50;
             // 
+            // CLASSE
+            // 
+            this.CLASSE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CLASSE.DataPropertyName = "CLASSE";
+            this.CLASSE.HeaderText = "CLASSE";
+            this.CLASSE.MinimumWidth = 180;
+            this.CLASSE.Name = "CLASSE";
+            this.CLASSE.ReadOnly = true;
+            this.CLASSE.Width = 180;
+            // 
+            // VALOR
+            // 
+            this.VALOR.DataPropertyName = "VALOR";
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle9.Format = "N2";
+            dataGridViewCellStyle9.NullValue = "0,00";
+            this.VALOR.DefaultCellStyle = dataGridViewCellStyle9;
+            this.VALOR.FillWeight = 58.82353F;
+            this.VALOR.HeaderText = "VALOR";
+            this.VALOR.MinimumWidth = 170;
+            this.VALOR.Name = "VALOR";
+            this.VALOR.ReadOnly = true;
+            // 
+            // BORDA
+            // 
+            this.BORDA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.BORDA.FillWeight = 141.1765F;
+            this.BORDA.HeaderText = "";
+            this.BORDA.Name = "BORDA";
+            this.BORDA.ReadOnly = true;
+            this.BORDA.Width = 40;
+            // 
+            // NCLASSE
+            // 
+            this.NCLASSE.HeaderText = "NCLASSE";
+            this.NCLASSE.Name = "NCLASSE";
+            this.NCLASSE.ReadOnly = true;
+            this.NCLASSE.Visible = false;
+            // 
             // frmMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1643,9 +1652,10 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CONTA;
         private DataGridViewTextBoxColumn SALDO;
         private DataGridViewTextBoxColumn RESERVADO;
+        private Controles.atv LembrarLogin;
         private DataGridViewTextBoxColumn CLASSE;
         private DataGridViewTextBoxColumn VALOR;
         private DataGridViewTextBoxColumn BORDA;
-        private Controles.atv LembrarLogin;
+        private DataGridViewTextBoxColumn NCLASSE;
     }
 }

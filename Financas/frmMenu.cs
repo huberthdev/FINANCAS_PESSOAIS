@@ -209,19 +209,12 @@ namespace Setup.Financas
                 ano = DateTime.Today.Year.ToString();
             }
 
-            sql = "SELECT CLASSE, SUM(VALOR) AS VALOR FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR FROM BD A ";
+            sql = "SELECT CLASSE, SUM(VALOR) AS VALOR, NCLASSE FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR, A.CLASSE AS NCLASSE FROM BD A ";
             sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < 0 AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
-            sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE ";
-            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR FROM COMPRA_CREDITO A LEFT OUTER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
-            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM A.DATA_PARCELA) = " + mes + " ";
-            sql += "AND EXTRACT(YEAR FROM A.DATA_PARCELA) = " + ano + " AND A.VALOR > 0 GROUP BY C.CLASSE) GROUP BY CLASSE ";
-
-            /*
-            sql += "union select 'ZZZ' as CLASSE_ID, 'TOTAL:' as CLASSE, abs(sum(a.VALOR)) as VALOR from bd ";
-            sql += "a inner join classe b on a.CLASSE = b.CLASSE_ID where a.VALOR < '0' and ";
-            sql += "extract(month from a.DATA) = " + mesAtual + " and extract(year from a.DATA) = " + anoAtual + " ";
-            sql += ") order by classe";
-            */
+            sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE, A.CLASSE ";
+            sql += "UNION SELECT C.CLASSE, SUM(A.VALOR) AS VALOR, B.CLASSE AS NCLASSE FROM COMPRA_CREDITO A LEFT OUTER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE ";
+            sql += "INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM b.DATA_compra) = " + mes + " ";
+            sql += "AND EXTRACT(YEAR FROM b.DATA_compra) = " + ano + " AND A.VALOR > 0 GROUP BY C.CLASSE, B.CLASSE) GROUP BY CLASSE, NCLASSE";
 
             try
             {
@@ -402,7 +395,7 @@ namespace Setup.Financas
 
         private void lista_Gastos_Classe_DoubleClick(object sender, EventArgs e)
         {
-            string classe;
+            string classe, chave;
             int mes = DateTime.Today.Month, ano = DateTime.Today.Year;
             int ultDia = DateTime.DaysInMonth(ano, mes);
 
@@ -414,30 +407,32 @@ namespace Setup.Financas
                 mes = int.Parse(gPeriodo.Tag.ToString().Split(".").GetValue(0).ToString());
                 ano = int.Parse(gPeriodo.Tag.ToString().Split(".").GetValue(1).ToString());
                 ultDia = DateTime.DaysInMonth(ano, mes);
+                classe = lista_Gastos_Classe.SelectedRows[0].Cells[4].Value.ToString();
+                chave = classe + "." + mes + "." + ano;
             }
             catch
             {
-
+                return;
             }
 
-            try
-            {
-                classe = lista_Gastos_Classe.SelectedRows[0].Cells[1].Value.ToString();
+            Classes.Geral.DetalhesGastoClasse(chave);
 
-                frmRelatorio rel = new frmRelatorio();
-                rel.ckDespesa.Checked = true;
-                rel.CarregarCbClassesContas("classe");
-                rel.cbClasse.Text = classe;
-                rel.txtDataInicio.Value = new DateTime(ano, mes, 01);
-                rel.txtDataInicio.Checked = true;
-                rel.txtDataFim.Value = new DateTime(ano, mes, ultDia);
-                rel.txtDataFim.Checked = true;
-                rel.ShowDialog();
-            }
-            catch
-            {
-                return;                
-            }
+            //try
+            //{
+            //    frmRelatorio rel = new frmRelatorio();
+            //    rel.ckDespesa.Checked = true;
+            //    rel.CarregarCbClassesContas("classe");
+            //    rel.cbClasse.Text = classe;
+            //    rel.txtDataInicio.Value = new DateTime(ano, mes, 01);
+            //    rel.txtDataInicio.Checked = true;
+            //    rel.txtDataFim.Value = new DateTime(ano, mes, ultDia);
+            //    rel.txtDataFim.Checked = true;
+            //    rel.ShowDialog();
+            //}
+            //catch
+            //{
+            //    return;                
+            //}
 
         }
 

@@ -644,49 +644,25 @@ namespace Setup.Financas
 
         private void detalhes_Click(object sender, EventArgs e)
         {
-            string[] cv;
-            string chave, sql;
-            string classe, mes, ano;
+            string[] cv; string mes, ano, classe, chave;
 
             try
             {
+                mes = (((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1).ToString();
+                ano = menuStrip1.Items["ano"].Text;
                 chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+
                 cv = chave.Split(".");
                 classe = cv[3];
 
-                mes = (((ToolStripComboBox)menuStrip1.Items["mes"]).SelectedIndex + 1).ToString();
-                ano = menuStrip1.Items["ano"].Text;
+                chave = classe + "." + mes + "." + ano;
             }
             catch
             {
                 return;
             }
 
-            //sql = "SELECT B.CLASSE, A.DATA, A.VALOR, A.DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE B.CLASSE_ID = " + classe + " AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + "";
-
-            sql = "SELECT CLASSE, DATA, VALOR, DESCRICAO FROM(SELECT B.CLASSE, A.DATA, ABS(A.VALOR) AS VALOR, TRIM(IIF(A.DESCRICAO IS NULL, '', A.DESCRICAO) || ' [DÉBITO]') AS DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = " + classe +" AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, B.VALOR, TRIM(IIF(B.DESCRICAO IS NULL, '', B.DESCRICAO) || ' [CRÉDITO]') AS DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = " + classe +" AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
-
-            try
-            {
-                if (BD.Buscar(sql).Rows.Count == 0)
-                    return;
-            }
-            catch
-            {
-                return;
-            }
-
-            boxFlutuante flut = new boxFlutuante();
-            try
-            {
-                flut.lista.DataSource = BD.Buscar(sql);
-                flut.ShowDialog();
-                flut.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
-            }
-            catch
-            {
-
-            }
+            Classes.Geral.DetalhesGastoClasse(chave);
         }
 
         private void replicar__Click(object sender, EventArgs e)
