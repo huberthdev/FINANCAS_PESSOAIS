@@ -88,19 +88,23 @@ namespace Setup.Financas
                     sql = "UPDATE VISAO_ANUAL SET VISAO_ANUAL.DESPESA = (SELECT SUM(VALOR) FROM ";
                     sql += "(SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND ";
                     sql += "EXTRACT(YEAR FROM DATA) = " + ano + " AND EXTRACT(MONTH FROM DATA) = " + i + " ";
-                    sql += "UNION SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM COMPRA_CREDITO WHERE ";
+                    sql += "UNION SELECT IIF(SUM(VALOR) IS NULL, 0, SUM(VALOR)) AS VALOR FROM COMPRA_CREDITO WHERE ";
                     sql += "VALOR > 0 AND EXTRACT(YEAR FROM DATA_PARCELA) = " + ano + " AND EXTRACT(MONTH FROM DATA_PARCELA) = " + i + ")) WHERE MES = " + i + "";
                 }
                 else
                 {
-                    sql = "UPDATE VISAO_ANUAL SET VISAO_ANUAL.DESPESA = (SELECT SUM(VALOR) FROM ";
-                    sql += "(SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM BD WHERE VALOR < 0 AND ";
-                    sql += "EXTRACT(YEAR FROM DATA) = " + ano + " AND EXTRACT(MONTH FROM DATA) = " + i + " ";
-                    sql += "UNION SELECT IIF(ABS(SUM(VALOR)) IS NULL, 0, ABS(SUM(VALOR))) AS VALOR FROM KEY_COMPRA_CREDITO WHERE ";
-                    sql += "EXTRACT(YEAR FROM DATA_COMPRA) = " + ano + " AND EXTRACT(MONTH FROM DATA_COMPRA) = " + i + ")) WHERE MES = " + i + "";
+                    sql = "UPDATE VISAO_ANUAL SET VISAO_ANUAL.DESPESA = (SELECT SUM(VALOR) AS VALOR FROM(SELECT ABS(SUM(A.VALOR)) AS VALOR FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < 0 AND EXTRACT(MONTH FROM A.DATA) = " + i + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT SUM(B.VALOR) AS VALOR FROM KEY_COMPRA_CREDITO B INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM b.DATA_compra) = " + i + " AND EXTRACT(YEAR FROM b.DATA_compra) = " + ano + " AND b.VALOR > 0)) WHERE MES = " + i + "";
                 }
 
-                BD.ExecutarSQL(sql);
+                try
+                {
+                    BD.ExecutarSQL(sql);
+                }
+                catch
+                {
+
+                }
+                
             }
 
             sql = "UPDATE VISAO_ANUAL SET DESVIO = RECEITA - DESPESA";
@@ -165,6 +169,11 @@ namespace Setup.Financas
         private void optDtCompra_Click(object sender, EventArgs e)
         {
             Carregar_Lista();
+        }
+
+        private void optDtParc_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

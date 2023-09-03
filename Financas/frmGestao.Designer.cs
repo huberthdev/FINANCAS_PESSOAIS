@@ -246,6 +246,7 @@ namespace Setup.Financas
             this.optDtParc.TabStop = true;
             this.optDtParc.Text = "Data da parcela";
             this.optDtParc.UseVisualStyleBackColor = false;
+            this.optDtParc.CheckedChanged += new System.EventHandler(this.optDtParc_CheckedChanged);
             this.optDtParc.Click += new System.EventHandler(this.optDtParc_Click);
             // 
             // optDtCompra

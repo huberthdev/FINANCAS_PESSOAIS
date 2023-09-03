@@ -275,6 +275,7 @@ namespace Setup.Classes
         public static void DetalhesGastoClasse(string chave)
         {
             string[] cv; string sql, classe, mes, ano;
+            string sqlSoma, somaLista;
 
             try
             {
@@ -290,6 +291,8 @@ namespace Setup.Classes
 
             sql = "SELECT CLASSE, DATA, VALOR, DESCRICAO FROM(SELECT B.CLASSE, A.DATA, ABS(A.VALOR) AS VALOR, TRIM(IIF(A.DESCRICAO IS NULL, '', A.DESCRICAO) || ' [DÉBITO]') AS DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = " + classe + " AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, B.VALOR, TRIM(IIF(B.DESCRICAO IS NULL, '', B.DESCRICAO) || ' [CRÉDITO]') AS DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = " + classe + " AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
 
+            sqlSoma = "SELECT SUM(VALOR) FROM(SELECT B.CLASSE, A.DATA, ABS(A.VALOR) AS VALOR, TRIM(IIF(A.DESCRICAO IS NULL, '', A.DESCRICAO) || ' [DÉBITO]') AS DESCRICAO FROM BD A INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.CLASSE = " + classe + " AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND EXTRACT(YEAR FROM A.DATA) = " + ano + " UNION SELECT C.CLASSE, B.DATA_COMPRA AS DATA, B.VALOR, TRIM(IIF(B.DESCRICAO IS NULL, '', B.DESCRICAO) || ' [CRÉDITO]') AS DESCRICAO FROM COMPRA_CREDITO A INNER JOIN KEY_COMPRA_CREDITO B ON A.CHAVE = B.CHAVE INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE B.CLASSE = " + classe + " AND EXTRACT(MONTH FROM B.DATA_COMPRA) = " + mes + " AND EXTRACT(YEAR FROM B.DATA_COMPRA) = " + ano + ")";
+
             try
             {
                 if (BD.Buscar(sql).Rows.Count == 0)
@@ -304,6 +307,8 @@ namespace Setup.Classes
             try
             {
                 flut.lista.DataSource = BD.Buscar(sql);
+                somaLista = Double.Parse(BD.Buscar(sqlSoma).Rows[0][0].ToString()).ToString("C");
+                flut.Text = "Total: " + somaLista;
                 flut.ShowDialog();
                 flut.Location = new Point(Cursor.Position.X, Cursor.Position.Y);
             }
