@@ -237,13 +237,11 @@ namespace Setup.Financas
             // 
             this.optDtParc.AutoSize = true;
             this.optDtParc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.optDtParc.Checked = true;
             this.optDtParc.ForeColor = System.Drawing.Color.White;
             this.optDtParc.Location = new System.Drawing.Point(5, 5);
             this.optDtParc.Name = "optDtParc";
             this.optDtParc.Size = new System.Drawing.Size(106, 19);
             this.optDtParc.TabIndex = 2;
-            this.optDtParc.TabStop = true;
             this.optDtParc.Text = "Data da parcela";
             this.optDtParc.UseVisualStyleBackColor = false;
             this.optDtParc.CheckedChanged += new System.EventHandler(this.optDtParc_CheckedChanged);
@@ -253,11 +251,13 @@ namespace Setup.Financas
             // 
             this.optDtCompra.AutoSize = true;
             this.optDtCompra.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
+            this.optDtCompra.Checked = true;
             this.optDtCompra.ForeColor = System.Drawing.Color.White;
             this.optDtCompra.Location = new System.Drawing.Point(117, 5);
             this.optDtCompra.Name = "optDtCompra";
             this.optDtCompra.Size = new System.Drawing.Size(109, 19);
             this.optDtCompra.TabIndex = 3;
+            this.optDtCompra.TabStop = true;
             this.optDtCompra.Text = "Data da compra";
             this.optDtCompra.UseVisualStyleBackColor = false;
             this.optDtCompra.Click += new System.EventHandler(this.optDtCompra_Click);

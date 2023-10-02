@@ -209,12 +209,12 @@ namespace Setup.Financas
                 ano = DateTime.Today.Year.ToString();
             }
 
-            string id = Classes.Classe.GetID("Pag. Fatura");
+            string pagFatura = Classes.Classe.GetID("Pag. Fatura");
 
             sql = "SELECT CLASSE, SUM(VALOR) AS VALOR, NCLASSE FROM(SELECT B.CLASSE, ABS(SUM(A.VALOR)) AS VALOR, A.CLASSE AS NCLASSE FROM BD A ";
             sql += "INNER JOIN CLASSE B ON A.CLASSE = B.CLASSE_ID WHERE A.VALOR < 0 AND EXTRACT(MONTH FROM A.DATA) = " + mes + " AND ";
             sql += "EXTRACT(YEAR FROM A.DATA) = " + ano + " GROUP BY B.CLASSE, A.CLASSE ";
-            sql += "UNION SELECT C.CLASSE, SUM(B.VALOR) AS VALOR, B.CLASSE AS NCLASSE FROM KEY_COMPRA_CREDITO B INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM b.DATA_compra) = " + mes + " AND EXTRACT(YEAR FROM b.DATA_compra) = " + ano + " AND b.VALOR > 0 AND C.CLASSE_ID <> "+ id +" GROUP BY C.CLASSE, B.CLASSE) GROUP BY CLASSE, NCLASSE";
+            sql += "UNION SELECT C.CLASSE, SUM(B.VALOR) AS VALOR, B.CLASSE AS NCLASSE FROM KEY_COMPRA_CREDITO B INNER JOIN CLASSE C ON B.CLASSE = C.CLASSE_ID WHERE EXTRACT(MONTH FROM b.DATA_compra) = " + mes + " AND EXTRACT(YEAR FROM b.DATA_compra) = " + ano + " AND C.CLASSE_ID <> "+ pagFatura + " GROUP BY C.CLASSE, B.CLASSE) GROUP BY CLASSE, NCLASSE";
 
             try
             {
