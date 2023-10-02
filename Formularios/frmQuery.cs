@@ -15,26 +15,39 @@ namespace Setup.Formularios
         private void executarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string sql = txtSQL.Text;
-            string limite;
-            int n;
-
-            int nivel = treeTabelas.SelectedNode.Level;
-
-            limite = menuStrip1.Items[2].Text;
-
-            if (int.TryParse(limite, out n) == false)
-            {
-                limite = "1000";
-                menuStrip1.Items[2].Text = limite;
-            }
 
             if (sql == "")
                 return;
 
-            if(!sql.Contains("SELECT FIRST"))
-                sql = sql.Replace("SELECT", "SELECT FIRST "+ limite +"");
+            if (sql.ToUpper().Contains("UPDATE"))
+            {
+                if (!sql.ToUpper().Contains("WHERE"))
+                {
+                    status.Items[0].Text = "Não é permitido fazer 'Update' sem 'Where'!";
+                    return;
+                }
+                else
+                {
+                    COD.Pergunta("Fazer 'Update' na tabela. Confirma?");
+                    if (COD.Resposta == false)
+                        return;
 
-            CarregarSQL(sql);
+                    ExecutaSQL(sql);
+                    status.Items[0].Text = "SQL executado com sucesso!";
+                }    
+            }
+            else if(sql.ToUpper().Contains("INSERT"))
+            {
+                status.Items[0].Text = "Não é permitido fazer 'Insert'!";
+            }
+            else if (sql.ToUpper().Contains("DELETE"))
+            {
+                status.Items[0].Text = "Não é permitido fazer 'Delete'!";
+            }
+            else
+            {
+                CarregarSQL(sql);
+            }
         }
 
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,10 +59,7 @@ namespace Setup.Formularios
 
         private void selectFromToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string sql;
-            string tabela;
-            string coluna;
-            string limite;
+            string sql, tabela, coluna, limite;
             int n;
 
             int nivel = treeTabelas.SelectedNode.Level;
@@ -98,6 +108,18 @@ namespace Setup.Formularios
             }
 
             CarregarBarraStatus();
+        }
+
+        private void ExecutaSQL(string sql)
+        {
+            try
+            {
+                BD.ExecutarSQL(sql);
+            }
+            catch
+            {
+                status.Items[0].Text = "Erro ao executar comando SQL!";
+            }
         }
 
         private void CarregarBarraStatus()
