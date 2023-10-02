@@ -385,6 +385,26 @@ namespace Setup.Classes
         public string nome;
         private static byte opt = 1;
 
+        public static string GetNome(int ID)
+        {
+            string id = null;
+
+            string sql = "SELECT CLASSE FROM CLASSE WHERE CLASSE_ID = " + ID + "";
+            id = BD.Buscar(sql).Rows[0][0].ToString();
+
+            return id;
+        }
+
+        public static string GetID(string nome)
+        {
+            string id = null;
+
+            string sql = "SELECT CLASSE_ID FROM CLASSE WHERE CLASSE = '" + nome + "'";
+            id = BD.Buscar(sql).Rows[0][0].ToString();
+
+            return id;
+        }
+
         public static byte Tipo {
             set 
             {
