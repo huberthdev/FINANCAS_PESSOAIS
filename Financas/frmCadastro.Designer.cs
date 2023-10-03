@@ -59,11 +59,13 @@ namespace Setup.Financas
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastro));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastro));
             this.listaClasse = new Setup.Controles.dgView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CLASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,10 +75,6 @@ namespace Setup.Financas
             this.optReceita = new System.Windows.Forms.RadioButton();
             this.txtClasse = new Setup.Controles.Txt();
             this.listaConta = new Setup.Controles.dgView();
-            this.ID_CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CONT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CREDITO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.RESERVADO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ckAtivoConta = new System.Windows.Forms.CheckBox();
             this.txtConta = new Setup.Controles.Txt();
             this.pnCad = new System.Windows.Forms.Panel();
@@ -93,6 +91,11 @@ namespace Setup.Financas
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.ID_CONTA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CONT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CREDITO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.RESERVADO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.POUPANCA = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.listaClasse)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaConta)).BeginInit();
             this.pnCad.SuspendLayout();
@@ -167,7 +170,7 @@ namespace Setup.Financas
             this.listaClasse.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.listaClasse.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaClasse.ShowEditingIcon = false;
-            this.listaClasse.Size = new System.Drawing.Size(443, 320);
+            this.listaClasse.Size = new System.Drawing.Size(537, 320);
             this.listaClasse.TabIndex = 1;
             this.listaClasse.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.listaClasse_DataBindingComplete);
             this.listaClasse.SelectionChanged += new System.EventHandler(this.listaClasse_SelectionChanged);
@@ -273,15 +276,16 @@ namespace Setup.Financas
             this.ID_CONTA,
             this.CONT,
             this.CREDITO,
-            this.RESERVADO});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaConta.DefaultCellStyle = dataGridViewCellStyle9;
+            this.RESERVADO,
+            this.POUPANCA});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaConta.DefaultCellStyle = dataGridViewCellStyle11;
             this.listaConta.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.listaConta.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaConta.EnableHeadersVisualStyles = false;
@@ -291,20 +295,20 @@ namespace Setup.Financas
             this.listaConta.Name = "listaConta";
             this.listaConta.ReadOnly = true;
             this.listaConta.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaConta.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaConta.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.listaConta.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.White;
-            this.listaConta.RowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            this.listaConta.RowsDefaultCellStyle = dataGridViewCellStyle13;
             this.listaConta.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.listaConta.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.White;
             this.listaConta.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
@@ -313,56 +317,10 @@ namespace Setup.Financas
             this.listaConta.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.listaConta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaConta.ShowEditingIcon = false;
-            this.listaConta.Size = new System.Drawing.Size(443, 345);
+            this.listaConta.Size = new System.Drawing.Size(537, 345);
             this.listaConta.TabIndex = 1;
             this.listaConta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.listaConta_CellMouseClick);
             this.listaConta.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaConta_MouseEnter);
-            // 
-            // ID_CONTA
-            // 
-            this.ID_CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ID_CONTA.DataPropertyName = "CONTA_ID";
-            this.ID_CONTA.HeaderText = "CONTA_ID";
-            this.ID_CONTA.Name = "ID_CONTA";
-            this.ID_CONTA.ReadOnly = true;
-            this.ID_CONTA.Visible = false;
-            this.ID_CONTA.Width = 5;
-            // 
-            // CONT
-            // 
-            this.CONT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CONT.DataPropertyName = "CONTA";
-            this.CONT.HeaderText = "CONTA";
-            this.CONT.MinimumWidth = 220;
-            this.CONT.Name = "CONT";
-            this.CONT.ReadOnly = true;
-            this.CONT.Width = 220;
-            // 
-            // CREDITO
-            // 
-            this.CREDITO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.CREDITO.DataPropertyName = "CREDITO";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.NullValue = false;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.CREDITO.DefaultCellStyle = dataGridViewCellStyle8;
-            this.CREDITO.FalseValue = "0";
-            this.CREDITO.HeaderText = "CRÉDITO?";
-            this.CREDITO.MinimumWidth = 80;
-            this.CREDITO.Name = "CREDITO";
-            this.CREDITO.ReadOnly = true;
-            this.CREDITO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CREDITO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CREDITO.TrueValue = "1";
-            this.CREDITO.Width = 80;
-            // 
-            // RESERVADO
-            // 
-            this.RESERVADO.DataPropertyName = "RESERVADO";
-            this.RESERVADO.HeaderText = "RESERVADO?";
-            this.RESERVADO.MinimumWidth = 80;
-            this.RESERVADO.Name = "RESERVADO";
-            this.RESERVADO.ReadOnly = true;
             // 
             // ckAtivoConta
             // 
@@ -401,7 +359,7 @@ namespace Setup.Financas
             this.pnCad.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnCad.Location = new System.Drawing.Point(0, 0);
             this.pnCad.Name = "pnCad";
-            this.pnCad.Size = new System.Drawing.Size(459, 414);
+            this.pnCad.Size = new System.Drawing.Size(548, 414);
             this.pnCad.TabIndex = 15;
             // 
             // label2
@@ -450,7 +408,7 @@ namespace Setup.Financas
             this.pnConta.ForeColor = System.Drawing.Color.White;
             this.pnConta.Location = new System.Drawing.Point(8, 27);
             this.pnConta.Name = "pnConta";
-            this.pnConta.Size = new System.Drawing.Size(443, 383);
+            this.pnConta.Size = new System.Drawing.Size(537, 383);
             this.pnConta.TabIndex = 1;
             // 
             // label3
@@ -472,7 +430,7 @@ namespace Setup.Financas
             this.sair});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(459, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(548, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.menuStrip1_MouseDown);
@@ -515,9 +473,9 @@ namespace Setup.Financas
             this.pnClasse.Controls.Add(this.optDespesa);
             this.pnClasse.Controls.Add(this.optReceita);
             this.pnClasse.ForeColor = System.Drawing.Color.White;
-            this.pnClasse.Location = new System.Drawing.Point(471, 27);
+            this.pnClasse.Location = new System.Drawing.Point(555, 27);
             this.pnClasse.Name = "pnClasse";
-            this.pnClasse.Size = new System.Drawing.Size(443, 383);
+            this.pnClasse.Size = new System.Drawing.Size(537, 383);
             this.pnClasse.TabIndex = 16;
             // 
             // label4
@@ -536,24 +494,88 @@ namespace Setup.Financas
             this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.label1.Location = new System.Drawing.Point(0, 414);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(457, 4);
+            this.label1.Size = new System.Drawing.Size(551, 4);
             this.label1.TabIndex = 17;
             // 
             // label5
             // 
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
             this.label5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label5.Location = new System.Drawing.Point(453, 0);
+            this.label5.Location = new System.Drawing.Point(547, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(4, 414);
             this.label5.TabIndex = 17;
+            // 
+            // ID_CONTA
+            // 
+            this.ID_CONTA.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ID_CONTA.DataPropertyName = "CONTA_ID";
+            this.ID_CONTA.HeaderText = "CONTA_ID";
+            this.ID_CONTA.Name = "ID_CONTA";
+            this.ID_CONTA.ReadOnly = true;
+            this.ID_CONTA.Visible = false;
+            this.ID_CONTA.Width = 5;
+            // 
+            // CONT
+            // 
+            this.CONT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CONT.DataPropertyName = "CONTA";
+            this.CONT.HeaderText = "CONTA";
+            this.CONT.MinimumWidth = 220;
+            this.CONT.Name = "CONT";
+            this.CONT.ReadOnly = true;
+            this.CONT.Width = 220;
+            // 
+            // CREDITO
+            // 
+            this.CREDITO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CREDITO.DataPropertyName = "CREDITO";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.CREDITO.DefaultCellStyle = dataGridViewCellStyle8;
+            this.CREDITO.FalseValue = "0";
+            this.CREDITO.HeaderText = "CRÉDITO?";
+            this.CREDITO.IndeterminateValue = "0";
+            this.CREDITO.MinimumWidth = 80;
+            this.CREDITO.Name = "CREDITO";
+            this.CREDITO.ReadOnly = true;
+            this.CREDITO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CREDITO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CREDITO.TrueValue = "1";
+            this.CREDITO.Width = 80;
+            // 
+            // RESERVADO
+            // 
+            this.RESERVADO.DataPropertyName = "RESERVADO";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.RESERVADO.DefaultCellStyle = dataGridViewCellStyle9;
+            this.RESERVADO.FalseValue = "0";
+            this.RESERVADO.HeaderText = "RESERVADO?";
+            this.RESERVADO.IndeterminateValue = "0";
+            this.RESERVADO.MinimumWidth = 80;
+            this.RESERVADO.Name = "RESERVADO";
+            this.RESERVADO.ReadOnly = true;
+            this.RESERVADO.TrueValue = "1";
+            // 
+            // POUPANCA
+            // 
+            this.POUPANCA.DataPropertyName = "POUPANCA";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.POUPANCA.DefaultCellStyle = dataGridViewCellStyle10;
+            this.POUPANCA.FalseValue = "0";
+            this.POUPANCA.HeaderText = "POUPANÇA?";
+            this.POUPANCA.IndeterminateValue = "0";
+            this.POUPANCA.MinimumWidth = 80;
+            this.POUPANCA.Name = "POUPANCA";
+            this.POUPANCA.ReadOnly = true;
+            this.POUPANCA.TrueValue = "1";
             // 
             // frmCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.ClientSize = new System.Drawing.Size(457, 418);
+            this.ClientSize = new System.Drawing.Size(551, 418);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pnClasse);
             this.Controls.Add(this.pnCad);
@@ -607,5 +629,6 @@ namespace Setup.Financas
         private DataGridViewTextBoxColumn CONT;
         private DataGridViewCheckBoxColumn CREDITO;
         private DataGridViewCheckBoxColumn RESERVADO;
+        private DataGridViewCheckBoxColumn POUPANCA;
     }
 }

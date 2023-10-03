@@ -63,9 +63,17 @@ namespace Setup.Financas
 
             if (tabela == "" || tabela == "conta")
             {
-                listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, CARTAO_CREDITO AS CREDITO, RESERVADO FROM CONTA WHERE " +
-                    "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC, RESERVADO DESC");
-                listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                try
+                {
+                    listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, IIF(CARTAO_CREDITO IS NULL, 0, CARTAO_CREDITO) AS CREDITO, IIF(RESERVADO IS NULL, 0, RESERVADO) AS RESERVADO, IIF(POUPANCA IS NULL, 0, POUPANCA) AS POUPANCA FROM CONTA WHERE " +
+                        "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC, RESERVADO DESC");
+                    listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                }
+                catch
+                {
+
+                }
             }
         }
 
@@ -188,13 +196,13 @@ namespace Setup.Financas
         private void optConta_Click(object sender, EventArgs e)
         {
             pnConta.Location = new Point(8, 27);
-            pnClasse.Location = new Point(471, 27);
+            pnClasse.Location = new Point(555, 27);
         }
 
         private void optClasse_Click(object sender, EventArgs e)
         {
             pnClasse.Location = new Point(8, 27);
-            pnConta.Location = new Point(471, 27);
+            pnConta.Location = new Point(555, 27);
         }
 
         private void salvar_Click(object sender, EventArgs e)
@@ -284,34 +292,43 @@ namespace Setup.Financas
 
         private void listaConta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string ck = "0";
+            int ck = 0;
             string id;
 
             if (listaConta.RowCount == 0)
                 return;
 
-            id = listaConta.SelectedRows[0].Cells[0].Value.ToString();
+            try
+            {
+                id = listaConta.SelectedRows[0].Cells["ID_CONTA"].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
 
             if (e.ColumnIndex == 2)
             {
-                ck = listaConta.Rows[e.RowIndex].Cells[2].Value.ToString();
-                if (ck == "1")
-                    ck = "0";
-                else
-                    ck = "1";
+                ck = int.Parse(listaConta.Rows[e.RowIndex].Cells["CREDITO"].Value.ToString());
+                ck = ~ck & 1;
 
                 string sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
                 BD.ExecutarSQL(sql);
             }
             else if (e.ColumnIndex == 3)
             {
-                ck = listaConta.Rows[e.RowIndex].Cells[3].Value.ToString();
-                if (ck == "1")
-                    ck = "0";
-                else
-                    ck = "1";
+                ck = int.Parse(listaConta.Rows[e.RowIndex].Cells["RESERVADO"].Value.ToString());
+                ck = ~ck & 1;
 
                 string sql = "UPDATE CONTA SET RESERVADO = " + ck + " WHERE CONTA_ID = " + id + "";
+                BD.ExecutarSQL(sql);
+            }
+            else if (e.ColumnIndex == 4)
+            {
+                ck = int.Parse(listaConta.Rows[e.RowIndex].Cells["POUPANCA"].Value.ToString());
+                ck = ~ck & 1;
+
+                string sql = "UPDATE CONTA SET POUPANCA = " + ck + " WHERE CONTA_ID = " + id + "";
                 BD.ExecutarSQL(sql);
             }
         }
