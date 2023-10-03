@@ -66,7 +66,7 @@ namespace Setup.Financas
                 try
                 {
                     listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, IIF(CARTAO_CREDITO IS NULL, 0, CARTAO_CREDITO) AS CREDITO, IIF(RESERVADO IS NULL, 0, RESERVADO) AS RESERVADO, IIF(POUPANCA IS NULL, 0, POUPANCA) AS POUPANCA FROM CONTA WHERE " +
-                        "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC, RESERVADO DESC");
+                        "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC, RESERVADO DESC, POUPANCA DESC");
                     listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
                 }
@@ -293,7 +293,7 @@ namespace Setup.Financas
         private void listaConta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int ck = 0;
-            string id;
+            string id, sql;
 
             if (listaConta.RowCount == 0)
                 return;
@@ -312,7 +312,7 @@ namespace Setup.Financas
                 ck = int.Parse(listaConta.Rows[e.RowIndex].Cells["CREDITO"].Value.ToString());
                 ck = ~ck & 1;
 
-                string sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
+                sql = "UPDATE CONTA SET CARTAO_CREDITO = " + ck + " WHERE CONTA_ID = " + id + "";
                 BD.ExecutarSQL(sql);
             }
             else if (e.ColumnIndex == 3)
@@ -320,7 +320,7 @@ namespace Setup.Financas
                 ck = int.Parse(listaConta.Rows[e.RowIndex].Cells["RESERVADO"].Value.ToString());
                 ck = ~ck & 1;
 
-                string sql = "UPDATE CONTA SET RESERVADO = " + ck + " WHERE CONTA_ID = " + id + "";
+                sql = "UPDATE CONTA SET RESERVADO = " + ck + " WHERE CONTA_ID = " + id + "";
                 BD.ExecutarSQL(sql);
             }
             else if (e.ColumnIndex == 4)
@@ -328,7 +328,11 @@ namespace Setup.Financas
                 ck = int.Parse(listaConta.Rows[e.RowIndex].Cells["POUPANCA"].Value.ToString());
                 ck = ~ck & 1;
 
-                string sql = "UPDATE CONTA SET POUPANCA = " + ck + " WHERE CONTA_ID = " + id + "";
+                if(ck == 1)
+                    sql = "UPDATE CONTA SET POUPANCA = " + ck + ", RESERVADO = 1 WHERE CONTA_ID = " + id + "";
+                else
+                    sql = "UPDATE CONTA SET POUPANCA = " + ck + " WHERE CONTA_ID = " + id + "";
+
                 BD.ExecutarSQL(sql);
             }
         }

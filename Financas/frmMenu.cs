@@ -148,7 +148,7 @@ namespace Setup.Financas
         private void CarregarListaSaldoContas()
         {
             string sql = "SELECT CONTA_ID, CONTA, SALDO, RESERVADO FROM CONTA ";
-            sql += "WHERE SALDO <> 0 ORDER BY RESERVADO, SALDO DESC";
+            sql += "WHERE SALDO <> 0 AND (POUPANCA IS NULL OR POUPANCA = 0) ORDER BY RESERVADO, SALDO DESC";
 
             try
             {
