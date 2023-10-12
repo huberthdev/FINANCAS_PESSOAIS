@@ -101,7 +101,7 @@ namespace Setup.Classes
             sContas = id.Split(".").GetValue(3).ToString();
             id = id.Split(".").GetValue(0).ToString();
 
-            sMsg = "Excluir transação selecionada?\n" + "Data: " + sData + "\nValor: " + Double.Parse(sValor).ToString("C");
+            sMsg = "Excluir transação selecionada?\n\n" + "Data: " + sData + "\nValor: " + Double.Parse(sValor).ToString("C");
             sMsg += "\nContas: " + sContas;
             COD.Pergunta(sMsg);
             if (COD.Resposta == false)
