@@ -90,23 +90,6 @@ namespace Setup.Controles
             base.OnCreateControl();
         }
 
-        protected override void OnCellMouseMove(DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                if(!this.MultiSelect)
-                {
-                    this.Rows[e.RowIndex].Selected = true;
-                }
-            }
-            catch
-            {
-
-            }
-
-            base.OnCellMouseMove(e);
-        }
-
         protected override void OnLostFocus(EventArgs e)
         {
             this.ClearSelection();

@@ -93,13 +93,20 @@ namespace Setup.Classes
 
         public static void ExcluirTransferencia(string id, bool msg = true)
         {
-            string sql, valor, contaC, vC, contaD, vD;
+            string sql, valor, contaC, vC, contaD, vD, sMsg;
+            string sData, sValor, sContas;
 
-            COD.Pergunta("Excluir transação selecionada?");
+            sData = id.Split(".").GetValue(1).ToString();
+            sValor = id.Split(".").GetValue(2).ToString();
+            sContas = id.Split(".").GetValue(3).ToString();
+            id = id.Split(".").GetValue(0).ToString();
+
+            sMsg = "Excluir transação selecionada?\n" + "Data: " + sData + "\nValor: " + Double.Parse(sValor).ToString("C");
+            sMsg += "\nContas: " + sContas;
+            COD.Pergunta(sMsg);
             if (COD.Resposta == false)
                 return;
-
-            id = id.Split(".").GetValue(0).ToString();
+            
             sql = "SELECT CONTA_DEBITO, CONTA_CREDITO, VALOR FROM TRANSFERENCIA WHERE TRANSFERENCIA_ID = " + id + "";
             BD.Buscar(sql);
 

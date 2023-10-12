@@ -100,11 +100,15 @@ namespace Setup.Financas
 
         private void excluir_Click(object sender, EventArgs e)
         {
-            string id = "0";
+            string id = "0", data, valor, contas;
 
             try
             {
                 id = lista.SelectedRows[0].Cells[0].Value.ToString();
+                data = lista.SelectedRows[0].Cells[1].Value.ToString();
+                data = DateTime.Parse(data).ToShortDateString();
+                valor = lista.SelectedRows[0].Cells[4].Value.ToString();
+                contas = lista.SelectedRows[0].Cells[2].Value.ToString() + ">>" + lista.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch
             {
@@ -112,7 +116,7 @@ namespace Setup.Financas
                 return;
             }
 
-            Classes.Geral.ExcluirTransferencia(id);
+            Classes.Geral.ExcluirTransferencia(id + "." + data + "." + valor + "." + contas);
 
             CarregarLista();
         }
