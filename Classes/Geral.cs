@@ -473,8 +473,8 @@ namespace Setup.Classes
             var c1 = new Conta();
 
             string sql = "SELECT A.CONTA_ID, A.CONTA, A.ATIVO, A.CARTAO_CREDITO, COUNT(B.CONTA) FROM CONTA A LEFT JOIN BD B ";
-            sql += "ON A.CONTA_ID = B.CONTA GROUP BY A.CONTA_ID, A.CONTA, A.ATIVO, A.CARTAO_CREDITO ";
-            sql += "ORDER BY A.ATIVO DESC, A.CARTAO_CREDITO DESC, COUNT(B.CONTA) DESC";
+            sql += "ON A.CONTA_ID = B.CONTA WHERE A.ATIVO = 1 GROUP BY A.CONTA_ID, A.CONTA, A.ATIVO, A.CARTAO_CREDITO ";
+            sql += "ORDER BY COUNT(B.CONTA) DESC, A.CONTA";
 
             BD.Buscar(sql);
 

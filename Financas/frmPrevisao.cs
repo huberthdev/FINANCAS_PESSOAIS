@@ -249,10 +249,20 @@ namespace Setup.Financas
 
         private void lista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
+            string chave = "";
+
+            try
+            {
+                chave = lista.SelectedRows[0].Cells[11].Value.ToString();
+            }
+            catch
+            {
+                return;
+            }
+
             if (lista.RowCount == 0 || e.ColumnIndex > 1)
                 return;
-
-            string chave = lista.SelectedRows[0].Cells[11].Value.ToString();
 
             if (e.ColumnIndex == 0)
             {
@@ -518,6 +528,7 @@ namespace Setup.Financas
             {
                 return;
             }
+
 
             try
             {

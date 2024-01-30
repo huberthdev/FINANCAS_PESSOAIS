@@ -65,7 +65,7 @@ namespace Setup.Financas
             {
                 try
                 {
-                    listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, IIF(CARTAO_CREDITO IS NULL, 0, CARTAO_CREDITO) AS CREDITO, IIF(RESERVADO IS NULL, 0, RESERVADO) AS RESERVADO, IIF(POUPANCA IS NULL, 0, POUPANCA) AS POUPANCA FROM CONTA WHERE " +
+                    listaConta.DataSource = BD.Buscar("SELECT CONTA_ID, CONTA, IIF(CARTAO_CREDITO IS NULL, 0, CARTAO_CREDITO) AS CREDITO, IIF(RESERVADO IS NULL, 0, RESERVADO) AS RESERVADO, IIF(POUPANCA IS NULL, 0, POUPANCA) AS POUPANCA, IIF(ATIVO IS NULL, 0, ATIVO) AS ATIVO FROM CONTA WHERE " +
                         "UPPER(CONTA) LIKE '" + conta + "' ORDER BY CARTAO_CREDITO DESC, RESERVADO DESC, POUPANCA DESC");
                     listaConta.Columns[2].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
@@ -178,16 +178,6 @@ namespace Setup.Financas
 
         }
 
-        private void btnSalvarConta_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExcluirConta_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void sair_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -238,7 +228,7 @@ namespace Setup.Financas
             try
             {
                 id = listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[2].Value = status;
+                listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[5].Value = status;
             }
             catch 
             {
@@ -276,6 +266,14 @@ namespace Setup.Financas
                     listaClasse.Rows[i].Cells[1].Style.ForeColor = Color.Tomato;
                 else
                     listaClasse.Rows[i].Cells[1].Style.ForeColor = Color.White;
+            }
+
+            for (int i = 0; i < listaConta.RowCount; i++)
+            {
+                if (listaConta.Rows[i].Cells[5].Value.ToString() == "0")
+                    listaConta.Rows[i].Cells[1].Style.ForeColor = Color.Tomato;
+                else
+                    listaConta.Rows[i].Cells[1].Style.ForeColor = Color.White;
             }
         }
 
@@ -335,6 +333,49 @@ namespace Setup.Financas
 
                 BD.ExecutarSQL(sql);
             }
+        }
+
+        private void ckAtivoConta_Click(object sender, EventArgs e)
+        {
+            string id; int status;
+
+            status = Convert.ToInt32(ckAtivoConta.Checked);
+
+            try
+            {
+                id = listaConta.Rows[listaConta.CurrentCell.RowIndex].Cells[0].Value.ToString();
+                listaConta.Rows[listaConta.CurrentCell.RowIndex].Cells[5].Value = status;
+            }
+            catch
+            {
+                return;
+            }
+
+            string sql = "UPDATE CONTA SET ATIVO = " + status + " WHERE CONTA_ID = " + id + "";
+            BD.ExecutarSQL(sql);
+
+            FormatacaoCondicional();
+        }
+
+        private void listaConta_SelectionChanged(object sender, EventArgs e)
+        {
+            bool status;
+
+            try
+            {
+                status = Convert.ToBoolean(listaConta.SelectedRows[0].Cells[5].Value);
+            }
+            catch
+            {
+                return;
+            }
+
+            ckAtivoConta.Checked = status;
+        }
+
+        private void listaConta_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            FormatacaoCondicional();
         }
     }
 }
