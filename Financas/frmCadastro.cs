@@ -228,7 +228,7 @@ namespace Setup.Financas
             try
             {
                 id = listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[0].Value.ToString();
-                listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[5].Value = status;
+                listaClasse.Rows[listaClasse.CurrentCell.RowIndex].Cells[2].Value = status;
             }
             catch 
             {
