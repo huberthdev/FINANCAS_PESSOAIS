@@ -700,7 +700,7 @@ namespace Setup.Financas
 
         private void editar_Click(object sender, EventArgs e)
         {
-            string id, data, desc;
+            string id, data, desc, classe;
             double valor;
 
             try
@@ -709,6 +709,7 @@ namespace Setup.Financas
                 valor = double.Parse(lista.SelectedRows[0].Cells[4].Value.ToString());
                 data = lista.SelectedRows[0].Cells[6].Value.ToString();
                 desc = lista.SelectedRows[0].Cells[7].Value.ToString();
+                classe = lista.SelectedRows[0].Cells[3].Value.ToString();
             }
             catch
             {
@@ -721,6 +722,7 @@ namespace Setup.Financas
             AltComp.txtValor.Text = valor.ToString("N");
             AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
             AltComp.txtDesc.Text = desc;
+            AltComp.cbClasse.Tag = classe;
             AltComp.ShowDialog();
         }
 
