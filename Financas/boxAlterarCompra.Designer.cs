@@ -40,6 +40,8 @@ namespace Setup.Financas
             this.txtDesc = new Setup.Controles.Txt();
             this.label6 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbClasse = new Setup.Controles.cbCombo();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +85,7 @@ namespace Setup.Financas
             this.txtValor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtValor.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtValor.ForeColor = System.Drawing.Color.White;
-            this.txtValor.Location = new System.Drawing.Point(183, 14);
+            this.txtValor.Location = new System.Drawing.Point(185, 13);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(90, 23);
             this.txtValor.TabIndex = 32;
@@ -97,7 +99,7 @@ namespace Setup.Financas
             this.txtData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtData.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtData.ForeColor = System.Drawing.Color.White;
-            this.txtData.Location = new System.Drawing.Point(45, 14);
+            this.txtData.Location = new System.Drawing.Point(47, 13);
             this.txtData.MaxLength = 10;
             this.txtData.Name = "txtData";
             this.txtData.Size = new System.Drawing.Size(90, 23);
@@ -110,7 +112,7 @@ namespace Setup.Financas
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(144, 22);
+            this.label4.Location = new System.Drawing.Point(146, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 15);
             this.label4.TabIndex = 29;
@@ -121,7 +123,7 @@ namespace Setup.Financas
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(8, 22);
+            this.label3.Location = new System.Drawing.Point(10, 21);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 30;
@@ -129,13 +131,13 @@ namespace Setup.Financas
             // 
             // txtDesc
             // 
-            this.txtDesc.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.txtDesc.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txtDesc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDesc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDesc.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDesc.ForeColor = System.Drawing.Color.White;
-            this.txtDesc.Location = new System.Drawing.Point(72, 43);
+            this.txtDesc.Location = new System.Drawing.Point(73, 43);
             this.txtDesc.MaxLength = 200;
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(278, 23);
@@ -146,7 +148,7 @@ namespace Setup.Financas
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(8, 51);
+            this.label6.Location = new System.Drawing.Point(9, 51);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 15);
             this.label6.TabIndex = 33;
@@ -155,6 +157,8 @@ namespace Setup.Financas
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.panel1.Controls.Add(this.cbClasse);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtDesc);
             this.panel1.Controls.Add(this.txtValor);
             this.panel1.Controls.Add(this.label4);
@@ -163,15 +167,48 @@ namespace Setup.Financas
             this.panel1.Controls.Add(this.label6);
             this.panel1.Location = new System.Drawing.Point(5, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(358, 83);
+            this.panel1.Size = new System.Drawing.Size(358, 105);
             this.panel1.TabIndex = 35;
+            // 
+            // cbClasse
+            // 
+            this.cbClasse.AllowDrop = true;
+            this.cbClasse.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.cbClasse.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbClasse.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbClasse.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.cbClasse.DisplayMember = "1";
+            this.cbClasse.DropDownHeight = 136;
+            this.cbClasse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbClasse.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cbClasse.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cbClasse.ForeColor = System.Drawing.Color.White;
+            this.cbClasse.FormattingEnabled = true;
+            this.cbClasse.IntegralHeight = false;
+            this.cbClasse.Location = new System.Drawing.Point(73, 72);
+            this.cbClasse.MaxDropDownItems = 10;
+            this.cbClasse.Name = "cbClasse";
+            this.cbClasse.Size = new System.Drawing.Size(278, 23);
+            this.cbClasse.TabIndex = 36;
+            this.cbClasse.Tag = "";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(9, 77);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 15);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Classe";
             // 
             // boxAlterarCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(25)))), ((int)(((byte)(26)))));
-            this.ClientSize = new System.Drawing.Size(368, 112);
+            this.ClientSize = new System.Drawing.Size(368, 137);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -179,6 +216,7 @@ namespace Setup.Financas
             this.Name = "boxAlterarCompra";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.boxAlterarCompra_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -200,5 +238,7 @@ namespace Setup.Financas
         private System.Windows.Forms.Panel panel1;
         private Controles.Cabecalho salvar;
         private Controles.Cabecalho cancelar;
+        private System.Windows.Forms.Label label1;
+        public Controles.cbCombo cbClasse;
     }
 }

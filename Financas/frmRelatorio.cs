@@ -650,7 +650,7 @@ namespace Setup.Financas
 
         private void Alterar()
         {
-            string tipo, id, data, desc;
+            string tipo, id, data, desc, classe;
             double valor;
 
             try
@@ -659,6 +659,7 @@ namespace Setup.Financas
                 id = lista.SelectedRows[0].Cells[0].Value.ToString();
                 valor = double.Parse(lista.SelectedRows[0].Cells[5].Value.ToString());
                 data = lista.SelectedRows[0].Cells[2].Value.ToString();
+                classe = lista.SelectedRows[0].Cells[3].Value.ToString();
                 desc = lista.SelectedRows[0].Cells[6].Value.ToString();
             }
             catch
@@ -672,14 +673,19 @@ namespace Setup.Financas
             boxAlterarCompra AltComp = new boxAlterarCompra();
 
             if (valor < 0)
+            {
                 AltComp.Tag = id + ".D";
+            }
             else
+            {
                 AltComp.Tag = id + ".R";
+            }
 
             AltComp.txtValor.Tag = valor.ToString();
             AltComp.txtValor.Text = Math.Abs(valor).ToString("N");
             AltComp.txtData.Text = DateTime.Parse(data).ToShortDateString();
             AltComp.txtDesc.Text = desc;
+            AltComp.cbClasse.Tag = classe;
             AltComp.ShowDialog();
 
             if(AltComp.Tag.ToString() == "1")

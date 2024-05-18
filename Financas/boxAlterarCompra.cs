@@ -10,6 +10,29 @@ namespace Setup.Financas
             InitializeComponent();
         }
 
+        private void boxAlterarCompra_Load(object sender, EventArgs e)
+        {
+            carregar_classe();
+        }
+
+        private void carregar_classe()
+        {
+            string tipo, classe; byte tp = 0;
+            tipo = this.Tag.ToString().Split(".").GetValue(1).ToString();
+            classe = cbClasse.Tag.ToString();
+
+            if (tipo == "R")
+                tp = 1;
+
+            cbClasse.Items.Clear();
+            Classes.Classe.Tipo = tp;
+            foreach (Classes.Classe c in Classes.Classe.Lista())
+            {
+                cbClasse.Items.Add(c);
+            }
+            cbClasse.Text = classe;
+        }
+
         private void cancelar_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -17,11 +40,11 @@ namespace Setup.Financas
 
         private void salvar_Click(object sender, EventArgs e)
         {
-            string sql = "", id, tipo, data, valor, nValor, conta = "";
+            string sql = "", id, tipo, data, valor, nValor, conta = "", classe = "";
 
             id = this.Tag.ToString().Split(".").GetValue(0).ToString();
             tipo = this.Tag.ToString().Split(".").GetValue(1).ToString();
-            
+
             if(tipo != "C")
                 conta = nConta(id);
 
@@ -31,6 +54,7 @@ namespace Setup.Financas
             data = BD.CvData(txtData.Text);
             valor = BD.CvNum(txtValor.Text);
             nValor = BD.CvNum(txtValor.Tag.ToString());
+            classe = ((Classes.Classe)cbClasse.SelectedItem).id.ToString();
 
             if (tipo == "C")
             {
@@ -53,7 +77,7 @@ namespace Setup.Financas
                     Classes.Conta.AtualizarSaldoConta(conta, valor);
                     Classes.Conta.AtualizarSaldoConta(conta, nValor);
 
-                    sql = "UPDATE BD SET DATA = '" + data + "', VALOR = '" + valor + "', DESCRICAO = '" + txtDesc.Text + "' WHERE BD_ID = " + id + "";
+                    sql = "UPDATE BD SET DATA = '" + data + "', VALOR = '" + valor + "', DESCRICAO = '" + txtDesc.Text + "', CLASSE = "+ classe + " WHERE BD_ID = " + id + "";
                 }
             }
 
@@ -65,7 +89,7 @@ namespace Setup.Financas
                 {
                     try
                     {
-                        sql = "UPDATE KEY_COMPRA_CREDITO SET DESCRICAO = '" + txtDesc.Text + "' WHERE CHAVE IN(SELECT A.CHAVE FROM KEY_COMPRA_CREDITO A INNER JOIN COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE B.COMPRA_CREDITO_ID = " + id + ")";
+                        sql = "UPDATE KEY_COMPRA_CREDITO SET DESCRICAO = '" + txtDesc.Text + "', CLASSE = "+ classe +" WHERE CHAVE IN(SELECT A.CHAVE FROM KEY_COMPRA_CREDITO A INNER JOIN COMPRA_CREDITO B ON A.CHAVE = B.CHAVE WHERE B.COMPRA_CREDITO_ID = " + id + ")";
                         BD.ExecutarSQL(sql);
                     }
                     catch
