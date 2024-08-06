@@ -347,7 +347,10 @@ namespace Setup.Financas
 
             for (int i = 0; i < lista.RowCount; i++)
             {
-                valorFatura += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                if(lista.Rows[i].Cells[8].Value.ToString() != "1")
+                {
+                    valorFatura += double.Parse(lista.Rows[i].Cells[4].Value.ToString());
+                }
             }
 
             status.Items["statusLabel"].Text = "LINHAS: " + lista.RowCount;
