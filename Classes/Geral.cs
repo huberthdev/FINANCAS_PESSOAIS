@@ -407,7 +407,15 @@ namespace Setup.Classes
             string id = null;
 
             string sql = "SELECT CLASSE_ID FROM CLASSE WHERE CLASSE = '" + nome + "'";
-            id = BD.Buscar(sql).Rows[0][0].ToString();
+            try
+            {
+                id = BD.Buscar(sql).Rows[0][0].ToString();
+            }
+            catch
+            {
+
+                id = null;
+            }
 
             return id;
         }
